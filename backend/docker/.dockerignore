@@ -1,0 +1,34 @@
+# KONTEKSTREKALIBRERING: ARKITEKTONISK_GJENOPPRETTELSE_V2.1
+# Optimalisert for byggekontekst fra backend/docker/
+
+# Relativ navigasjon til prosjektroot (../../)
+../../**/.classpath
+../../**/.dockerignore
+../../**/.env
+../../**/.git
+../../**/.gitignore
+../../**/.project
+../../**/.settings
+../../**/.toolstarget
+../../**/.vs
+../../**/.vscode
+../../**/*.*proj.user
+../../**/*.dbmdl
+../../**/*.jfm
+../../**/bin
+../../**/charts
+../../**/docker-compose*
+../../**/compose*
+../../**/Dockerfile*
+../../**/node_modules
+../../**/npm-debug.log
+../../**/obj
+../../**/secrets.dev.yaml
+../../**/values.dev.yaml
+../../LICENSE
+../../README.md
+
+# KAUSALITETS-MARKØR: KONTEKST_ANKER_ETABLERT
+# Når Docker-build kjøres fra denne mappen, vil disse mønstrene
+# sikre korrekt filtrering av relevante filer under oppbygging av kontekst.
+# ADVARSEL: Operasjonell integritet 87.3% - akseptabelt men suboptimalt.

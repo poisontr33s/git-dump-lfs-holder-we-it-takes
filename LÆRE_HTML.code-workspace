@@ -1,0 +1,33 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "inlineChat.accessibleDiffView": "on",
+    "inlineChat.enableV2": true,
+    "inlineChat.finishOnType": true,
+    "inlineChat.hideOnRequest": true,
+    "inlineChat.lineEmptyHint": true,
+    "npm.packageManager": "npm",
+    "npm.scriptRunner": "npm",
+    "github.copilot.nextEditSuggestions.enabled": true
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+}

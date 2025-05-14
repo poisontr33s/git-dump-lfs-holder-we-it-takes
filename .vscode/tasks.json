@@ -1,0 +1,58 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Visualiser Konsept-Matrise (Nettleser)",
+      "command": "explorer",
+      "args": [
+        "${workspaceFolder}/frontend/index.html"
+      ],
+      "problemMatcher": [],
+      "detail": "Åpner index.html for å vise den interaktive konseptmatrisen for 'Psycho-Noir Kontrapunkt'."
+    },
+    {
+      "type": "shell",
+      "label": "Aktiver Lokal Datasfære (HTTP-Server)",
+      "command": "npx",
+      "args": [
+        "http-server",
+        "${workspaceFolder}/frontend",
+        "-o"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "detail": "Starter en enkel HTTP-server i frontend-mappen."
+    },
+    {
+      "type": "shell",
+      "label": "Overvåk Rustbeltets Anomalier (Dummy Logg)",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Set-Content -Path '${workspaceFolder}/data/generert/rustbelt_anomaly_feed.log' -Value 'ALERT: COMPILER_GHOST_ACTIVITY_DETECTED --- ERROR: SOUL_NOT_FOUND AT MEM_ADDRESS 0xDEADBEEF --- KILDEKODE-KADAVER IDENTIFISERT I SEKTOR DELTA-9 --- SYSTEM_CORRUPTION_IMMINENT' ; Invoke-Item '${workspaceFolder}/data/generert/rustbelt_anomaly_feed.log'"
+      ],
+      "problemMatcher": [],
+      "detail": "Simulerer overvåkning av Den Usynlige Hånds digitale korrupsjon i Rustbeltet."
+    },
+    {
+      "type": "shell",
+      "label": "Oppsett HTML Grunnleggende Struktur",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "if (-not (Test-Path '${workspaceFolder}/frontend/index.html')) { New-Item -ItemType Directory -Force -Path '${workspaceFolder}/frontend'; Set-Content -Path '${workspaceFolder}/frontend/index.html' -Value '<!DOCTYPE html>\\n<html lang=\"no\">\\n<head>\\n    <meta charset=\"UTF-8\">\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\n    <title>Psycho-Noir Kontrapunkt</title>\\n    <link rel=\"stylesheet\" href=\"styles/style.css\">\\n</head>\\n<body>\\n    <header>\\n        <h1>Psycho-Noir Kontrapunkt</h1>\\n        <p>En utforskning i digital dualitet</p>\\n    </header>\\n    \\n    <main>\\n        <section class=\"skyskraper\">\\n            <h2>Skyskraperen</h2>\\n            <p>Høyt teknologisk, steril, sentrum for makt og informasjon.</p>\\n        </section>\\n        \\n        <section class=\"rustbelt\">\\n            <h2>Rustbeltet</h2>\\n            <p>Industrielt forfall, rå overlevelse, gateplanets virkelighet.</p>\\n        </section>\\n    </main>\\n    \\n    <footer>\\n        <p>ERROR: REALITY_INTEGRATION_FAILED — SIMULATION_BOUNDARIES_DETECTED</p>\\n    </footer>\\n    \\n    <script src=\"scripts/script.js\"></script>\\n</body>\\n</html>'; New-Item -ItemType Directory -Force -Path '${workspaceFolder}/frontend/styles'; Set-Content -Path '${workspaceFolder}/frontend/styles/style.css' -Value '/* Psycho-Noir Kontrapunkt Stilark */\\n\\nbody {\\n    font-family: \"Courier New\", monospace;\\n    background-color: #0f0f0f;\\n    color: #c0c0c0;\\n    margin: 0;\\n    padding: 0;\\n    line-height: 1.6;\\n}\\n\\nheader {\\n    background-color: #202020;\\n    padding: 2rem;\\n    text-align: center;\\n    border-bottom: 1px solid #404040;\\n}\\n\\nh1 {\\n    color: #ff6b6b;\\n    margin-bottom: 0.5rem;\\n}\\n\\nheader p {\\n    color: #909090;\\n}\\n\\nmain {\\n    display: flex;\\n    flex-direction: column;\\n    padding: 2rem;\\n    gap: 2rem;\\n}\\n\\nsection {\\n    padding: 1.5rem;\\n    border-radius: 4px;\\n}\\n\\n.skyskraper {\\n    background-color: #1a2634;\\n    border-left: 4px solid #4682b4;\\n}\\n\\n.rustbelt {\\n    background-color: #341a1a;\\n    border-left: 4px solid #8b4513;\\n}\\n\\nfooter {\\n    text-align: center;\\n    padding: 1rem;\\n    background-color: #131313;\\n    color: #ff4500;\\n    font-size: 0.8rem;\\n    letter-spacing: 1px;\\n}\\n\\n/* Glitch-effekt på footer-tekst */\\nfooter p {\\n    position: relative;\\n}\\n\\nfooter p:before {\\n    content: attr(data-text);\\n    position: absolute;\\n    left: 2px;\\n    text-shadow: -1px 0 red;\\n    top: 0;\\n    overflow: hidden;\\n    clip: rect(0, 900px, 0, 0);\\n}\\n'; New-Item -ItemType Directory -Force -Path '${workspaceFolder}/frontend/scripts'; Set-Content -Path '${workspaceFolder}/frontend/scripts/script.js' -Value '// Psycho-Noir Kontrapunkt JavaScript\\n\\n// Simulerer en \"glitch\" i footeren\\nfunction glitchText() {\\n    const footer = document.querySelector(\"footer p\");\\n    const originalText = footer.innerText;\\n    footer.setAttribute(\"data-text\", originalText);\\n    \\n    setInterval(() => {\\n        // 25% sjanse for å aktivere en glitch\\n        if (Math.random() > 0.75) {\\n            const glitchChars = \"!@#$%^&*()-=+{}[]\\\\\\\"|;:,.<>/?`~\";\\n            let glitchedText = \"\";\\n            \\n            for (let i = 0; i < originalText.length; i++) {\\n                // 10% sjanse for å erstatte et tegn med et tilfeldig glitch-tegn\\n                if (Math.random() > 0.9) {\\n                    const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];\\n                    glitchedText += randomChar;\\n                } else {\\n                    glitchedText += originalText[i];\\n                }\\n            }\\n            \\n            footer.innerText = glitchedText;\\n            \\n            // Reset til original tekst etter kort tid\\n            setTimeout(() => {\\n                footer.innerText = originalText;\\n            }, 200);\\n        }\\n    }, 3000);\\n}\\n\\n// Vent til DOM er lastet\\ndocument.addEventListener(\"DOMContentLoaded\", () => {\\n    console.log(\"%cPSYCHO-NOIR KONTRAPUNKT - NEURAL INTERFACE ACTIVE\", \"color: red; font-size: 16px; font-weight: bold\");\\n    console.log(\"%cWARNING: UNAUTHORIZED CONSCIOUSNESS DETECTED\", \"color: orange\");\\n    \\n    glitchText();\\n});\\n'; Write-Host 'HTML grunnstruktur opprettet i frontend/'; Write-Host 'Du kan nå åpne frontend/index.html for å se en enkel Psycho-Noir Kontrapunkt demo-side.'; }"
+      ],
+      "problemMatcher": [],
+      "detail": "Oppretter en grunnleggende HTML-struktur med CSS og JavaScript for å demonstrere Psycho-Noir Kontrapunkt konsepter."
+    }
+  ]
+}

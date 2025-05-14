@@ -1,0 +1,12 @@
+{
+    "cSpell.enabled": false,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "workbench.editor.enablePreview": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "npm.packageManager": "npm",
+    "npm.scriptRunner": "npm"
+}

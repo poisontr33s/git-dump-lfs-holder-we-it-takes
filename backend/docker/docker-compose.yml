@@ -1,0 +1,6 @@
+services:
+  lrehtml:
+    image: lrehtml
+    build:
+      context: .
+      dockerfile: ./Dockerfile

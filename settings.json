@@ -1,0 +1,96 @@
+{
+  "workbench.colorTheme": "GitHub Dark",
+  "cmake.showOptionsMovedNotification": false,
+  "tabnine.experimentalAutoImports": true,
+  "go.toolsManagement.autoUpdate": true,
+  "cloudcode.project": "gen-lang-client-0863394059",
+  "cloudcode.updateChannel": "Insiders",
+  "diffEditor.codeLens": true,
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path-windows": "C:\\Users\\eldno\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
+    "vscode-kubernetes.kubectl-path-windows": "C:\\Users\\eldno\\.vs-kubernetes\\tools\\kubectl\\kubectl.exe",
+    "vscode-kubernetes.minikube-path-windows": "C:\\Users\\eldno\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
+  },
+  "redhat.telemetry.enabled": true,
+  "cloudcode.apigee.gemini.enable": false,
+  "cloudcode.duetAI.codeGenerationInterface": "ghostText",
+  "cloudcode.enableTelemetry": false,
+  "liveServer.settings.donotVerifyTags": true,
+  "geminicodeassist.project": "gen-lang-client-0863394059",
+  "geminicodeassist.updateChannel": "Default",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.iconTheme": "vscode-icons",
+  "php.linkedEditing.variables": true,
+  "editor.linkedEditing": true,
+  "clangd.path": "c:\\Users\\eldno\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\19.1.2\\clangd_19.1.2\\bin\\clangd.exe",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "gitlens.autolinks": [
+    {
+      "ignoreCase": true,
+      "prefix": "erd",
+      "url": "//<KORRUPT_REFERANSE_DEN_USYNLIGE_HAAND_erd_%s>"
+    }
+  ],
+  "gitlens.defaultDateLocale": null,
+  "gitlens.defaultDateFormat": null,
+  "gitlens.defaultTimeFormat": null,
+  "python.analysis.typeCheckingMode": "basic",
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.reviewSelection.instructions": [],
+  "rubyLsp.rubyExecutablePath": "c:\\Users\\eldno\\Downloads\\PROJECTS\\LÆRE_HTML\\dealogue-fayde-21-04-21\\guidealoguebrowser.rb",
+  "terminal.integrated.env.windows": {},
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "github_token",
+        "description": "GitHub Personal Access Token",
+        "password": true
+      }
+    ],
+    "servers": {
+      "console-ninja": {
+        "command": "powershell.exe",
+        "args": ["node", "$Env:USERPROFILE/.console-ninja/mcp/"]
+      },
+      "github": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "ghcr.io/github/github-mcp-server"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+        }
+      }
+    }
+  },
+  "workbench.editor.autoLockGroups": {
+    "default": true
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "specstory.helpUsImprove": false,
+  "specstory.derivedRules.enabled": false,
+  "workbench.settings.applyToAllProfiles": ["specstory.derivedRules.enabled"],
+  "specstory.autoSave.enabled": false,
+  "console-ninja.featureSet": "Community",
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "756B578D-C5B7-4053-9728-618EF395FF22"
+    }
+  ],
+  "mssql.connections": [],
+  "extensions.autoUpdate": false
+}

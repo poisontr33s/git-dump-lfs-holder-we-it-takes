@@ -1,0 +1,52 @@
+# Jest (LÆRE_HTML)
+
+[info] Critical Settings:
+jest.runMode: {
+    "type": "watch"
+}
+jest.outputConfig: {
+    "revealOn": "run",
+    "revealWithFocus": "test-results",
+    "clearOnRun": "none"
+}
+testing.automaticallyOpenTestResults: "openOnTestStart"
+
+[info] auto config:
+
+found:
+  rootPath: c:\Users\eldno\Downloads\PROJECTS\LÆRE_HTML
+  jestCommandLine: npm test --
+
+npm error config prefix cannot be changed from project config: C:\Users\eldno\Downloads\PROJECTS\LÆRE_HTML\.npmrc.
+npm error code ERR_INVALID_URL
+npm error Invalid URL
+npm error A complete log of this run can be found in: C:\Users\eldno\.npm\_logs\2025-05-13T23_45_04_329Z-debug-0.log
+
+npm error config prefix cannot be changed from project config: C:\Users\eldno\Downloads\PROJECTS\LÆRE_HTML\.npmrc.
+npm error code ERR_INVALID_URL
+npm error Invalid URL
+npm error A complete log of this run can be found in: C:\Users\eldno\.npm\_logs\2025-05-13T23_45_04_330Z-debug-0.log
+
+[error] failed to retrieve test file list. TestExplorer might show incomplete test items
+
+[error] Failed to start jest session: npm error config prefix cannot be changed from project config: C:\Users\eldno\Downloads\PROJECTS\LÆRE_HTML\.npmrc.
+npm error code ERR_INVALID_URL
+npm error Invalid URL
+npm error A complete log of this run can be found in: C:\Users\eldno\.npm\_logs\2025-05-13T23_45_04_330Z-debug-0.log
+
+[info] Open Quick Fix: → vscode-jest://L%C3%86RE_HTML/io.orta.jest.with-workspace.show-quick-fix?%5B%22wizard%22%2C%22defer%22%2C%22disable-folder%22%2C%22help%22%5D
+
+[error] Jest process exited unexpectedly: Jest process "watch-tests" ended unexpectedly
+
+[info] Open Quick Fix: → vscode-jest://L%C3%86RE_HTML/io.orta.jest.with-workspace.show-quick-fix?%5B%22wizard%22%2C%22defer%22%2C%22disable-folder%22%2C%22help%22%5D
+
+> Test run "watch-tests:0" exited at 5/14/2025, 1:45:04 AM <
+
+**Output:** [Jest (Workspace)]
+> Test run "watch-tests:0" exited at 5/14/2025, 1:45:04 AM
+LÆRE_HTML:      warning | success 0, fail 0, unknown 0; mode: watch; state: exec-error
+
+LÆRE_HTML:      warning | success 0, fail 0, unknown 0; mode: watch; state: exec-error
+
+lære_html/
+The Container Tools extension is incompatible with the Docker extension and cannot activate. Uninstall Docker and reload to use Container Tools.
