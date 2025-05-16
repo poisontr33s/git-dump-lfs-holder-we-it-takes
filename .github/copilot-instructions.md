@@ -1,8 +1,3 @@
----
-description: AI rules derived by SpecStory from the project AI interaction history
-globs: *
----
-
 # Github Copilot Workspace-Instruksjoner: Psycho-Noir Kontrapunkt
 
 **Kjernedirektiver (Alltid Gyldig i Dette Arbeidsområdet):**
