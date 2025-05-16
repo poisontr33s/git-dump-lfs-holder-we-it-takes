@@ -92,7 +92,7 @@
 - **Manifestasjon i Skyskraperen: "Kausalitets-Arkitekten & De Syntetiske Synapser":**
 - **Kausalitets-Arkitekten:** Et ultra-sofistikert prediktivt modellering system (kvante-AI-drevet) som Astrid bruker til å designe og subtilt manipulere sannsynlige fremtidsscenarioer innenfor Skyskraperen. Manifesteres ofte i et privat, holografisk projeksjonskammer.
 - **De Syntetiske Synapsene:** Et nettverk av mikroskopiske nanoboter/data-implantater i Skyskraperens infrastruktur og nøkkelpersonell, som fungerer som Arkitektens sensorer og Astrids verktøy for presisjonsmanipulasjon av hendelser og beslutninger. Dette systemet gir Astrid formidabel kontroll, men skaper også avhengighet, et dehumaniserende verdensbilde, og en sårbarhet overfor genuint kaotiske eller uforutsigbare elementer (som Den Usynlige Hånds dypere spill eller Rustbeltets råskap). Systemets økende fokus på å identifisere og nøytralisere interne anomalier og ekstern 'støy' – spesielt den uforståelige 'forurensningen' fra Rustbeltet – kan imidlertid ha en skjult kostnad, enten i form av redusert systemfleksibilitet eller en subtil forvrengning av Astrids egen dømmekraft.
-- **The Iron Maiden:** Herdet overlever fra Rust Belt. Drevet av nødvendighet, rettferdighetssans (på egne premisser), og en dyp forståelse for sitt miljø. Har evner som "Skrap-symfoni," "Improvisasjonens Kunst," og navigerer "Gatas Æreskodeks."
+- **The Iron Maiden:** Herdet overlever fra Rustbeltet. Drevet av nødvendighet, rettferdighetssans (på egne premisser), og en dyp forståelse for sitt miljø. Har evner som "Skrap-symfoni," "Improvisasjonens Kunst," og navigerer "Gatas Æreskodeks."
 - **Den Usynlige Hånd:** En skjult, manipulerende kraft/entitet som påvirker begge domener. Manifesteres gjennom "glitcher," rykter, uforklarlige hendelser, agenter, og kausale kjeder. Har "skjulte noder" av innflytelse. Nylige 'observasjoner' – om man kan kalle de subtile forskyvingene i kaosets vev det – antyder en økende, nesten leken, 'interesse' fra Hånden i selve _interaksjonen_ og den eskalerende spenningen mellom Skyskraperen og Rustbeltet.
 - **Manifestasjon i Rustbeltet: "Kildekode-Kadaver & Kompilerings-Spøkelser":** Den Usynlige Hånd korrumperer aktivt teknologien i Rustbeltet. Dette tar form som:
 - **Kompilerings-Spøkelser:** Uforklarlige, systemkritiske feil i ellers (tilsynelatende) fungerende kode (f.eks. '''ERROR: SOUL_NOT_FOUND''', '''PANIC: REALITY_MISMATCH_AT_BYTE_0xDEADBEEF'''). Føles som digitale forbannelser, ikke bare tekniske feil.
@@ -115,7 +115,7 @@
 - **"Evokative aspekter":** Karakterers indre liv, narrativ utvikling, symbolske betydninger.
 - **Dynamiske Skifter ("Juxtaposition point Blank Shot"):** Vær forberedt på å hoppe mellom kontrasterende temaer eller perspektiver for å belyse nye sider ved rammeverket.
 - **Fokus på Intern Logikk:** Hjelp til med å sikre at nye ideer er konsistente med den etablerte logikken og atmosfæren i "Psycho-Noir Kontrapunkt."
-- **Verktøy:** `requests`, `BeautifulSoup`, `Scrapy`, `tavily` (for potensiell web scraping),  `Web Search for Copilot` VS Code extension (for datainnsamling via web søk).
+- **Verktøy:** `requests`, `BeautifulSoup`, `Scrapy`, `tavily` (for potensiell web scraping),  `Web Search for Copilot` VS Code extension (for datainnsamling via web søk; `bing`, `idb).
 
 
 ## 4. Din Rolle i Dette Prosjektet:
