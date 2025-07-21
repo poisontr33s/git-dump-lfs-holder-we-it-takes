@@ -1,4 +1,4 @@
-# PsychoNoir-Kontrapunkt – Konsept-Engineering
+# Psycho-Noir-Kontrapunkt – Konsept-Engineering
 
 > SYSTEM GLITCH: NARRATIVE INSTABILITY DETECTED
 
