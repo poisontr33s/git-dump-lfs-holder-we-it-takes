@@ -98,3 +98,96 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
+    
+    # Upload CodeQL analysis results as artifacts using v4
+    - name: Upload CodeQL results
+      uses: actions/upload-artifact@v4
+      if: always()  # Upload even if analysis fails
+      with:
+        name: codeql-results-${{ matrix.language }}-${{ github.run_number }}
+        path: |
+          ${{ github.workspace }}/../results/
+          ${{ runner.temp }}/codeql_databases/
+        retention-days: 30
+    
+    # Create a summary report for this language
+    - name: Create CodeQL summary
+      if: always()
+      run: |
+        mkdir -p codeql-summary
+        echo "# CodeQL Analysis Summary" > codeql-summary/summary-${{ matrix.language }}.md
+        echo "Language: ${{ matrix.language }}" >> codeql-summary/summary-${{ matrix.language }}.md
+        echo "Build Mode: ${{ matrix.build-mode }}" >> codeql-summary/summary-${{ matrix.language }}.md
+        echo "Analysis Date: $(date)" >> codeql-summary/summary-${{ matrix.language }}.md
+        echo "Commit: ${{ github.sha }}" >> codeql-summary/summary-${{ matrix.language }}.md
+        echo "Runner: ${{ runner.os }}" >> codeql-summary/summary-${{ matrix.language }}.md
+    
+    - name: Upload CodeQL summary
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: codeql-summary-${{ matrix.language }}-${{ github.run_number }}
+        path: codeql-summary/
+        retention-days: 7
+
+  # Consolidate all CodeQL results
+  consolidate-results:
+    name: Consolidate CodeQL Results
+    needs: analyze
+    runs-on: ubuntu-latest
+    if: always()  # Run even if some analysis jobs fail
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Download all CodeQL summaries
+      uses: actions/download-artifact@v4
+      with:
+        pattern: codeql-summary-*
+        path: ./codeql-summaries/
+        merge-multiple: true
+    
+    - name: Download all CodeQL results  
+      uses: actions/download-artifact@v4
+      with:
+        pattern: codeql-results-*
+        path: ./codeql-results/
+        merge-multiple: true
+      continue-on-error: true  # Results might be large or fail to download
+    
+    - name: Create consolidated report
+      run: |
+        mkdir -p consolidated-report
+        echo "# Consolidated CodeQL Analysis Report" > consolidated-report/consolidated-report.md
+        echo "Generated: $(date)" >> consolidated-report/consolidated-report.md
+        echo "Commit: ${{ github.sha }}" >> consolidated-report/consolidated-report.md
+        echo "Repository: ${{ github.repository }}" >> consolidated-report/consolidated-report.md
+        echo "" >> consolidated-report/consolidated-report.md
+        
+        echo "## Languages Analyzed" >> consolidated-report/consolidated-report.md
+        for summary in codeql-summaries/summary-*.md; do
+          if [ -f "$summary" ]; then
+            echo "### $(basename "$summary" .md)" >> consolidated-report/consolidated-report.md
+            cat "$summary" >> consolidated-report/consolidated-report.md
+            echo "" >> consolidated-report/consolidated-report.md
+          fi
+        done
+        
+        echo "## Files Summary" >> consolidated-report/consolidated-report.md
+        echo "### Downloaded Summaries:" >> consolidated-report/consolidated-report.md
+        find codeql-summaries -name "*.md" | sort >> consolidated-report/consolidated-report.md
+        
+        echo "### Downloaded Results:" >> consolidated-report/consolidated-report.md
+        find codeql-results -type f | head -20 >> consolidated-report/consolidated-report.md  # Limit output
+        
+        # Count total files
+        result_count=$(find codeql-results -type f | wc -l)
+        echo "Total result files: $result_count" >> consolidated-report/consolidated-report.md
+    
+    - name: Upload consolidated CodeQL report
+      uses: actions/upload-artifact@v4
+      with:
+        name: codeql-consolidated-report-${{ github.sha }}
+        path: consolidated-report/
+        retention-days: 90
