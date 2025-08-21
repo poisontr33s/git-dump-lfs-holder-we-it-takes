@@ -1,6 +1,6 @@
 
 # Jules Cache Optimization Report - Den Usynlige Hånds Analysis
-Generated: 2025-08-21T00:04:37.275864
+Generated: 2025-08-21T00:07:02.990463
 Jules Version: 0.KORRUPT.1
 Repository: /home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt
 
@@ -17,7 +17,7 @@ Repository: /home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt
   - backend/python/requirements.txt
 
 ### Generated Cache Keys:
-  - nodejs: `nodejs-0.KORRUPT.1-dbc7f80438a75ee9`
+  - nodejs: `nodejs-0.KORRUPT.1-8df62fa483209377`
   - python: `python-0.KORRUPT.1-b2fae97b3cca73d5`
 
 ## Cache Optimization Recommendations

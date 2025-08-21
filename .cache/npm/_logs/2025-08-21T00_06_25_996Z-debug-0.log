@@ -1,0 +1,265 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.4
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt/.npmrc
+5 silly config load:file:/home/runner/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm ci
+8 verbose argv "ci" "--cache" ".cache/npm" "--prefer-offline"
+9 verbose logfile logs-max:10 dir:/home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt/.cache/npm/_logs/2025-08-21T00_06_25_996Z-
+10 verbose logfile /home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt/.cache/npm/_logs/2025-08-21T00_06_25_996Z-debug-0.log
+11 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest ansi-escapes@7.0.0
+15 silly packumentCache full:https://registry.npmjs.org/ansi-escapes cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/ansi-escapes 278ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/ansi-escapes set size:undefined disposed:false
+18 silly fetch manifest ansi-regex@6.0.1
+19 silly packumentCache full:https://registry.npmjs.org/ansi-regex cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/ansi-regex 76ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/ansi-regex set size:undefined disposed:false
+22 silly fetch manifest ansi-styles@6.2.1
+23 silly packumentCache full:https://registry.npmjs.org/ansi-styles cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/ansi-styles 74ms (cache miss)
+25 silly packumentCache full:https://registry.npmjs.org/ansi-styles set size:undefined disposed:false
+26 silly fetch manifest argparse@2.0.1
+27 silly packumentCache full:https://registry.npmjs.org/argparse cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/argparse 66ms (cache miss)
+29 silly packumentCache full:https://registry.npmjs.org/argparse set size:undefined disposed:false
+30 silly fetch manifest babel-plugin-istanbul@6.0.0
+31 silly packumentCache full:https://registry.npmjs.org/babel-plugin-istanbul cache-miss
+32 http fetch GET 200 https://registry.npmjs.org/babel-plugin-istanbul 74ms (cache miss)
+33 silly packumentCache full:https://registry.npmjs.org/babel-plugin-istanbul set size:undefined disposed:false
+34 silly fetch manifest cjs-module-lexer@2.1.0
+35 silly packumentCache full:https://registry.npmjs.org/cjs-module-lexer cache-miss
+36 http fetch GET 200 https://registry.npmjs.org/cjs-module-lexer 68ms (cache miss)
+37 silly packumentCache full:https://registry.npmjs.org/cjs-module-lexer set size:undefined disposed:false
+38 silly fetch manifest lru-cache@10.3.0
+39 silly packumentCache full:https://registry.npmjs.org/lru-cache cache-miss
+40 http fetch GET 200 https://registry.npmjs.org/lru-cache 74ms (cache miss)
+41 silly packumentCache full:https://registry.npmjs.org/lru-cache set size:undefined disposed:false
+42 silly fetch manifest semver@7.6.2
+43 silly packumentCache full:https://registry.npmjs.org/semver cache-miss
+44 http fetch GET 200 https://registry.npmjs.org/semver 72ms (cache miss)
+45 silly packumentCache full:https://registry.npmjs.org/semver set size:undefined disposed:false
+46 silly fetch manifest source-map@0.7.4
+47 silly packumentCache full:https://registry.npmjs.org/source-map cache-miss
+48 http fetch GET 200 https://registry.npmjs.org/source-map 65ms (cache miss)
+49 silly packumentCache full:https://registry.npmjs.org/source-map set size:undefined disposed:false
+50 silly fetch manifest source-map-support@0.5.21
+51 silly packumentCache full:https://registry.npmjs.org/source-map-support cache-miss
+52 http fetch GET 200 https://registry.npmjs.org/source-map-support 88ms (cache miss)
+53 silly packumentCache full:https://registry.npmjs.org/source-map-support set size:undefined disposed:false
+54 silly placeDep ROOT ansi-escapes@7.0.0 REPLACE for: laere-html-helper@1.0.0 want: 7.0.0
+55 silly placeDep ROOT ansi-regex@6.0.1 REPLACE for: laere-html-helper@1.0.0 want: 6.0.1
+56 silly placeDep ROOT ansi-styles@6.2.1 REPLACE for: laere-html-helper@1.0.0 want: 6.2.1
+57 silly placeDep ROOT argparse@2.0.1 REPLACE for: laere-html-helper@1.0.0 want: 2.0.1
+58 silly placeDep ROOT babel-plugin-istanbul@6.0.0 REPLACE for: laere-html-helper@1.0.0 want: 6.0.0
+59 silly placeDep ROOT cjs-module-lexer@2.1.0 REPLACE for: laere-html-helper@1.0.0 want: 2.1.0
+60 silly placeDep ROOT lru-cache@10.3.0 REPLACE for: laere-html-helper@1.0.0 want: 10.3.0
+61 silly placeDep ROOT semver@7.6.2 REPLACE for: laere-html-helper@1.0.0 want: 7.6.2
+62 silly placeDep ROOT source-map@0.7.4 REPLACE for: laere-html-helper@1.0.0 want: 0.7.4
+63 silly placeDep ROOT source-map-support@0.5.21 REPLACE for: laere-html-helper@1.0.0 want: 0.5.21
+64 silly fetch manifest environment@^1.0.0
+65 silly packumentCache full:https://registry.npmjs.org/environment cache-miss
+66 silly fetch manifest istanbul-lib-instrument@^4.0.0
+67 silly packumentCache full:https://registry.npmjs.org/istanbul-lib-instrument cache-miss
+68 silly fetch manifest source-map@^0.6.0
+69 silly packumentCache full:https://registry.npmjs.org/source-map cache-miss
+70 http fetch GET 200 https://registry.npmjs.org/source-map 13ms (cache hit)
+71 silly packumentCache full:https://registry.npmjs.org/source-map set size:226090 disposed:false
+72 http fetch GET 200 https://registry.npmjs.org/environment 107ms (cache miss)
+73 silly packumentCache full:https://registry.npmjs.org/environment set size:undefined disposed:false
+74 http fetch GET 200 https://registry.npmjs.org/istanbul-lib-instrument 291ms (cache miss)
+75 silly packumentCache full:https://registry.npmjs.org/istanbul-lib-instrument set size:undefined disposed:false
+76 silly fetch manifest semver@^6.3.1
+77 silly packumentCache full:https://registry.npmjs.org/semver cache-miss
+78 http fetch GET 200 https://registry.npmjs.org/semver 2ms (cache hit)
+79 silly packumentCache full:https://registry.npmjs.org/semver set size:224186 disposed:false
+80 silly placeDep node_modules/@babel/core semver@6.3.1 OK for: @babel/core@7.27.1 want: ^6.3.1
+81 silly fetch manifest lru-cache@^5.1.1
+82 silly packumentCache full:https://registry.npmjs.org/lru-cache cache-miss
+83 http fetch GET 200 https://registry.npmjs.org/lru-cache 3ms (cache hit)
+84 silly packumentCache full:https://registry.npmjs.org/lru-cache set size:391063 disposed:false
+85 silly placeDep node_modules/@babel/helper-compilation-targets lru-cache@5.1.1 OK for: @babel/helper-compilation-targets@7.27.2 want: ^5.1.1
+86 silly placeDep node_modules/@babel/helper-compilation-targets semver@6.3.1 OK for: @babel/helper-compilation-targets@7.27.2 want: ^6.3.1
+87 silly fetch manifest ansi-escapes@^4.2.1
+88 silly packumentCache full:https://registry.npmjs.org/ansi-escapes cache-miss
+89 http fetch GET 200 https://registry.npmjs.org/ansi-escapes 4ms (cache hit)
+90 silly packumentCache full:https://registry.npmjs.org/ansi-escapes set size:61494 disposed:false
+91 silly placeDep node_modules/@jest/core ansi-escapes@4.3.2 OK for: @jest/core@29.7.0 want: ^4.2.1
+92 silly fetch manifest babel-plugin-istanbul@^6.1.1
+93 silly packumentCache full:https://registry.npmjs.org/babel-plugin-istanbul cache-miss
+94 http fetch GET 200 https://registry.npmjs.org/babel-plugin-istanbul 2ms (cache hit)
+95 silly packumentCache full:https://registry.npmjs.org/babel-plugin-istanbul set size:142395 disposed:false
+96 silly placeDep node_modules/@jest/transform babel-plugin-istanbul@6.1.1 OK for: @jest/transform@29.7.0 want: ^6.1.1
+97 silly fetch manifest istanbul-lib-instrument@^5.0.4
+98 silly packumentCache full:https://registry.npmjs.org/istanbul-lib-instrument cache-miss
+99 http fetch GET 200 https://registry.npmjs.org/istanbul-lib-instrument 3ms (cache hit)
+100 silly packumentCache full:https://registry.npmjs.org/istanbul-lib-instrument set size:219175 disposed:false
+101 silly placeDep ROOT environment@1.1.0 OK for: ansi-escapes@7.0.0 want: ^1.0.0
+102 silly placeDep node_modules/babel-jest babel-plugin-istanbul@6.1.1 OK for: babel-jest@29.7.0 want: ^6.1.1
+103 silly placeDep node_modules/babel-plugin-istanbul istanbul-lib-instrument@4.0.3 OK for: babel-plugin-istanbul@6.0.0 want: ^4.0.0
+104 silly fetch manifest semver@^6.3.0
+105 silly packumentCache full:https://registry.npmjs.org/semver cache-hit
+106 silly fetch manifest ansi-styles@^4.1.0
+107 silly packumentCache full:https://registry.npmjs.org/ansi-styles cache-miss
+108 http fetch GET 200 https://registry.npmjs.org/ansi-styles 2ms (cache hit)
+109 silly packumentCache full:https://registry.npmjs.org/ansi-styles set size:66356 disposed:false
+110 silly placeDep node_modules/chalk ansi-styles@4.3.0 OK for: chalk@4.1.2 want: ^4.1.0
+111 silly fetch manifest source-map@^0.6.1
+112 silly packumentCache full:https://registry.npmjs.org/source-map cache-hit
+113 silly placeDep node_modules/istanbul-lib-source-maps source-map@0.6.1 OK for: istanbul-lib-source-maps@4.0.1 want: ^0.6.1
+114 silly fetch manifest source-map-support@0.5.13
+115 silly packumentCache full:https://registry.npmjs.org/source-map-support cache-miss
+116 http fetch GET 200 https://registry.npmjs.org/source-map-support 2ms (cache hit)
+117 silly packumentCache full:https://registry.npmjs.org/source-map-support set size:125488 disposed:false
+118 silly placeDep node_modules/jest-runner source-map-support@0.5.13 OK for: jest-runner@29.7.0 want: 0.5.13
+119 silly fetch manifest cjs-module-lexer@^1.0.0
+120 silly packumentCache full:https://registry.npmjs.org/cjs-module-lexer cache-miss
+121 http fetch GET 200 https://registry.npmjs.org/cjs-module-lexer 5ms (cache hit)
+122 silly packumentCache full:https://registry.npmjs.org/cjs-module-lexer set size:142237 disposed:false
+123 silly placeDep node_modules/jest-runtime cjs-module-lexer@1.4.3 OK for: jest-runtime@29.7.0 want: ^1.0.0
+124 silly placeDep node_modules/jest-watcher ansi-escapes@4.3.2 OK for: jest-watcher@29.7.0 want: ^4.2.1
+125 silly fetch manifest argparse@^1.0.7
+126 silly packumentCache full:https://registry.npmjs.org/argparse cache-miss
+127 http fetch GET 200 https://registry.npmjs.org/argparse 3ms (cache hit)
+128 silly packumentCache full:https://registry.npmjs.org/argparse set size:49266 disposed:false
+129 silly placeDep node_modules/js-yaml argparse@1.0.10 OK for: js-yaml@3.14.1 want: ^1.0.7
+130 silly placeDep node_modules/source-map-support source-map@0.6.1 OK for: source-map-support@0.5.21 want: ^0.6.0
+131 silly fetch manifest ansi-regex@^5.0.1
+132 silly packumentCache full:https://registry.npmjs.org/ansi-regex cache-miss
+133 http fetch GET 200 https://registry.npmjs.org/ansi-regex 2ms (cache hit)
+134 silly packumentCache full:https://registry.npmjs.org/ansi-regex set size:44174 disposed:false
+135 silly placeDep node_modules/strip-ansi ansi-regex@5.0.1 OK for: strip-ansi@6.0.1 want: ^5.0.1
+136 silly fetch manifest ansi-styles@^4.0.0
+137 silly packumentCache full:https://registry.npmjs.org/ansi-styles cache-hit
+138 silly placeDep node_modules/wrap-ansi ansi-styles@4.3.0 OK for: wrap-ansi@7.0.0 want: ^4.0.0
+139 silly placeDep node_modules/@jest/transform istanbul-lib-instrument@5.2.1 OK for: babel-plugin-istanbul@6.1.1 want: ^5.0.4
+140 silly placeDep node_modules/@jest/transform semver@6.3.1 OK for: istanbul-lib-instrument@5.2.1 want: ^6.3.0
+141 silly placeDep node_modules/babel-jest istanbul-lib-instrument@5.2.1 OK for: babel-plugin-istanbul@6.1.1 want: ^5.0.4
+142 silly placeDep node_modules/babel-jest semver@6.3.1 OK for: istanbul-lib-instrument@5.2.1 want: ^6.3.0
+143 silly placeDep node_modules/babel-plugin-istanbul semver@6.3.1 OK for: istanbul-lib-instrument@4.0.3 want: ^6.3.0
+144 silly placeDep node_modules/jest-runner source-map@0.6.1 OK for: source-map-support@0.5.13 want: ^0.6.0
+145 verbose stack Error: 
+145 verbose stack `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+145 verbose stack
+145 verbose stack Invalid: lock file's ansi-escapes@4.3.2 does not satisfy ansi-escapes@7.0.0
+145 verbose stack Invalid: lock file's ansi-regex@5.0.1 does not satisfy ansi-regex@6.0.1
+145 verbose stack Invalid: lock file's ansi-styles@4.3.0 does not satisfy ansi-styles@6.2.1
+145 verbose stack Invalid: lock file's argparse@1.0.10 does not satisfy argparse@2.0.1
+145 verbose stack Invalid: lock file's babel-plugin-istanbul@6.1.1 does not satisfy babel-plugin-istanbul@6.0.0
+145 verbose stack Invalid: lock file's cjs-module-lexer@1.4.3 does not satisfy cjs-module-lexer@2.1.0
+145 verbose stack Invalid: lock file's lru-cache@5.1.1 does not satisfy lru-cache@10.3.0
+145 verbose stack Invalid: lock file's semver@6.3.1 does not satisfy semver@7.6.2
+145 verbose stack Invalid: lock file's source-map@0.6.1 does not satisfy source-map@0.7.4
+145 verbose stack Invalid: lock file's source-map-support@0.5.13 does not satisfy source-map-support@0.5.21
+145 verbose stack Missing: semver@6.3.1 from lock file
+145 verbose stack Missing: lru-cache@5.1.1 from lock file
+145 verbose stack Missing: semver@6.3.1 from lock file
+145 verbose stack Missing: ansi-escapes@4.3.2 from lock file
+145 verbose stack Missing: babel-plugin-istanbul@6.1.1 from lock file
+145 verbose stack Missing: environment@1.1.0 from lock file
+145 verbose stack Missing: babel-plugin-istanbul@6.1.1 from lock file
+145 verbose stack Invalid: lock file's istanbul-lib-instrument@5.2.1 does not satisfy istanbul-lib-instrument@4.0.3
+145 verbose stack Missing: ansi-styles@4.3.0 from lock file
+145 verbose stack Missing: source-map@0.6.1 from lock file
+145 verbose stack Missing: source-map-support@0.5.13 from lock file
+145 verbose stack Missing: cjs-module-lexer@1.4.3 from lock file
+145 verbose stack Missing: ansi-escapes@4.3.2 from lock file
+145 verbose stack Missing: argparse@1.0.10 from lock file
+145 verbose stack Missing: source-map@0.6.1 from lock file
+145 verbose stack Missing: ansi-regex@5.0.1 from lock file
+145 verbose stack Missing: ansi-styles@4.3.0 from lock file
+145 verbose stack Missing: istanbul-lib-instrument@5.2.1 from lock file
+145 verbose stack Missing: semver@6.3.1 from lock file
+145 verbose stack Missing: istanbul-lib-instrument@5.2.1 from lock file
+145 verbose stack Missing: semver@6.3.1 from lock file
+145 verbose stack Missing: semver@6.3.1 from lock file
+145 verbose stack Missing: source-map@0.6.1 from lock file
+145 verbose stack
+145 verbose stack Clean install a project
+145 verbose stack
+145 verbose stack Usage:
+145 verbose stack npm ci
+145 verbose stack
+145 verbose stack Options:
+145 verbose stack [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+145 verbose stack [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+145 verbose stack [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+145 verbose stack [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+145 verbose stack [--no-bin-links] [--no-fund] [--dry-run]
+145 verbose stack [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+145 verbose stack [-ws|--workspaces] [--include-workspace-root] [--install-links]
+145 verbose stack
+145 verbose stack aliases: clean-install, ic, install-clean, isntall-clean
+145 verbose stack
+145 verbose stack Run "npm help ci" for more info
+145 verbose stack     at CI.usageError (/usr/local/lib/node_modules/npm/lib/base-cmd.js:109:26)
+145 verbose stack     at CI.exec (/usr/local/lib/node_modules/npm/lib/commands/ci.js:70:18)
+145 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)
+145 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:74:5)
+146 error code EUSAGE
+147 error
+147 error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+147 error
+147 error Invalid: lock file's ansi-escapes@4.3.2 does not satisfy ansi-escapes@7.0.0
+147 error Invalid: lock file's ansi-regex@5.0.1 does not satisfy ansi-regex@6.0.1
+147 error Invalid: lock file's ansi-styles@4.3.0 does not satisfy ansi-styles@6.2.1
+147 error Invalid: lock file's argparse@1.0.10 does not satisfy argparse@2.0.1
+147 error Invalid: lock file's babel-plugin-istanbul@6.1.1 does not satisfy babel-plugin-istanbul@6.0.0
+147 error Invalid: lock file's cjs-module-lexer@1.4.3 does not satisfy cjs-module-lexer@2.1.0
+147 error Invalid: lock file's lru-cache@5.1.1 does not satisfy lru-cache@10.3.0
+147 error Invalid: lock file's semver@6.3.1 does not satisfy semver@7.6.2
+147 error Invalid: lock file's source-map@0.6.1 does not satisfy source-map@0.7.4
+147 error Invalid: lock file's source-map-support@0.5.13 does not satisfy source-map-support@0.5.21
+147 error Missing: semver@6.3.1 from lock file
+147 error Missing: lru-cache@5.1.1 from lock file
+147 error Missing: semver@6.3.1 from lock file
+147 error Missing: ansi-escapes@4.3.2 from lock file
+147 error Missing: babel-plugin-istanbul@6.1.1 from lock file
+147 error Missing: environment@1.1.0 from lock file
+147 error Missing: babel-plugin-istanbul@6.1.1 from lock file
+147 error Invalid: lock file's istanbul-lib-instrument@5.2.1 does not satisfy istanbul-lib-instrument@4.0.3
+147 error Missing: ansi-styles@4.3.0 from lock file
+147 error Missing: source-map@0.6.1 from lock file
+147 error Missing: source-map-support@0.5.13 from lock file
+147 error Missing: cjs-module-lexer@1.4.3 from lock file
+147 error Missing: ansi-escapes@4.3.2 from lock file
+147 error Missing: argparse@1.0.10 from lock file
+147 error Missing: source-map@0.6.1 from lock file
+147 error Missing: ansi-regex@5.0.1 from lock file
+147 error Missing: ansi-styles@4.3.0 from lock file
+147 error Missing: istanbul-lib-instrument@5.2.1 from lock file
+147 error Missing: semver@6.3.1 from lock file
+147 error Missing: istanbul-lib-instrument@5.2.1 from lock file
+147 error Missing: semver@6.3.1 from lock file
+147 error Missing: semver@6.3.1 from lock file
+147 error Missing: source-map@0.6.1 from lock file
+147 error
+147 error Clean install a project
+147 error
+147 error Usage:
+147 error npm ci
+147 error
+147 error Options:
+147 error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+147 error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+147 error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+147 error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+147 error [--no-bin-links] [--no-fund] [--dry-run]
+147 error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+147 error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+147 error
+147 error aliases: clean-install, ic, install-clean, isntall-clean
+147 error
+147 error Run "npm help ci" for more info
+148 verbose cwd /home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt
+149 verbose os Linux 6.11.0-1018-azure
+150 verbose node v20.19.4
+151 verbose npm  v10.8.2
+152 verbose exit 1
+153 verbose code 1
+154 error A complete log of this run can be found in: /home/runner/work/PsychoNoir-Kontrapunkt/PsychoNoir-Kontrapunkt/.cache/npm/_logs/2025-08-21T00_06_25_996Z-debug-0.log
