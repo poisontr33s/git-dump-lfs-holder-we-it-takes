@@ -1,0 +1,36 @@
+{
+  "jules_version": "0.KORRUPT.1",
+  "generated": "2025-08-21T00:04:37+00:00",
+  "cache_strategies": {
+    "nodejs": {
+      "primary_path": "node_modules",
+      "fallback_paths": ["~/.npm", ".cache/npm"],
+      "key_files": ["package-lock.json", "package.json"],
+      "restore_keys": ["nodejs-v2-", "nodejs-"]
+    },
+    "python": {
+      "primary_path": "~/.cache/pip",
+      "fallback_paths": [".cache/python", "backend/python/__pycache__"],
+      "key_files": ["requirements.txt", "backend/python/requirements.txt", "pyproject.toml"],
+      "restore_keys": ["python-v2-", "python-"]
+    },
+    "ruby": {
+      "primary_path": "vendor/bundle",
+      "fallback_paths": ["~/.bundle", ".cache/bundle"],
+      "key_files": ["Gemfile.lock", "Gemfile"],
+      "restore_keys": ["ruby-v2-", "ruby-"]
+    },
+    "docker": {
+      "primary_path": "/tmp/.buildx-cache",
+      "fallback_paths": [],
+      "key_files": ["Dockerfile", "docker-compose.yml"],
+      "restore_keys": ["docker-v2-", "docker-"]
+    }
+  },
+  "conditional_checks": {
+    "nodejs": "[ -f package.json ]",
+    "python": "[ -f requirements.txt ] || [ -f backend/python/requirements.txt ] || [ -f pyproject.toml ]",
+    "ruby": "find . -name 'Gemfile' -type f | grep -q .",
+    "docker": "[ -f Dockerfile ] || find . -name 'Dockerfile' -type f | grep -q ."
+  }
+}
