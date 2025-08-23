@@ -1,0 +1,1572 @@
+{
+  "pipeline_start": "2025-08-23T13:42:23.598811",
+  "stages": {
+    "harvest": {
+      "harvested_count": 10,
+      "harvested_data": [
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T13:01:14Z",
+            "databaseId": 17175755937,
+            "displayTitle": "Bump the pip group across 1 directory with 4 updates (#7)",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-23T13:02:23Z",
+            "workflowName": "CodeQL Advanced"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Analyze (python)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:02:06Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:02:05Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Analyze (ruby)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:02:00Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:02:00Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T13:01:14Z",
+            "databaseId": 17175755927,
+            "displayTitle": "Bump the pip group across 1 directory with 4 updates (#7)",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-23T13:03:20Z",
+            "workflowName": "CI - Build and Test"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:24Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:22Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:24Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:22Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:28Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:23Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:26Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:24Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:26Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:23Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:22Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T13:01:18Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:24Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:21Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:03:12Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:03:11Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:22Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:21Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:03:09Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:03:09Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:25Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T13:01:20Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:22Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T13:01:18Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:27Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T13:01:24Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:33Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T13:01:21Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:23Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T13:01:19Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:03:16Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:03:15Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:01:51Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:01:50Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:02:20Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:02:20Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T13:02:18Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T13:02:18Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T12:56:28Z",
+            "databaseId": 17175713820,
+            "displayTitle": "Revert \"Implement comprehensive chaos engineering system with passive\u2026",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-23T12:57:33Z",
+            "workflowName": "CodeQL Advanced"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Analyze (python)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:18Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:18Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Analyze (ruby)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:15Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:15Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T12:56:28Z",
+            "databaseId": 17175713825,
+            "displayTitle": "Revert \"Implement comprehensive chaos engineering system with passive\u2026",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-23T12:58:08Z",
+            "workflowName": "CI - Build and Test"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:40Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:37Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:37Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:35Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:54Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:54Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:35Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:34Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:41Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:38Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:58:04Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:58:04Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:36Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:35Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:38Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:36Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:37Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T12:56:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:36Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T12:56:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:36Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T12:56:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:37Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:35Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:05Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:05Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:36Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T12:56:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:58Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:58Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:38Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T12:56:34Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:42Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:42Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:57:32Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T12:57:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T12:56:37Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T12:56:36Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T01:46:37Z",
+            "databaseId": 17169666216,
+            "displayTitle": "Revert \"Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation\"",
+            "event": "pull_request",
+            "headBranch": "revert-4-copilot/fix-2",
+            "status": "completed",
+            "updatedAt": "2025-08-23T01:47:48Z",
+            "workflowName": "CodeQL Advanced"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Analyze (python)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:47:33Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:47:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Analyze (ruby)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:47:34Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:47:34Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T01:46:37Z",
+            "databaseId": 17169666208,
+            "displayTitle": "Revert \"Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation\"",
+            "event": "pull_request",
+            "headBranch": "revert-4-copilot/fix-2",
+            "status": "completed",
+            "updatedAt": "2025-08-23T01:48:17Z",
+            "workflowName": "CI - Build and Test"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:47Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:46Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:50Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:46Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:48Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:45Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:48:13Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:48:13Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:48:10Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:48:10Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:46Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:44Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:50Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:47Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:47:37Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:47:37Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:47Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:46Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:47:36Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:47:36Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:51Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T01:46:46Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:49Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:46Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:48Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T01:46:41Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:52Z",
+                    "conclusion": "failure",
+                    "name": "Install dependencies",
+                    "number": 4,
+                    "startedAt": "2025-08-23T01:46:47Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:55Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T01:46:43Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:47Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T01:46:42Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:47:25Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:47:24Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:46:45Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-23T01:46:41Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-23T01:48:06Z",
+                    "conclusion": "failure",
+                    "name": "Build Python package",
+                    "number": 6,
+                    "startedAt": "2025-08-23T01:48:06Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-23T01:41:28Z",
+            "databaseId": 17169615118,
+            "displayTitle": "Implement passive observer queue system - \"Den Usynlige H\u00e5nd\" silence\u2026",
+            "event": "push",
+            "headBranch": "copilot/fix-2",
+            "status": "completed",
+            "updatedAt": "2025-08-23T01:41:28Z",
+            "workflowName": ".github/workflows/chaos-ci.yml"
+          },
+          "failure_details": {
+            "failed_jobs": [],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-22T01:05:44Z",
+            "databaseId": 17143130152,
+            "displayTitle": "Implement comprehensive chaos engineering system with passive observe\u2026",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-22T01:07:00Z",
+            "workflowName": "CodeQL Advanced"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Analyze (python)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:39Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-22T01:06:39Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Analyze (ruby)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:32Z",
+                    "conclusion": "failure",
+                    "name": "Upload CodeQL results",
+                    "number": 6,
+                    "startedAt": "2025-08-22T01:06:32Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-22T01:05:44Z",
+            "databaseId": 17143130141,
+            "displayTitle": "Implement comprehensive chaos engineering system with passive observe\u2026",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-22T01:07:24Z",
+            "workflowName": "CI - Build and Test"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:53Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 20",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:05:53Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:01Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 18",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:06:01Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:59Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 18",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:05:59Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.9, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:54Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:50Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:54Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 20",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:05:54Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:03Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 18",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:06:03Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.11, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:52Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:48Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Backend (3.10, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:51Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:48Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Build Frontend (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:55Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 20",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:05:55Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 18",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:06:02Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:54Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:49Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (18, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:05:56Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:51Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Test Node.js (20, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:00Z",
+                    "conclusion": "failure",
+                    "name": "Post Setup Node.js 20",
+                    "number": 11,
+                    "startedAt": "2025-08-22T01:06:00Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        },
+        {
+          "run_info": {
+            "conclusion": "failure",
+            "createdAt": "2025-08-22T01:05:44Z",
+            "databaseId": 17143130153,
+            "displayTitle": "Implement comprehensive chaos engineering system with passive observe\u2026",
+            "event": "push",
+            "headBranch": "main",
+            "status": "completed",
+            "updatedAt": "2025-08-22T01:08:10Z",
+            "workflowName": "Enhanced CI with Psycho-Noir Intelligence Logging"
+          },
+          "failure_details": {
+            "failed_jobs": [
+              {
+                "name": "Frontend Build with Intelligence (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:12Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:11Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Frontend Build with Intelligence (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:07Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:06Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Node.js Test with Intelligence (20, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:58Z",
+                    "status": "completed"
+                  },
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:02Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Frontend Build with Intelligence (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:06Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:06Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Frontend Build with Intelligence (chrome)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:09Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:09Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Frontend Build with Intelligence (firefox)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:08Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:08Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Frontend Build with Intelligence (safari)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:15Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:15Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Node.js Test with Intelligence (18, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:03Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:59Z",
+                    "status": "completed"
+                  },
+                  {
+                    "completedAt": "2025-08-22T01:06:04Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:04Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Node.js Test with Intelligence (18, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:07Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:07Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.9, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:32Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:07:32Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.11, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:46Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:06:45Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.10, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:03Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:59Z",
+                    "status": "completed"
+                  },
+                  {
+                    "completedAt": "2025-08-22T01:06:04Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:06:04Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.9, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:58Z",
+                    "status": "completed"
+                  },
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:06:02Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.10, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:34Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:07:34Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.11, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:28Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:07:27Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.10, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:29Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:07:28Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.11, windows-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:02Z",
+                    "conclusion": "failure",
+                    "name": "Checkout repository",
+                    "number": 2,
+                    "startedAt": "2025-08-22T01:05:58Z",
+                    "status": "completed"
+                  },
+                  {
+                    "completedAt": "2025-08-22T01:06:03Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:06:02Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Backend Build with Intelligence (3.9, macos-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:49Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 10,
+                    "startedAt": "2025-08-22T01:07:49Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Node.js Test with Intelligence (20, ubuntu-latest)",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:06:14Z",
+                    "conclusion": "failure",
+                    "name": "Process Job Intelligence",
+                    "number": 8,
+                    "startedAt": "2025-08-22T01:06:14Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Intelligence Analysis and Reporting",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:07:59Z",
+                    "conclusion": "failure",
+                    "name": "Generate Global Intelligence Report",
+                    "number": 4,
+                    "startedAt": "2025-08-22T01:07:59Z",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "name": "Integration Testing with Intelligence",
+                "steps": [
+                  {
+                    "completedAt": "2025-08-22T01:08:08Z",
+                    "conclusion": "failure",
+                    "name": "Download intelligence reports",
+                    "number": 6,
+                    "startedAt": "2025-08-22T01:08:08Z",
+                    "status": "completed"
+                  }
+                ]
+              }
+            ],
+            "error_patterns": [],
+            "logs_summary": ""
+          }
+        }
+      ],
+      "errors": [],
+      "sources_used": [
+        "github_actions",
+        "manual_logs"
+      ]
+    },
+    "catalog": {
+      "cataloged_count": 10,
+      "cataloged_ids": [
+        "0857d61184ff",
+        "da51673c8ab2",
+        "c05fb4ee22e0",
+        "54d24f8eb2c7",
+        "b50ad5e70335",
+        "b996d5bf53c3",
+        "4129489183d1",
+        "5c91978dcee4",
+        "c484c6f8291a",
+        "7aaf88a21f8d"
+      ],
+      "database_path": "data/generert/failure_archaeology.db"
+    },
+    "intelligence": {
+      "patterns_extracted": 0,
+      "resilience_score": 0.0,
+      "top_strategies": [],
+      "full_report": {
+        "report_timestamp": "2025-08-23T13:42:36.319893",
+        "total_patterns": 0,
+        "patterns_by_domain": {
+          "skyskraper_systems": 0,
+          "rustbelt_improvisation": 0,
+          "invisible_hand_chaos": 0,
+          "cross_domain_breach": 0
+        },
+        "average_success_rate": 0,
+        "top_fix_strategies": [],
+        "system_resilience_score": 0.0
+      }
+    },
+    "predictions": {
+      "alerts_generated": 0,
+      "high_confidence_alerts": 0,
+      "alerts": []
+    }
+  },
+  "errors": [],
+  "summary": {}
+}
