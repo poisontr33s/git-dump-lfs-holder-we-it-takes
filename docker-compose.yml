@@ -1,0 +1,41 @@
+# Psycho-Noir Kontrapunkt - Orchestrated Neural Archaeology
+version: '3.8'
+
+services:
+  psycho-noir-kontrapunkt:
+    build:
+      context: .
+      dockerfile: .vscode/Dockerfile
+    container_name: neural_archaeology_core
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+      - "5173:5173"
+    environment:
+      - PSYCHO_NOIR_MODE=docker_archaeology_active
+      - NODE_ENV=production
+    volumes:
+      # Development volume for hot-reload hvis ønskelig
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    networks:
+      - psycho_noir_network
+
+  # Database service - Minnets persistente arkiv
+  consciousness_db:
+    image: sqlite:latest
+    container_name: consciousness_repository
+    volumes:
+      - consciousness_data:/data
+    networks:
+      - psycho_noir_network
+
+networks:
+  psycho_noir_network:
+    driver: bridge
+    name: neural_archaeology_bridge
+
+volumes:
+  consciousness_data:
+    name: psycho_noir_memories

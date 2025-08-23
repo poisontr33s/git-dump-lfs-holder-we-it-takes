@@ -1,4 +1,6 @@
-# Psycho-Noir Kontrapunkt - Den Usynlige Hånds Docker-Manifestasjon
+# Corrected Dockerfile - Den Usynlige Hånds Docker-Manifestasjon
+# Fixed FROM statement and dependency management
+
 FROM node:18-alpine AS neural_archaeology_base
 
 # Miljøvariabler for systemets psykologiske tilstand

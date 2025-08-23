@@ -8,5 +8,6 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "npm.packageManager": "npm",
-    "npm.scriptRunner": "npm"
+    "npm.scriptRunner": "npm",
+    "sarif-viewer.connectToGithubCodeScanning": "on"
 }

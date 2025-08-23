@@ -1,34 +1,40 @@
 # Jules Cache Strategy Implementation Guide
-# Skyskraperen Optimization Matrix - Den Usynlige Hånds Cache Intelligence
 
-## Overview
+## Skyskraperen Optimization Matrix - Den Usynlige Hånds Cache Intelligence
+
+### Overview
+
 This document outlines the comprehensive caching strategies implemented by Jules for the PsychoNoir-Kontrapunkt repository. Jules manifests as Den Usynlige Hånds optimization infrastructure, providing intelligent dependency management and build acceleration.
 
-## Cache Architecture
+### Cache Architecture
 
-### Multi-Layer Caching Strategy
+#### Multi-Layer Caching Strategy
 
-#### 1. Synaptic Cache (Memory Layer)
+##### 1. Synaptic Cache (Memory Layer)
+
 - **Purpose**: Rapid access to frequently used packages
 - **TTL**: 1 hour
 - **Size**: 500MB
 - **Implementation**: In-memory caching for active development
 
-#### 2. Architectural Cache (Disk Layer)  
+##### 2. Architectural Cache (Disk Layer)  
+
 - **Purpose**: Medium-term storage for stable dependencies
 - **TTL**: 7 days
 - **Size**: 2GB
 - **Implementation**: Local disk caching with GitHub Actions cache
 
-#### 3. Quantum Storage (Distributed Layer)
+##### 3. Quantum Storage (Distributed Layer)
+
 - **Purpose**: Long-term archival for heavy ML models
 - **TTL**: 30 days
 - **Size**: 10GB
 - **Implementation**: GitHub Actions cache with extended retention
 
-## Ecosystem-Specific Strategies
+### Ecosystem-Specific Strategies
 
-### Node.js Caching
+#### Node.js Caching
+
 ```yaml
 cache_key: nodejs-v2-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 paths:
@@ -41,11 +47,13 @@ restore_keys:
 ```
 
 **Optimization Features:**
+
 - Conditional installation based on cache hit
 - Preference for offline packages
 - Separate caching for different Node.js versions
 
-### Python Caching
+#### Python Caching
+
 ```yaml
 cache_key: python-v2-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 paths:
@@ -58,11 +66,13 @@ restore_keys:
 ```
 
 **ML Dependencies Special Handling:**
+
 - Separate cache for heavy packages (torch, transformers)
 - Pre-download strategy for ML models
 - Version-specific caching for stability
 
-### Ruby Caching
+#### Ruby Caching
+
 ```yaml
 cache_key: ruby-v2-${{ runner.os }}-${{ hashFiles('Gemfile.lock') }}
 paths:
@@ -74,7 +84,8 @@ restore_keys:
   - ruby-v2-
 ```
 
-### Docker Caching
+#### Docker Caching
+
 ```yaml
 cache_key: docker-v2-${{ hashFiles('Dockerfile') }}
 paths:
@@ -84,9 +95,10 @@ cache_from:
   - type=local,src=/tmp/.buildx-cache
 ```
 
-## Cache Invalidation Strategies
+### Cache Invalidation Strategies
 
-### Automatic Invalidation Triggers
+#### Automatic Invalidation Triggers
+
 1. **Dependency File Changes**
    - package.json/package-lock.json
    - requirements.txt
@@ -98,14 +110,16 @@ cache_from:
    - Monthly rotation for ML dependencies
    - Bi-weekly rotation for Ruby gems
 
-### Manual Invalidation
+#### Manual Invalidation
+
 - Version bumps in jules-config.yml
 - Corruption index threshold breaches
 - Emergency cleanup protocols
 
-## Conditional Cache Logic
+### Conditional Cache Logic
 
-### Path Validation
+#### Path Validation
+
 ```bash
 # Example conditional check
 if [ -f package.json ] && [ -d node_modules ]; then
@@ -115,7 +129,8 @@ else
 fi
 ```
 
-### Dependency Change Detection
+#### Dependency Change Detection
+
 ```bash
 # Git-based change detection
 if git diff --name-only HEAD~1 | grep -E "(package\.json|requirements\.txt)"; then
@@ -123,51 +138,59 @@ if git diff --name-only HEAD~1 | grep -E "(package\.json|requirements\.txt)"; th
 fi
 ```
 
-## Performance Optimizations
+### Performance Optimizations
 
-### Build Time Improvements
+#### Build Time Improvements
+
 - **Node.js builds**: 60-80% faster with cache hits
 - **Python builds**: 70-90% faster (especially ML dependencies)
 - **Ruby builds**: 50-70% faster with bundler cache
 - **Docker builds**: 40-60% faster with layer caching
 
-### Storage Efficiency
+#### Storage Efficiency
+
 - Compressed cache artifacts
 - Intelligent restore key fallbacks
 - Automatic cleanup of stale caches
 
-## Monitoring and Analytics
+### Monitoring and Analytics
 
-### Cache Hit Rate Tracking
+#### Cache Hit Rate Tracking
+
 - Per-ecosystem cache performance
 - Build time comparisons
 - Storage utilization metrics
 
-### Health Monitoring
+#### Health Monitoring
+
 - Cache corruption detection
 - Automatic fallback protocols
 - Error recovery mechanisms
 
-## Psycho-Noir Integration
+### Psycho-Noir Integration
 
-### Astrid Møller Oversight
+#### Astrid Møller Oversight
+
 - Cache policy approval workflows
 - Security scanning of cached dependencies
 - Resource allocation governance
 
-### Iron Maiden Resilience
+#### Iron Maiden Resilience
+
 - Robust fallback for cache failures
 - Offline mode capabilities
 - Manual override protocols
 
-### Den Usynlige Hånd Manifestation
+#### Den Usynlige Hånd Manifestation
+
 - Invisible optimizations during builds
 - Predictive cache warming
 - Adaptive cache sizing
 
-## Usage Examples
+### Usage Examples
 
-### Basic Build with Jules
+#### Basic Build with Jules
+
 ```bash
 # Run Jules validation
 .github/jules/scripts/jules-dependency-validator.sh
@@ -179,7 +202,8 @@ python3 .github/jules/scripts/jules-cache-analyzer.py
 gh workflow run jules-enhanced-ci.yml
 ```
 
-### CI/CD Integration
+#### CI/CD Integration
+
 ```yaml
 - name: "Jules Cache Optimization"
   run: |
@@ -187,9 +211,10 @@ gh workflow run jules-enhanced-ci.yml
     echo "Jules optimization enabled" >> $GITHUB_STEP_SUMMARY
 ```
 
-## Troubleshooting
+### Troubleshooting
 
-### Common Issues
+#### Common Issues
+
 1. **Cache Miss on Expected Hit**
    - Check cache key generation
    - Verify file hash consistency
@@ -205,7 +230,8 @@ gh workflow run jules-enhanced-ci.yml
    - Fallback to fresh builds
    - Manual cache clearing
 
-### Emergency Protocols
+#### Emergency Protocols
+
 ```bash
 # Force cache clear
 rm -rf ~/.cache/{npm,pip}
@@ -217,13 +243,18 @@ git checkout .github/jules/cache-config.json
 .github/jules/scripts/jules-dependency-validator.sh
 ```
 
-## Configuration Reference
+### Configuration Reference
 
-### jules-config.yml
+#### jules-config.yml
+
 See `.github/jules/jules-config.yml` for complete configuration options.
 
-### cache-config.json
+#### cache-config.json
+
 Generated automatically by Jules validator with current cache keys and strategies.
 
 ---
-*Jules Cache Strategy - Part of Den Usynlige Hånds optimization infrastructure*
+
+- Jules Cache Strategy - Part of Den Usynlige Hånds optimization infrastructure
+
+---
