@@ -1,0 +1,199 @@
+name: 🧠 Neural Archaeology Pre-PR Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      analysis_depth:
+        description: "Analysis depth (quick/full/deep)"
+        required: false
+        default: "full"
+        type: choice
+        options:
+          - quick
+          - full
+          - deep
+
+env:
+  PSYCHO_NOIR_MODE: "neural_archaeology_active"
+
+jobs:
+  neural-archaeology-analysis:
+    name: 🧠 Neural Archaeology Pipeline
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: read
+
+    steps:
+      - name: 🔍 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for comprehensive analysis
+
+      - name: 🐍 Setup Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          # Ensure neural archaeology dependencies
+          pip install sqlite3 asyncio pathlib dataclasses
+
+      - name: 🗃️ Initialize Failure Archaeology Database
+        run: |
+          echo "🧠 INITIALIZING PSYCHO-NOIR KONTRAPUNKT NEURAL ARCHAEOLOGY..."
+          mkdir -p data/generert data/rapporter
+          cd backend/python
+          python failure_archaeology_system.py
+
+      - name: 📡 Harvest Historical Failures (Pre-PR Context)
+        id: harvest
+        run: |
+          echo "📡 HARVESTING HISTORICAL FAILURES FOR CONTEXT..."
+          cd backend/python
+          python failed_runs_harvester.py
+          echo "harvest_completed=true" >> $GITHUB_OUTPUT
+
+      - name: 🔮 Generate Pre-PR Predictions
+        id: predictions
+        if: steps.harvest.outputs.harvest_completed == 'true'
+        run: |
+          echo "🔮 GENERATING PRE-PR FAILURE PREDICTIONS..."
+          cd backend/python
+
+          # Create context for current PR/push
+          cat > current_context.json << EOF
+          {
+            "event_type": "${{ github.event_name }}",
+            "pr_number": "${{ github.event.pull_request.number || 'main_push' }}",
+            "changed_files_count": $(git diff --name-only HEAD~1 HEAD | wc -l),
+            "branch": "${{ github.ref_name }}",
+            "actor": "${{ github.actor }}",
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.%fZ)",
+            "repository": "${{ github.repository }}",
+            "workflow_type": "pre_pr_analysis"
+          }
+          EOF
+
+          # Run neural archaeology with current context
+          python neural_archaeology_orchestrator.py --mode full
+          echo "predictions_generated=true" >> $GITHUB_OUTPUT
+
+      - name: 📊 Generate Pre-PR Risk Assessment
+        id: risk_assessment
+        if: steps.predictions.outputs.predictions_generated == 'true'
+        run: |
+          echo "📊 GENERATING PRE-PR RISK ASSESSMENT..."
+          cd backend/python
+          python failure_analysis_visualizer.py > risk_assessment.txt
+
+          # Extract critical metrics for PR comment
+          CAUSAL_COLLAPSES=$(grep "CAUSAL COLLAPSE" risk_assessment.txt | grep -oE '[0-9]+' | head -1 || echo "0")
+          SKYSKRAPER_RATE=$(grep "Skyskraper Systems:" risk_assessment.txt | grep -oE '[0-9]+\.[0-9]+%' | head -1 || echo "0%")
+          UNRESOLVED_RATE=$(grep "failures remain UNRESOLVED" risk_assessment.txt | grep -oE '[0-9]+\.[0-9]+%' | head -1 || echo "0%")
+
+          echo "causal_collapses=$CAUSAL_COLLAPSES" >> $GITHUB_OUTPUT
+          echo "skyskraper_rate=$SKYSKRAPER_RATE" >> $GITHUB_OUTPUT
+          echo "unresolved_rate=$UNRESOLVED_RATE" >> $GITHUB_OUTPUT
+
+      - name: 🎯 Create Pre-PR Intelligence Report
+        if: steps.risk_assessment.outputs.causal_collapses != '0' || github.event_name == 'workflow_dispatch'
+        run: |
+          echo "🎯 CREATING PRE-PR NEURAL ARCHAEOLOGY INTELLIGENCE REPORT..."
+
+          # Find the latest report
+          LATEST_REPORT=$(find data/rapporter -name "*.md" -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-)
+
+          if [ -f "$LATEST_REPORT" ]; then
+            echo "📋 Found report: $LATEST_REPORT"
+            
+            # Create enhanced PR comment with neural archaeology insights
+            cat > pr_comment.md << 'EOF'
+          ## 🧠 PSYCHO-NOIR KONTRAPUNKT: NEURAL ARCHAEOLOGY ANALYSIS
+
+          **Pre-PR Risk Assessment Completed** ✅
+
+          ### 📊 Critical Metrics:
+          - **Causal Collapse Events:** ${{ steps.risk_assessment.outputs.causal_collapses }}
+          - **Skyskraper Failure Rate:** ${{ steps.risk_assessment.outputs.skyskraper_rate }}
+          - **Unresolved Learning Opportunities:** ${{ steps.risk_assessment.outputs.unresolved_rate }}
+
+          ### 🎯 Pre-PR Recommendations:
+          EOF
+
+            if [ "${{ steps.risk_assessment.outputs.causal_collapses }}" != "0" ]; then
+              echo "- 💀 **CRITICAL**: ${{ steps.risk_assessment.outputs.causal_collapses }} Causal Collapse events detected - implement checkpoint/rollback mechanisms" >> pr_comment.md
+            fi
+            
+            if [[ "${{ steps.risk_assessment.outputs.skyskraper_rate }}" =~ ^[6-9][0-9] ]] || [[ "${{ steps.risk_assessment.outputs.skyskraper_rate }}" =~ ^100 ]]; then
+              echo "- 🏢 **HIGH PRIORITY**: Skyskraper automation systems showing high failure rate (${{ steps.risk_assessment.outputs.skyskraper_rate }}) - review CI/CD resilience" >> pr_comment.md
+            fi
+            
+            cat >> pr_comment.md << 'EOF'
+          - 🔄 **Continue Learning**: Add resolution data for unresolved failures to improve prediction accuracy
+          - ⚡ **Proactive Monitoring**: System is actively learning from failure patterns
+
+          ### 🔮 Predictive Intelligence Status:
+          - **Database:** `data/generert/failure_archaeology.db` updated with latest patterns
+          - **Learning Engine:** Bidirectional intelligence operational
+          - **Next Analysis:** Scheduled for next PR/push event
+
+          ---
+          *Generated by Neural Archaeology Orchestrator - Den Usynlige Hånd transforming chaos to wisdom*
+          EOF
+          fi
+
+      - name: 💬 Comment PR with Neural Archaeology Insights
+        if: github.event_name == 'pull_request' && steps.risk_assessment.outputs.causal_collapses != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            if (fs.existsSync('pr_comment.md')) {
+              const comment = fs.readFileSync('pr_comment.md', 'utf8');
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
+
+      - name: 📋 Archive Neural Archaeology Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neural-archaeology-reports-${{ github.run_number }}
+          path: |
+            data/rapporter/
+            data/generert/
+            backend/python/risk_assessment.txt
+          retention-days: 30
+
+      - name: ✅ Neural Archaeology Pipeline Status
+        if: always()
+        run: |
+          echo "🧠 NEURAL ARCHAEOLOGY PIPELINE STATUS:"
+          echo "   📡 Harvest: ${{ steps.harvest.outputs.harvest_completed == 'true' && '✅ SUCCESS' || '❌ FAILED' }}"
+          echo "   🔮 Predictions: ${{ steps.predictions.outputs.predictions_generated == 'true' && '✅ SUCCESS' || '❌ FAILED' }}"
+          echo "   📊 Risk Assessment: ${{ steps.risk_assessment.outputs.causal_collapses != '' && '✅ SUCCESS' || '❌ FAILED' }}"
+          echo ""
+          echo "🎯 PSYCHO-NOIR KONTRAPUNKT NEURAL ARCHAEOLOGY OPERATIONAL"
+
+          if [ "${{ steps.risk_assessment.outputs.causal_collapses }}" != "0" ]; then
+            echo "⚠️  CRITICAL ALERTS DETECTED - Check PR comments for details"
+            exit 1
+          fi

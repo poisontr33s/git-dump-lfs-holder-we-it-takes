@@ -1,0 +1,32 @@
+{
+  "UNKNOWN_ANOMALY_unclassified_corruption_TVERRFAKSJONELT": {
+    "failure_id": "UNKNOWN_ANOMALY_unclassified_corruption_TVERRFAKSJONELT",
+    "category": "UNKNOWN_ANOMALY",
+    "pattern_signature": "unclassified_corruption",
+    "error_message": "Analyze (python)\tInitialize CodeQL\t2025-08-23T13:01:32.3420861Z                 \"description\" : \"Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\\n  - off\\n  - errors\\n  - warnings\\n  - info or progress\\n  - debug or progress+\\n  - trace or progress++\\n  - progress+++\\n\",\nAnalyze (python)\tInitialize CodeQL\t2025-08-23T13:01:32.3423036Z                 \"pattern\" : \"^(off|errors|warnings|(info|progress)|(debug|progress\\\\+)|(trace|progress\\\\+\\\\+)|progress\\\\+\\\\+\\\\+)$\"\nAnalyze (python)\tInitialize CodeQL\t2025-08-23T13:01:32.3443763Z                 \"description\" : \"Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\\n  - off\\n  - errors\\n  - warnings\\n  - info or progress\\n  - debug or progress+\\n  - trace or progress++\\n  - progress+++\\n\",\nAnalyze (python)\tInitialize CodeQL\t2025-08-23T13:01:32.3444977Z                 \"pattern\" : \"^(off|errors|warnings|(info|progress)|(debug|progress\\\\+)|(trace|progress\\\\+\\\\+)|progress\\\\+\\\\+\\\\+)$\"\nAnalyze (python)\tInitialize CodeQL\t2025-08-23T13:01:32.3501153Z                 \"description\" : \"Controls the level of verbosity of the CodeQL Python extractor.\\nThe supported levels are (in order of increasing verbosity):\\n\\n  - off\\n  - errors\\n  - warnings\\n  - info or progress\\n  - debug or progress+\\n  - trace or progress++\\n  - progress+++\\n\",",
+    "context": "Workflow: CodeQL Advanced | Branch: main",
+    "occurrence_count": 26,
+    "first_seen": "2025-08-23T13:01:14Z",
+    "last_seen": "2025-08-09T14:36:55Z",
+    "potential_solutions": [
+      "Manual intervention required"
+    ],
+    "corruption_level": "MINOR",
+    "faction_origin": "TVERRFAKSJONELT"
+  },
+  "UNKNOWN_ANOMALY_unclassified_corruption_RUSTBELT": {
+    "failure_id": "UNKNOWN_ANOMALY_unclassified_corruption_RUSTBELT",
+    "category": "UNKNOWN_ANOMALY",
+    "pattern_signature": "unclassified_corruption",
+    "error_message": "Initialize Intelligence System\tUNKNOWN STEP\t2025-08-22T01:05:51.6930213Z [WARNING] Failed to create session via aggregator, continuing with file-based approach\nInitialize Intelligence System\tUNKNOWN STEP\t2025-08-22T01:05:51.8525300Z ##[warning]The process '/usr/bin/git' failed with exit code 128\nFrontend Build with Intelligence (chrome)\tUNKNOWN STEP\t2025-08-22T01:06:04.0217129Z [WARNING] Failed to create session via aggregator, continuing with file-based approach\nFrontend Build with Intelligence (chrome)\tUNKNOWN STEP\t2025-08-22T01:06:12.0048399Z [WARNING] Failed to finalize via aggregator\nFrontend Build with Intelligence (chrome)\tUNKNOWN STEP\t2025-08-22T01:06:12.0094605Z [WARNING] Classification failed, creating basic result",
+    "context": "Workflow: Enhanced CI with Psycho-Noir Intelligence Logging | Branch: main",
+    "occurrence_count": 2,
+    "first_seen": "2025-08-22T01:05:44Z",
+    "last_seen": "2025-08-21T01:46:36Z",
+    "potential_solutions": [
+      "Manual intervention required"
+    ],
+    "corruption_level": "MINOR",
+    "faction_origin": "RUSTBELT"
+  }
+}

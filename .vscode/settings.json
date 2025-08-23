@@ -4,7 +4,7 @@
     "files.eol": "\n",
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
-    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreview": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "npm.packageManager": "npm",

@@ -1,0 +1,263 @@
+name: 🔄 Neural Archaeology Continuous Learning
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC to harvest new failures and update intelligence
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      learning_mode:
+        description: 'Learning mode'
+        required: false
+        default: 'incremental'
+        type: choice
+        options:
+          - incremental
+          - full_rebuild
+          - pattern_analysis
+
+env:
+  PSYCHO_NOIR_MODE: "continuous_learning_active"
+
+jobs:
+  continuous-neural-archaeology:
+    name: 🔄 Continuous Learning Cycle
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      actions: read
+      issues: write
+
+    steps:
+    - name: 🔍 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: 🐍 Setup Python Environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r backend/requirements.txt
+
+    - name: 🗃️ Load Existing Archaeology Database
+      run: |
+        echo "🗃️ LOADING EXISTING NEURAL ARCHAEOLOGY DATABASE..."
+        mkdir -p data/generert data/rapporter
+        
+        # Check if database exists in artifacts or create new
+        if [ ! -f "data/generert/failure_archaeology.db" ]; then
+          echo "Creating new archaeology database..."
+          cd backend/python
+          python failure_archaeology_system.py
+        else
+          echo "Using existing archaeology database..."
+        fi
+
+    - name: 📡 Incremental Failure Harvesting
+      id: incremental_harvest
+      run: |
+        echo "📡 PERFORMING INCREMENTAL FAILURE HARVESTING..."
+        cd backend/python
+        
+        # Get failures from last 24 hours
+        python -c "
+import json
+from datetime import datetime, timedelta
+from failed_runs_harvester import FailedRunsHarvester
+
+harvester = FailedRunsHarvester()
+recent_failures = harvester.harvest_github_actions_failures()
+
+print(f'📊 Harvested {len(recent_failures)} recent failures')
+with open('../../../harvest_summary.json', 'w') as f:
+    json.dump({
+        'failures_count': len(recent_failures),
+        'timestamp': datetime.now().isoformat(),
+        'mode': 'incremental'
+    }, f)
+"
+        
+        FAILURES_COUNT=$(cat harvest_summary.json | python -c "import sys, json; print(json.load(sys.stdin)['failures_count'])")
+        echo "failures_harvested=$FAILURES_COUNT" >> $GITHUB_OUTPUT
+
+    - name: 🧠 Update Intelligence Engine
+      id: intelligence_update
+      if: steps.incremental_harvest.outputs.failures_harvested != '0'
+      run: |
+        echo "🧠 UPDATING BIDIRECTIONAL INTELLIGENCE ENGINE..."
+        cd backend/python
+        python bidirectional_intelligence_engine.py
+        echo "intelligence_updated=true" >> $GITHUB_OUTPUT
+
+    - name: 📊 Generate Learning Progress Report
+      id: progress_report
+      run: |
+        echo "📊 GENERATING CONTINUOUS LEARNING PROGRESS REPORT..."
+        cd backend/python
+        
+        # Generate current state analysis
+        python failure_analysis_visualizer.py > ../../../learning_progress.txt
+        
+        # Extract key metrics for tracking
+        TOTAL_FAILURES=$(grep "TOTAL FAILURES CATALOGED:" ../../../learning_progress.txt | grep -oE '[0-9]+' || echo "0")
+        RESOLVED_PERCENTAGE=$(grep "% failures remain UNRESOLVED" ../../../learning_progress.txt | grep -oE '[0-9]+\.[0-9]+' | head -1 || echo "100.0")
+        RESOLVED_PERCENTAGE=$(echo "100 - $RESOLVED_PERCENTAGE" | bc -l 2>/dev/null || echo "0")
+        
+        echo "total_failures=$TOTAL_FAILURES" >> $GITHUB_OUTPUT
+        echo "resolved_percentage=$RESOLVED_PERCENTAGE" >> $GITHUB_OUTPUT
+
+    - name: 🎯 Check Learning Milestones
+      id: milestones
+      run: |
+        echo "🎯 CHECKING NEURAL ARCHAEOLOGY LEARNING MILESTONES..."
+        
+        TOTAL_FAILURES=${{ steps.progress_report.outputs.total_failures }}
+        RESOLVED_PCT=${{ steps.progress_report.outputs.resolved_percentage }}
+        
+        # Define milestones
+        MILESTONE_REACHED=""
+        
+        if [ "$TOTAL_FAILURES" -ge "50" ]; then
+          MILESTONE_REACHED="failures_50_plus"
+        elif [ "$TOTAL_FAILURES" -ge "25" ]; then
+          MILESTONE_REACHED="failures_25_plus"
+        elif [ "$TOTAL_FAILURES" -ge "10" ]; then
+          MILESTONE_REACHED="failures_10_plus"
+        fi
+        
+        # Check resolution rate milestones
+        if (( $(echo "$RESOLVED_PCT >= 50.0" | bc -l) )); then
+          MILESTONE_REACHED="${MILESTONE_REACHED}_resolution_50_plus"
+        elif (( $(echo "$RESOLVED_PCT >= 25.0" | bc -l) )); then
+          MILESTONE_REACHED="${MILESTONE_REACHED}_resolution_25_plus"
+        fi
+        
+        echo "milestone=$MILESTONE_REACHED" >> $GITHUB_OUTPUT
+        echo "🏆 Milestone reached: $MILESTONE_REACHED"
+
+    - name: 📈 Create Learning Progress Issue Update
+      if: steps.milestones.outputs.milestone != ''
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const milestone = '${{ steps.milestones.outputs.milestone }}';
+          const totalFailures = '${{ steps.progress_report.outputs.total_failures }}';
+          const resolvedPct = '${{ steps.progress_report.outputs.resolved_percentage }}';
+          
+          // Create or update learning progress issue
+          const issueTitle = '🧠 Neural Archaeology Learning Progress Tracker';
+          
+          const issueBody = `# 🧠 PSYCHO-NOIR KONTRAPUNKT: NEURAL ARCHAEOLOGY LEARNING PROGRESS
+          
+**Last Updated:** ${new Date().toISOString()}
+**Milestone Reached:** \`${milestone}\`
+
+## 📊 Current Statistics:
+- **Total Failures Cataloged:** ${totalFailures}
+- **Resolution Rate:** ${resolvedPct}%
+- **Learning Engine Status:** 🟢 Active
+- **Database Location:** \`data/generert/failure_archaeology.db\`
+
+## 🎯 Recent Milestones:
+- ✅ **${milestone}** - ${new Date().toLocaleDateString()}
+
+## 🔮 Predictive Intelligence Status:
+- **Pattern Recognition:** Continuous learning from failure patterns
+- **Bidirectional Learning:** Active transformation of failures to fixes
+- **Risk Assessment:** Pre-PR analysis operational
+
+## 🚀 Next Goals:
+- [ ] Achieve 75% resolution rate
+- [ ] Extract 10+ successful fix patterns
+- [ ] Implement automated fix recommendations
+- [ ] Deploy predictive failure prevention
+
+---
+*Auto-updated by Continuous Neural Archaeology Learning System*
+*Den Usynlige Hånd: Systematisk transformasjon av kaos til visdom*
+`;
+
+          // Check if issue already exists
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: ['neural-archaeology', 'learning-progress'],
+            state: 'open'
+          });
+          
+          if (issues.data.length > 0) {
+            // Update existing issue
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issues.data[0].number,
+              body: issueBody
+            });
+          } else {
+            // Create new issue
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['neural-archaeology', 'learning-progress', 'PsychoNoirKontrapunkt:all']
+            });
+          }
+
+    - name: 💾 Commit Updated Learning Data
+      if: steps.incremental_harvest.outputs.failures_harvested != '0'
+      run: |
+        echo "💾 COMMITTING UPDATED NEURAL ARCHAEOLOGY DATA..."
+        
+        git config --local user.email "action@github.com"
+        git config --local user.name "Neural Archaeology Bot"
+        
+        # Add updated data files
+        git add data/generert/ data/rapporter/ -f
+        
+        if ! git diff --staged --quiet; then
+          git commit -m "🧠 Neural Archaeology: Continuous learning update
+          
+          - Harvested ${{ steps.incremental_harvest.outputs.failures_harvested }} new failures
+          - Updated intelligence patterns
+          - Total failures: ${{ steps.progress_report.outputs.total_failures }}
+          - Resolution rate: ${{ steps.progress_report.outputs.resolved_percentage }}%
+          
+          Milestone: ${{ steps.milestones.outputs.milestone }}
+          
+          Co-authored-by: Den Usynlige Hånd <invisible.hand@psycho-noir.kontrapunkt>"
+          
+          git push
+        else
+          echo "No changes to commit"
+        fi
+
+    - name: 📋 Archive Continuous Learning Artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: continuous-learning-${{ github.run_number }}
+        path: |
+          data/
+          learning_progress.txt
+          harvest_summary.json
+        retention-days: 7
+
+    - name: ✅ Continuous Learning Status Summary
+      if: always()
+      run: |
+        echo "🔄 CONTINUOUS NEURAL ARCHAEOLOGY LEARNING STATUS:"
+        echo "   📡 Failures Harvested: ${{ steps.incremental_harvest.outputs.failures_harvested }}"
+        echo "   🧠 Intelligence Updated: ${{ steps.intelligence_update.outputs.intelligence_updated == 'true' && '✅ YES' || '❌ NO' }}"
+        echo "   📊 Total Failures in DB: ${{ steps.progress_report.outputs.total_failures }}"
+        echo "   🎯 Milestone Reached: ${{ steps.milestones.outputs.milestone }}"
+        echo ""
+        echo "🧠 PSYCHO-NOIR KONTRAPUNKT CONTINUOUS LEARNING OPERATIONAL"
