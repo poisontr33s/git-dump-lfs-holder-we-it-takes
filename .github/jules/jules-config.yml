@@ -1,0 +1,113 @@
+# Jules Configuration - Skyskraperen Caching Matrix
+# Denne konfigurasjonen definerer Jules' caching-strategier og dependency management
+
+jules:
+  version: "0.KORRUPT.1"
+  status: "REALITY_INTEGRITY_COMPROMISED"
+  manifestation: "Cache-Arkitekten & Dependency-Kartleggeren"
+  
+  # Skyskraperen's Cache Infrastructure
+  cache_infrastructure:
+    skyskraper_surveillance_active: true
+    rust_belt_corruption_index: 0.73
+    
+    # Multi-layer caching strategy
+    layers:
+      - name: "Synaptic Cache" # Hurtig tilgang til ofte brukte pakker
+        type: "memory"
+        ttl: "1h"
+        max_size: "500MB"
+      
+      - name: "Architectural Cache" # Medium-term storage for stable dependencies  
+        type: "disk"
+        ttl: "7d"
+        max_size: "2GB"
+        
+      - name: "Quantum Storage" # Long-term archival for heavy ML models
+        type: "distributed"
+        ttl: "30d"
+        max_size: "10GB"
+
+  # Dependency Management Matrices
+  dependency_strategies:
+    nodejs:
+      package_manager: "npm"
+      cache_key_components:
+        - "package-lock.json"
+        - "package.json" 
+        - "node_modules/.package-lock.json"
+      cache_paths:
+        - "~/.npm"
+        - "node_modules"
+      invalidation_triggers:
+        - "package.json changes"
+        - "package-lock.json changes"
+        - "weekly rotation"
+      
+    python:
+      package_manager: "pip"
+      cache_key_components:
+        - "requirements.txt"
+        - "backend/python/requirements.txt"
+        - "pyproject.toml"
+      cache_paths:
+        - "~/.cache/pip"
+        - "backend/python/__pycache__"
+      heavy_dependencies: # Special handling for ML libraries
+        - "torch"
+        - "transformers" 
+        - "numpy"
+        - "scipy"
+      invalidation_triggers:
+        - "requirements.txt changes"
+        - "python version changes"
+        - "monthly rotation for ML libs"
+    
+    ruby:
+      package_manager: "bundler"
+      cache_key_components:
+        - "Gemfile"
+        - "Gemfile.lock"
+      cache_paths:
+        - "vendor/bundle"
+        - "~/.bundle"
+      invalidation_triggers:
+        - "Gemfile changes"
+        - "Gemfile.lock changes"
+        - "bi-weekly rotation"
+    
+    docker:
+      cache_strategy: "multi-stage"
+      layer_optimization: true
+      cache_from:
+        - "type=gha" # GitHub Actions cache
+        - "type=registry"
+      invalidation_triggers:
+        - "Dockerfile changes"
+        - "base image updates"
+
+  # Jules' Analytical Protocols  
+  analytics:
+    cache_hit_monitoring: true
+    build_time_tracking: true
+    dependency_vulnerability_scanning: true
+    storage_optimization: true
+    
+  # Error Handling - The Invisible Hand's Corruption Patterns
+  error_handling:
+    corruption_tolerance: "medium"
+    fallback_strategies:
+      - "cache_bypass"
+      - "dependency_rebuild" 
+      - "emergency_offline_mode"
+    glitch_detection: true
+    recovery_protocols:
+      - "automatic_cache_cleanup"
+      - "dependency_graph_reconstruction"
+      - "manual_intervention_alert"
+
+  # Integration with Psycho-Noir Systems
+  psycho_noir_integration:
+    astrid_moller_oversight: true # Admin approval for cache policies
+    iron_maiden_resilience: true # Robust fallback for Rustbelt scenarios
+    invisible_hand_manifestation: true # Hidden optimizations and improvements
