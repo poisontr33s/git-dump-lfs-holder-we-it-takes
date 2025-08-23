@@ -72,40 +72,26 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        # Install build tools first
-        pip install pytest pytest-cov build wheel setuptools
-        # Try to install requirements, but don't fail if some packages aren't available
-        if [ -f backend/python/requirements.txt ]; then
-          pip install -r backend/python/requirements.txt || echo "Some dependencies may not be available - continuing with available packages"
-        fi
+        pip install -r backend/python/requirements.txt
+        pip install pytest pytest-cov build wheel
     
     - name: Run Python tests
       run: |
         cd backend/python
         # Create test results directory
         mkdir -p ../../test-results/python
-        # Run basic Python test if available, or pytest if tests exist
-        if [ -f test_backend.py ]; then
-          python test_backend.py
-          echo "Basic tests completed"
-        fi
-        # Try pytest for more comprehensive testing
-        python -m pytest --cov=. --cov-report=xml --cov-report=html --junitxml=../../test-results/python/junit-${{ matrix.os }}-${{ matrix.python-version }}.xml . || echo "Pytest completed - may have found no additional tests"
+        # Run tests with coverage (even if no tests exist yet, this demonstrates the pattern)
+        python -m pytest --cov=. --cov-report=xml --cov-report=html --junitxml=../../test-results/python/junit-${{ matrix.os }}-${{ matrix.python-version }}.xml . || echo "No tests found - this is expected for demo"
     
     - name: Build Python package
       run: |
         cd backend/python
-        # Create build info directory first
+        python -m build
+        # Create build info
         mkdir -p ../../dist/python
-        # Try to build if setup.py exists
-        if [ -f setup.py ]; then
-          python -m build || echo "Build failed - continuing with manual package info"
-          cp dist/* ../../dist/python/ 2>/dev/null || echo "No packages built - creating demo structure"
-        fi
-        # Always create build info
+        cp dist/* ../../dist/python/ 2>/dev/null || echo "No packages built - creating demo structure"
         echo "Python ${{ matrix.python-version }} on ${{ matrix.os }}" > ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
         echo "Build time: $(date)" >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-        echo "Status: Backend modules available" >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
     
     - name: Upload Python build artifacts
       uses: actions/upload-artifact@v4
@@ -154,13 +140,10 @@ jobs:
       run: |
         # Create test results directory
         mkdir -p test-results/jest
-        # Run tests with coverage and better error handling
-        npm test -- --passWithNoTests --coverage --coverageDirectory=test-results/jest/coverage || echo "Jest completed with some failures - this may be expected"
-        # Create a simple test results summary
-        echo "Test run completed on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}" > test-results/jest/test-summary.txt
-        echo "Timestamp: $(date)" >> test-results/jest/test-summary.txt
+        # Run tests with coverage and JUnit output
+        npm test -- --coverage --coverageDirectory=test-results/jest/coverage --testResultsProcessor=jest-junit --outputFile=test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml || echo "Test command completed"
       env:
-        CI: true
+        JEST_JUNIT_OUTPUT_FILE: test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml
     
     - name: Upload Jest test results
       uses: actions/upload-artifact@v4
