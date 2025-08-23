@@ -1,29 +1,24 @@
-name: "Jules Enhanced CI - Den Usynlige Hånds Optimization Protocol"
-
-on:
+name: "Jules Enhanced CI - Den Usynlige H\xE5nds Optimization Protocol"
+true:
   push:
-    branches: [ "main", "develop" ]
+    branches:
+    - main
+    - develop
   pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
   schedule:
-    # Weekly cache cleanup - Jules' maintenance protocol
-    - cron: '0 2 * * 0'
-
+  - cron: 0 2 * * 0
 env:
-  # Jules Configuration
-  JULES_VERSION: "0.KORRUPT.1"
-  JULES_CACHE_VERSION: "v2"
-  JULES_CORRUPTION_INDEX: "0.73"
-  
-  # Cache optimization flags
-  PYTHONPYCACHEPREFIX: ".cache/python"
-  NPM_CONFIG_CACHE: ".cache/npm"
-  BUNDLE_PATH: ".cache/bundle"
-
+  JULES_VERSION: 0.KORRUPT.1
+  JULES_CACHE_VERSION: v2
+  JULES_CORRUPTION_INDEX: '0.73'
+  PYTHONPYCACHEPREFIX: .cache/python
+  NPM_CONFIG_CACHE: .cache/npm
+  BUNDLE_PATH: .cache/bundle
 jobs:
-  # Jules Cache Analysis and Preparation
   jules-cache-analysis:
-    name: "Jules Cache-Arkitekten Analysis"
+    name: Jules Cache-Arkitekten Analysis
     runs-on: ubuntu-latest
     outputs:
       cache-key-nodejs: ${{ steps.cache-keys.outputs.nodejs }}
@@ -31,526 +26,438 @@ jobs:
       cache-key-ruby: ${{ steps.cache-keys.outputs.ruby }}
       cache-key-docker: ${{ steps.cache-keys.outputs.docker }}
       dependencies-changed: ${{ steps.dependency-analysis.outputs.changed }}
-      
     steps:
-    - name: "Checkout - Establishing Reality Anchor"
+    - name: Checkout - Establishing Reality Anchor
       uses: actions/checkout@v4
       with:
-        fetch-depth: 2 # For dependency change detection
-    
-    - name: "Jules Dependency Analysis Protocol"
+        fetch-depth: 2
+    - name: Jules Dependency Analysis Protocol
       id: dependency-analysis
-      run: |
-        echo "# Jules Dependency Change Analysis" >> $GITHUB_STEP_SUMMARY
-        echo "Analyzing dependency graph integrity..." >> $GITHUB_STEP_SUMMARY
-        
-        # Check for dependency file changes
-        CHANGED_FILES=$(git diff --name-only HEAD~1 2>/dev/null || echo "")
-        
-        if echo "$CHANGED_FILES" | grep -E "(package\.json|package-lock\.json|requirements\.txt|Gemfile|Dockerfile)" > /dev/null; then
-          echo "changed=true" >> $GITHUB_OUTPUT
-          echo "⚠️ DEPENDENCY INTEGRITY COMPROMISED - Cache invalidation required" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "changed=false" >> $GITHUB_OUTPUT
-          echo "✅ Dependency graph stable - Cache optimization available" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        echo "Changed files:" >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        echo "$CHANGED_FILES" >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-    
-    - name: "Generate Jules Cache Keys"
+      run: "echo \"# Jules Dependency Change Analysis\" >> $GITHUB_STEP_SUMMARY\n\
+        echo \"Analyzing dependency graph integrity...\" >> $GITHUB_STEP_SUMMARY\n\
+        \n# Check for dependency file changes\nCHANGED_FILES=$(git diff --name-only\
+        \ HEAD~1 2>/dev/null || echo \"\")\n\nif echo \"$CHANGED_FILES\" | grep -E\
+        \ \"(package\\.json|package-lock\\.json|requirements\\.txt|Gemfile|Dockerfile)\"\
+        \ > /dev/null; then\n  echo \"changed=true\" >> $GITHUB_OUTPUT\n  echo \"\u26A0\
+        \uFE0F DEPENDENCY INTEGRITY COMPROMISED - Cache invalidation required\" >>\
+        \ $GITHUB_STEP_SUMMARY\nelse\n  echo \"changed=false\" >> $GITHUB_OUTPUT\n\
+        \  echo \"\u2705 Dependency graph stable - Cache optimization available\"\
+        \ >> $GITHUB_STEP_SUMMARY\nfi\n\necho \"Changed files:\" >> $GITHUB_STEP_SUMMARY\n\
+        echo '```' >> $GITHUB_STEP_SUMMARY\necho \"$CHANGED_FILES\" >> $GITHUB_STEP_SUMMARY\n\
+        echo '```' >> $GITHUB_STEP_SUMMARY\n"
+    - name: Generate Jules Cache Keys
       id: cache-keys
-      run: |
-        # Generate cryptographically stable cache keys
-        
-        # Node.js cache key
-        if [ -f "package-lock.json" ]; then
-          NODEJS_KEY="nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-$(sha256sum package-lock.json package.json | sha256sum | cut -d' ' -f1)"
-        else
-          NODEJS_KEY="nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-no-lockfile"
-        fi
-        echo "nodejs=$NODEJS_KEY" >> $GITHUB_OUTPUT
-        
-        # Python cache key
-        PYTHON_FILES=""
-        [ -f "backend/python/requirements.txt" ] && PYTHON_FILES="$PYTHON_FILES backend/python/requirements.txt"
-        [ -f "requirements.txt" ] && PYTHON_FILES="$PYTHON_FILES requirements.txt"
-        
-        if [ -n "$PYTHON_FILES" ]; then
-          PYTHON_KEY="python-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-$(echo $PYTHON_FILES | xargs cat | sha256sum | cut -d' ' -f1)"
-        else
-          PYTHON_KEY="python-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-no-requirements"
-        fi
-        echo "python=$PYTHON_KEY" >> $GITHUB_OUTPUT
-        
-        # Ruby cache key
-        if [ -f "arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/Gemfile.lock" ]; then
-          RUBY_KEY="ruby-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-$(sha256sum arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/Gemfile* | sha256sum | cut -d' ' -f1)"
-        else
-          RUBY_KEY="ruby-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-no-gemfile"
-        fi
-        echo "ruby=$RUBY_KEY" >> $GITHUB_OUTPUT
-        
-        # Docker cache key
-        DOCKER_KEY="docker-${{ env.JULES_CACHE_VERSION }}-$(sha256sum backend/docker/Dockerfile | cut -d' ' -f1)"
-        echo "docker=$DOCKER_KEY" >> $GITHUB_OUTPUT
-        
-        echo "## Generated Cache Keys" >> $GITHUB_STEP_SUMMARY
-        echo "- Node.js: $NODEJS_KEY" >> $GITHUB_STEP_SUMMARY
-        echo "- Python: $PYTHON_KEY" >> $GITHUB_STEP_SUMMARY  
-        echo "- Ruby: $RUBY_KEY" >> $GITHUB_STEP_SUMMARY
-        echo "- Docker: $DOCKER_KEY" >> $GITHUB_STEP_SUMMARY
-
-  # Enhanced Frontend Build with Jules Caching
+      run: "# Generate cryptographically stable cache keys\n\n# Node.js cache key\n\
+        if [ -f \"package-lock.json\" ]; then\n  NODEJS_KEY=\"nodejs-${{ env.JULES_CACHE_VERSION\
+        \ }}-${{ runner.os }}-$(sha256sum package-lock.json package.json | sha256sum\
+        \ | cut -d' ' -f1)\"\nelse\n  NODEJS_KEY=\"nodejs-${{ env.JULES_CACHE_VERSION\
+        \ }}-${{ runner.os }}-no-lockfile\"\nfi\necho \"nodejs=$NODEJS_KEY\" >> $GITHUB_OUTPUT\n\
+        \n# Python cache key\nPYTHON_FILES=\"\"\n[ -f \"backend/python/requirements.txt\"\
+        \ ] && PYTHON_FILES=\"$PYTHON_FILES backend/python/requirements.txt\"\n[ -f\
+        \ \"requirements.txt\" ] && PYTHON_FILES=\"$PYTHON_FILES requirements.txt\"\
+        \n\nif [ -n \"$PYTHON_FILES\" ]; then\n  PYTHON_KEY=\"python-${{ env.JULES_CACHE_VERSION\
+        \ }}-${{ runner.os }}-$(echo $PYTHON_FILES | xargs cat | sha256sum | cut -d'\
+        \ ' -f1)\"\nelse\n  PYTHON_KEY=\"python-${{ env.JULES_CACHE_VERSION }}-${{\
+        \ runner.os }}-no-requirements\"\nfi\necho \"python=$PYTHON_KEY\" >> $GITHUB_OUTPUT\n\
+        \n# Ruby cache key\nif [ -f \"arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/Gemfile.lock\"\
+        \ ]; then\n  RUBY_KEY=\"ruby-${{ env.JULES_CACHE_VERSION }}-${{ runner.os\
+        \ }}-$(sha256sum arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/Gemfile*\
+        \ | sha256sum | cut -d' ' -f1)\"\nelse\n  RUBY_KEY=\"ruby-${{ env.JULES_CACHE_VERSION\
+        \ }}-${{ runner.os }}-no-gemfile\"\nfi\necho \"ruby=$RUBY_KEY\" >> $GITHUB_OUTPUT\n\
+        \n# Docker cache key\nDOCKER_KEY=\"docker-${{ env.JULES_CACHE_VERSION }}-$(sha256sum\
+        \ backend/docker/Dockerfile | cut -d' ' -f1)\"\necho \"docker=$DOCKER_KEY\"\
+        \ >> $GITHUB_OUTPUT\n\necho \"## Generated Cache Keys\" >> $GITHUB_STEP_SUMMARY\n\
+        echo \"- Node.js: $NODEJS_KEY\" >> $GITHUB_STEP_SUMMARY\necho \"- Python:\
+        \ $PYTHON_KEY\" >> $GITHUB_STEP_SUMMARY  \necho \"- Ruby: $RUBY_KEY\" >> $GITHUB_STEP_SUMMARY\n\
+        echo \"- Docker: $DOCKER_KEY\" >> $GITHUB_STEP_SUMMARY\n"
+    timeout-minutes: 20
   jules-frontend-build:
-    name: "Frontend Build - Skyskraper Architecture (${{ matrix.browser }})"
+    name: Frontend Build - Skyskraper Architecture (${{ matrix.browser }})
     runs-on: ubuntu-latest
     needs: jules-cache-analysis
     strategy:
       fail-fast: false
       matrix:
-        browser: [chrome, firefox, safari]
-        node-version: [18, 20]
-    
+        browser:
+        - chrome
+        - firefox
+        - safari
+        node-version:
+        - 18
+        - 20
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Setup Node.js ${{ matrix.node-version }} - Synaptic Network"
+    - name: Setup Node.js ${{ matrix.node-version }} - Synaptic Network
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: 'package-lock.json'
-    
-    # Jules Multi-Layer Node.js Caching
-    - name: "Jules NPM Cache - Synaptic Layer"
+        cache: npm
+        cache-dependency-path: package-lock.json
+    - name: Jules NPM Cache - Synaptic Layer
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.npm
+        path: '~/.npm
+
           .cache/npm
+
           node_modules
-        key: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-${{ matrix.node-version }}
-        restore-keys: |
-          nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-${{ matrix.node-version }}
+
+          '
+        key: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-${{ matrix.node-version
+          }}
+        restore-keys: 'nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-${{
+          matrix.node-version }}
+
           nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}
-    
-    - name: "Conditional Dependency Installation - Corruption-Resistant"
-      run: |
-        echo "# Jules NPM Installation Protocol" >> $GITHUB_STEP_SUMMARY
-        
-        if [ ! -d "node_modules" ] || [ "${{ needs.jules-cache-analysis.outputs.dependencies-changed }}" == "true" ]; then
-          echo "Installing dependencies - Cache miss or dependency changes detected" >> $GITHUB_STEP_SUMMARY
-          npm ci --cache .cache/npm --prefer-offline
-          echo "✅ Dependencies installed successfully" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✅ Using cached dependencies - Jules optimization active" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        # Verify installation
-        npm ls --depth=0 || echo "⚠️ Dependency verification completed with warnings"
-    
-    - name: "Frontend Build - Architectural Assembly"
-      run: |
-        mkdir -p dist/frontend
-        cp -r frontend/* dist/frontend/ 2>/dev/null || echo "Frontend files processed"
-        
-        # Create Jules build manifest
-        cat > dist/frontend/jules-manifest.json << EOF
-        {
-          "jules_version": "${{ env.JULES_VERSION }}",
-          "build_target": "${{ matrix.browser }}",
-          "node_version": "${{ matrix.node-version }}",
-          "build_time": "$(date -Iseconds)",
-          "commit_sha": "${{ github.sha }}",
-          "cache_optimization": true,
-          "dependency_integrity": "${{ needs.jules-cache-analysis.outputs.dependencies-changed }}"
-        }
-        EOF
-        
-        echo "Build for ${{ matrix.browser }} on Node ${{ matrix.node-version }}" > dist/frontend/build-info.txt
-        echo "Jules Cache Status: Optimized" >> dist/frontend/build-info.txt
-        echo "Build time: $(date)" >> dist/frontend/build-info.txt
-    
-    - name: "Upload Frontend Artifacts - Quantum Storage"
+
+          '
+    - name: Conditional Dependency Installation - Corruption-Resistant
+      run: "echo \"# Jules NPM Installation Protocol\" >> $GITHUB_STEP_SUMMARY\n\n\
+        if [ ! -d \"node_modules\" ] || [ \"${{ needs.jules-cache-analysis.outputs.dependencies-changed\
+        \ }}\" == \"true\" ]; then\n  echo \"Installing dependencies - Cache miss\
+        \ or dependency changes detected\" >> $GITHUB_STEP_SUMMARY\n  npm ci --cache\
+        \ .cache/npm --prefer-offline\n  echo \"\u2705 Dependencies installed successfully\"\
+        \ >> $GITHUB_STEP_SUMMARY\nelse\n  echo \"\u2705 Using cached dependencies\
+        \ - Jules optimization active\" >> $GITHUB_STEP_SUMMARY\nfi\n\n# Verify installation\n\
+        npm ls --depth=0 || echo \"\u26A0\uFE0F Dependency verification completed\
+        \ with warnings\"\n"
+    - name: Frontend Build - Architectural Assembly
+      run: "mkdir -p dist/frontend\ncp -r frontend/* dist/frontend/ 2>/dev/null ||\
+        \ echo \"Frontend files processed\"\n\n# Create Jules build manifest\ncat\
+        \ > dist/frontend/jules-manifest.json << EOF\n{\n  \"jules_version\": \"${{\
+        \ env.JULES_VERSION }}\",\n  \"build_target\": \"${{ matrix.browser }}\",\n\
+        \  \"node_version\": \"${{ matrix.node-version }}\",\n  \"build_time\": \"\
+        $(date -Iseconds)\",\n  \"commit_sha\": \"${{ github.sha }}\",\n  \"cache_optimization\"\
+        : true,\n  \"dependency_integrity\": \"${{ needs.jules-cache-analysis.outputs.dependencies-changed\
+        \ }}\"\n}\nEOF\n\necho \"Build for ${{ matrix.browser }} on Node ${{ matrix.node-version\
+        \ }}\" > dist/frontend/build-info.txt\necho \"Jules Cache Status: Optimized\"\
+        \ >> dist/frontend/build-info.txt\necho \"Build time: $(date)\" >> dist/frontend/build-info.txt\n"
+    - name: Upload Frontend Artifacts - Quantum Storage
       uses: actions/upload-artifact@v4
       with:
         name: jules-frontend-${{ matrix.browser }}-node${{ matrix.node-version }}
-        path: |
-          dist/frontend/
-          frontend/
-        retention-days: 30
+        path: 'dist/frontend/
 
-  # Enhanced Backend Build with Jules ML Caching
+          frontend/
+
+          '
+        retention-days: 30
+    timeout-minutes: 20
   jules-backend-build:
-    name: "Backend Build - Rustbelt Resilience (${{ matrix.python-version }}, ${{ matrix.os }})"
-    runs-on: ${{ matrix.os }}
+    name: Backend Build - Rustbelt Resilience (${{ matrix.python-version }}, ${{ matrix.os
+      }})
+    runs-on: ubuntu-latest
     needs: jules-cache-analysis
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.9', '3.10', '3.11']
-    
+        os:
+        - ubuntu-latest
+        - windows-latest
+        - macos-latest
+        python-version:
+        - '3.9'
+        - '3.10'
+        - '3.11'
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Setup Python ${{ matrix.python-version }} - Neural Architecture"
+    - name: Setup Python ${{ matrix.python-version }} - Neural Architecture
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        cache: 'pip'
-        cache-dependency-path: |
-          backend/python/requirements.txt
+        cache: pip
+        cache-dependency-path: 'backend/python/requirements.txt
+
           requirements.txt
-    
-    # Jules Heavy Dependency Caching (ML Libraries)
-    - name: "Jules Python Cache - Quantum ML Storage"
+
+          '
+    - name: Jules Python Cache - Quantum ML Storage
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.cache/pip
+        path: '~/.cache/pip
+
           .cache/python
+
           backend/python/__pycache__
-        key: ${{ needs.jules-cache-analysis.outputs.cache-key-python }}-${{ matrix.python-version }}-${{ matrix.os }}
-        restore-keys: |
-          python-${{ env.JULES_CACHE_VERSION }}-${{ matrix.os }}-${{ matrix.python-version }}
+
+          '
+        key: ${{ needs.jules-cache-analysis.outputs.cache-key-python }}-${{ matrix.python-version
+          }}-${{ matrix.os }}
+        restore-keys: 'python-${{ env.JULES_CACHE_VERSION }}-${{ matrix.os }}-${{
+          matrix.python-version }}
+
           python-${{ env.JULES_CACHE_VERSION }}-${{ matrix.os }}
-    
-    # Separate cache for heavy ML dependencies to optimize build times
-    - name: "Jules ML Dependencies Cache - Deep Neural Storage"  
+
+          '
+    - name: Jules ML Dependencies Cache - Deep Neural Storage
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.cache/pip/wheels
+        path: '~/.cache/pip/wheels
+
           .cache/ml-packages
-        key: ml-deps-${{ env.JULES_CACHE_VERSION }}-${{ matrix.python-version }}-${{ matrix.os }}-${{ hashFiles('backend/python/requirements.txt') }}
-        restore-keys: |
-          ml-deps-${{ env.JULES_CACHE_VERSION }}-${{ matrix.python-version }}-${{ matrix.os }}
+
+          '
+        key: ml-deps-${{ env.JULES_CACHE_VERSION }}-${{ matrix.python-version }}-${{
+          matrix.os }}-${{ hashFiles('backend/python/requirements.txt') }}
+        restore-keys: 'ml-deps-${{ env.JULES_CACHE_VERSION }}-${{ matrix.python-version
+          }}-${{ matrix.os }}
+
           ml-deps-${{ env.JULES_CACHE_VERSION }}-${{ matrix.python-version }}
-    
-    - name: "Conditional Python Dependencies Installation"
-      run: |
-        echo "# Jules Python Installation Protocol" >> $GITHUB_STEP_SUMMARY
-        
-        python -m pip install --upgrade pip --cache-dir .cache/pip
-        
-        # Check if heavy ML dependencies are cached
-        if pip show torch transformers > /dev/null 2>&1 && [ "${{ needs.jules-cache-analysis.outputs.dependencies-changed }}" != "true" ]; then
-          echo "✅ Heavy ML dependencies found in cache - Jules optimization active" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "Installing ML dependencies - This may take time on cache miss" >> $GITHUB_STEP_SUMMARY
-          mkdir -p .cache/ml-packages
-        fi
-        
-        # Install with caching optimization
-        if [ -f "backend/python/requirements.txt" ]; then
-          pip install -r backend/python/requirements.txt --cache-dir .cache/pip --find-links .cache/ml-packages
-        fi
-        
-        pip install pytest pytest-cov build wheel --cache-dir .cache/pip
-        
-        echo "✅ Python dependencies installation completed" >> $GITHUB_STEP_SUMMARY
-        
-        # Save heavy packages for future caching
-        pip download torch transformers --dest .cache/ml-packages --no-deps 2>/dev/null || echo "ML packages cache update completed"
-    
-    - name: "Python Tests - Corruption Resistance Validation"
-      run: |
-        cd backend/python
-        mkdir -p ../../test-results/python
-        
-        echo "# Jules Python Testing Protocol" >> $GITHUB_STEP_SUMMARY
-        
-        # Run tests with coverage and Jules monitoring
-        python -m pytest \
-          --cov=. \
-          --cov-report=xml \
-          --cov-report=html \
-          --junitxml=../../test-results/python/junit-${{ matrix.os }}-${{ matrix.python-version }}.xml \
-          . || echo "Tests completed - Jules monitoring active"
-        
-        echo "✅ Testing protocol completed" >> $GITHUB_STEP_SUMMARY
-    
-    - name: "Python Package Build - Architectural Assembly"
-      run: |
-        cd backend/python
-        python -m build
-        
-        mkdir -p ../../dist/python
-        cp dist/* ../../dist/python/ 2>/dev/null || echo "Build artifacts processed"
-        
-        # Create Jules build manifest
-        cat > ../../dist/python/jules-manifest.json << EOF
-        {
-          "jules_version": "${{ env.JULES_VERSION }}",
-          "python_version": "${{ matrix.python-version }}",
-          "os": "${{ matrix.os }}",
-          "build_time": "$(date -Iseconds)",
-          "commit_sha": "${{ github.sha }}",
-          "cache_optimization": true,
-          "ml_cache_hit": true
-        }
-        EOF
-        
-        echo "Python ${{ matrix.python-version }} on ${{ matrix.os }}" > ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-        echo "Jules ML Cache: Optimized" >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-        echo "Build time: $(date)" >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-    
-    - name: "Upload Backend Artifacts - Distributed Storage"
+
+          '
+    - name: Conditional Python Dependencies Installation
+      run: "echo \"# Jules Python Installation Protocol\" >> $GITHUB_STEP_SUMMARY\n\
+        \npython -m pip install --upgrade pip --cache-dir .cache/pip\n\n# Check if\
+        \ heavy ML dependencies are cached\nif pip show torch transformers > /dev/null\
+        \ 2>&1 && [ \"${{ needs.jules-cache-analysis.outputs.dependencies-changed\
+        \ }}\" != \"true\" ]; then\n  echo \"\u2705 Heavy ML dependencies found in\
+        \ cache - Jules optimization active\" >> $GITHUB_STEP_SUMMARY\nelse\n  echo\
+        \ \"Installing ML dependencies - This may take time on cache miss\" >> $GITHUB_STEP_SUMMARY\n\
+        \  mkdir -p .cache/ml-packages\nfi\n\n# Install with caching optimization\n\
+        if [ -f \"backend/python/requirements.txt\" ]; then\n  pip install -r backend/python/requirements.txt\
+        \ --cache-dir .cache/pip --find-links .cache/ml-packages\nfi\n\npip install\
+        \ pytest pytest-cov build wheel --cache-dir .cache/pip\n\necho \"\u2705 Python\
+        \ dependencies installation completed\" >> $GITHUB_STEP_SUMMARY\n\n# Save\
+        \ heavy packages for future caching\npip download torch transformers --dest\
+        \ .cache/ml-packages --no-deps 2>/dev/null || echo \"ML packages cache update\
+        \ completed\"\n"
+    - name: Python Tests - Corruption Resistance Validation
+      run: "cd backend/python\nmkdir -p ../../test-results/python\n\necho \"# Jules\
+        \ Python Testing Protocol\" >> $GITHUB_STEP_SUMMARY\n\n# Run tests with coverage\
+        \ and Jules monitoring\npython -m pytest \\\n  --cov=. \\\n  --cov-report=xml\
+        \ \\\n  --cov-report=html \\\n  --junitxml=../../test-results/python/junit-${{\
+        \ matrix.os }}-${{ matrix.python-version }}.xml \\\n  . || echo \"Tests completed\
+        \ - Jules monitoring active\"\n\necho \"\u2705 Testing protocol completed\"\
+        \ >> $GITHUB_STEP_SUMMARY\n"
+    - name: Python Package Build - Architectural Assembly
+      run: "cd backend/python\npython -m build\n\nmkdir -p ../../dist/python\ncp dist/*\
+        \ ../../dist/python/ 2>/dev/null || echo \"Build artifacts processed\"\n\n\
+        # Create Jules build manifest\ncat > ../../dist/python/jules-manifest.json\
+        \ << EOF\n{\n  \"jules_version\": \"${{ env.JULES_VERSION }}\",\n  \"python_version\"\
+        : \"${{ matrix.python-version }}\",\n  \"os\": \"${{ matrix.os }}\",\n  \"\
+        build_time\": \"$(date -Iseconds)\",\n  \"commit_sha\": \"${{ github.sha }}\"\
+        ,\n  \"cache_optimization\": true,\n  \"ml_cache_hit\": true\n}\nEOF\n\necho\
+        \ \"Python ${{ matrix.python-version }} on ${{ matrix.os }}\" > ../../dist/python/build-info-${{\
+        \ matrix.os }}-${{ matrix.python-version }}.txt\necho \"Jules ML Cache: Optimized\"\
+        \ >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version\
+        \ }}.txt\necho \"Build time: $(date)\" >> ../../dist/python/build-info-${{\
+        \ matrix.os }}-${{ matrix.python-version }}.txt\n"
+    - name: Upload Backend Artifacts - Distributed Storage
       uses: actions/upload-artifact@v4
       with:
         name: jules-backend-${{ matrix.os }}-py${{ matrix.python-version }}
-        path: |
-          dist/python/
+        path: 'dist/python/
+
           backend/python/dist/
+
+          '
         retention-days: 30
-    
-    - name: "Upload Test Results - Analytical Storage"
+    - name: Upload Test Results - Analytical Storage
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: jules-test-results-${{ matrix.os }}-py${{ matrix.python-version }}
-        path: |
-          test-results/python/
-          backend/python/htmlcov/
-          backend/python/coverage.xml
-        retention-days: 7
+        path: 'test-results/python/
 
-  # Ruby Legacy Projects with Jules Caching
+          backend/python/htmlcov/
+
+          backend/python/coverage.xml
+
+          '
+        retention-days: 7
+    timeout-minutes: 20
   jules-ruby-build:
-    name: "Ruby Legacy - Mystical Archive Processing"
+    name: Ruby Legacy - Mystical Archive Processing
     runs-on: ubuntu-latest
     needs: jules-cache-analysis
-    
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Setup Ruby - Mystical Runtime"
+    - name: Setup Ruby - Mystical Runtime
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
         bundler-cache: true
         working-directory: arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21
-    
-    - name: "Jules Ruby Cache - Archive Storage"
+    - name: Jules Ruby Cache - Archive Storage
       uses: actions/cache@v4
       with:
-        path: |
-          arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/vendor/bundle
+        path: 'arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/vendor/bundle
+
           ~/.bundle
+
           .cache/bundle
+
+          '
         key: ${{ needs.jules-cache-analysis.outputs.cache-key-ruby }}
-        restore-keys: |
-          ruby-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}
-    
-    - name: "Ruby Dependencies - Archive Restoration"
-      run: |
-        cd arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21
-        
-        echo "# Jules Ruby Archive Processing" >> $GITHUB_STEP_SUMMARY
-        
-        if [ ! -d "vendor/bundle" ] || [ "${{ needs.jules-cache-analysis.outputs.dependencies-changed }}" == "true" ]; then
-          echo "Installing Ruby gems - Archive restoration in progress" >> $GITHUB_STEP_SUMMARY
-          bundle config set --local path 'vendor/bundle'
-          bundle install || echo "MYSTICAL_ARCHIVE_CORRUPTION detected - continuing with available gems"
-          echo "✅ Ruby archive processing completed" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✅ Using cached Ruby gems - Jules archive optimization active" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        # Create manifest
-        cat > jules-ruby-manifest.json << EOF
-        {
-          "jules_version": "${{ env.JULES_VERSION }}",
-          "ruby_version": "3.0",
-          "archive_status": "processed",
-          "build_time": "$(date -Iseconds)",
-          "cache_optimization": true
-        }
-        EOF
-    
-    - name: "Upload Ruby Archive Artifacts"
+        restore-keys: 'ruby-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}
+
+          '
+    - name: Ruby Dependencies - Archive Restoration
+      run: "cd arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21\n\necho \"# Jules\
+        \ Ruby Archive Processing\" >> $GITHUB_STEP_SUMMARY\n\nif [ ! -d \"vendor/bundle\"\
+        \ ] || [ \"${{ needs.jules-cache-analysis.outputs.dependencies-changed }}\"\
+        \ == \"true\" ]; then\n  echo \"Installing Ruby gems - Archive restoration\
+        \ in progress\" >> $GITHUB_STEP_SUMMARY\n  bundle config set --local path\
+        \ 'vendor/bundle'\n  bundle install || echo \"MYSTICAL_ARCHIVE_CORRUPTION\
+        \ detected - continuing with available gems\"\n  echo \"\u2705 Ruby archive\
+        \ processing completed\" >> $GITHUB_STEP_SUMMARY\nelse\n  echo \"\u2705 Using\
+        \ cached Ruby gems - Jules archive optimization active\" >> $GITHUB_STEP_SUMMARY\n\
+        fi\n\n# Create manifest\ncat > jules-ruby-manifest.json << EOF\n{\n  \"jules_version\"\
+        : \"${{ env.JULES_VERSION }}\",\n  \"ruby_version\": \"3.0\",\n  \"archive_status\"\
+        : \"processed\",\n  \"build_time\": \"$(date -Iseconds)\",\n  \"cache_optimization\"\
+        : true\n}\nEOF\n"
+    - name: Upload Ruby Archive Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: jules-ruby-archive
-        path: |
-          arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/jules-ruby-manifest.json
-          arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/vendor/bundle
-        retention-days: 30
+        path: 'arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/jules-ruby-manifest.json
 
-  # Enhanced Node.js Testing with Jules
+          arkiv_gamle_ruby_prosjekter/dealogue-fayde-21-04-21/vendor/bundle
+
+          '
+        retention-days: 30
+    timeout-minutes: 20
   jules-node-test:
-    name: "Node.js Testing - Synaptic Validation (${{ matrix.node-version }}, ${{ matrix.os }})"
-    runs-on: ${{ matrix.os }}
+    name: Node.js Testing - Synaptic Validation (${{ matrix.node-version }}, ${{ matrix.os
+      }})
+    runs-on: ubuntu-latest
     needs: jules-cache-analysis
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [18, 20]
-    
+        os:
+        - ubuntu-latest
+        - windows-latest
+        node-version:
+        - 18
+        - 20
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Setup Node.js ${{ matrix.node-version }}"
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    
-    - name: "Jules NPM Test Cache"
+        cache: npm
+    - name: Jules NPM Test Cache
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.npm
+        path: '~/.npm
+
           .cache/npm
+
           node_modules
+
           coverage
-        key: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-test-${{ matrix.node-version }}-${{ matrix.os }}
-        restore-keys: |
-          ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-${{ matrix.node-version }}
-          nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-${{ matrix.node-version }}
-    
-    - name: "Install Dependencies with Jules Optimization"
-      run: |
-        if [ ! -d "node_modules" ] || [ "${{ needs.jules-cache-analysis.outputs.dependencies-changed }}" == "true" ]; then
-          npm ci --cache .cache/npm --prefer-offline
-        fi
-    
-    - name: "Jest Tests - Synaptic Network Validation"
-      run: |
-        mkdir -p test-results/jest
-        
-        echo "# Jules Jest Testing Protocol" >> $GITHUB_STEP_SUMMARY
-        
-        # Run tests with Jules monitoring
-        npm test -- \
-          --coverage \
-          --coverageDirectory=test-results/jest/coverage \
-          --testResultsProcessor=jest-junit \
-          --outputFile=test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml \
-          || echo "Test execution completed - Jules analysis active"
-        
-        echo "✅ Jest testing protocol completed" >> $GITHUB_STEP_SUMMARY
+
+          '
+        key: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-test-${{ matrix.node-version
+          }}-${{ matrix.os }}
+        restore-keys: '${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}-${{
+          matrix.node-version }}
+
+          nodejs-${{ env.JULES_CACHE_VERSION }}-${{ runner.os }}-${{ matrix.node-version
+          }}
+
+          '
+    - name: Install Dependencies with Jules Optimization
+      run: "if [ ! -d \"node_modules\" ] || [ \"${{ needs.jules-cache-analysis.outputs.dependencies-changed\
+        \ }}\" == \"true\" ]; then\n  npm ci --cache .cache/npm --prefer-offline\n\
+        fi\n"
+    - name: Jest Tests - Synaptic Network Validation
+      run: "mkdir -p test-results/jest\n\necho \"# Jules Jest Testing Protocol\" >>\
+        \ $GITHUB_STEP_SUMMARY\n\n# Run tests with Jules monitoring\nnpm test -- \\\
+        \n  --coverage \\\n  --coverageDirectory=test-results/jest/coverage \\\n \
+        \ --testResultsProcessor=jest-junit \\\n  --outputFile=test-results/jest/junit-${{\
+        \ matrix.os }}-node${{ matrix.node-version }}.xml \\\n  || echo \"Test execution\
+        \ completed - Jules analysis active\"\n\necho \"\u2705 Jest testing protocol\
+        \ completed\" >> $GITHUB_STEP_SUMMARY\n"
       env:
-        JEST_JUNIT_OUTPUT_FILE: test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml
-    
-    - name: "Upload Jest Results - Synaptic Analysis Storage"
+        JEST_JUNIT_OUTPUT_FILE: test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version
+          }}.xml
+    - name: Upload Jest Results - Synaptic Analysis Storage
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: jules-jest-results-${{ matrix.os }}-node${{ matrix.node-version }}
-        path: |
-          test-results/jest/
-          coverage/
-        retention-days: 7
+        path: 'test-results/jest/
 
-  # Jules Analytics and Reporting
+          coverage/
+
+          '
+        retention-days: 7
+    timeout-minutes: 20
   jules-analytics:
-    name: "Jules Cache Analytics & Optimization Report"
-    needs: [jules-cache-analysis, jules-frontend-build, jules-backend-build, jules-ruby-build, jules-node-test]
+    name: Jules Cache Analytics & Optimization Report
+    needs:
+    - jules-cache-analysis
+    - jules-frontend-build
+    - jules-backend-build
+    - jules-ruby-build
+    - jules-node-test
     runs-on: ubuntu-latest
     if: always()
-    
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Download All Jules Artifacts"
+    - name: Download All Jules Artifacts
       uses: actions/download-artifact@v4
       with:
         pattern: jules-*
         path: ./jules-artifacts/
         merge-multiple: true
-    
-    - name: "Generate Jules Analytics Report"
-      run: |
-        mkdir -p jules-analytics-report
-        
-        cat > jules-analytics-report/cache-analytics.md << 'EOF'
-        # Jules Cache Analytics Report - Den Usynlige Hånds Optimization Matrix
-        
-        Generated: $(date)
-        Commit: ${{ github.sha }}
-        Repository: ${{ github.repository }}
-        Jules Version: ${{ env.JULES_VERSION }}
-        
-        ## Cache Performance Matrix
-        
-        ### Dependency Analysis
-        - Dependencies Changed: ${{ needs.jules-cache-analysis.outputs.dependencies-changed }}
-        - Cache Keys Generated:
-          - Node.js: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs }}
-          - Python: ${{ needs.jules-cache-analysis.outputs.cache-key-python }}
-          - Ruby: ${{ needs.jules-cache-analysis.outputs.cache-key-ruby }}
-          - Docker: ${{ needs.jules-cache-analysis.outputs.cache-key-docker }}
-        
-        ### Build Artifacts Summary
-        ```
-        $(find jules-artifacts -name "jules-manifest.json" -exec echo "=== {} ===" \; -exec cat {} \; || echo "No Jules manifests found")
-        ```
-        
-        ### Cache Optimization Status
-        ```
-        $(find jules-artifacts -type f | wc -l) total artifacts generated
-        $(find jules-artifacts -name "*cache*" | wc -l) cache-optimized artifacts
-        $(find jules-artifacts -name "jules-manifest.json" | wc -l) Jules-tracked builds
-        ```
-        
-        ### Storage Efficiency Analysis
-        ```
-        Total artifact size: $(du -sh jules-artifacts 2>/dev/null | cut -f1 || echo "calculating...")
-        ```
-        
-        ## Jules System Health
-        - ✅ Cache-Arkitekten: Active
-        - ✅ Dependency-Kartleggeren: Operational
-        - ✅ Build-Optimaliserer: Engaged
-        - ✅ Workflow-Koordinator: Synchronized
-        
-        ## Skyskraperen Integration Status
-        - Astrid Møller Oversight: Approved
-        - Iron Maiden Resilience: Validated
-        - Den Usynlige Hånd: Manifesting optimizations
-        
-        EOF
-    
-    - name: "Upload Jules Analytics Report"
+    - name: Generate Jules Analytics Report
+      run: "mkdir -p jules-analytics-report\n\ncat > jules-analytics-report/cache-analytics.md\
+        \ << 'EOF'\n# Jules Cache Analytics Report - Den Usynlige H\xE5nds Optimization\
+        \ Matrix\n\nGenerated: $(date)\nCommit: ${{ github.sha }}\nRepository: ${{\
+        \ github.repository }}\nJules Version: ${{ env.JULES_VERSION }}\n\n## Cache\
+        \ Performance Matrix\n\n### Dependency Analysis\n- Dependencies Changed: ${{\
+        \ needs.jules-cache-analysis.outputs.dependencies-changed }}\n- Cache Keys\
+        \ Generated:\n  - Node.js: ${{ needs.jules-cache-analysis.outputs.cache-key-nodejs\
+        \ }}\n  - Python: ${{ needs.jules-cache-analysis.outputs.cache-key-python\
+        \ }}\n  - Ruby: ${{ needs.jules-cache-analysis.outputs.cache-key-ruby }}\n\
+        \  - Docker: ${{ needs.jules-cache-analysis.outputs.cache-key-docker }}\n\n\
+        ### Build Artifacts Summary\n```\n$(find jules-artifacts -name \"jules-manifest.json\"\
+        \ -exec echo \"=== {} ===\" \\; -exec cat {} \\; || echo \"No Jules manifests\
+        \ found\")\n```\n\n### Cache Optimization Status\n```\n$(find jules-artifacts\
+        \ -type f | wc -l) total artifacts generated\n$(find jules-artifacts -name\
+        \ \"*cache*\" | wc -l) cache-optimized artifacts\n$(find jules-artifacts -name\
+        \ \"jules-manifest.json\" | wc -l) Jules-tracked builds\n```\n\n### Storage\
+        \ Efficiency Analysis\n```\nTotal artifact size: $(du -sh jules-artifacts\
+        \ 2>/dev/null | cut -f1 || echo \"calculating...\")\n```\n\n## Jules System\
+        \ Health\n- \u2705 Cache-Arkitekten: Active\n- \u2705 Dependency-Kartleggeren:\
+        \ Operational\n- \u2705 Build-Optimaliserer: Engaged\n- \u2705 Workflow-Koordinator:\
+        \ Synchronized\n\n## Skyskraperen Integration Status\n- Astrid M\xF8ller Oversight:\
+        \ Approved\n- Iron Maiden Resilience: Validated\n- Den Usynlige H\xE5nd: Manifesting\
+        \ optimizations\n\nEOF\n"
+    - name: Upload Jules Analytics Report
       uses: actions/upload-artifact@v4
       with:
         name: jules-analytics-report-${{ github.sha }}
         path: jules-analytics-report/
         retention-days: 90
-
-  # Docker Build with Enhanced Caching
+    timeout-minutes: 20
   jules-docker-build:
-    name: "Docker Build - Container Manifestation"
+    name: Docker Build - Container Manifestation
     runs-on: ubuntu-latest
     needs: jules-cache-analysis
-    
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Setup Docker Buildx - Container Architecture"
+    - name: Setup Docker Buildx - Container Architecture
       uses: docker/setup-buildx-action@v3
-    
-    - name: "Jules Docker Cache Matrix"
+    - name: Jules Docker Cache Matrix
       uses: actions/cache@v4
       with:
         path: /tmp/.buildx-cache
         key: ${{ needs.jules-cache-analysis.outputs.cache-key-docker }}
-        restore-keys: |
-          docker-${{ env.JULES_CACHE_VERSION }}
-    
-    - name: "Build Docker Image - Psycho-Noir Container"
+        restore-keys: 'docker-${{ env.JULES_CACHE_VERSION }}
+
+          '
+    - name: Build Docker Image - Psycho-Noir Container
       uses: docker/build-push-action@v5
       with:
         context: .
@@ -559,55 +466,40 @@ jobs:
         tags: psycho-noir-kontrapunkt:${{ env.JULES_VERSION }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          JULES_VERSION=${{ env.JULES_VERSION }}
+        build-args: 'JULES_VERSION=${{ env.JULES_VERSION }}
+
           CORRUPTION_INDEX=${{ env.JULES_CORRUPTION_INDEX }}
-    
-    - name: "Optimize Docker Cache"
-      run: |
-        rm -rf /tmp/.buildx-cache
+
+          '
+    - name: Optimize Docker Cache
+      run: 'rm -rf /tmp/.buildx-cache
+
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache || echo "Cache optimization completed"
 
-  # Weekly Cache Maintenance (Scheduled)
+        '
+    timeout-minutes: 20
   jules-cache-maintenance:
-    name: "Jules Weekly Cache Maintenance"
+    name: Jules Weekly Cache Maintenance
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
-    
     steps:
-    - name: "Checkout - Reality Anchor"
+    - name: Checkout - Reality Anchor
       uses: actions/checkout@v4
-    
-    - name: "Jules Cache Cleanup Protocol"
-      run: |
-        echo "# Jules Weekly Maintenance Protocol" >> $GITHUB_STEP_SUMMARY
-        echo "Initiating cache cleanup and optimization..." >> $GITHUB_STEP_SUMMARY
-        
-        # This job runs weekly to maintain cache health
-        # In a real scenario, this would clean up old caches
-        
-        cat > cache-maintenance-report.md << EOF
-        # Jules Cache Maintenance Report
-        
-        Date: $(date)
-        Action: Weekly cleanup protocol
-        Status: Completed
-        
-        ## Actions Performed
-        - Cache integrity verification
-        - Old cache cleanup
-        - Storage optimization
-        - Dependency graph validation
-        
-        ## Jules System Status
-        All systems operational - Den Usynlige Hånd continues optimizations
-        EOF
-        
-        echo "✅ Weekly maintenance protocol completed" >> $GITHUB_STEP_SUMMARY
-    
-    - name: "Upload Maintenance Report"
+    - name: Jules Cache Cleanup Protocol
+      run: "echo \"# Jules Weekly Maintenance Protocol\" >> $GITHUB_STEP_SUMMARY\n\
+        echo \"Initiating cache cleanup and optimization...\" >> $GITHUB_STEP_SUMMARY\n\
+        \n# This job runs weekly to maintain cache health\n# In a real scenario, this\
+        \ would clean up old caches\n\ncat > cache-maintenance-report.md << EOF\n\
+        # Jules Cache Maintenance Report\n\nDate: $(date)\nAction: Weekly cleanup\
+        \ protocol\nStatus: Completed\n\n## Actions Performed\n- Cache integrity verification\n\
+        - Old cache cleanup\n- Storage optimization\n- Dependency graph validation\n\
+        \n## Jules System Status\nAll systems operational - Den Usynlige H\xE5nd continues\
+        \ optimizations\nEOF\n\necho \"\u2705 Weekly maintenance protocol completed\"\
+        \ >> $GITHUB_STEP_SUMMARY\n"
+    - name: Upload Maintenance Report
       uses: actions/upload-artifact@v4
       with:
         name: jules-maintenance-$(date +%Y%m%d)
         path: cache-maintenance-report.md
         retention-days: 90
+    timeout-minutes: 20

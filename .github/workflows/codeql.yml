@@ -1,44 +1,22 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
-#
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
-#
-# ******** NOTE ********
-# We have attempted to detect the languages in your repository. Please check
-# the `language` matrix defined below to confirm you have the correct set of
-# supported CodeQL languages.
-#
-name: "CodeQL Advanced"
-
-on:
+name: CodeQL Advanced
+true:
   push:
-    branches: [ "main" ]
+    branches:
+    - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
   schedule:
-    - cron: '20 14 * * 1'
-
+  - cron: 20 14 * * 1
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
-    # Runner size impacts CodeQL analysis time. To learn more, please see:
-    #   - https://gh.io/recommended-hardware-resources-for-running-codeql
-    #   - https://gh.io/supported-runners-and-hardware-resources
-    #   - https://gh.io/using-larger-runners (GitHub.com only)
-    # Consider using larger runners or machines with greater resources for possible analysis time improvements.
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     permissions:
-      # required for all workflows
       security-events: write
-
-      # required to fetch internal or private CodeQL packs
       packages: read
-
-      # only required for workflows in private repositories
       actions: read
       contents: read
-
     strategy:
       fail-fast: false
       matrix:
@@ -47,81 +25,58 @@ jobs:
           build-mode: none
         - language: ruby
           build-mode: none
-        # CodeQL supports the following values keywords for 'language': 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust', 'swift'
-        # Use `c-cpp` to analyze code written in C, C++ or both
-        # Use 'java-kotlin' to analyze code written in Java, Kotlin or both
-        # Use 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
-        # To learn more about changing the languages that are analyzed or customizing the build mode for your analysis,
-        # see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/customizing-your-advanced-setup-for-code-scanning.
-        # If you are analyzing a compiled language, you can modify the 'build-mode' for that language to customize how
-        # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    # Add any setup steps before running the `github/codeql-action/init` action.
-    # This includes steps like installing compilers or runtimes (`actions/setup-node`
-    # or others). This is typically only required for manual builds.
-    # - name: Setup runtime (example)
-    #   uses: actions/setup-example@v1
-
-    # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
-
-        # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
-        # queries: security-extended,security-and-quality
-
-    # If the analyze step fails for one of the languages you are analyzing with
-    # "We were unable to automatically build your code", modify the matrix above
-    # to set the build mode to "manual" for that language. Then modify this step
-    # to build your code.
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
     - if: matrix.build-mode == 'manual'
       shell: bash
-      run: |
-        echo 'If you are using a "manual" build mode for one or more of the' \
-          'languages you are analyzing, replace this with the commands to build' \
-          'your code, for example:'
-        echo '  make bootstrap'
-        echo '  make release'
-        exit 1
-
+      run: "echo 'If you are using a \"manual\" build mode for one or more of the'\
+        \ \\\n  'languages you are analyzing, replace this with the commands to build'\
+        \ \\\n  'your code, for example:'\necho '  make bootstrap'\necho '  make release'\n\
+        exit 1\n"
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
-        category: "/language:${{matrix.language}}"
-    
-    # Upload CodeQL analysis results as artifacts using v4
+        category: /language:${{matrix.language}}
     - name: Upload CodeQL results
       uses: actions/upload-artifact@v4
-      if: always()  # Upload even if analysis fails
+      if: always()
       with:
         name: codeql-results-${{ matrix.language }}-${{ github.run_number }}
-        path: |
-          ${{ github.workspace }}/../results/
+        path: '${{ github.workspace }}/../results/
+
           ${{ runner.temp }}/codeql_databases/
+
+          '
         retention-days: 30
-    
-    # Create a summary report for this language
     - name: Create CodeQL summary
       if: always()
-      run: |
-        mkdir -p codeql-summary
-        echo "# CodeQL Analysis Summary" > codeql-summary/summary-${{ matrix.language }}.md
-        echo "Language: ${{ matrix.language }}" >> codeql-summary/summary-${{ matrix.language }}.md
-        echo "Build Mode: ${{ matrix.build-mode }}" >> codeql-summary/summary-${{ matrix.language }}.md
-        echo "Analysis Date: $(date)" >> codeql-summary/summary-${{ matrix.language }}.md
-        echo "Commit: ${{ github.sha }}" >> codeql-summary/summary-${{ matrix.language }}.md
-        echo "Runner: ${{ runner.os }}" >> codeql-summary/summary-${{ matrix.language }}.md
-    
+      run: 'mkdir -p codeql-summary
+
+        echo "# CodeQL Analysis Summary" > codeql-summary/summary-${{ matrix.language
+        }}.md
+
+        echo "Language: ${{ matrix.language }}" >> codeql-summary/summary-${{ matrix.language
+        }}.md
+
+        echo "Build Mode: ${{ matrix.build-mode }}" >> codeql-summary/summary-${{
+        matrix.language }}.md
+
+        echo "Analysis Date: $(date)" >> codeql-summary/summary-${{ matrix.language
+        }}.md
+
+        echo "Commit: ${{ github.sha }}" >> codeql-summary/summary-${{ matrix.language
+        }}.md
+
+        echo "Runner: ${{ runner.os }}" >> codeql-summary/summary-${{ matrix.language
+        }}.md
+
+        '
     - name: Upload CodeQL summary
       uses: actions/upload-artifact@v4
       if: always()
@@ -129,65 +84,55 @@ jobs:
         name: codeql-summary-${{ matrix.language }}-${{ github.run_number }}
         path: codeql-summary/
         retention-days: 7
-
-  # Consolidate all CodeQL results
+    timeout-minutes: 60
+    env:
+      NODE_OPTIONS: --max_old_space_size=6000
   consolidate-results:
     name: Consolidate CodeQL Results
     needs: analyze
     runs-on: ubuntu-latest
-    if: always()  # Run even if some analysis jobs fail
-    
+    if: always()
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Download all CodeQL summaries
       uses: actions/download-artifact@v4
       with:
         pattern: codeql-summary-*
         path: ./codeql-summaries/
         merge-multiple: true
-    
-    - name: Download all CodeQL results  
+    - name: Download all CodeQL results
       uses: actions/download-artifact@v4
       with:
         pattern: codeql-results-*
         path: ./codeql-results/
         merge-multiple: true
-      continue-on-error: true  # Results might be large or fail to download
-    
+      continue-on-error: true
     - name: Create consolidated report
-      run: |
-        mkdir -p consolidated-report
-        echo "# Consolidated CodeQL Analysis Report" > consolidated-report/consolidated-report.md
-        echo "Generated: $(date)" >> consolidated-report/consolidated-report.md
-        echo "Commit: ${{ github.sha }}" >> consolidated-report/consolidated-report.md
-        echo "Repository: ${{ github.repository }}" >> consolidated-report/consolidated-report.md
-        echo "" >> consolidated-report/consolidated-report.md
-        
-        echo "## Languages Analyzed" >> consolidated-report/consolidated-report.md
-        for summary in codeql-summaries/summary-*.md; do
-          if [ -f "$summary" ]; then
-            echo "### $(basename "$summary" .md)" >> consolidated-report/consolidated-report.md
-            cat "$summary" >> consolidated-report/consolidated-report.md
-            echo "" >> consolidated-report/consolidated-report.md
-          fi
-        done
-        
-        echo "## Files Summary" >> consolidated-report/consolidated-report.md
-        echo "### Downloaded Summaries:" >> consolidated-report/consolidated-report.md
-        find codeql-summaries -name "*.md" | sort >> consolidated-report/consolidated-report.md
-        
-        echo "### Downloaded Results:" >> consolidated-report/consolidated-report.md
-        find codeql-results -type f | head -20 >> consolidated-report/consolidated-report.md  # Limit output
-        
-        # Count total files
-        result_count=$(find codeql-results -type f | wc -l)
-        echo "Total result files: $result_count" >> consolidated-report/consolidated-report.md
-    
+      run: "mkdir -p consolidated-report\necho \"# Consolidated CodeQL Analysis Report\"\
+        \ > consolidated-report/consolidated-report.md\necho \"Generated: $(date)\"\
+        \ >> consolidated-report/consolidated-report.md\necho \"Commit: ${{ github.sha\
+        \ }}\" >> consolidated-report/consolidated-report.md\necho \"Repository: ${{\
+        \ github.repository }}\" >> consolidated-report/consolidated-report.md\necho\
+        \ \"\" >> consolidated-report/consolidated-report.md\n\necho \"## Languages\
+        \ Analyzed\" >> consolidated-report/consolidated-report.md\nfor summary in\
+        \ codeql-summaries/summary-*.md; do\n  if [ -f \"$summary\" ]; then\n    echo\
+        \ \"### $(basename \"$summary\" .md)\" >> consolidated-report/consolidated-report.md\n\
+        \    cat \"$summary\" >> consolidated-report/consolidated-report.md\n    echo\
+        \ \"\" >> consolidated-report/consolidated-report.md\n  fi\ndone\n\necho \"\
+        ## Files Summary\" >> consolidated-report/consolidated-report.md\necho \"\
+        ### Downloaded Summaries:\" >> consolidated-report/consolidated-report.md\n\
+        find codeql-summaries -name \"*.md\" | sort >> consolidated-report/consolidated-report.md\n\
+        \necho \"### Downloaded Results:\" >> consolidated-report/consolidated-report.md\n\
+        find codeql-results -type f | head -20 >> consolidated-report/consolidated-report.md\
+        \  # Limit output\n\n# Count total files\nresult_count=$(find codeql-results\
+        \ -type f | wc -l)\necho \"Total result files: $result_count\" >> consolidated-report/consolidated-report.md\n"
     - name: Upload consolidated CodeQL report
       uses: actions/upload-artifact@v4
       with:
         name: codeql-consolidated-report-${{ github.sha }}
         path: consolidated-report/
         retention-days: 90
+    timeout-minutes: 60
+    env:
+      NODE_OPTIONS: --max_old_space_size=6000

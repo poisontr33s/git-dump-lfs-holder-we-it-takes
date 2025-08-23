@@ -1,0 +1,25 @@
+name: "\U0001F50D Resource Usage Monitor - Psycho-Noir Kontrapunkt"
+'on':
+  workflow_run:
+    workflows:
+    - '*'
+    types:
+    - completed
+  schedule:
+  - cron: 0 */6 * * *
+jobs:
+  monitor-resources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Monitor Resource Usage
+      run: "\n                            echo \"\U0001F50D RESOURCE MONITORING STARTED\"\
+        \n                            echo \"Free disk space:\"\n                \
+        \            df -h\n                            echo \"Memory usage:\"\n \
+        \                           free -h\n                            echo \"CPU\
+        \ info:\"\n                            nproc\n                           \
+        \ echo \"Running processes:\"\n                            ps aux --sort=-%cpu\
+        \ | head -10\n                            echo \"\U0001F3AD RESOURCE MONITORING\
+        \ COMPLETE\"\n                            "

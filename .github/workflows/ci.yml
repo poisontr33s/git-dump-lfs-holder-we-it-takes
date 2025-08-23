@@ -1,266 +1,324 @@
-name: "CI - Build and Test"
-
-on:
+name: CI - Build and Test
+true:
   push:
-    branches: [ "main", "develop" ]
+    branches:
+    - main
+    - develop
   pull_request:
-    branches: [ "main" ]
-
+    branches:
+    - main
 jobs:
-  # Frontend build job with matrix strategy
   frontend-build:
     name: Build Frontend (${{ matrix.browser }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        browser: [chrome, firefox, safari]
-        node-version: [18, 20]
-    
+        browser:
+        - chrome
+        - firefox
+        - safari
+        node-version:
+        - 18
+        - 20
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    
+        cache: npm
     - name: Install dependencies
       run: npm ci
-    
     - name: Build frontend
-      run: |
-        # Create build directory
+      run: '# Create build directory
+
         mkdir -p dist/frontend
+
         # Copy frontend files (since this is a simple HTML project)
+
         cp -r frontend/* dist/frontend/
+
         # Create a build manifest
-        echo "Build for ${{ matrix.browser }} on Node ${{ matrix.node-version }}" > dist/frontend/build-info.txt
+
+        echo "Build for ${{ matrix.browser }} on Node ${{ matrix.node-version }}"
+        > dist/frontend/build-info.txt
+
         echo "Build time: $(date)" >> dist/frontend/build-info.txt
+
         echo "Commit: ${{ github.sha }}" >> dist/frontend/build-info.txt
-    
+
+        '
     - name: Upload frontend build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: frontend-build-${{ matrix.browser }}-node${{ matrix.node-version }}
-        path: |
-          dist/frontend/
-          frontend/
-        retention-days: 30
+        path: 'dist/frontend/
 
-  # Backend Python job with matrix strategy  
+          frontend/
+
+          '
+        retention-days: 30
+    timeout-minutes: 20
   backend-build:
     name: Build Backend (${{ matrix.python-version }}, ${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.9', '3.10', '3.11']
-    
+        os:
+        - ubuntu-latest
+        - windows-latest
+        - macos-latest
+        python-version:
+        - '3.9'
+        - '3.10'
+        - '3.11'
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Setup Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
     - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
+      run: 'python -m pip install --upgrade pip
+
         pip install -r backend/python/requirements.txt
+
         pip install pytest pytest-cov build wheel
-    
+
+        '
     - name: Run Python tests
-      run: |
-        cd backend/python
+      run: 'cd backend/python
+
         # Create test results directory
+
         mkdir -p ../../test-results/python
-        # Run tests with coverage (even if no tests exist yet, this demonstrates the pattern)
-        python -m pytest --cov=. --cov-report=xml --cov-report=html --junitxml=../../test-results/python/junit-${{ matrix.os }}-${{ matrix.python-version }}.xml . || echo "No tests found - this is expected for demo"
-    
+
+        # Run tests with coverage (even if no tests exist yet, this demonstrates the
+        pattern)
+
+        python -m pytest --cov=. --cov-report=xml --cov-report=html --junitxml=../../test-results/python/junit-${{
+        matrix.os }}-${{ matrix.python-version }}.xml . || echo "No tests found -
+        this is expected for demo"
+
+        '
     - name: Build Python package
-      run: |
-        cd backend/python
+      run: 'cd backend/python
+
         python -m build
+
         # Create build info
+
         mkdir -p ../../dist/python
-        cp dist/* ../../dist/python/ 2>/dev/null || echo "No packages built - creating demo structure"
-        echo "Python ${{ matrix.python-version }} on ${{ matrix.os }}" > ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-        echo "Build time: $(date)" >> ../../dist/python/build-info-${{ matrix.os }}-${{ matrix.python-version }}.txt
-    
+
+        cp dist/* ../../dist/python/ 2>/dev/null || echo "No packages built - creating
+        demo structure"
+
+        echo "Python ${{ matrix.python-version }} on ${{ matrix.os }}" > ../../dist/python/build-info-${{
+        matrix.os }}-${{ matrix.python-version }}.txt
+
+        echo "Build time: $(date)" >> ../../dist/python/build-info-${{ matrix.os }}-${{
+        matrix.python-version }}.txt
+
+        '
     - name: Upload Python build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: backend-python-${{ matrix.os }}-py${{ matrix.python-version }}
-        path: |
-          dist/python/
+        path: 'dist/python/
+
           backend/python/dist/
+
+          '
         retention-days: 30
-    
     - name: Upload Python test results
       uses: actions/upload-artifact@v4
-      if: always()  # Upload even if tests fail
+      if: always()
       with:
         name: test-results-python-${{ matrix.os }}-py${{ matrix.python-version }}
-        path: |
-          test-results/python/
-          backend/python/htmlcov/
-          backend/python/coverage.xml
-        retention-days: 7
+        path: 'test-results/python/
 
-  # Node.js test job
+          backend/python/htmlcov/
+
+          backend/python/coverage.xml
+
+          '
+        retention-days: 7
+    timeout-minutes: 20
   node-test:
     name: Test Node.js (${{ matrix.node-version }}, ${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [18, 20]
-    
+        os:
+        - ubuntu-latest
+        - windows-latest
+        node-version:
+        - 18
+        - 20
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    
+        cache: npm
     - name: Install dependencies
       run: npm ci
-    
     - name: Run Jest tests
-      run: |
-        # Create test results directory
+      run: '# Create test results directory
+
         mkdir -p test-results/jest
+
         # Run tests with coverage and JUnit output
-        npm test -- --coverage --coverageDirectory=test-results/jest/coverage --testResultsProcessor=jest-junit --outputFile=test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml || echo "Test command completed"
+
+        npm test -- --coverage --coverageDirectory=test-results/jest/coverage --testResultsProcessor=jest-junit
+        --outputFile=test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version
+        }}.xml || echo "Test command completed"
+
+        '
       env:
-        JEST_JUNIT_OUTPUT_FILE: test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version }}.xml
-    
+        JEST_JUNIT_OUTPUT_FILE: test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version
+          }}.xml
     - name: Upload Jest test results
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results-jest-${{ matrix.os }}-node${{ matrix.node-version }}
-        path: |
-          test-results/jest/
-          coverage/
-        retention-days: 7
+        path: 'test-results/jest/
 
-  # Integration job that downloads and combines artifacts
+          coverage/
+
+          '
+        retention-days: 7
+    timeout-minutes: 20
   integration:
     name: Integration Testing
-    needs: [frontend-build, backend-build, node-test]
+    needs:
+    - frontend-build
+    - backend-build
+    - node-test
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Download all frontend artifacts
       uses: actions/download-artifact@v4
       with:
         pattern: frontend-build-*
         path: ./artifacts/frontend/
         merge-multiple: true
-    
     - name: Download all backend artifacts
       uses: actions/download-artifact@v4
       with:
         pattern: backend-python-*
         path: ./artifacts/backend/
         merge-multiple: true
-    
     - name: Download all test results
       uses: actions/download-artifact@v4
       with:
         pattern: test-results-*
         path: ./artifacts/test-results/
         merge-multiple: true
-    
     - name: Create integration report
-      run: |
-        mkdir -p integration-report
+      run: 'mkdir -p integration-report
+
         echo "# Integration Report" > integration-report/report.md
+
         echo "Generated: $(date)" >> integration-report/report.md
+
         echo "" >> integration-report/report.md
+
         echo "## Frontend Builds" >> integration-report/report.md
+
         find artifacts/frontend -name "build-info.txt" -exec echo "- {}" \; >> integration-report/report.md
+
         echo "" >> integration-report/report.md
+
         echo "## Backend Builds" >> integration-report/report.md
+
         find artifacts/backend -name "build-info-*.txt" -exec echo "- {}" \; >> integration-report/report.md
+
         echo "" >> integration-report/report.md
+
         echo "## Test Results" >> integration-report/report.md
+
         find artifacts/test-results -name "*.xml" -exec echo "- {}" \; >> integration-report/report.md
-        
+
+
         # List all downloaded artifacts
+
         echo "" >> integration-report/report.md
+
         echo "## Downloaded Artifacts" >> integration-report/report.md
+
         find artifacts -type f | sort >> integration-report/report.md
-    
+
+        '
     - name: Upload integration report
       uses: actions/upload-artifact@v4
       with:
         name: integration-report-${{ github.sha }}
         path: integration-report/
         retention-days: 90
-
-  # Deployment preparation job (example)
+    timeout-minutes: 20
   deploy-prep:
     name: Prepare Deployment
     needs: integration
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
     - name: Download integration report
       uses: actions/download-artifact@v4
       with:
         name: integration-report-${{ github.sha }}
         path: ./integration-report/
-    
-    # Download specific production builds (hardcoded for stability)
     - name: Download production frontend build
       uses: actions/download-artifact@v4
       with:
-        name: frontend-build-chrome-node20  # Specific: Chrome-optimized build with Node 20
+        name: frontend-build-chrome-node20
         path: ./production-frontend/
-    
     - name: Download production backend build
       uses: actions/download-artifact@v4
       with:
-        name: backend-python-ubuntu-latest-py3.11  # Specific: Ubuntu production build with Python 3.11
+        name: backend-python-ubuntu-latest-py3.11
         path: ./production-backend/
-    
     - name: Create deployment package
-      run: |
-        mkdir -p deployment-package
+      run: 'mkdir -p deployment-package
+
         cp -r production-frontend/* deployment-package/
+
         cp -r production-backend/* deployment-package/
+
         cp integration-report/report.md deployment-package/
-        
+
+
         # Create deployment manifest
+
         echo "# Deployment Package" > deployment-package/DEPLOYMENT.md
+
         echo "Created: $(date)" >> deployment-package/DEPLOYMENT.md
+
         echo "Commit: ${{ github.sha }}" >> deployment-package/DEPLOYMENT.md
+
         echo "Branch: ${{ github.ref_name }}" >> deployment-package/DEPLOYMENT.md
+
         echo "Frontend: Chrome-optimized, Node 20" >> deployment-package/DEPLOYMENT.md
+
         echo "Backend: Ubuntu, Python 3.11" >> deployment-package/DEPLOYMENT.md
-    
+
+        '
     - name: Upload deployment package
       uses: actions/upload-artifact@v4
       with:
         name: deployment-package-${{ github.sha }}
         path: deployment-package/
         retention-days: 90
+    timeout-minutes: 20

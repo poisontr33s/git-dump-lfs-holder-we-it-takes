@@ -1,250 +1,176 @@
-name: 🧠 Neural Archaeology System - Active Monitoring
-
-# PSYCHO-NOIR KONTRAPUNKT: NEURAL ARCHAEOLOGY ACTIVATION
-# ======================================================
-# Aktiveres automatisk på PR-endringer for å teste systemet
-# og katalogisere eventuelle nye feil i real-time.
-
-on:
+name: "\U0001F9E0 Neural Archaeology System - Active Monitoring"
+true:
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches: [main, develop]
+    types:
+    - opened
+    - synchronize
+    - reopened
+    branches:
+    - main
+    - develop
   push:
-    branches: [main]
-  workflow_dispatch: # Manual trigger
+    branches:
+    - main
+  workflow_dispatch:
     inputs:
       analysis_mode:
-        description: "Analysis mode"
+        description: Analysis mode
         required: true
-        default: "full"
+        default: full
         type: choice
         options:
-          - full
-          - quick
-          - harvest-only
-
+        - full
+        - quick
+        - harvest-only
 jobs:
   neural-archaeology-analysis:
-    name: 🔍 Neural Archaeology Pipeline
+    name: "\U0001F50D Neural Archaeology Pipeline"
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.11]
-
+        python-version:
+        - 3.11
     steps:
-      - name: 🧬 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Full history for better analysis
+    - name: "\U0001F9EC Checkout Repository"
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: "\U0001F40D Setup Python Environment"
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: pip
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: ${{ runner.os }}-pip-
+    - name: "\U0001F4E6 Install Dependencies"
+      run: 'python -m pip install --upgrade pip
 
-      - name: 🐍 Setup Python Environment
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: "pip"
+        pip install -r backend/requirements.txt || echo "No requirements.txt found,
+        continuing..."
 
-      - name: 📦 Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r backend/requirements.txt || echo "No requirements.txt found, continuing..."
+        '
+    - name: "\U0001F3D7\uFE0F Setup Neural Archaeology Infrastructure"
+      run: 'mkdir -p data/generert
 
-      - name: 🏗️ Setup Neural Archaeology Infrastructure
-        run: |
-          mkdir -p data/generert
-          mkdir -p data/rapporter
-          chmod +x launch_neural_archaeology.sh || true
+        mkdir -p data/rapporter
 
-      - name: 🧠 Initialize Failure Archaeology Database
-        run: |
-          echo "🔍 INITIALIZING FAILURE ARCHAEOLOGY SYSTEM..."
-          cd backend/python
-          python failure_archaeology_system.py
+        chmod +x launch_neural_archaeology.sh || true
 
-      - name: 📡 Harvest Historical Failures
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "📡 HARVESTING FAILED RUNS FROM REPOSITORY HISTORY..."
-          cd backend/python
+        '
+    - name: "\U0001F9E0 Initialize Failure Archaeology Database"
+      run: "echo \"\U0001F50D INITIALIZING FAILURE ARCHAEOLOGY SYSTEM...\"\ncd backend/python\n\
+        python failure_archaeology_system.py\n"
+    - name: "\U0001F4E1 Harvest Historical Failures"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: "echo \"\U0001F4E1 HARVESTING FAILED RUNS FROM REPOSITORY HISTORY...\"\n\
+        cd backend/python\n\n# Run the harvester to collect existing failures\npython\
+        \ failed_runs_harvester.py || echo \"Harvest completed with warnings\"\n"
+    - name: "\U0001F52E Execute Neural Archaeology Pipeline"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: "echo \"\U0001F52E EXECUTING COMPLETE NEURAL ARCHAEOLOGY PIPELINE...\"\n\
+        cd backend/python\n\n# Run the full orchestrator\npython neural_archaeology_orchestrator.py\
+        \ --mode full || echo \"Pipeline completed with warnings\"\n"
+    - name: "\U0001F4CA Generate Analysis Visualization"
+      run: "echo \"\U0001F4CA GENERATING FAILURE ANALYSIS VISUALIZATION...\"\ncd backend/python\n\
+        python failure_analysis_visualizer.py\n"
+    - name: "\U0001F4CB Create Failure Intelligence Report"
+      run: "echo \"\U0001F4CB CREATING COMPREHENSIVE INTELLIGENCE REPORT...\"\n\n\
+        # Create summary report for PR comment\ncat > neural_archaeology_summary.md\
+        \ << 'EOF'\n# \U0001F9E0 Neural Archaeology Analysis Report\n\n**Timestamp:**\
+        \ $(date -u +\"%Y-%m-%d %H:%M:%S UTC\")\n**Trigger:** ${{ github.event_name\
+        \ }}\n**Branch:** ${{ github.ref_name }}\n\n## \U0001F4CA Pipeline Status\n\
+        \u2705 Neural Archaeology system activated successfully\n\n## \U0001F50D Analysis\
+        \ Results\nEOF\n\n# Add database analysis if it exists\nif [ -f data/generert/failure_archaeology.db\
+        \ ]; then\n  echo \"\u2705 Failure database updated\" >> neural_archaeology_summary.md\n\
+        \  echo \"\U0001F4CA New failures cataloged and analyzed\" >> neural_archaeology_summary.md\n\
+        else\n  echo \"\u26A0\uFE0F No new failures detected in this run\" >> neural_archaeology_summary.md\n\
+        fi\n\n# Add report links if they exist\nif [ -d data/rapporter ]; then\n \
+        \ echo \"\" >> neural_archaeology_summary.md\n  echo \"## \U0001F4CB Generated\
+        \ Reports\" >> neural_archaeology_summary.md\n  ls data/rapporter/*.md 2>/dev/null\
+        \ | head -3 | while read report; do\n    echo \"- $(basename \"$report\")\"\
+        \ >> neural_archaeology_summary.md\n  done || echo \"- No detailed reports\
+        \ generated\" >> neural_archaeology_summary.md\nfi\n\ncat neural_archaeology_summary.md\n"
+    - name: "\U0001F4E4 Upload Analysis Artifacts"
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: neural-archaeology-analysis-${{ github.run_number }}
+        path: 'data/generert/
 
-          # Run the harvester to collect existing failures
-          python failed_runs_harvester.py || echo "Harvest completed with warnings"
+          data/rapporter/
 
-      - name: 🔮 Execute Neural Archaeology Pipeline
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "🔮 EXECUTING COMPLETE NEURAL ARCHAEOLOGY PIPELINE..."
-          cd backend/python
+          neural_archaeology_summary.md
 
-          # Run the full orchestrator
-          python neural_archaeology_orchestrator.py --mode full || echo "Pipeline completed with warnings"
-
-      - name: 📊 Generate Analysis Visualization
-        run: |
-          echo "📊 GENERATING FAILURE ANALYSIS VISUALIZATION..."
-          cd backend/python
-          python failure_analysis_visualizer.py
-
-      - name: 📋 Create Failure Intelligence Report
-        run: |
-          echo "📋 CREATING COMPREHENSIVE INTELLIGENCE REPORT..."
-
-          # Create summary report for PR comment
-          cat > neural_archaeology_summary.md << 'EOF'
-          # 🧠 Neural Archaeology Analysis Report
-
-          **Timestamp:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          **Trigger:** ${{ github.event_name }}
-          **Branch:** ${{ github.ref_name }}
-
-          ## 📊 Pipeline Status
-          ✅ Neural Archaeology system activated successfully
-
-          ## 🔍 Analysis Results
-          EOF
-
-          # Add database analysis if it exists
-          if [ -f data/generert/failure_archaeology.db ]; then
-            echo "✅ Failure database updated" >> neural_archaeology_summary.md
-            echo "📊 New failures cataloged and analyzed" >> neural_archaeology_summary.md
-          else
-            echo "⚠️ No new failures detected in this run" >> neural_archaeology_summary.md
-          fi
-
-          # Add report links if they exist
-          if [ -d data/rapporter ]; then
-            echo "" >> neural_archaeology_summary.md
-            echo "## 📋 Generated Reports" >> neural_archaeology_summary.md
-            ls data/rapporter/*.md 2>/dev/null | head -3 | while read report; do
-              echo "- $(basename "$report")" >> neural_archaeology_summary.md
-            done || echo "- No detailed reports generated" >> neural_archaeology_summary.md
-          fi
-
-          cat neural_archaeology_summary.md
-
-      - name: 📤 Upload Analysis Artifacts
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: neural-archaeology-analysis-${{ github.run_number }}
-          path: |
-            data/generert/
-            data/rapporter/
-            neural_archaeology_summary.md
-          retention-days: 30
-
-      - name: 💬 Comment Analysis Results on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-
-            let summary = '# 🧠 Neural Archaeology System - Real-Time Analysis\n\n';
-            summary += '**Status:** ✅ System Activated Successfully\n\n';
-            summary += '## 📊 System Health Check\n';
-            summary += '- ✅ Failure Archaeology Database Initialized\n';
-            summary += '- ✅ Harvesting Pipeline Executed\n';
-            summary += '- ✅ Bidirectional Learning Engine Active\n';
-            summary += '- ✅ Predictive Intelligence Generated\n\n';
-
-            summary += '## 🎯 Key Findings\n';
-            summary += 'Neural Archaeology system successfully processed repository failures and updated the learning database.\n\n';
-
-            summary += '## 🔄 Next Steps\n';
-            summary += '- System will continue learning from any new failures\n';
-            summary += '- Bidirectional intelligence will improve with each iteration\n';
-            summary += '- Check artifacts for detailed analysis reports\n\n';
-
-            summary += '---\n*Generated by Neural Archaeology Orchestrator - Psycho-Noir Kontrapunkt*\n';
-            summary += '*Den Usynlige Hånd: Systematic transformation of chaos to wisdom*';
-
-            // Try to read the actual summary if it exists
-            try {
-              if (fs.existsSync('neural_archaeology_summary.md')) {
-                const actualSummary = fs.readFileSync('neural_archaeology_summary.md', 'utf8');
-                summary = actualSummary;
-              }
-            } catch (error) {
-              console.log('Using default summary due to:', error.message);
-            }
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: summary
-            });
-
+          '
+        retention-days: 30
+    - name: "\U0001F4AC Comment Analysis Results on PR"
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: "const fs = require('fs');\n\nlet summary = '# \U0001F9E0 Neural Archaeology\
+          \ System - Real-Time Analysis\\n\\n';\nsummary += '**Status:** \u2705 System\
+          \ Activated Successfully\\n\\n';\nsummary += '## \U0001F4CA System Health\
+          \ Check\\n';\nsummary += '- \u2705 Failure Archaeology Database Initialized\\\
+          n';\nsummary += '- \u2705 Harvesting Pipeline Executed\\n';\nsummary +=\
+          \ '- \u2705 Bidirectional Learning Engine Active\\n';\nsummary += '- \u2705\
+          \ Predictive Intelligence Generated\\n\\n';\n\nsummary += '## \U0001F3AF\
+          \ Key Findings\\n';\nsummary += 'Neural Archaeology system successfully\
+          \ processed repository failures and updated the learning database.\\n\\\
+          n';\n\nsummary += '## \U0001F504 Next Steps\\n';\nsummary += '- System will\
+          \ continue learning from any new failures\\n';\nsummary += '- Bidirectional\
+          \ intelligence will improve with each iteration\\n';\nsummary += '- Check\
+          \ artifacts for detailed analysis reports\\n\\n';\n\nsummary += '---\\n*Generated\
+          \ by Neural Archaeology Orchestrator - Psycho-Noir Kontrapunkt*\\n';\nsummary\
+          \ += '*Den Usynlige H\xE5nd: Systematic transformation of chaos to wisdom*';\n\
+          \n// Try to read the actual summary if it exists\ntry {\n  if (fs.existsSync('neural_archaeology_summary.md'))\
+          \ {\n    const actualSummary = fs.readFileSync('neural_archaeology_summary.md',\
+          \ 'utf8');\n    summary = actualSummary;\n  }\n} catch (error) {\n  console.log('Using\
+          \ default summary due to:', error.message);\n}\n\ngithub.rest.issues.createComment({\n\
+          \  issue_number: context.issue.number,\n  owner: context.repo.owner,\n \
+          \ repo: context.repo.repo,\n  body: summary\n});\n"
   test-failure-simulation:
-    name: 🧪 Test Failure Learning Capability
+    name: "\U0001F9EA Test Failure Learning Capability"
     runs-on: ubuntu-latest
     needs: neural-archaeology-analysis
     if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
-
     steps:
-      - name: 🧬 Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: 🐍 Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-
-      - name: 🎭 Simulate Controlled Failure for Learning
-        run: |
-          echo "🎭 SIMULATING CONTROLLED FAILURE TO TEST NEURAL ARCHAEOLOGY..."
-
-          # Create a controlled failure scenario
-          mkdir -p data/generert
-          cd backend/python
-
-          # This will intentionally create a learning scenario
-          python -c "
-          import sys
-          sys.path.append('.')
-          from failure_archaeology_system import *
-          import datetime
-          import hashlib
-
-          print('🧪 CREATING CONTROLLED FAILURE SCENARIO FOR LEARNING...')
-
-          # Create archaeology database
-          db = FailureArchaeologyDB()
-
-          # Simulate a controlled failure with resolution
-          controlled_failure = FailureArtifact(
-              failure_id=hashlib.md5(f'controlled_test_{datetime.datetime.now().isoformat()}'.encode()).hexdigest()[:12],
-              timestamp=datetime.datetime.now().isoformat(),
-              domain=FailureDomain.RUSTBELT_IMPROVISATION,
-              severity=FailureSeverity.GLITCH,
-              error_signature='CONTROLLED_TEST_SCENARIO_NEURAL_ARCHAEOLOGY',
-              raw_error_data='Simulated failure for testing bidirectional learning capability',
-              context_snapshot={
-                  'environment': 'github_actions',
-                  'test_scenario': True,
-                  'learning_mode': 'active'
-              },
-              attempted_fixes=[
-                  {'attempt': 1, 'description': 'Neural Archaeology system validation', 'outcome': 'success'}
-              ],
-              resolution_status='systematic_fix',
-              learning_extraction='Neural Archaeology system successfully validates bidirectional learning capability',
-              prevention_strategy='Continue automated monitoring and learning from repository failures'
-          )
-
-          # Catalog the controlled scenario
-          failure_id = db.catalog_failure(controlled_failure)
-          print(f'✅ CONTROLLED SCENARIO CATALOGED: {failure_id}')
-          print('🎯 Neural Archaeology system validated successfully!')
-          "
-
-      - name: ✅ Verify Learning System Response
-        run: |
-          echo "✅ VERIFYING NEURAL ARCHAEOLOGY LEARNING RESPONSE..."
-          cd backend/python
-          python failure_analysis_visualizer.py
+    - name: "\U0001F9EC Checkout Repository"
+      uses: actions/checkout@v4
+    - name: "\U0001F40D Setup Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+    - name: "\U0001F3AD Simulate Controlled Failure for Learning"
+      run: "echo \"\U0001F3AD SIMULATING CONTROLLED FAILURE TO TEST NEURAL ARCHAEOLOGY...\"\
+        \n\n# Create a controlled failure scenario\nmkdir -p data/generert\ncd backend/python\n\
+        \n# This will intentionally create a learning scenario\npython -c \"\nimport\
+        \ sys\nsys.path.append('.')\nfrom failure_archaeology_system import *\nimport\
+        \ datetime\nimport hashlib\n\nprint('\U0001F9EA CREATING CONTROLLED FAILURE\
+        \ SCENARIO FOR LEARNING...')\n\n# Create archaeology database\ndb = FailureArchaeologyDB()\n\
+        \n# Simulate a controlled failure with resolution\ncontrolled_failure = FailureArtifact(\n\
+        \    failure_id=hashlib.md5(f'controlled_test_{datetime.datetime.now().isoformat()}'.encode()).hexdigest()[:12],\n\
+        \    timestamp=datetime.datetime.now().isoformat(),\n    domain=FailureDomain.RUSTBELT_IMPROVISATION,\n\
+        \    severity=FailureSeverity.GLITCH,\n    error_signature='CONTROLLED_TEST_SCENARIO_NEURAL_ARCHAEOLOGY',\n\
+        \    raw_error_data='Simulated failure for testing bidirectional learning\
+        \ capability',\n    context_snapshot={\n        'environment': 'github_actions',\n\
+        \        'test_scenario': True,\n        'learning_mode': 'active'\n    },\n\
+        \    attempted_fixes=[\n        {'attempt': 1, 'description': 'Neural Archaeology\
+        \ system validation', 'outcome': 'success'}\n    ],\n    resolution_status='systematic_fix',\n\
+        \    learning_extraction='Neural Archaeology system successfully validates\
+        \ bidirectional learning capability',\n    prevention_strategy='Continue automated\
+        \ monitoring and learning from repository failures'\n)\n\n# Catalog the controlled\
+        \ scenario\nfailure_id = db.catalog_failure(controlled_failure)\nprint(f'\u2705\
+        \ CONTROLLED SCENARIO CATALOGED: {failure_id}')\nprint('\U0001F3AF Neural\
+        \ Archaeology system validated successfully!')\n\"\n"
+    - name: "\u2705 Verify Learning System Response"
+      run: "echo \"\u2705 VERIFYING NEURAL ARCHAEOLOGY LEARNING RESPONSE...\"\ncd\
+        \ backend/python\npython failure_analysis_visualizer.py\n"
+    timeout-minutes: 30
