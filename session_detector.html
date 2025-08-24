@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Psycho-Noir Session Detector</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0f0f0f;
+            color: #c0c0c0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #ff6b6b; text-align: center; }
+        h2 { color: #4682b4; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .session-box {
+            background: #1a2634;
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .info-box {
+            background: #341a1a;
+            border-left: 4px solid #8b4513;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        button {
+            background: #4682b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            margin: 5px;
+        }
+        button:hover { background: #5a9bd4; }
+        .file-input {
+            background: #202020;
+            color: #c0c0c0;
+            border: 1px solid #404040;
+            padding: 8px;
+            border-radius: 4px;
+            width: 100%;
+            margin: 10px 0;
+        }
+        #output {
+            background: #0a0a0a;
+            border: 1px solid #404040;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            min-height: 200px;
+            overflow-y: auto;
+        }
+        .drag-drop {
+            border: 2px dashed #4682b4;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .drag-drop.dragover {
+            background: #1a2634;
+            border-color: #87ceeb;
+        }
+        .success { color: #90EE90; }
+        .error { color: #ff6b6b; }
+        .warning { color: #ffa500; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 PSYCHO-NOIR SESSION DETECTOR</h1>
+        <p style="text-align: center; color: #909090;">
+            Universal chat session continuity - fungerer på alle platformer!
+        </p>
+
+        <div class="info-box">
+            <h2>🌐 Environment Detection</h2>
+            <div id="envInfo">Detecting environment...</div>
+        </div>
+
+        <div class="session-box">
+            <h2>📁 Session File Detection</h2>
+            <p>Drop session export files here eller browse manually:</p>
+            
+            <div class="drag-drop" id="dropZone">
+                <p>🎯 Drag & drop session_export_*.json files here</p>
+                <p>eller</p>
+                <input type="file" id="fileInput" accept=".json" multiple class="file-input">
+                <button onclick="document.getElementById('fileInput').click()">📂 Browse Files</button>
+            </div>
+        </div>
+
+        <div class="session-box">
+            <h2>🔍 Manual Session Directory Scan</h2>
+            <p>Hvis du har .copilot-bridge directory, kan du paste innholdet her:</p>
+            <textarea id="manualScan" class="file-input" rows="4" placeholder="Paste output from: ls -la .copilot-bridge/ eller dir .copilot-bridge\"></textarea>
+            <button onclick="scanManualInput()">🔍 Scan Input</button>
+        </div>
+
+        <div class="info-box">
+            <h2>💬 Current Chat Instructions</h2>
+            <div id="chatInstructions">
+                <p>🎯 <strong>To continue your chat session:</strong></p>
+                <ol>
+                    <li>Open GitHub Copilot Chat in VS Code (Ctrl+Shift+I)</li>
+                    <li>Reference your previous work:</li>
+                    <ul>
+                        <li><em>"Continue working on the chat continuity system"</em></li>
+                        <li><em>"Let's pick up where we left off with the Psycho-Noir project"</em></li>
+                        <li><em>"Show me the status of our VS Code extension development"</em></li>
+                    </ul>
+                    <li>Copilot will recognize the context from your workspace files!</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="session-box">
+            <h2>📊 Session Analysis Output</h2>
+            <div id="output">🎭 Ready to analyze sessions...</div>
+        </div>
+
+        <div class="info-box">
+            <h2>⚡ Quick Actions</h2>
+            <button onclick="generateVSCodeTask()">📝 Generate VS Code Task</button>
+            <button onclick="createSessionIdentity()">🆔 Create Session Identity</button>
+            <button onclick="exportCurrentState()">💾 Export Current State</button>
+            <button onclick="copyToClipboard()">📋 Copy Analysis</button>
+        </div>
+    </div>
+
+    <script>
+        let detectedSessions = [];
+        let environmentInfo = {};
+
+        // Detect environment on load
+        document.addEventListener('DOMContentLoaded', function() {
+            detectEnvironment();
+            setupDragDrop();
+        });
+
+        function detectEnvironment() {
+            environmentInfo = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                timestamp: new Date().toISOString(),
+                url: window.location.href,
+                isLocalFile: window.location.protocol === 'file:'
+            };
+
+            const envDiv = document.getElementById('envInfo');
+            envDiv.innerHTML = `
+                <strong>Platform:</strong> ${environmentInfo.platform}<br>
+                <strong>Browser:</strong> ${navigator.userAgent.split(' ')[0]}<br>
+                <strong>Language:</strong> ${environmentInfo.language}<br>
+                <strong>Protocol:</strong> ${window.location.protocol}<br>
+                <strong>Is Local File:</strong> ${environmentInfo.isLocalFile ? 'Yes' : 'No'}
+            `;
+        }
+
+        function setupDragDrop() {
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            fileInput.addEventListener('change', function(e) {
+                handleFiles(e.target.files);
+            });
+        }
+
+        function handleFiles(files) {
+            const output = document.getElementById('output');
+            output.innerHTML = '🔍 Analyzing session files...\n\n';
+
+            for (let file of files) {
+                if (file.name.endsWith('.json') && file.name.includes('session_export_')) {
+                    analyzeSessionFile(file);
+                } else {
+                    output.innerHTML += `⚠️ Skipped: ${file.name} (not a session export file)\n`;
+                }
+            }
+        }
+
+        function analyzeSessionFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const sessionData = JSON.parse(e.target.result);
+                    const analysis = analyzeSession(sessionData, file.name);
+                    displaySessionAnalysis(analysis);
+                    detectedSessions.push(analysis);
+                } catch (error) {
+                    const output = document.getElementById('output');
+                    output.innerHTML += `❌ Error parsing ${file.name}: ${error.message}\n`;
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function analyzeSession(sessionData, fileName) {
+            const conversations = sessionData.conversations || [];
+            const logs = sessionData.logs || [];
+            
+            const modelStats = {};
+            const contextTypes = {};
+            let totalDuration = 0;
+
+            conversations.forEach(conv => {
+                const model = conv.model || 'unknown';
+                modelStats[model] = (modelStats[model] || 0) + 1;
+                
+                const context = conv.context_type || 'unknown';
+                contextTypes[context] = (contextTypes[context] || 0) + 1;
+                
+                if (conv.duration_ms) {
+                    totalDuration += conv.duration_ms;
+                }
+            });
+
+            return {
+                fileName: fileName,
+                conversations: conversations.length,
+                logs: logs.length,
+                environment: sessionData.environment || 'unknown',
+                exportTime: sessionData.export_time || 'unknown',
+                modelStats: modelStats,
+                contextTypes: contextTypes,
+                totalDuration: totalDuration,
+                averageDuration: conversations.length > 0 ? totalDuration / conversations.length : 0,
+                dataSize: JSON.stringify(sessionData).length
+            };
+        }
+
+        function displaySessionAnalysis(analysis) {
+            const output = document.getElementById('output');
+            
+            output.innerHTML += `
+<span class="success">✅ SESSION ANALYZED: ${analysis.fileName}</span>
+==========================================
+📊 <strong>Conversations:</strong> ${analysis.conversations}
+📝 <strong>Logs:</strong> ${analysis.logs}
+🌐 <strong>Environment:</strong> ${analysis.environment}
+📅 <strong>Export Time:</strong> ${analysis.exportTime}
+💾 <strong>Data Size:</strong> ${Math.round(analysis.dataSize / 1024)}KB
+⏱️  <strong>Avg Duration:</strong> ${Math.round(analysis.averageDuration)}ms
+
+<strong>🤖 MODEL USAGE:</strong>
+${Object.entries(analysis.modelStats).map(([model, count]) => `   • ${model}: ${count} requests`).join('\n')}
+
+<strong>🎯 CONTEXT TYPES:</strong>
+${Object.entries(analysis.contextTypes).map(([context, count]) => `   • ${context}: ${count} requests`).join('\n')}
+
+<span class="warning">🎭 CONTINUITY RECOMMENDATION:</span>
+This session has substantial conversation history. 
+To continue, reference recent topics or ask about project status.
+
+`;
+        }
+
+        function scanManualInput() {
+            const input = document.getElementById('manualScan').value;
+            const output = document.getElementById('output');
+            
+            if (!input.trim()) {
+                output.innerHTML += '<span class="error">❌ No input provided</span>\n';
+                return;
+            }
+
+            const lines = input.split('\n');
+            const sessionFiles = lines.filter(line => 
+                line.includes('session_export_') && line.includes('.json')
+            );
+
+            if (sessionFiles.length === 0) {
+                output.innerHTML += '<span class="warning">⚠️ No session export files found in input</span>\n';
+                return;
+            }
+
+            output.innerHTML += `<span class="success">🔍 FOUND ${sessionFiles.length} SESSION FILE(S):</span>\n`;
+            sessionFiles.forEach((file, index) => {
+                output.innerHTML += `   ${index + 1}. ${file.trim()}\n`;
+            });
+            
+            output.innerHTML += '\n<span class="warning">💡 To analyze these files:</span>\n';
+            output.innerHTML += '1. Download/copy the files to your local machine\n';
+            output.innerHTML += '2. Drag & drop them into this page\n';
+            output.innerHTML += '3. Follow the continuity recommendations\n\n';
+        }
+
+        function generateVSCodeTask() {
+            const taskJson = {
+                "version": "2.0.0",
+                "tasks": [
+                    {
+                        "label": "🎭 Check Session Continuity",
+                        "type": "shell",
+                        "command": "node",
+                        "args": ["universal_session_detector.js"],
+                        "group": "build",
+                        "presentation": {
+                            "echo": true,
+                            "reveal": "always",
+                            "focus": false,
+                            "panel": "new"
+                        },
+                        "detail": "Check for existing chat sessions and offer continuation"
+                    }
+                ]
+            };
+
+            const output = document.getElementById('output');
+            output.innerHTML += '\n<span class="success">📝 VS CODE TASK GENERATED:</span>\n';
+            output.innerHTML += JSON.stringify(taskJson, null, 2) + '\n\n';
+            output.innerHTML += '<span class="warning">💡 Add this to your .vscode/tasks.json file</span>\n\n';
+        }
+
+        function createSessionIdentity() {
+            const identity = {
+                machineId: 'browser-session',
+                environmentType: 'browser',
+                platform: environmentInfo.platform,
+                sessionStartTime: new Date().toISOString(),
+                detectorVersion: '1.0.0-html',
+                detectedSessions: detectedSessions.length,
+                userAgent: environmentInfo.userAgent
+            };
+
+            const output = document.getElementById('output');
+            output.innerHTML += '\n<span class="success">🆔 SESSION IDENTITY CREATED:</span>\n';
+            output.innerHTML += JSON.stringify(identity, null, 2) + '\n\n';
+        }
+
+        function exportCurrentState() {
+            const state = {
+                environmentInfo: environmentInfo,
+                detectedSessions: detectedSessions,
+                analysisTime: new Date().toISOString(),
+                recommendations: generateRecommendations()
+            };
+
+            const blob = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `psycho_noir_session_analysis_${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            const output = document.getElementById('output');
+            output.innerHTML += '<span class="success">💾 Current state exported to file!</span>\n';
+        }
+
+        function generateRecommendations() {
+            if (detectedSessions.length === 0) {
+                return ["No sessions detected - start fresh session"];
+            }
+
+            const recommendations = [];
+            const totalConversations = detectedSessions.reduce((sum, s) => sum + s.conversations, 0);
+            
+            if (totalConversations > 100) {
+                recommendations.push("High activity detected - likely substantial project work");
+                recommendations.push("Reference specific features or components when continuing");
+            }
+
+            if (detectedSessions.length > 1) {
+                recommendations.push("Multiple sessions found - choose most recent for continuation");
+            }
+
+            recommendations.push("Use workspace files as context anchors for chat continuation");
+            
+            return recommendations;
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output');
+            navigator.clipboard.writeText(output.textContent).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

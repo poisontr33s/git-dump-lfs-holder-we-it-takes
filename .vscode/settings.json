@@ -1,18 +1,9 @@
 {
-    "cSpell.enabled": false,
-    "editor.tabSize": 2,
-    "files.eol": "\n",
-    "files.autoSave": "afterDelay",
-    "editor.formatOnSave": true,
-    "workbench.editor.enablePreview": false,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "npm.packageManager": "npm",
-    "npm.scriptRunner": "npm",
-    "sarif-viewer.connectToGithubCodeScanning": "on",
-    "chat.mcp.autostart": "newAndOutdated",
-    "github.copilot.advanced.debug.chatMemory": true,
-    "github.copilot.advanced.debug.chatDump": true,
-    "psychoNoir.chatContinuity.enabled": true,
-    "psychoNoir.chatContinuity.autoRestore": true
+  "psycho-noir.chatContinuity": true,
+  "files.autoSave": "onWindowChange",
+  "files.watcherExclude": {
+    "**/.chat-continuity/**": true
+  },
+  "editor.formatOnSave": false,
+  "extensions.ignoreRecommendations": false
 }
