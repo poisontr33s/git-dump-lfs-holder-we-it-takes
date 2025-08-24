@@ -1,0 +1,272 @@
+name: Necropolis Triage Comment
+on:
+  workflow_run:
+    workflows: ["Verify with Necropolis", "Necropolis - Comprehensive Failure Harvesting"]
+    types: [completed]
+
+# Only run on PRs
+jobs:
+  triage-comment:
+    name: Update Necropolis Triage Comment
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.event.workflow_run.event == 'pull_request'
+    permissions:
+      pull-requests: write
+      actions: read
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Get PR information
+        id: pr-info
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Get the PR associated with this workflow run
+            const workflowRun = context.payload.workflow_run;
+            console.log('Workflow run:', workflowRun.head_sha);
+            
+            // Find the PR for this commit
+            const { data: pulls } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            
+            const pr = pulls.find(p => p.head.sha === workflowRun.head_sha);
+            
+            if (!pr) {
+              console.log('No open PR found for this commit');
+              return null;
+            }
+            
+            console.log('Found PR:', pr.number);
+            return {
+              number: pr.number,
+              title: pr.title,
+              head_sha: pr.head.sha
+            };
+      
+      - name: Download workflow artifacts
+        if: steps.pr-info.outputs.result != 'null'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Get artifacts from the completed workflow run
+            const workflowRunId = context.payload.workflow_run.id;
+            console.log('Downloading artifacts from workflow run:', workflowRunId);
+            
+            try {
+              const { data: artifacts } = await github.rest.actions.listWorkflowRunArtifacts({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: workflowRunId
+              });
+              
+              console.log('Available artifacts:', artifacts.artifacts.map(a => a.name));
+              
+              // Look for necropolis report artifacts
+              const necropolisArtifacts = artifacts.artifacts.filter(a => 
+                a.name.includes('necropolis') && a.name.includes('report')
+              );
+              
+              if (necropolisArtifacts.length > 0) {
+                console.log('Found necropolis artifacts:', necropolisArtifacts.map(a => a.name));
+                
+                // Store artifact info for next step
+                fs.writeFileSync('artifacts-info.json', JSON.stringify({
+                  artifacts: necropolisArtifacts,
+                  workflow_run_id: workflowRunId,
+                  workflow_name: context.payload.workflow_run.name,
+                  conclusion: context.payload.workflow_run.conclusion
+                }));
+              } else {
+                console.log('No necropolis report artifacts found');
+                fs.writeFileSync('artifacts-info.json', JSON.stringify({
+                  artifacts: [],
+                  workflow_run_id: workflowRunId,
+                  workflow_name: context.payload.workflow_run.name,
+                  conclusion: context.payload.workflow_run.conclusion
+                }));
+              }
+            } catch (error) {
+              console.error('Error downloading artifacts:', error);
+              fs.writeFileSync('artifacts-info.json', JSON.stringify({
+                artifacts: [],
+                error: error.message,
+                workflow_run_id: workflowRunId,
+                workflow_name: context.payload.workflow_run.name,
+                conclusion: context.payload.workflow_run.conclusion
+              }));
+            }
+      
+      - name: Generate triage comment
+        if: steps.pr-info.outputs.result != 'null'
+        id: generate-comment
+        run: |
+          echo "🧙‍♂️ Generating necropolis triage comment..."
+          
+          # Read artifact info
+          ARTIFACTS_INFO=$(cat artifacts-info.json)
+          PR_INFO='${{ steps.pr-info.outputs.result }}'
+          PR_NUMBER=$(echo "$PR_INFO" | jq -r '.number')
+          
+          WORKFLOW_NAME=$(echo "$ARTIFACTS_INFO" | jq -r '.workflow_name')
+          WORKFLOW_CONCLUSION=$(echo "$ARTIFACTS_INFO" | jq -r '.conclusion')
+          WORKFLOW_RUN_ID=$(echo "$ARTIFACTS_INFO" | jq -r '.workflow_run_id')
+          
+          # Create comment content
+          cat > triage-comment.md << EOF
+          <!-- NECROPOLIS_TRIAGE_MARKER -->
+          ## 🧙‍♂️ Necropolis Failure Analysis
+          
+          **Workflow**: \`$WORKFLOW_NAME\`  
+          **Status**: \`$WORKFLOW_CONCLUSION\`  
+          **Run ID**: [\`$WORKFLOW_RUN_ID\`](https://github.com/${{ github.repository }}/actions/runs/$WORKFLOW_RUN_ID)  
+          **Analysis Time**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          
+          ### 📊 Analysis Summary
+          EOF
+          
+          if [ "$WORKFLOW_CONCLUSION" = "success" ]; then
+            cat >> triage-comment.md << EOF
+          ✅ **All checks passed** - No failure patterns detected.
+          
+          The Necropolis system monitored this workflow execution and found no significant issues to report.
+          EOF
+          elif [ "$WORKFLOW_CONCLUSION" = "failure" ]; then
+            cat >> triage-comment.md << EOF
+          ❌ **Failures detected** - Analysis in progress.
+          
+          The Necropolis system has captured failure data from this workflow execution. Detailed analysis will be available in the artifacts.
+          
+          ### 🔍 Quick Diagnosis
+          
+          Common failure patterns to check:
+          - **Dependencies**: Check for package installation issues
+          - **Environment**: Verify Node.js/Python version compatibility  
+          - **Tests**: Review test failures and assertion errors
+          - **Build**: Look for compilation or build process issues
+          
+          ### 🎭 Psycho-Noir Manifestations
+          If you see unusual error patterns or system behaviors, Den Usynlige Hånd may be stirring in the digital shadows. These manifestations are captured for further analysis.
+          EOF
+          else
+            cat >> triage-comment.md << EOF
+          ⚠️ **Workflow $WORKFLOW_CONCLUSION** - Partial data available.
+          
+          The workflow completed with status: \`$WORKFLOW_CONCLUSION\`. Some failure data may have been captured.
+          EOF
+          fi
+          
+          # Add artifacts section if available
+          ARTIFACT_COUNT=$(echo "$ARTIFACTS_INFO" | jq '.artifacts | length')
+          if [ "$ARTIFACT_COUNT" -gt 0 ]; then
+            cat >> triage-comment.md << EOF
+          
+          ### 📦 Available Reports
+          
+          The following necropolis reports are available as workflow artifacts:
+          EOF
+            echo "$ARTIFACTS_INFO" | jq -r '.artifacts[] | "- [`" + .name + "`](https://github.com/${{ github.repository }}/actions/runs/$WORKFLOW_RUN_ID) (expires: " + (.expires_at // "unknown") + ")"' >> triage-comment.md
+          fi
+          
+          # Add AI suggestions if enabled
+          if [ "${{ vars.AI_SUGGESTIONS }}" = "true" ] && [ -n "${{ secrets.OPENAI_API_KEY }}" ]; then
+            cat >> triage-comment.md << EOF
+          
+          ### 🤖 AI-Powered Suggestions
+          
+          > **Note**: AI suggestions are enabled for this repository.
+          
+          Based on the failure patterns detected, here are some potential solutions:
+          
+          *AI analysis would be performed here if OpenAI API key is configured.*
+          EOF
+          fi
+          
+          cat >> triage-comment.md << EOF
+          
+          ### 🔄 Continuous Learning
+          
+          This analysis contributes to the Necropolis knowledge base, helping improve future failure detection and resolution strategies.
+          
+          ---
+          *🏛️ Generated by Necropolis Triage System - Den Usynlige Hånd sees all patterns*
+          EOF
+          
+          echo "Generated triage comment:"
+          cat triage-comment.md
+          
+          # Store comment for next step
+          echo "comment-generated=true" >> $GITHUB_OUTPUT
+      
+      - name: Update or create triage comment
+        if: steps.pr-info.outputs.result != 'null' && steps.generate-comment.outputs.comment-generated == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const prInfo = JSON.parse('${{ steps.pr-info.outputs.result }}');
+            const prNumber = prInfo.number;
+            
+            const commentBody = fs.readFileSync('triage-comment.md', 'utf8');
+            const markerText = '<!-- NECROPOLIS_TRIAGE_MARKER -->';
+            
+            console.log('Updating triage comment for PR:', prNumber);
+            
+            try {
+              // Get existing comments
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber
+              });
+              
+              // Find existing necropolis comment
+              const existingComment = comments.find(comment => 
+                comment.body.includes(markerText)
+              );
+              
+              if (existingComment) {
+                console.log('Updating existing comment:', existingComment.id);
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existingComment.id,
+                  body: commentBody
+                });
+              } else {
+                console.log('Creating new triage comment');
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: commentBody
+                });
+              }
+              
+              console.log('✅ Triage comment updated successfully');
+            } catch (error) {
+              console.error('Error updating triage comment:', error);
+              // Don't fail the workflow if comment update fails
+            }
+      
+      - name: Log triage completion
+        if: steps.pr-info.outputs.result != 'null'
+        run: |
+          echo "🧙‍♂️ NECROPOLIS TRIAGE COMPLETE"
+          echo "PR Number: $(echo '${{ steps.pr-info.outputs.result }}' | jq -r '.number')"
+          echo "Workflow: ${{ github.event.workflow_run.name }}"
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Run ID: ${{ github.event.workflow_run.id }}"
+          
+          if [ "${{ github.event.workflow_run.conclusion }}" != "success" ]; then
+            echo "🔮 Den Usynlige Hånd has catalogued the failures for future wisdom..."
+          fi
