@@ -27,6 +27,7 @@ COPY package*.json pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile --prod
 
 # Backend Python-komponenter - Rustbeltets improviserte resiliens
+RUN mkdir -p backend
 COPY backend/requirements.txt ./backend/ 2>/dev/null || echo "# No Python requirements found" > backend/requirements.txt
 RUN pip3 install -r backend/requirements.txt
 

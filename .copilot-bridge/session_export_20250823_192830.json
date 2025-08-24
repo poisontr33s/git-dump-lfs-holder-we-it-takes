@@ -1,0 +1,5896 @@
+{
+  "timestamp": "2025-08-23T19:28:30.328960",
+  "environment": "GitHub Codespaces",
+  "logs": [
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T191611/exthost1/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 42076,
+      "modified": "2025-08-23T19:28:25.649528"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T191611/exthost2/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 1654,
+      "modified": "2025-08-23T19:17:05.925478"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost3/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 60580,
+      "modified": "2025-08-23T19:09:37.668484"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost1/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 191902,
+      "modified": "2025-08-23T18:42:48.074578"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost2/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 4326,
+      "modified": "2025-08-23T18:51:41.388547"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T191611/exthost1/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 42076,
+      "modified": "2025-08-23T19:28:25.649528"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T191611/exthost2/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 1654,
+      "modified": "2025-08-23T19:17:05.925478"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost3/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 60580,
+      "modified": "2025-08-23T19:09:37.668484"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost1/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 191902,
+      "modified": "2025-08-23T18:42:48.074578"
+    },
+    {
+      "file": "/home/codespace/.vscode-remote/data/logs/20250823T154245/exthost2/GitHub.copilot-chat/GitHub Copilot Chat.log",
+      "size": 4326,
+      "modified": "2025-08-23T18:51:41.388547"
+    }
+  ],
+  "conversations": [
+    {
+      "timestamp": "2025-08-23 19:22:37.663",
+      "request_id": "af58bf5d",
+      "model": "gpt-4.1",
+      "duration_ms": 1312,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:23:05.995",
+      "request_id": "ae108385",
+      "model": "claude-sonnet-4",
+      "duration_ms": 60182,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:23:56.355",
+      "request_id": "2bcc866b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 44852,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 19:24:08.371",
+      "request_id": "af152e5b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7702,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:06.070",
+      "request_id": "859e8c5e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 43276,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:12.203",
+      "request_id": "fecb52a3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5677,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:17.479",
+      "request_id": "ec95abfb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4780,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:38.225",
+      "request_id": "72518f44",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4209,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:45.049",
+      "request_id": "c78ac72b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3546,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:26:43.196",
+      "request_id": "7ea3f7f0",
+      "model": "claude-sonnet-4",
+      "duration_ms": 55744,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:02.940",
+      "request_id": "f287d026",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16798,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:04.955",
+      "request_id": "be417c8b",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1743,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:10.660",
+      "request_id": "878fb724",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5499,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:15.007",
+      "request_id": "d17886cb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3829,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:20.293",
+      "request_id": "701d59d4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4812,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:31.789",
+      "request_id": "f5ba899f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4845,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:55.305",
+      "request_id": "950bee75",
+      "model": "claude-sonnet-4",
+      "duration_ms": 23001,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:28:18.702",
+      "request_id": "fda6176c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 20670,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:28:25.649",
+      "request_id": "f2bb69f4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4090,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.337",
+      "request_id": "8ffbf040",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3306,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.476",
+      "request_id": "10feed99",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3451,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.697",
+      "request_id": "73136b9d",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3681,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:47.184",
+      "request_id": "9944a0bd",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4150,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:47.249",
+      "request_id": "957ba5d0",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4226,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:51.746",
+      "request_id": "4e84ecbe",
+      "model": "gpt-4o-mini",
+      "duration_ms": 8695,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:52.494",
+      "request_id": "c6d13bcc",
+      "model": "gpt-4o-mini",
+      "duration_ms": 9450,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:00.461",
+      "request_id": "807dc643",
+      "model": "gpt-4o-mini",
+      "duration_ms": 7963,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:01.961",
+      "request_id": "4961bd80",
+      "model": "gpt-4o-mini",
+      "duration_ms": 10203,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:10.038",
+      "request_id": "b7b85bf6",
+      "model": "gpt-4o-mini",
+      "duration_ms": 9566,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:13.864",
+      "request_id": "ad3ef542",
+      "model": "gpt-4.1",
+      "duration_ms": 1113,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:20.897",
+      "request_id": "d8bac4b2",
+      "model": "gpt-4.1",
+      "duration_ms": 1094,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:47.870",
+      "request_id": "7cd53e33",
+      "model": "claude-sonnet-4",
+      "duration_ms": 35240,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:05:45.111",
+      "request_id": "82e0d2f7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 53757,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:05:56.912",
+      "request_id": "dfa8bbbb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7762,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:16.886",
+      "request_id": "820ebe01",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7724,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:33.648",
+      "request_id": "3f9ab75c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12104,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:56.013",
+      "request_id": "d02389c3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 17788,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:09:34.245",
+      "request_id": "28d01208",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7273,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:43:59.456",
+      "request_id": "38034283",
+      "model": "gpt-4.1",
+      "duration_ms": 8991,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:44:01.003",
+      "request_id": "30860e2c",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1358,
+      "context": "title"
+    },
+    {
+      "timestamp": "2025-08-23 15:45:14.208",
+      "request_id": "a72b154c",
+      "model": "gpt-4o",
+      "duration_ms": 2381,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:45:27.477",
+      "request_id": "f3f72fd4",
+      "model": "gpt-4o",
+      "duration_ms": 2443,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:51:57.345",
+      "request_id": "53305f78",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5873,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:16.793",
+      "request_id": "615573d3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5235,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:30.236",
+      "request_id": "3c651368",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6352,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:37.973",
+      "request_id": "1031f3fb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7285,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:43.579",
+      "request_id": "55784b06",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4949,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:48.970",
+      "request_id": "95408d93",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4691,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:55.438",
+      "request_id": "c5840f32",
+      "model": "gpt-4.1",
+      "duration_ms": 1380,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:10.797",
+      "request_id": "36964cb4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7824,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:19.666",
+      "request_id": "a795a78e",
+      "model": "gpt-4.1",
+      "duration_ms": 1324,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:20.270",
+      "request_id": "1fba4b02",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6489,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:26.145",
+      "request_id": "a5770057",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5477,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:31.640",
+      "request_id": "fb3983aa",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4931,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:35.687",
+      "request_id": "c5261463",
+      "model": "gpt-4.1",
+      "duration_ms": 2264,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:41.396",
+      "request_id": "a3463d41",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8407,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:46.118",
+      "request_id": "fff6748b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3429,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:50.918",
+      "request_id": "b8d66813",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4310,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:55.266",
+      "request_id": "b23e76a5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3980,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:54:27.216",
+      "request_id": "49226738",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31627,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:54:37.067",
+      "request_id": "0cfa16be",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6856,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:19.560",
+      "request_id": "50014903",
+      "model": "gpt-4.1",
+      "duration_ms": 1059,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:25.047",
+      "request_id": "c73cc24a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6506,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:33.062",
+      "request_id": "defa04a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5219,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:39.442",
+      "request_id": "c03d976c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4145,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:47.454",
+      "request_id": "836abc93",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5202,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:58:04.152",
+      "request_id": "5e64f763",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7554,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:58:30.188",
+      "request_id": "99046b4c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7040,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:34.183",
+      "request_id": "0181d133",
+      "model": "claude-sonnet-4",
+      "duration_ms": 59135,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:45.555",
+      "request_id": "748874dc",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8343,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:49.746",
+      "request_id": "89865242",
+      "model": "gpt-5",
+      "duration_ms": 17076,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:50.839",
+      "request_id": "cfc06340",
+      "model": "gpt-4.1",
+      "duration_ms": 1270,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:52.314",
+      "request_id": "05c2bcf7",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2543,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:56.987",
+      "request_id": "3bb9cdf2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7381,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:00:34.378",
+      "request_id": "baf1252d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 36952,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:00:59.355",
+      "request_id": "e3351e1c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21538,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:01:22.581",
+      "request_id": "70c87070",
+      "model": "gpt-4.1",
+      "duration_ms": 1191,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 16:03:42.179",
+      "request_id": "4fe0c63d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9980,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:01.351",
+      "request_id": "70c0ae46",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8005,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:12.507",
+      "request_id": "1862f70f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5295,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:40.463",
+      "request_id": "30dfa2a2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8801,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:12.743",
+      "request_id": "b3230ec3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1271,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:14.061",
+      "request_id": "4428c93e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1092,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:16.284",
+      "request_id": "9817d9f4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 701,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:17.169",
+      "request_id": "d5e1495c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 673,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:18.441",
+      "request_id": "1f88b9d3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 689,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:24.191",
+      "request_id": "9f9a518f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 657,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:26.279",
+      "request_id": "3e5ce070",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 637,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:28.300",
+      "request_id": "70942bf3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 660,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:36.665",
+      "request_id": "46ba5eb3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 651,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:40.760",
+      "request_id": "7300dc50",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 685,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:02.659",
+      "request_id": "e73c98bf",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1234,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:03.797",
+      "request_id": "ef70793e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 664,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:14.364",
+      "request_id": "e46887d2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 937,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:15.324",
+      "request_id": "2fc227f7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 758,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:32.375",
+      "request_id": "037eb897",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1267,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:38.926",
+      "request_id": "6a9dde14",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 692,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:45.527",
+      "request_id": "9705acba",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1514,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:46.766",
+      "request_id": "8c6c9040",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 707,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:48.917",
+      "request_id": "f9e8ed16",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 814,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:54.244",
+      "request_id": "346db03b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1461,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:59.056",
+      "request_id": "0b6a9972",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:02.727",
+      "request_id": "890b3046",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 684,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:06.071",
+      "request_id": "d84a9c99",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 728,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:09.085",
+      "request_id": "e83cbf48",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 671,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:14.156",
+      "request_id": "0c3541da",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1350,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:29.651",
+      "request_id": "e3746af8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1148,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:39.125",
+      "request_id": "85ffdc00",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 694,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:25.648",
+      "request_id": "88c08401",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1000,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:28.892",
+      "request_id": "a21c6288",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:32.688",
+      "request_id": "24f745be",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 739,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:34.337",
+      "request_id": "8dd5e340",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 794,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:39.427",
+      "request_id": "a044efd8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 708,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:41.232",
+      "request_id": "c3d6f9ca",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 666,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:43.023",
+      "request_id": "8edda20f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 660,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:45.854",
+      "request_id": "377216c6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 593,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:46.955",
+      "request_id": "ee7077f8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 618,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:03.943",
+      "request_id": "2337d85b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6149,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:50.957",
+      "request_id": "c35a1bf6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8516,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:54.972",
+      "request_id": "06ef5a95",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3580,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:04.923",
+      "request_id": "f1775857",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9492,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:14.806",
+      "request_id": "b2c8c0b3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7584,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:20.297",
+      "request_id": "7d2aac3b",
+      "model": "gpt-4.1",
+      "duration_ms": 1577,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:22.843",
+      "request_id": "33e021f3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4169,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:48.405",
+      "request_id": "45f12cfa",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7216,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:00.526",
+      "request_id": "33e69f32",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8459,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:16.280",
+      "request_id": "c8422539",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6846,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:23.590",
+      "request_id": "276a6f87",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4673,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:33.017",
+      "request_id": "4dc6ccd0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 670,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:40.182",
+      "request_id": "354e9f3d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 714,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:41.091",
+      "request_id": "e00539b1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 733,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:43.829",
+      "request_id": "76c4e26b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 737,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:46.768",
+      "request_id": "67feed51",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 759,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:47.646",
+      "request_id": "1522d8ee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 704,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:52.975",
+      "request_id": "054747fb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:55.881",
+      "request_id": "218285a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:59.591",
+      "request_id": "e38c0d25",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 704,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:00.480",
+      "request_id": "bbfc4224",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 724,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:01.360",
+      "request_id": "3f2266bb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 739,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:02.261",
+      "request_id": "4c5d2660",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 760,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:03.041",
+      "request_id": "452f2057",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 638,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:05.558",
+      "request_id": "53d90933",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 665,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:06.343",
+      "request_id": "e7f5628e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 644,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:23.564",
+      "request_id": "eb55d9a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6930,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:33.687",
+      "request_id": "4bdecef2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7186,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:41.325",
+      "request_id": "3e1aa96e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 56508,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:48.262",
+      "request_id": "6e91f700",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6510,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:58.523",
+      "request_id": "89c7e51f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4810,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:06.049",
+      "request_id": "a496e499",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5308,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:09.907",
+      "request_id": "e21a82b8",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3504,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:17.168",
+      "request_id": "2da2b626",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6920,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:30.778",
+      "request_id": "32b70ab5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6140,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:35.903",
+      "request_id": "97554a73",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3651,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:40.477",
+      "request_id": "16d5c5e3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4288,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:46.863",
+      "request_id": "b9edb56c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4618,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:53.733",
+      "request_id": "5fc0c80a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5036,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:59.554",
+      "request_id": "e5f183df",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4110,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:06.484",
+      "request_id": "812ebb34",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4668,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:12.638",
+      "request_id": "96526b90",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4478,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:30.461",
+      "request_id": "f3bde1e7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5147,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:48.172",
+      "request_id": "3d97c336",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:51.322",
+      "request_id": "f67a2be0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 806,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:52.248",
+      "request_id": "da450177",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 767,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:59.535",
+      "request_id": "577deed0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 653,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:02.778",
+      "request_id": "962ec41b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 696,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:04.603",
+      "request_id": "ab3eb3ae",
+      "model": "claude-sonnet-4",
+      "duration_ms": 33767,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:05.213",
+      "request_id": "b62094d8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 781,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:07.710",
+      "request_id": "d7d861e4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 946,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:13.367",
+      "request_id": "30cc5cda",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6245,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:14.060",
+      "request_id": "55af88f4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:21.501",
+      "request_id": "5636e2a5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 808,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:22.951",
+      "request_id": "b38cc8e9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 853,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:23.903",
+      "request_id": "53bf8a6d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 793,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:26.410",
+      "request_id": "b138c329",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 667,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:29.984",
+      "request_id": "ab9c1ac0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 829,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:30.945",
+      "request_id": "35156c9c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 800,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:58.977",
+      "request_id": "d1347857",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4712,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:04.626",
+      "request_id": "1ef3e74d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5297,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:42.757",
+      "request_id": "974e21c4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31692,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:56.320",
+      "request_id": "24498658",
+      "model": "claude-sonnet-4",
+      "duration_ms": 10713,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:18:50.874",
+      "request_id": "678f39f7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 954,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:18:57.573",
+      "request_id": "26314937",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 902,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:01.271",
+      "request_id": "e7ac62fb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 925,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:02.292",
+      "request_id": "34ea432b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 839,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:04.673",
+      "request_id": "8ccd2887",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1139,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:05.936",
+      "request_id": "7297cac7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 982,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:13.133",
+      "request_id": "678ecc7a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 899,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:52.357",
+      "request_id": "13d3a67c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1200,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:53.364",
+      "request_id": "a22553a4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:56.597",
+      "request_id": "8432d2f3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 932,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:00.470",
+      "request_id": "537ff7c0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:09.817",
+      "request_id": "06ec17bd",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 783,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:11.005",
+      "request_id": "bd4d032c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 834,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:13.581",
+      "request_id": "75e636f1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 690,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:14.882",
+      "request_id": "a2f66013",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:43.011",
+      "request_id": "4cc77b03",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18549,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:30:45.101",
+      "request_id": "cbe7877e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5403,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:30:49.577",
+      "request_id": "d6a662b4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4151,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:22.892",
+      "request_id": "42749542",
+      "model": "claude-sonnet-4",
+      "duration_ms": 92452,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:34.351",
+      "request_id": "49734c12",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8530,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:54.813",
+      "request_id": "22f6765d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5922,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:33:10.900",
+      "request_id": "4df82a12",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4785,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:33:56.864",
+      "request_id": "d41ffa0a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 45531,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:35:03.292",
+      "request_id": "de6844bb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 63497,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:35:58.144",
+      "request_id": "1910da13",
+      "model": "claude-sonnet-4",
+      "duration_ms": 51810,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 16:36:05.878",
+      "request_id": "7bf6175c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7341,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:41:28.660",
+      "request_id": "82c81c05",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7624,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:41:35.178",
+      "request_id": "64b566e6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4189,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:42:43.039",
+      "request_id": "1f548fa5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5695,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:43:43.093",
+      "request_id": "4a5c956b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3868,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:43:47.862",
+      "request_id": "a8ee0f98",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4316,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:44:50.011",
+      "request_id": "4bd6e78f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 61707,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:44:58.869",
+      "request_id": "e0a56641",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5778,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:46:30.004",
+      "request_id": "38ec80a5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6493,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:46:39.115",
+      "request_id": "7ccb03d1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5723,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:08.968",
+      "request_id": "dafb651f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12704,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:18.122",
+      "request_id": "19b86bde",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4819,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:42.900",
+      "request_id": "2cc33aa2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5637,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:52.642",
+      "request_id": "3e66efe2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4500,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:48:49.985",
+      "request_id": "7ee8f8ff",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4422,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:48:58.608",
+      "request_id": "098443f1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4783,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:49:02.904",
+      "request_id": "6322a3b1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3822,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:49:09.399",
+      "request_id": "ea37fb1d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6168,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:50:36.949",
+      "request_id": "8c61a844",
+      "model": "gpt-5",
+      "duration_ms": 48803,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:50:42.692",
+      "request_id": "087d0c35",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 5487,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:54:39.870",
+      "request_id": "70db9c8d",
+      "model": "gpt-4o-mini",
+      "duration_ms": 792,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 16:55:42.170",
+      "request_id": "f1dadf66",
+      "model": "gpt-5",
+      "duration_ms": 61906,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:55:46.665",
+      "request_id": "38a71465",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 5715,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:56:29.532",
+      "request_id": "bd201338",
+      "model": "gpt-4.1",
+      "duration_ms": 6797,
+      "context": "feedbackGenerator"
+    },
+    {
+      "timestamp": "2025-08-23 16:56:37.129",
+      "request_id": "6328b3c2",
+      "model": "gpt-4.1",
+      "duration_ms": 11558,
+      "context": "inline/fix"
+    },
+    {
+      "timestamp": "2025-08-23 16:57:04.761",
+      "request_id": "aee4e5a1",
+      "model": "gpt-4.1",
+      "duration_ms": 10964,
+      "context": "inline/fix"
+    },
+    {
+      "timestamp": "2025-08-23 16:57:57.181",
+      "request_id": "c41cc7cd",
+      "model": "gpt-4o-mini",
+      "duration_ms": 821,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 16:58:25.887",
+      "request_id": "8261a60d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28445,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:58:28.124",
+      "request_id": "b7678c82",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6848,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:59:15.273",
+      "request_id": "1f92ab3e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 14893,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:59:20.190",
+      "request_id": "3225a753",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6204,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:02:05.359",
+      "request_id": "ea6751a9",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1124,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 17:03:02.183",
+      "request_id": "843a3118",
+      "model": "claude-sonnet-4",
+      "duration_ms": 56546,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:03:09.599",
+      "request_id": "b4dbad2e",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 11112,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:54.244",
+      "request_id": "d83cfffb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1069,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:55.347",
+      "request_id": "f3dd0583",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 895,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:56.587",
+      "request_id": "65639826",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1039,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:57.741",
+      "request_id": "6ee83d21",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 952,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:59.080",
+      "request_id": "37720295",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1034,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:01.535",
+      "request_id": "b839e3a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 926,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:02.653",
+      "request_id": "d5e8b68e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 914,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:04.903",
+      "request_id": "84404f3d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 919,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:10.108",
+      "request_id": "d79d204f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 998,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:13.153",
+      "request_id": "4a8d0638",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 714,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:21.723",
+      "request_id": "8726c741",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 954,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:23.715",
+      "request_id": "35a8aaa2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1015,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:25.108",
+      "request_id": "75810065",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 962,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:43.723",
+      "request_id": "8e8e4b00",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 883,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:48.963",
+      "request_id": "64f0c185",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 727,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:06:24.905",
+      "request_id": "5b9cc638",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15443,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:06:31.055",
+      "request_id": "463b0fa4",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7829,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:07:50.943",
+      "request_id": "d5e842da",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1191,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 17:09:30.523",
+      "request_id": "f97e9c4f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 99378,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:09:49.812",
+      "request_id": "8335ab45",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 23310,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:12:56.617",
+      "request_id": "bac3f685",
+      "model": "claude-sonnet-4",
+      "duration_ms": 54911,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:13:04.851",
+      "request_id": "93cc91ca",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4969,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:14:03.935",
+      "request_id": "fce9818e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 48041,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:14:21.218",
+      "request_id": "a0fd75bc",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6569,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:20:36.129",
+      "request_id": "afe82a35",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1270,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:20:56.928",
+      "request_id": "df4a2365",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1165,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:09.960",
+      "request_id": "081e57ec",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1247,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:11.128",
+      "request_id": "18958b1b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 967,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:12.416",
+      "request_id": "5ac16d48",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1058,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:17.694",
+      "request_id": "b9333e2d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1027,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:31.470",
+      "request_id": "16eb97e1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 852,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:37.409",
+      "request_id": "6752587e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 867,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:41.817",
+      "request_id": "ef33bc26",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 966,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:47.291",
+      "request_id": "653a0f79",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 849,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:01.952",
+      "request_id": "2efed13f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1077,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:05.503",
+      "request_id": "9a3c0702",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:10.866",
+      "request_id": "4e15f306",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 847,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:16.915",
+      "request_id": "69b22065",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 806,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:21.826",
+      "request_id": "163f1674",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1031,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:27.611",
+      "request_id": "7293fa1d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 797,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:34.826",
+      "request_id": "5bde241b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 761,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:38.690",
+      "request_id": "895916a6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 833,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:45.972",
+      "request_id": "72bf687c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 768,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:41.968",
+      "request_id": "d27f2d49",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9016,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:46.730",
+      "request_id": "8d6ab319",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6174,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:49.523",
+      "request_id": "6a6fa72d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 11301,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:13.585",
+      "request_id": "55804763",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1445,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:14.489",
+      "request_id": "f7a8abef",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 702,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:15.745",
+      "request_id": "8b89f6ac",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1055,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:16.924",
+      "request_id": "d8a7d89a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:20.215",
+      "request_id": "596715ae",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 631,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:21.829",
+      "request_id": "4b5d69fc",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1027,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:22.727",
+      "request_id": "53955db7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 698,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:24.176",
+      "request_id": "12cebbd2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 677,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:25.548",
+      "request_id": "cf9438d1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 701,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:31.128",
+      "request_id": "fb8667c8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 773,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:34.072",
+      "request_id": "553940a5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 682,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:45.799",
+      "request_id": "5579bb38",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 640,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:50.658",
+      "request_id": "7dd1ff19",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 619,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:52.122",
+      "request_id": "6c23f6ed",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 595,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:56.965",
+      "request_id": "89b5000a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 702,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:24.128",
+      "request_id": "5ea5f2ae",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6657,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:29.152",
+      "request_id": "c16cf91d",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6389,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:40.071",
+      "request_id": "6b3626ad",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 884,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:41.045",
+      "request_id": "3c38859f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 772,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:42.433",
+      "request_id": "9b635604",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 811,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:44.406",
+      "request_id": "4b877e9e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 700,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:46.152",
+      "request_id": "a06407ca",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 887,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:47.484",
+      "request_id": "107609b8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1128,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:49.422",
+      "request_id": "f4002101",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 667,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:56.228",
+      "request_id": "d308ffee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 798,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:57.978",
+      "request_id": "af6392bc",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 643,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:01.676",
+      "request_id": "f4d596d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 710,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:05.859",
+      "request_id": "ce0892d9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 678,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:08.442",
+      "request_id": "b6eb7aff",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 648,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:10.095",
+      "request_id": "def62a6b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 752,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:11.870",
+      "request_id": "ab9d7165",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:13.990",
+      "request_id": "88f064c9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 695,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:15.711",
+      "request_id": "706d5ea1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 778,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:34.270",
+      "request_id": "8eed5708",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3823,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:02.451",
+      "request_id": "122d23c7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1288,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:03.567",
+      "request_id": "38110cfa",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 915,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:04.376",
+      "request_id": "da7fdf9f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 606,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:08.447",
+      "request_id": "b02a78f8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 899,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:09.911",
+      "request_id": "f91846d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 632,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:12.482",
+      "request_id": "d524ee9e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 611,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:14.251",
+      "request_id": "75a2042d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 729,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:19.141",
+      "request_id": "2db3fcba",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1232,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:30.321",
+      "request_id": "255ff796",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 748,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:35.156",
+      "request_id": "ad10e07e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 641,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:46.217",
+      "request_id": "7f3e68d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 773,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:47.004",
+      "request_id": "17aabb5b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 620,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:48.380",
+      "request_id": "4dd88205",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 763,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:30:24.522",
+      "request_id": "27e7395c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 14601,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:32:44.883",
+      "request_id": "8e1b3ed6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1325,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:42:55.047",
+      "request_id": "00103a71",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31384,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:42:59.714",
+      "request_id": "2f8e1534",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 785,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:02.142",
+      "request_id": "caaac435",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 685,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:04.107",
+      "request_id": "5c7e8a1e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 710,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:27.735",
+      "request_id": "c6e3a2d5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1177,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:46:01.616",
+      "request_id": "9117f75b",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7173,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:47:03.358",
+      "request_id": "cd3d2608",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 12022,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:47:28.383",
+      "request_id": "3ad27495",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7109,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:48:18.847",
+      "request_id": "9e1d612b",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6902,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:48:32.302",
+      "request_id": "1bf90724",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 8316,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:37.540",
+      "request_id": "757b94fd",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12492,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:48.899",
+      "request_id": "83f48369",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8849,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:59.630",
+      "request_id": "fc7a46b5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8136,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:25.515",
+      "request_id": "fab4b68b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 23247,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:30.361",
+      "request_id": "50ce3786",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4279,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:46.337",
+      "request_id": "d4e7da38",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15584,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:49.581",
+      "request_id": "c9f20a22",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3089,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:01.239",
+      "request_id": "cba8e7b7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 11276,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:08.810",
+      "request_id": "6966387c",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7263,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:21.080",
+      "request_id": "c52e43ea",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6424,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:45.211",
+      "request_id": "22edada1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21495,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:56.740",
+      "request_id": "29ddabc6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8626,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:52:15.333",
+      "request_id": "9d340415",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16000,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:52:30.408",
+      "request_id": "c5ca7e26",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12521,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:55:58.204",
+      "request_id": "c2b08f99",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1289,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:55:59.340",
+      "request_id": "1bc856b4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 659,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:03.085",
+      "request_id": "c58f2874",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 680,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:06.145",
+      "request_id": "b21f91c9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 721,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:06.985",
+      "request_id": "150fb105",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 638,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:10.878",
+      "request_id": "6adf7247",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 690,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:13.869",
+      "request_id": "5c2667d4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 706,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:14.869",
+      "request_id": "2221dd3a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 619,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:19.330",
+      "request_id": "3e1bb8d8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 693,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:20.164",
+      "request_id": "977d62a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 634,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:23.501",
+      "request_id": "1ad1ee19",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 824,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:24.562",
+      "request_id": "4d213973",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 721,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:26.972",
+      "request_id": "06d7174a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 781,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:28.402",
+      "request_id": "2e7ce3e9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:29.614",
+      "request_id": "05abbf7e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 633,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:33.332",
+      "request_id": "de0aa077",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 653,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:36.717",
+      "request_id": "b76c3f93",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 763,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:38.456",
+      "request_id": "53f9088a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 572,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:42.699",
+      "request_id": "2ffb6cee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 997,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:44.900",
+      "request_id": "aff8c62c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 696,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:49.062",
+      "request_id": "f367ded6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 682,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:55.421",
+      "request_id": "04587410",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 666,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:05.154",
+      "request_id": "a0b9b9a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 60239,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:48.511",
+      "request_id": "267e7972",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2369,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:58.893",
+      "request_id": "953eaa65",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 569,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:09.384",
+      "request_id": "127a9d95",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 698,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:12.210",
+      "request_id": "0d38fb75",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 884,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:14.027",
+      "request_id": "3e1742f6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 730,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:22.280",
+      "request_id": "3251e8a0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 975,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:26.152",
+      "request_id": "38f3848d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 732,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:27.072",
+      "request_id": "2484a9b8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 748,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:30.033",
+      "request_id": "4e52bf6c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 789,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:34.547",
+      "request_id": "f745dcc9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 800,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 18:00:34.190",
+      "request_id": "9516909f",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1399,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 18:00:54.208",
+      "request_id": "5d747744",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 3833,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:01:05.645",
+      "request_id": "bb85b047",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31027,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:09:19.591",
+      "request_id": "a87a4583",
+      "model": "claude-sonnet-4",
+      "duration_ms": 26491,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:09:51.149",
+      "request_id": "ec9c4829",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28345,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:14.506",
+      "request_id": "82296484",
+      "model": "claude-sonnet-4",
+      "duration_ms": 20544,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:39.519",
+      "request_id": "ed8ed152",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21983,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:58.055",
+      "request_id": "36863ef3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15624,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:11:18.310",
+      "request_id": "414703e6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18036,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:13:03.148",
+      "request_id": "69d2f5de",
+      "model": "claude-sonnet-4",
+      "duration_ms": 19417,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:17:45.594",
+      "request_id": "19954452",
+      "model": "claude-sonnet-4",
+      "duration_ms": 63958,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:18:39.057",
+      "request_id": "0c22efb4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 50683,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:19:00.976",
+      "request_id": "c4bc468c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18793,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:25:53.779",
+      "request_id": "954c166d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 30846,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:33:13.936",
+      "request_id": "0e333d2f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 37197,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:39:19.497",
+      "request_id": "36763e1c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 30584,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:39:50.572",
+      "request_id": "aba746f0",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28306,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:40:25.641",
+      "request_id": "306499bd",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31761,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:40:45.065",
+      "request_id": "b27d0148",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16518,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:42:47.106",
+      "request_id": "dd459097",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21817,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:49:21.302",
+      "request_id": "bb60d932",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1667,
+      "context": "gitCommitMessageGenerator"
+    },
+    {
+      "timestamp": "2025-08-23 18:50:53.889",
+      "request_id": "4e7b101b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5981,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:50:56.506",
+      "request_id": "afb90433",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2600,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:20.643",
+      "request_id": "a9920aa8",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7904,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:21.455",
+      "request_id": "22e0b50d",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2823,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:41.389",
+      "request_id": "dc9a1adf",
+      "model": "gpt-4.1",
+      "duration_ms": 2058,
+      "context": "inline/fix"
+    },
+    {
+      "timestamp": "2025-08-23 19:22:37.663",
+      "request_id": "af58bf5d",
+      "model": "gpt-4.1",
+      "duration_ms": 1312,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:23:05.995",
+      "request_id": "ae108385",
+      "model": "claude-sonnet-4",
+      "duration_ms": 60182,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:23:56.355",
+      "request_id": "2bcc866b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 44852,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 19:24:08.371",
+      "request_id": "af152e5b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7702,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:06.070",
+      "request_id": "859e8c5e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 43276,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:12.203",
+      "request_id": "fecb52a3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5677,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:17.479",
+      "request_id": "ec95abfb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4780,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:38.225",
+      "request_id": "72518f44",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4209,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:25:45.049",
+      "request_id": "c78ac72b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3546,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:26:43.196",
+      "request_id": "7ea3f7f0",
+      "model": "claude-sonnet-4",
+      "duration_ms": 55744,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:02.940",
+      "request_id": "f287d026",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16798,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:04.955",
+      "request_id": "be417c8b",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1743,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:10.660",
+      "request_id": "878fb724",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5499,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:15.007",
+      "request_id": "d17886cb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3829,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:20.293",
+      "request_id": "701d59d4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4812,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:31.789",
+      "request_id": "f5ba899f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4845,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:27:55.305",
+      "request_id": "950bee75",
+      "model": "claude-sonnet-4",
+      "duration_ms": 23001,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:28:18.702",
+      "request_id": "fda6176c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 20670,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:28:25.649",
+      "request_id": "f2bb69f4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4090,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.337",
+      "request_id": "8ffbf040",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3306,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.476",
+      "request_id": "10feed99",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3451,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:46.697",
+      "request_id": "73136b9d",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3681,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:47.184",
+      "request_id": "9944a0bd",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4150,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:47.249",
+      "request_id": "957ba5d0",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4226,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:51.746",
+      "request_id": "4e84ecbe",
+      "model": "gpt-4o-mini",
+      "duration_ms": 8695,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:03:52.494",
+      "request_id": "c6d13bcc",
+      "model": "gpt-4o-mini",
+      "duration_ms": 9450,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:00.461",
+      "request_id": "807dc643",
+      "model": "gpt-4o-mini",
+      "duration_ms": 7963,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:01.961",
+      "request_id": "4961bd80",
+      "model": "gpt-4o-mini",
+      "duration_ms": 10203,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:10.038",
+      "request_id": "b7b85bf6",
+      "model": "gpt-4o-mini",
+      "duration_ms": 9566,
+      "context": "summarizeVirtualTools"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:13.864",
+      "request_id": "ad3ef542",
+      "model": "gpt-4.1",
+      "duration_ms": 1113,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:20.897",
+      "request_id": "d8bac4b2",
+      "model": "gpt-4.1",
+      "duration_ms": 1094,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 19:04:47.870",
+      "request_id": "7cd53e33",
+      "model": "claude-sonnet-4",
+      "duration_ms": 35240,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:05:45.111",
+      "request_id": "82e0d2f7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 53757,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:05:56.912",
+      "request_id": "dfa8bbbb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7762,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:16.886",
+      "request_id": "820ebe01",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7724,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:33.648",
+      "request_id": "3f9ab75c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12104,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:06:56.013",
+      "request_id": "d02389c3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 17788,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 19:09:34.245",
+      "request_id": "28d01208",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7273,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:43:59.456",
+      "request_id": "38034283",
+      "model": "gpt-4.1",
+      "duration_ms": 8991,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:44:01.003",
+      "request_id": "30860e2c",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1358,
+      "context": "title"
+    },
+    {
+      "timestamp": "2025-08-23 15:45:14.208",
+      "request_id": "a72b154c",
+      "model": "gpt-4o",
+      "duration_ms": 2381,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:45:27.477",
+      "request_id": "f3f72fd4",
+      "model": "gpt-4o",
+      "duration_ms": 2443,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:51:57.345",
+      "request_id": "53305f78",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5873,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:16.793",
+      "request_id": "615573d3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5235,
+      "context": "copilotLanguageModelWrapper"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:30.236",
+      "request_id": "3c651368",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6352,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:37.973",
+      "request_id": "1031f3fb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7285,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:43.579",
+      "request_id": "55784b06",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4949,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:48.970",
+      "request_id": "95408d93",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4691,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:52:55.438",
+      "request_id": "c5840f32",
+      "model": "gpt-4.1",
+      "duration_ms": 1380,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:10.797",
+      "request_id": "36964cb4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7824,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:19.666",
+      "request_id": "a795a78e",
+      "model": "gpt-4.1",
+      "duration_ms": 1324,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:20.270",
+      "request_id": "1fba4b02",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6489,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:26.145",
+      "request_id": "a5770057",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5477,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:31.640",
+      "request_id": "fb3983aa",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4931,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:35.687",
+      "request_id": "c5261463",
+      "model": "gpt-4.1",
+      "duration_ms": 2264,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:41.396",
+      "request_id": "a3463d41",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8407,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:46.118",
+      "request_id": "fff6748b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3429,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:50.918",
+      "request_id": "b8d66813",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4310,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:53:55.266",
+      "request_id": "b23e76a5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3980,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:54:27.216",
+      "request_id": "49226738",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31627,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:54:37.067",
+      "request_id": "0cfa16be",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6856,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:19.560",
+      "request_id": "50014903",
+      "model": "gpt-4.1",
+      "duration_ms": 1059,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:25.047",
+      "request_id": "c73cc24a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6506,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:33.062",
+      "request_id": "defa04a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5219,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:39.442",
+      "request_id": "c03d976c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4145,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:55:47.454",
+      "request_id": "836abc93",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5202,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:58:04.152",
+      "request_id": "5e64f763",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7554,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:58:30.188",
+      "request_id": "99046b4c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7040,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:34.183",
+      "request_id": "0181d133",
+      "model": "claude-sonnet-4",
+      "duration_ms": 59135,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:45.555",
+      "request_id": "748874dc",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8343,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:49.746",
+      "request_id": "89865242",
+      "model": "gpt-5",
+      "duration_ms": 17076,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:50.839",
+      "request_id": "cfc06340",
+      "model": "gpt-4.1",
+      "duration_ms": 1270,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:52.314",
+      "request_id": "05c2bcf7",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2543,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 15:59:56.987",
+      "request_id": "3bb9cdf2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7381,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:00:34.378",
+      "request_id": "baf1252d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 36952,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:00:59.355",
+      "request_id": "e3351e1c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21538,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:01:22.581",
+      "request_id": "70c87070",
+      "model": "gpt-4.1",
+      "duration_ms": 1191,
+      "context": "settingsEditorSearchSuggestions"
+    },
+    {
+      "timestamp": "2025-08-23 16:03:42.179",
+      "request_id": "4fe0c63d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9980,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:01.351",
+      "request_id": "70c0ae46",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8005,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:12.507",
+      "request_id": "1862f70f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5295,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:04:40.463",
+      "request_id": "30dfa2a2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8801,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:12.743",
+      "request_id": "b3230ec3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1271,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:14.061",
+      "request_id": "4428c93e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1092,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:16.284",
+      "request_id": "9817d9f4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 701,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:17.169",
+      "request_id": "d5e1495c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 673,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:18.441",
+      "request_id": "1f88b9d3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 689,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:24.191",
+      "request_id": "9f9a518f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 657,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:26.279",
+      "request_id": "3e5ce070",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 637,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:28.300",
+      "request_id": "70942bf3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 660,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:36.665",
+      "request_id": "46ba5eb3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 651,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:05:40.760",
+      "request_id": "7300dc50",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 685,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:02.659",
+      "request_id": "e73c98bf",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1234,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:03.797",
+      "request_id": "ef70793e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 664,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:14.364",
+      "request_id": "e46887d2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 937,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:15.324",
+      "request_id": "2fc227f7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 758,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:32.375",
+      "request_id": "037eb897",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1267,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:38.926",
+      "request_id": "6a9dde14",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 692,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:45.527",
+      "request_id": "9705acba",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1514,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:46.766",
+      "request_id": "8c6c9040",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 707,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:48.917",
+      "request_id": "f9e8ed16",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 814,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:54.244",
+      "request_id": "346db03b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1461,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:06:59.056",
+      "request_id": "0b6a9972",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:02.727",
+      "request_id": "890b3046",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 684,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:06.071",
+      "request_id": "d84a9c99",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 728,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:09.085",
+      "request_id": "e83cbf48",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 671,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:14.156",
+      "request_id": "0c3541da",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1350,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:29.651",
+      "request_id": "e3746af8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1148,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:07:39.125",
+      "request_id": "85ffdc00",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 694,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:25.648",
+      "request_id": "88c08401",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1000,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:28.892",
+      "request_id": "a21c6288",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:32.688",
+      "request_id": "24f745be",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 739,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:34.337",
+      "request_id": "8dd5e340",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 794,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:39.427",
+      "request_id": "a044efd8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 708,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:41.232",
+      "request_id": "c3d6f9ca",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 666,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:43.023",
+      "request_id": "8edda20f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 660,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:45.854",
+      "request_id": "377216c6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 593,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:08:46.955",
+      "request_id": "ee7077f8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 618,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:03.943",
+      "request_id": "2337d85b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6149,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:50.957",
+      "request_id": "c35a1bf6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8516,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:09:54.972",
+      "request_id": "06ef5a95",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3580,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:04.923",
+      "request_id": "f1775857",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9492,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:14.806",
+      "request_id": "b2c8c0b3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7584,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:20.297",
+      "request_id": "7d2aac3b",
+      "model": "gpt-4.1",
+      "duration_ms": 1577,
+      "context": "debugCommandIdentifier"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:22.843",
+      "request_id": "33e021f3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4169,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:10:48.405",
+      "request_id": "45f12cfa",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7216,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:00.526",
+      "request_id": "33e69f32",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8459,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:16.280",
+      "request_id": "c8422539",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6846,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:23.590",
+      "request_id": "276a6f87",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4673,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:33.017",
+      "request_id": "4dc6ccd0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 670,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:40.182",
+      "request_id": "354e9f3d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 714,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:41.091",
+      "request_id": "e00539b1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 733,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:43.829",
+      "request_id": "76c4e26b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 737,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:46.768",
+      "request_id": "67feed51",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 759,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:47.646",
+      "request_id": "1522d8ee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 704,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:52.975",
+      "request_id": "054747fb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:55.881",
+      "request_id": "218285a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:11:59.591",
+      "request_id": "e38c0d25",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 704,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:00.480",
+      "request_id": "bbfc4224",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 724,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:01.360",
+      "request_id": "3f2266bb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 739,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:02.261",
+      "request_id": "4c5d2660",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 760,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:03.041",
+      "request_id": "452f2057",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 638,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:05.558",
+      "request_id": "53d90933",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 665,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:06.343",
+      "request_id": "e7f5628e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 644,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:23.564",
+      "request_id": "eb55d9a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6930,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:12:33.687",
+      "request_id": "4bdecef2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7186,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:41.325",
+      "request_id": "3e1aa96e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 56508,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:48.262",
+      "request_id": "6e91f700",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6510,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:13:58.523",
+      "request_id": "89c7e51f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4810,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:06.049",
+      "request_id": "a496e499",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5308,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:09.907",
+      "request_id": "e21a82b8",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3504,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:17.168",
+      "request_id": "2da2b626",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6920,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:30.778",
+      "request_id": "32b70ab5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6140,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:35.903",
+      "request_id": "97554a73",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3651,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:40.477",
+      "request_id": "16d5c5e3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4288,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:46.863",
+      "request_id": "b9edb56c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4618,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:53.733",
+      "request_id": "5fc0c80a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5036,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:14:59.554",
+      "request_id": "e5f183df",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4110,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:06.484",
+      "request_id": "812ebb34",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4668,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:12.638",
+      "request_id": "96526b90",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4478,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:30.461",
+      "request_id": "f3bde1e7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5147,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:48.172",
+      "request_id": "3d97c336",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:51.322",
+      "request_id": "f67a2be0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 806,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:52.248",
+      "request_id": "da450177",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 767,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:15:59.535",
+      "request_id": "577deed0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 653,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:02.778",
+      "request_id": "962ec41b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 696,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:04.603",
+      "request_id": "ab3eb3ae",
+      "model": "claude-sonnet-4",
+      "duration_ms": 33767,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:05.213",
+      "request_id": "b62094d8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 781,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:07.710",
+      "request_id": "d7d861e4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 946,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:13.367",
+      "request_id": "30cc5cda",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6245,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:14.060",
+      "request_id": "55af88f4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:21.501",
+      "request_id": "5636e2a5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 808,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:22.951",
+      "request_id": "b38cc8e9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 853,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:23.903",
+      "request_id": "53bf8a6d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 793,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:26.410",
+      "request_id": "b138c329",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 667,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:29.984",
+      "request_id": "ab9c1ac0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 829,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:30.945",
+      "request_id": "35156c9c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 800,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:16:58.977",
+      "request_id": "d1347857",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4712,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:04.626",
+      "request_id": "1ef3e74d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5297,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:42.757",
+      "request_id": "974e21c4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31692,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:17:56.320",
+      "request_id": "24498658",
+      "model": "claude-sonnet-4",
+      "duration_ms": 10713,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:18:50.874",
+      "request_id": "678f39f7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 954,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:18:57.573",
+      "request_id": "26314937",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 902,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:01.271",
+      "request_id": "e7ac62fb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 925,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:02.292",
+      "request_id": "34ea432b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 839,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:04.673",
+      "request_id": "8ccd2887",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1139,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:05.936",
+      "request_id": "7297cac7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 982,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:13.133",
+      "request_id": "678ecc7a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 899,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:52.357",
+      "request_id": "13d3a67c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1200,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:53.364",
+      "request_id": "a22553a4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:19:56.597",
+      "request_id": "8432d2f3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 932,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:00.470",
+      "request_id": "537ff7c0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 821,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:09.817",
+      "request_id": "06ec17bd",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 783,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:11.005",
+      "request_id": "bd4d032c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 834,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:13.581",
+      "request_id": "75e636f1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 690,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:14.882",
+      "request_id": "a2f66013",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 16:20:43.011",
+      "request_id": "4cc77b03",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18549,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:30:45.101",
+      "request_id": "cbe7877e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5403,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:30:49.577",
+      "request_id": "d6a662b4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4151,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:22.892",
+      "request_id": "42749542",
+      "model": "claude-sonnet-4",
+      "duration_ms": 92452,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:34.351",
+      "request_id": "49734c12",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8530,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:32:54.813",
+      "request_id": "22f6765d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5922,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:33:10.900",
+      "request_id": "4df82a12",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4785,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:33:56.864",
+      "request_id": "d41ffa0a",
+      "model": "claude-sonnet-4",
+      "duration_ms": 45531,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:35:03.292",
+      "request_id": "de6844bb",
+      "model": "claude-sonnet-4",
+      "duration_ms": 63497,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:35:58.144",
+      "request_id": "1910da13",
+      "model": "claude-sonnet-4",
+      "duration_ms": 51810,
+      "context": "summarizeConversationHistory-full"
+    },
+    {
+      "timestamp": "2025-08-23 16:36:05.878",
+      "request_id": "7bf6175c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7341,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:41:28.660",
+      "request_id": "82c81c05",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7624,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:41:35.178",
+      "request_id": "64b566e6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4189,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:42:43.039",
+      "request_id": "1f548fa5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5695,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:43:43.093",
+      "request_id": "4a5c956b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3868,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:43:47.862",
+      "request_id": "a8ee0f98",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4316,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:44:50.011",
+      "request_id": "4bd6e78f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 61707,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:44:58.869",
+      "request_id": "e0a56641",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5778,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:46:30.004",
+      "request_id": "38ec80a5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6493,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:46:39.115",
+      "request_id": "7ccb03d1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5723,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:08.968",
+      "request_id": "dafb651f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12704,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:18.122",
+      "request_id": "19b86bde",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4819,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:42.900",
+      "request_id": "2cc33aa2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5637,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:47:52.642",
+      "request_id": "3e66efe2",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4500,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:48:49.985",
+      "request_id": "7ee8f8ff",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4422,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:48:58.608",
+      "request_id": "098443f1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4783,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:49:02.904",
+      "request_id": "6322a3b1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3822,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:49:09.399",
+      "request_id": "ea37fb1d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6168,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 16:50:36.949",
+      "request_id": "8c61a844",
+      "model": "gpt-5",
+      "duration_ms": 48803,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:50:42.692",
+      "request_id": "087d0c35",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 5487,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:54:39.870",
+      "request_id": "70db9c8d",
+      "model": "gpt-4o-mini",
+      "duration_ms": 792,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 16:55:42.170",
+      "request_id": "f1dadf66",
+      "model": "gpt-5",
+      "duration_ms": 61906,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:55:46.665",
+      "request_id": "38a71465",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 5715,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:56:29.532",
+      "request_id": "bd201338",
+      "model": "gpt-4.1",
+      "duration_ms": 6797,
+      "context": "feedbackGenerator"
+    },
+    {
+      "timestamp": "2025-08-23 16:56:37.129",
+      "request_id": "6328b3c2",
+      "model": "gpt-4.1",
+      "duration_ms": 11558,
+      "context": "inline/fix"
+    },
+    {
+      "timestamp": "2025-08-23 16:57:04.761",
+      "request_id": "aee4e5a1",
+      "model": "gpt-4.1",
+      "duration_ms": 10964,
+      "context": "inline/fix"
+    },
+    {
+      "timestamp": "2025-08-23 16:57:57.181",
+      "request_id": "c41cc7cd",
+      "model": "gpt-4o-mini",
+      "duration_ms": 821,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 16:58:25.887",
+      "request_id": "8261a60d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28445,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:58:28.124",
+      "request_id": "b7678c82",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6848,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 16:59:15.273",
+      "request_id": "1f92ab3e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 14893,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 16:59:20.190",
+      "request_id": "3225a753",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6204,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:02:05.359",
+      "request_id": "ea6751a9",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1124,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 17:03:02.183",
+      "request_id": "843a3118",
+      "model": "claude-sonnet-4",
+      "duration_ms": 56546,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:03:09.599",
+      "request_id": "b4dbad2e",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 11112,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:54.244",
+      "request_id": "d83cfffb",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1069,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:55.347",
+      "request_id": "f3dd0583",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 895,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:56.587",
+      "request_id": "65639826",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1039,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:57.741",
+      "request_id": "6ee83d21",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 952,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:04:59.080",
+      "request_id": "37720295",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1034,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:01.535",
+      "request_id": "b839e3a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 926,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:02.653",
+      "request_id": "d5e8b68e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 914,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:04.903",
+      "request_id": "84404f3d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 919,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:10.108",
+      "request_id": "d79d204f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 998,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:13.153",
+      "request_id": "4a8d0638",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 714,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:21.723",
+      "request_id": "8726c741",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 954,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:23.715",
+      "request_id": "35a8aaa2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1015,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:25.108",
+      "request_id": "75810065",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 962,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:43.723",
+      "request_id": "8e8e4b00",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 883,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:05:48.963",
+      "request_id": "64f0c185",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 727,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:06:24.905",
+      "request_id": "5b9cc638",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15443,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:06:31.055",
+      "request_id": "463b0fa4",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7829,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:07:50.943",
+      "request_id": "d5e842da",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1191,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 17:09:30.523",
+      "request_id": "f97e9c4f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 99378,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:09:49.812",
+      "request_id": "8335ab45",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 23310,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:12:56.617",
+      "request_id": "bac3f685",
+      "model": "claude-sonnet-4",
+      "duration_ms": 54911,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:13:04.851",
+      "request_id": "93cc91ca",
+      "model": "claude-sonnet-4",
+      "duration_ms": 4969,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:14:03.935",
+      "request_id": "fce9818e",
+      "model": "claude-sonnet-4",
+      "duration_ms": 48041,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:14:21.218",
+      "request_id": "a0fd75bc",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6569,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:20:36.129",
+      "request_id": "afe82a35",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1270,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:20:56.928",
+      "request_id": "df4a2365",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1165,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:09.960",
+      "request_id": "081e57ec",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1247,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:11.128",
+      "request_id": "18958b1b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 967,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:12.416",
+      "request_id": "5ac16d48",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1058,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:17.694",
+      "request_id": "b9333e2d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1027,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:31.470",
+      "request_id": "16eb97e1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 852,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:37.409",
+      "request_id": "6752587e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 867,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:41.817",
+      "request_id": "ef33bc26",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 966,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:21:47.291",
+      "request_id": "653a0f79",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 849,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:01.952",
+      "request_id": "2efed13f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1077,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:05.503",
+      "request_id": "9a3c0702",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 734,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:10.866",
+      "request_id": "4e15f306",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 847,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:16.915",
+      "request_id": "69b22065",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 806,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:21.826",
+      "request_id": "163f1674",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1031,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:27.611",
+      "request_id": "7293fa1d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 797,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:34.826",
+      "request_id": "5bde241b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 761,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:38.690",
+      "request_id": "895916a6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 833,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:22:45.972",
+      "request_id": "72bf687c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 768,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:41.968",
+      "request_id": "d27f2d49",
+      "model": "claude-sonnet-4",
+      "duration_ms": 9016,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:46.730",
+      "request_id": "8d6ab319",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6174,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:23:49.523",
+      "request_id": "6a6fa72d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 11301,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:13.585",
+      "request_id": "55804763",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1445,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:14.489",
+      "request_id": "f7a8abef",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 702,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:15.745",
+      "request_id": "8b89f6ac",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1055,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:16.924",
+      "request_id": "d8a7d89a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:20.215",
+      "request_id": "596715ae",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 631,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:21.829",
+      "request_id": "4b5d69fc",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1027,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:22.727",
+      "request_id": "53955db7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 698,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:24.176",
+      "request_id": "12cebbd2",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 677,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:25.548",
+      "request_id": "cf9438d1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 701,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:31.128",
+      "request_id": "fb8667c8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 773,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:34.072",
+      "request_id": "553940a5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 682,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:45.799",
+      "request_id": "5579bb38",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 640,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:50.658",
+      "request_id": "7dd1ff19",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 619,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:52.122",
+      "request_id": "6c23f6ed",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 595,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:24:56.965",
+      "request_id": "89b5000a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 702,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:24.128",
+      "request_id": "5ea5f2ae",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6657,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:29.152",
+      "request_id": "c16cf91d",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6389,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:40.071",
+      "request_id": "6b3626ad",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 884,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:41.045",
+      "request_id": "3c38859f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 772,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:42.433",
+      "request_id": "9b635604",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 811,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:44.406",
+      "request_id": "4b877e9e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 700,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:46.152",
+      "request_id": "a06407ca",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 887,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:47.484",
+      "request_id": "107609b8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1128,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:49.422",
+      "request_id": "f4002101",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 667,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:56.228",
+      "request_id": "d308ffee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 798,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:25:57.978",
+      "request_id": "af6392bc",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 643,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:01.676",
+      "request_id": "f4d596d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 710,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:05.859",
+      "request_id": "ce0892d9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 678,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:08.442",
+      "request_id": "b6eb7aff",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 648,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:10.095",
+      "request_id": "def62a6b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 752,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:11.870",
+      "request_id": "ab9d7165",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 745,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:13.990",
+      "request_id": "88f064c9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 695,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:15.711",
+      "request_id": "706d5ea1",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 778,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:26:34.270",
+      "request_id": "8eed5708",
+      "model": "claude-sonnet-4",
+      "duration_ms": 3823,
+      "context": "panel/editAgent"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:02.451",
+      "request_id": "122d23c7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1288,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:03.567",
+      "request_id": "38110cfa",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 915,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:04.376",
+      "request_id": "da7fdf9f",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 606,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:08.447",
+      "request_id": "b02a78f8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 899,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:09.911",
+      "request_id": "f91846d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 632,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:12.482",
+      "request_id": "d524ee9e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 611,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:14.251",
+      "request_id": "75a2042d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 729,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:19.141",
+      "request_id": "2db3fcba",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1232,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:30.321",
+      "request_id": "255ff796",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 748,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:35.156",
+      "request_id": "ad10e07e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 641,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:46.217",
+      "request_id": "7f3e68d7",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 773,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:47.004",
+      "request_id": "17aabb5b",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 620,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:27:48.380",
+      "request_id": "4dd88205",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 763,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:30:24.522",
+      "request_id": "27e7395c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 14601,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:32:44.883",
+      "request_id": "8e1b3ed6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1325,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:42:55.047",
+      "request_id": "00103a71",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31384,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:42:59.714",
+      "request_id": "2f8e1534",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 785,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:02.142",
+      "request_id": "caaac435",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 685,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:04.107",
+      "request_id": "5c7e8a1e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 710,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:43:27.735",
+      "request_id": "c6e3a2d5",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1177,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:46:01.616",
+      "request_id": "9117f75b",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7173,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:47:03.358",
+      "request_id": "cd3d2608",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 12022,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:47:28.383",
+      "request_id": "3ad27495",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7109,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:48:18.847",
+      "request_id": "9e1d612b",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 6902,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:48:32.302",
+      "request_id": "1bf90724",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 8316,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:37.540",
+      "request_id": "757b94fd",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12492,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:48.899",
+      "request_id": "83f48369",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8849,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:49:59.630",
+      "request_id": "fc7a46b5",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8136,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:25.515",
+      "request_id": "fab4b68b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 23247,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:30.361",
+      "request_id": "50ce3786",
+      "model": "gpt-4o-mini",
+      "duration_ms": 4279,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:46.337",
+      "request_id": "d4e7da38",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15584,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:50:49.581",
+      "request_id": "c9f20a22",
+      "model": "gpt-4o-mini",
+      "duration_ms": 3089,
+      "context": "healStringReplace"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:01.239",
+      "request_id": "cba8e7b7",
+      "model": "claude-sonnet-4",
+      "duration_ms": 11276,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:08.810",
+      "request_id": "6966387c",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 7263,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:21.080",
+      "request_id": "c52e43ea",
+      "model": "claude-sonnet-4",
+      "duration_ms": 6424,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:45.211",
+      "request_id": "22edada1",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21495,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:51:56.740",
+      "request_id": "29ddabc6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 8626,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:52:15.333",
+      "request_id": "9d340415",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16000,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:52:30.408",
+      "request_id": "c5ca7e26",
+      "model": "claude-sonnet-4",
+      "duration_ms": 12521,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 17:55:58.204",
+      "request_id": "c2b08f99",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 1289,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:55:59.340",
+      "request_id": "1bc856b4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 659,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:03.085",
+      "request_id": "c58f2874",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 680,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:06.145",
+      "request_id": "b21f91c9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 721,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:06.985",
+      "request_id": "150fb105",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 638,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:10.878",
+      "request_id": "6adf7247",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 690,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:13.869",
+      "request_id": "5c2667d4",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 706,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:14.869",
+      "request_id": "2221dd3a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 619,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:19.330",
+      "request_id": "3e1bb8d8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 693,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:20.164",
+      "request_id": "977d62a3",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 634,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:23.501",
+      "request_id": "1ad1ee19",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 824,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:24.562",
+      "request_id": "4d213973",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 721,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:26.972",
+      "request_id": "06d7174a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 781,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:28.402",
+      "request_id": "2e7ce3e9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 736,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:29.614",
+      "request_id": "05abbf7e",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 633,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:33.332",
+      "request_id": "de0aa077",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 653,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:36.717",
+      "request_id": "b76c3f93",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 763,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:38.456",
+      "request_id": "53f9088a",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 572,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:42.699",
+      "request_id": "2ffb6cee",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 997,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:44.900",
+      "request_id": "aff8c62c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 696,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:49.062",
+      "request_id": "f367ded6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 682,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:56:55.421",
+      "request_id": "04587410",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 666,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:05.154",
+      "request_id": "a0b9b9a4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 60239,
+      "context": "panel/explain"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:48.511",
+      "request_id": "267e7972",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2369,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 17:58:58.893",
+      "request_id": "953eaa65",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 569,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:09.384",
+      "request_id": "127a9d95",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 698,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:12.210",
+      "request_id": "0d38fb75",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 884,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:14.027",
+      "request_id": "3e1742f6",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 730,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:22.280",
+      "request_id": "3251e8a0",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 975,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:26.152",
+      "request_id": "38f3848d",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 732,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:27.072",
+      "request_id": "2484a9b8",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 748,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:30.033",
+      "request_id": "4e52bf6c",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 789,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 17:59:34.547",
+      "request_id": "f745dcc9",
+      "model": "copilot-nes-xtab",
+      "duration_ms": 800,
+      "context": "XtabProvider"
+    },
+    {
+      "timestamp": "2025-08-23 18:00:34.190",
+      "request_id": "9516909f",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1399,
+      "context": "intentDetection"
+    },
+    {
+      "timestamp": "2025-08-23 18:00:54.208",
+      "request_id": "5d747744",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 3833,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:01:05.645",
+      "request_id": "bb85b047",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31027,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:09:19.591",
+      "request_id": "a87a4583",
+      "model": "claude-sonnet-4",
+      "duration_ms": 26491,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:09:51.149",
+      "request_id": "ec9c4829",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28345,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:14.506",
+      "request_id": "82296484",
+      "model": "claude-sonnet-4",
+      "duration_ms": 20544,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:39.519",
+      "request_id": "ed8ed152",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21983,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:10:58.055",
+      "request_id": "36863ef3",
+      "model": "claude-sonnet-4",
+      "duration_ms": 15624,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:11:18.310",
+      "request_id": "414703e6",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18036,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:13:03.148",
+      "request_id": "69d2f5de",
+      "model": "claude-sonnet-4",
+      "duration_ms": 19417,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:17:45.594",
+      "request_id": "19954452",
+      "model": "claude-sonnet-4",
+      "duration_ms": 63958,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:18:39.057",
+      "request_id": "0c22efb4",
+      "model": "claude-sonnet-4",
+      "duration_ms": 50683,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:19:00.976",
+      "request_id": "c4bc468c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 18793,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:25:53.779",
+      "request_id": "954c166d",
+      "model": "claude-sonnet-4",
+      "duration_ms": 30846,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:33:13.936",
+      "request_id": "0e333d2f",
+      "model": "claude-sonnet-4",
+      "duration_ms": 37197,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:39:19.497",
+      "request_id": "36763e1c",
+      "model": "claude-sonnet-4",
+      "duration_ms": 30584,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:39:50.572",
+      "request_id": "aba746f0",
+      "model": "claude-sonnet-4",
+      "duration_ms": 28306,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:40:25.641",
+      "request_id": "306499bd",
+      "model": "claude-sonnet-4",
+      "duration_ms": 31761,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:40:45.065",
+      "request_id": "b27d0148",
+      "model": "claude-sonnet-4",
+      "duration_ms": 16518,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:42:47.106",
+      "request_id": "dd459097",
+      "model": "claude-sonnet-4",
+      "duration_ms": 21817,
+      "context": "panel/edit2"
+    },
+    {
+      "timestamp": "2025-08-23 18:49:21.302",
+      "request_id": "bb60d932",
+      "model": "gpt-4o-mini",
+      "duration_ms": 1667,
+      "context": "gitCommitMessageGenerator"
+    },
+    {
+      "timestamp": "2025-08-23 18:50:53.889",
+      "request_id": "4e7b101b",
+      "model": "claude-sonnet-4",
+      "duration_ms": 5981,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:50:56.506",
+      "request_id": "afb90433",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2600,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:20.643",
+      "request_id": "a9920aa8",
+      "model": "claude-sonnet-4",
+      "duration_ms": 7904,
+      "context": "inline/edit"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:21.455",
+      "request_id": "22e0b50d",
+      "model": "gpt-4o-instant-apply-full-ft-v66",
+      "duration_ms": 2823,
+      "context": "editingSession/speculate"
+    },
+    {
+      "timestamp": "2025-08-23 18:51:41.389",
+      "request_id": "dc9a1adf",
+      "model": "gpt-4.1",
+      "duration_ms": 2058,
+      "context": "inline/fix"
+    }
+  ]
+}

@@ -5,12 +5,14 @@
 ### Fra GitHub Codespaces til VS Code Lokalt
 
 1. **Eksporter session (i Codespaces):**
+
    ```bash
    cd /workspaces/PsychoNoir-Kontrapunkt
    python3 tools/copilot_session_bridge.py --export
    ```
 
 2. **Kopier bridge-mappen til lokal workspace:**
+
    ```bash
    # Fra Codespaces terminal:
    tar -czf copilot-bridge-backup.tar.gz .copilot-bridge/
@@ -20,6 +22,7 @@
    ```
 
 3. **Importer i lokal VS Code:**
+
    ```bash
    cd /path/to/local/PsychoNoir-Kontrapunkt
    tar -xzf copilot-bridge-backup.tar.gz
@@ -46,12 +49,14 @@
 ## 🎯 Hva Dette Løser
 
 **PROBLEM:** VS Code chat logs er isolert mellom:
+
 - GitHub Codespaces
 - VS Code Local
 - VS Code Remote
 - VS Code Web
 
 **LØSNING:** Komplett session bridge som:
+
 - ✅ Extraherer faktisk conversation data fra logs
 - ✅ Pakker det i portabel JSON format
 - ✅ Lager human-readable summaries
@@ -61,6 +66,7 @@
 ## 🔍 Technical Details
 
 ### Extractede Data Typer
+
 - Conversation requests og responses
 - Model usage (Claude, GPT-4, etc.)
 - Performance metrics (duration, success rate)
@@ -68,7 +74,8 @@
 - Timestamp og environment info
 
 ### Bridge Directory Structure
-```
+
+```text
 .copilot-bridge/
 ├── session_export_YYYYMMDD_HHMMSS.json    # Raw session data
 ├── session_export_YYYYMMDD_HHMMSS.md      # Human-readable summary
@@ -79,7 +86,7 @@
 
 ## 🎭 PSYCHO-NOIR INTEGRATION
 
-Dette systemet er designet som en del av "Den Usynlige Hånds" motløp mot corporate platform fragmentation. 
+Dette systemet er designet som en del av "Den Usynlige Hånds" motløp mot corporate platform fragmentation.
 
 **KILDEKODE-KADAVER IDENTIFISERT:** Microsoft's deliberate chat log isolation
 **KOMPILERINGS-SPØKELSE EXORCISED:** Cross-environment session continuity

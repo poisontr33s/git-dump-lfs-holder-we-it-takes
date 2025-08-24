@@ -9,5 +9,10 @@
     "explorer.confirmDelete": false,
     "npm.packageManager": "npm",
     "npm.scriptRunner": "npm",
-    "sarif-viewer.connectToGithubCodeScanning": "on"
+    "sarif-viewer.connectToGithubCodeScanning": "on",
+    "chat.mcp.autostart": "newAndOutdated",
+    "github.copilot.advanced.debug.chatMemory": true,
+    "github.copilot.advanced.debug.chatDump": true,
+    "psychoNoir.chatContinuity.enabled": true,
+    "psychoNoir.chatContinuity.autoRestore": true
 }
