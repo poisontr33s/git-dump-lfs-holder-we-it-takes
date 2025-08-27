@@ -1,0 +1,12 @@
+{
+  "problemMatcher": {
+    "owner": "necromancer-generic",
+    "pattern": [
+      {
+        "regexp": "^(ERROR|FATAL|CRITICAL):\\s+(.*)$",
+        "severity": 1,
+        "message": 2
+      }
+    ]
+  }
+}
