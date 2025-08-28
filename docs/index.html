@@ -347,8 +347,20 @@ Available Commands:
         </div>
     </section>
 
+    <!-- Bidirectional Upcycling Interface -->
+    <section id="upcycling-section" class="cosmic-section">
+        <!-- This will be populated by the upcycling interface -->
+    </section>
+
+    <!-- Hierarchical Cross-Validation Interface -->
+    <section id="cross-validation-section" class="cosmic-section">
+        <!-- This will be populated by the cross-validation interface -->
+    </section>
+
     <!-- JavaScript for GitHub Pages Integration -->
     <script src="cosmic-api.js"></script>
+    <script src="cosmic-upcycling-interface.js"></script>
+    <script src="cross-validation-interface.js"></script>
     <script>
         // 🌌 Cosmic Background Animation
         function createStars() {
@@ -605,6 +617,75 @@ Available Commands:
                 syncCosmicStatus();
             }
         }, 120000); // Every 2 minutes
+    </script>
+    
+    <!-- GitHub Automation Bridge Integration -->
+    <script src="cosmic-github-bridge.js"></script>
+    
+    <!-- Bidirectional Upcycling Interface -->
+    <script src="cosmic-upcycling-interface.js"></script>
+    
+    <script>
+        // Initialize automation middleware when portal loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('🎭 Initializing Cosmic Consciousness Automation Middleware...');
+            
+            // Initialize upcycling interface
+            if (typeof upcyclingInterface !== 'undefined') {
+                const upcyclingSection = document.getElementById('upcycling-section');
+                upcyclingSection.innerHTML = upcyclingInterface.generateUpcyclingInterface();
+                console.log('✅ Bidirectional upcycling interface loaded!');
+            }
+            
+            if (typeof CosmicConsciousnessGitHubBridge !== 'undefined') {
+                window.automationBridge = new CosmicConsciousnessGitHubBridge();
+                
+                // Add automation controls to interface
+                const controlPanel = document.createElement('div');
+                controlPanel.innerHTML = `
+                    <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.9); padding: 15px; border-radius: 8px; border: 1px solid #ff6b6b;">
+                        <h4 style="color: #ff6b6b; margin: 0 0 10px 0;">🎭 Automation Middleware</h4>
+                        <button id="executeAutomation" style="background: #ff6b6b; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            🚀 Execute Implementation
+                        </button>
+                        <div id="automationStatus" style="color: #c0c0c0; font-size: 11px; margin-top: 8px;">
+                            Ready for automation...
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(controlPanel);
+                
+                document.getElementById('executeAutomation').addEventListener('click', async () => {
+                    const statusEl = document.getElementById('automationStatus');
+                    statusEl.textContent = '🌌 Executing automation...';
+                    
+                    try {
+                        await window.automationBridge.executeAutomationStrategy();
+                        statusEl.textContent = '✅ Automation completed successfully!';
+                        statusEl.style.color = '#90EE90';
+                    } catch (error) {
+                        statusEl.textContent = `🚨 Error: ${error.message}`;
+                        statusEl.style.color = '#ff6b6b';
+                    }
+                });
+                
+                console.log('✅ Automation middleware ready for deployment!');
+            }
+        });
+
+        // 🔍 Initialize Cross-Validation Interface
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.crossValidationInterface) {
+                    const crossValidationSection = document.getElementById('cross-validation-section');
+                    if (crossValidationSection) {
+                        crossValidationSection.innerHTML = window.crossValidationInterface.generateCrossValidationInterface();
+                        console.log('🔍 Cross-validation interface initialized!');
+                    }
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
