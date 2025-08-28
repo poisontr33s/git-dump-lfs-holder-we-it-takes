@@ -25,43 +25,43 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [18, 20]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      
+          cache: "npm"
+
       - name: Install dependencies with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'npm-install'
-          run: 'npm ci'
-          category: 'frontend'
-          variant: 'node-${{ matrix.node-version }}'
+          name: "npm-install"
+          run: "npm ci"
+          category: "frontend"
+          variant: "node-${{ matrix.node-version }}"
           timeout-minutes: 8
-      
+
       - name: Build frontend with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'frontend-build'
+          name: "frontend-build"
           run: |
             mkdir -p dist/frontend
             cp -r frontend/* dist/frontend/ 2>/dev/null || echo "No frontend directory, creating placeholder"
             echo "Build for Node ${{ matrix.node-version }}" > dist/frontend/build-info.txt
             echo "Timestamp: $(date)" >> dist/frontend/build-info.txt
-          category: 'frontend'
-          variant: 'node-${{ matrix.node-version }}'
+          category: "frontend"
+          variant: "node-${{ matrix.node-version }}"
           timeout-minutes: 5
-      
+
       - name: Run frontend tests with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'frontend-tests'
+          name: "frontend-tests"
           run: |
             # Run tests with fallback for permission issues
             if [ -x "node_modules/.bin/jest" ]; then
@@ -70,10 +70,10 @@ jobs:
               echo "Jest not executable, running via npx"
               npx --yes jest --passWithNoTests --verbose
             fi
-          category: 'frontend'
-          variant: 'node-${{ matrix.node-version }}'
+          category: "frontend"
+          variant: "node-${{ matrix.node-version }}"
           timeout-minutes: 10
-        continue-on-error: true  # Don't fail the workflow, but collect the failure data
+        continue-on-error: true # Don't fail the workflow, but collect the failure data
 
   verify-backend:
     name: Verify Backend (Python ${{ matrix.python-version }})
@@ -82,21 +82,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.9', '3.11']
-    
+        python-version: ["3.9", "3.11"]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       - name: Install Python dependencies with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'python-install'
+          name: "python-install"
           run: |
             python -m pip install --upgrade pip
             if [ -f backend/python/requirements.txt ]; then
@@ -105,29 +105,29 @@ jobs:
               echo "No requirements.txt found, installing basic test dependencies"
               pip install pytest pytest-cov
             fi
-          category: 'backend'
-          variant: 'python-${{ matrix.python-version }}'
+          category: "backend"
+          variant: "python-${{ matrix.python-version }}"
           timeout-minutes: 8
-      
+
       - name: Run Python linting with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'python-lint'
+          name: "python-lint"
           run: |
             cd backend/python
             # Basic syntax check
             python -m py_compile *.py 2>/dev/null || echo "Some files have syntax issues"
             # Try to run a simple import test
             python -c "import sys; print(f'Python {sys.version} syntax check passed')"
-          category: 'backend'
-          variant: 'python-${{ matrix.python-version }}'
+          category: "backend"
+          variant: "python-${{ matrix.python-version }}"
           timeout-minutes: 5
         continue-on-error: true
-      
+
       - name: Run Python tests with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'python-tests'
+          name: "python-tests"
           run: |
             cd backend/python
             # Run tests if they exist, otherwise create a simple test
@@ -137,42 +137,70 @@ jobs:
               echo "No tests found, running basic import verification"
               python -c "import sys, os, json, sqlite3; print('Testing basic imports...'); print('✅ Core modules import successfully')"
             fi
-          category: 'backend'
-          variant: 'python-${{ matrix.python-version }}'
+          category: "backend"
+          variant: "python-${{ matrix.python-version }}"
           timeout-minutes: 10
+        continue-on-error: true
+
+  # Smart conditional JavaScript security scanning
+  verify-js-security:
+    name: Conditional JavaScript Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    if: contains(join(github.event.commits.*.modified, ' '), 'package.json') || contains(join(github.event.commits.*.added, ' '), 'package.json')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Smart npm audit (package.json changes detected)
+        uses: ./.github/actions/necromancer-collect
+        with:
+          name: "conditional-npm-audit"
+          run: |
+            echo "📦 Running conditional npm audit (42.9% effectiveness - only on package changes)"
+            if [ -f package.json ]; then
+              npm audit --audit-level=high  # Only high severity for efficiency
+              echo "✅ npm audit completed for package.json changes"
+            else
+              echo "ℹ️ No package.json found despite change detection"
+            fi
+          category: "security"
+          variant: "conditional-js"
+          timeout-minutes: 5
         continue-on-error: true
 
   verify-security:
     name: Verify Security Scanning
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Run npm audit with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'npm-audit'
+          name: "npm-audit"
           run: |
             if [ -f package.json ]; then
               npm audit --audit-level=moderate
             else
               echo "No package.json found, skipping npm audit"
             fi
-          category: 'security'
-          variant: 'npm-audit'
+          category: "security"
+          variant: "npm-audit"
           timeout-minutes: 5
         continue-on-error: true
-      
+
       - name: Basic security checks with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: 'security-scan'
+          name: "security-scan"
           run: |
             echo "🔐 Running basic security checks..."
-            
+
             # Check for common security issues
             echo "Checking for exposed secrets..."
             if grep -r "password\|secret\|token\|key" . --include="*.js" --include="*.py" --include="*.yml" --exclude-dir=node_modules --exclude-dir=.git | grep -v "password_hash\|secret_key_base\|token_type"; then
@@ -180,29 +208,30 @@ jobs:
             else
               echo "✅ No obvious secrets found"
             fi
-            
+
             # Check file permissions
             echo "Checking file permissions..."
             find . -type f -perm -o+w -not -path "./node_modules/*" -not -path "./.git/*" | head -10
-            
+
             echo "🔐 Basic security scan complete"
-          category: 'security'
-          variant: 'basic-scan'
+          category: "security"
+          variant: "basic-scan"
           timeout-minutes: 3
         continue-on-error: true
 
   # Aggregate results for this verification run
   aggregate-verification:
     name: Aggregate Verification Results
-    needs: [verify-frontend, verify-backend, verify-security]
+    needs:
+      [verify-frontend, verify-backend, verify-security, verify-js-security]
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    if: always()  # Run even if some jobs failed
-    
+    if: always() # Run even if some jobs failed
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Download all necromancer artifacts
         uses: actions/download-artifact@v4
         with:
@@ -210,34 +239,34 @@ jobs:
           path: artifacts/
           merge-multiple: true
         continue-on-error: true
-      
+
       - name: List downloaded artifacts
         run: |
           echo "📦 Downloaded artifacts:"
           find artifacts/ -type f | sort || echo "No artifacts found"
-      
+
       - name: Aggregate failure data
         run: |
           echo "🧙‍♂️ Aggregating verification failure data..."
-          
+
           # Run aggregation
           python3 .github/scripts/necromancer/aggregate.py \
             --artifacts-dir artifacts/ \
             --output-dir necropolis-verification/
-          
+
           echo "📋 Verification aggregation complete"
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_WORKFLOW: ${{ github.workflow }}
-      
+
       - name: Upload verification report
         uses: actions/upload-artifact@v4
         with:
           name: necropolis-verification-report-${{ github.run_id }}
           path: necropolis-verification/
           retention-days: ${{ env.NECRO_ARTIFACT_RETENTION_DAYS }}
-      
+
       - name: Print verification summary
         run: |
           if [ -f necropolis-verification/necropolis/knowledge-base/latest_taxonomy_report.json ]; then

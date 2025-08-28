@@ -2,19 +2,19 @@ name: Necropolis - Comprehensive Failure Harvesting
 on:
   schedule:
     # Run nightly at 2 AM UTC to harvest failures across the entire matrix
-    - cron: "0 2 * * *"
+    - cron: '0 2 * * *'
   workflow_dispatch:
     inputs:
       aggressive_mode:
-        description: "Enable aggressive failure generation for testing"
+        description: 'Enable aggressive failure generation for testing'
         type: boolean
         default: false
       matrix_size:
-        description: "Matrix size (small/medium/large)"
+        description: 'Matrix size (small/medium/large)'
         type: choice
         options:
           - small
-          - medium
+          - medium  
           - large
         default: medium
 
@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
+        os: 
           - ubuntu-latest
           - windows-latest
           - macos-latest
@@ -49,22 +49,22 @@ jobs:
           # For small matrix, only test core combinations
           - ${{ github.event.inputs.matrix_size == 'small' && (matrix.node-version == 16 || matrix.node-version == 21) }}
           - ${{ github.event.inputs.matrix_size == 'small' && matrix.browser == 'firefox' }}
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
         continue-on-error: true
-
+      
       - name: Install dependencies with chaos injection
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "chaotic-npm-install"
+          name: 'chaotic-npm-install'
           run: |
             # Inject chaos for testing if aggressive mode enabled
             if [ "$AGGRESSIVE_MODE" = "true" ]; then
@@ -73,24 +73,24 @@ jobs:
               npm install --save-dev jest@29.0.0 || true
               npm install --save-dev jest@28.0.0 || true
             fi
-
+            
             # Normal install
             npm ci
-          category: "frontend"
-          variant: "${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}"
+          category: 'frontend'
+          variant: '${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}'
           timeout-minutes: 12
         continue-on-error: true
-
+      
       - name: Build with environment variations
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "variant-build"
+          name: 'variant-build'
           run: |
             # Test different build configurations
             echo "🏗️ Building for ${{ matrix.browser }} on ${{ matrix.os }}"
-
+            
             mkdir -p dist/frontend
-
+            
             # Browser-specific build variations
             if [ "${{ matrix.browser }}" = "chrome" ]; then
               echo "Building for Chrome with ES2020 target"
@@ -102,12 +102,12 @@ jobs:
               echo "Building for Safari with ES2018 target (more restrictive)"
               cp -r frontend/* dist/frontend/ 2>/dev/null || echo "No frontend files"
             fi
-
+            
             # Add build metadata
             echo "Build: ${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}" > dist/frontend/build-metadata.json
             echo "Timestamp: $(date -Iseconds)" >> dist/frontend/build-metadata.json
             echo "Commit: ${{ github.sha }}" >> dist/frontend/build-metadata.json
-
+            
             # Simulate build stress test in aggressive mode
             if [ "$AGGRESSIVE_MODE" = "true" ]; then
               echo "🔥 STRESS TEST: Consuming memory and CPU..."
@@ -115,34 +115,34 @@ jobs:
               dd if=/dev/zero of=temp_stress_file bs=1M count=100 2>/dev/null || echo "Stress test completed"
               rm -f temp_stress_file
             fi
-          category: "frontend"
-          variant: "${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}"
+          category: 'frontend'
+          variant: '${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}'
           timeout-minutes: 10
         continue-on-error: true
-
+      
       - name: Run comprehensive test suite
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "comprehensive-tests"
+          name: 'comprehensive-tests'
           run: |
             echo "🧪 Running comprehensive test suite..."
-
+            
             # Try multiple test approaches to capture different failure modes
-
+            
             # Approach 1: Direct npm test
             echo "=== Testing via npm test ==="
             npm test 2>&1 || echo "npm test failed"
-
+            
             # Approach 2: Jest with specific config
             echo "=== Testing via Jest directly ==="
             if command -v npx >/dev/null 2>&1; then
               npx jest --passWithNoTests --verbose --detectOpenHandles 2>&1 || echo "Direct jest failed"
             fi
-
+            
             # Approach 3: Basic JS syntax validation
             echo "=== Basic syntax validation ==="
             find . -name "*.js" -not -path "./node_modules/*" -exec node -c {} \; 2>&1 || echo "Syntax validation had issues"
-
+            
             # Aggressive mode: Intentional failures for pattern testing
             if [ "$AGGRESSIVE_MODE" = "true" ]; then
               echo "🎭 AGGRESSIVE MODE: Generating test failure patterns..."
@@ -163,8 +163,8 @@ jobs:
                 process.exit(1);
               " || echo "Test failure pattern generated"
             fi
-          category: "frontend"
-          variant: "${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}"
+          category: 'frontend'
+          variant: '${{ matrix.os }}-node${{ matrix.node-version }}-${{ matrix.browser }}'
           timeout-minutes: 15
         continue-on-error: true
 
@@ -177,37 +177,37 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
         exclude:
           # Small matrix excludes
           - ${{ github.event.inputs.matrix_size == 'small' && (matrix.python-version == '3.8' || matrix.python-version == '3.12') }}
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
         continue-on-error: true
-
+      
       - name: Install with dependency chaos
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "chaotic-python-install"
+          name: 'chaotic-python-install'
           run: |
             echo "🐍 Installing Python dependencies with potential chaos..."
-
+            
             python -m pip install --upgrade pip
-
+            
             # Aggressive mode dependency conflicts
             if [ "$AGGRESSIVE_MODE" = "true" ]; then
               echo "🌪️ AGGRESSIVE MODE: Creating dependency conflicts..."
               pip install requests==2.25.0 || true
               pip install requests==2.28.0 || true  # Conflicting versions
             fi
-
+            
             # Install requirements if they exist
             if [ -f backend/python/requirements.txt ]; then
               pip install -r backend/python/requirements.txt
@@ -215,26 +215,26 @@ jobs:
               echo "Installing standard development dependencies..."
               pip install pytest pytest-cov sqlite3 || pip install pytest pytest-cov
             fi
-
+            
             # Show installed packages for debugging
             pip list
-          category: "backend"
-          variant: "${{ matrix.os }}-python${{ matrix.python-version }}"
+          category: 'backend'
+          variant: '${{ matrix.os }}-python${{ matrix.python-version }}'
           timeout-minutes: 12
         continue-on-error: true
-
+      
       - name: Run Python analysis and tests
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "python-comprehensive-analysis"
+          name: 'python-comprehensive-analysis'
           run: |
             echo "🔬 Running comprehensive Python analysis..."
             cd backend/python
-
+            
             # Syntax and import testing
             echo "=== Syntax validation ==="
             python -m py_compile *.py 2>&1 || echo "Syntax issues found"
-
+            
             # Import testing
             echo "=== Import validation ==="
             for file in *.py; do
@@ -244,7 +244,7 @@ jobs:
                 python -c "import sys; sys.path.insert(0, '.'); exec(f'import $module_name'); print('✅ $file imports successfully')" 2>&1 || echo "❌ $file import test completed"
               fi
             done
-
+            
             # Run tests if they exist
             echo "=== Running tests ==="
             if [ -d tests ] || ls test_*.py >/dev/null 2>&1; then
@@ -253,7 +253,7 @@ jobs:
               echo "No tests found, running module validation..."
               python -c "import os, sys; print('Python version:', sys.version); print('Current directory:', os.getcwd()); print('Available Python files:'); [print(f'  - {f}') for f in os.listdir('.') if f.endswith('.py')]"
             fi
-
+            
             # Aggressive mode: Generate Python-specific failures
             if [ "$AGGRESSIVE_MODE" = "true" ]; then
               echo "🎭 AGGRESSIVE MODE: Generating Python failure patterns..."
@@ -264,8 +264,8 @@ jobs:
               # Import error simulation
               python -c "import sys; exec('import nonexistent_module')" || echo "Import error pattern generated"
             fi
-          category: "backend"
-          variant: "${{ matrix.os }}-python${{ matrix.python-version }}"
+          category: 'backend'
+          variant: '${{ matrix.os }}-python${{ matrix.python-version }}'
           timeout-minutes: 15
         continue-on-error: true
 
@@ -277,51 +277,65 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # OPTIMIZED: Only proven effective scanners (85-90% success rate)
-        # bandit: 85.7% effectiveness, safety: 88.9% effectiveness
-        # Removed: npm-audit (42.9%), semgrep (40.0%) - moved to conditional usage
-        scanner: [bandit, safety]
-        exclude: [] # No exclusions needed - these scanners are proven effective
-
+        scanner: [npm-audit, bandit, safety, semgrep]
+        exclude:
+          - ${{ github.event.inputs.matrix_size == 'small' && matrix.scanner == 'semgrep' }}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Setup scanner environment
         run: |
           case "${{ matrix.scanner }}" in
+            npm-audit)
+              echo "Setting up Node.js for npm audit"
+              ;;
             bandit|safety)
-              echo "🐍 Setting up Python for ${{ matrix.scanner }} (proven effective)"
+              echo "Setting up Python for ${{ matrix.scanner }}"
               python -m pip install --upgrade pip
               pip install ${{ matrix.scanner }}
               ;;
+            semgrep)
+              echo "Setting up Semgrep"
+              pip install semgrep
+              ;;
           esac
         continue-on-error: true
-
+      
       - name: Run security scanner
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "security-${{ matrix.scanner }}"
+          name: 'security-${{ matrix.scanner }}'
           run: |
-            echo "🔐 Running ${{ matrix.scanner }} security scan (effectiveness: ${{ matrix.scanner == 'bandit' && '85.7%' || '88.9%' }})"
-
+            echo "🔐 Running ${{ matrix.scanner }} security scan..."
+            
             case "${{ matrix.scanner }}" in
+              npm-audit)
+                if [ -f package.json ]; then
+                  npm audit --audit-level=moderate
+                else
+                  echo "No package.json found"
+                  exit 1
+                fi
+                ;;
               bandit)
                 if [ -d backend/python ]; then
-                  echo "🐍 Scanning Python backend with bandit (proven 85.7% effectiveness)"
                   bandit -r backend/python/ -f json || bandit -r backend/python/
                 else
-                  echo "ℹ️ No Python backend found for bandit scanning"
+                  echo "No Python backend found"
                   exit 1
                 fi
                 ;;
               safety)
-                echo "🛡️ Running safety check (proven 88.9% effectiveness)"
                 safety check || echo "Safety check completed with findings"
                 ;;
+              semgrep)
+                semgrep --config=auto . || echo "Semgrep scan completed"
+                ;;
             esac
-          category: "security"
-          variant: "${{ matrix.scanner }}"
+          category: 'security'
+          variant: '${{ matrix.scanner }}'
           timeout-minutes: 15
         continue-on-error: true
 
@@ -333,14 +347,14 @@ jobs:
     timeout-minutes: 15
     if: always()
     permissions:
-      contents: write # Needed to push to necropolis branch
-
+      contents: write  # Needed to push to necropolis branch
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Need full history for branch operations
-
+          fetch-depth: 0  # Need full history for branch operations
+      
       - name: Download all necromancer artifacts
         uses: actions/download-artifact@v4
         with:
@@ -348,36 +362,36 @@ jobs:
           path: artifacts/
           merge-multiple: true
         continue-on-error: true
-
+      
       - name: List artifacts for debugging
         run: |
           echo "📦 Downloaded artifacts structure:"
           find artifacts/ -type f | head -20 || echo "No artifacts found"
           echo "Total artifact files: $(find artifacts/ -type f | wc -l)"
-
+      
       - name: Aggregate comprehensive failure data
         run: |
           echo "🧙‍♂️ Aggregating comprehensive necropolis data..."
-
+          
           # Run comprehensive aggregation
           python3 .github/scripts/necromancer/aggregate.py \
             --artifacts-dir artifacts/ \
             --output-dir necropolis-comprehensive/
-
+          
           echo "📋 Comprehensive aggregation complete"
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_WORKFLOW: ${{ github.workflow }}
-
+      
       - name: Prepare necropolis branch update
         run: |
           echo "🏛️ Preparing necropolis branch update..."
-
+          
           # Configure git
           git config user.name "Necropolis Aggregator"
           git config user.email "necropolis@psycho-noir-kontrapunkt.ai"
-
+          
           # Create or checkout necropolis branch
           if git show-ref --quiet refs/remotes/origin/$NECRO_BRANCH; then
             echo "Checking out existing necropolis branch"
@@ -391,17 +405,17 @@ jobs:
             git add README.md
             git commit -m "Initialize necropolis branch"
           fi
-
+      
       - name: Update knowledge base
         run: |
           echo "📚 Updating necropolis knowledge base..."
-
+          
           # Copy aggregated data to necropolis branch
           cp -r necropolis-comprehensive/necropolis/* . 2>/dev/null || echo "No necropolis data to copy"
-
+          
           # Add all changes
           git add .
-
+          
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
@@ -412,14 +426,14 @@ jobs:
             git push origin $NECRO_BRANCH
             echo "✅ Necropolis branch updated"
           fi
-
+      
       - name: Create comprehensive report artifact
         uses: actions/upload-artifact@v4
         with:
           name: necropolis-comprehensive-report-${{ github.run_id }}
           path: necropolis-comprehensive/
           retention-days: ${{ env.NECRO_ARTIFACT_RETENTION_DAYS }}
-
+      
       - name: Print necropolis summary
         run: |
           echo "🏛️ NECROPOLIS COMPREHENSIVE SUMMARY:"
