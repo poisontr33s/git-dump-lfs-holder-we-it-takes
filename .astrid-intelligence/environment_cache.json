@@ -1,0 +1,81 @@
+{
+  "timestamp": "2025-08-24T18:54:25.951062",
+  "environment": {
+    "platform": "Linux",
+    "architecture": "x86_64",
+    "python_version": "3.12.1 (main, Jul 10 2025, 11:57:50) [GCC 13.3.0]",
+    "node_version": "v22.17.0",
+    "vscode_version": "1.103.2",
+    "codespaces_active": true,
+    "wsl_detected": false,
+    "docker_available": true,
+    "git_status": {
+      "is_repo": true,
+      "current_branch": "main",
+      "uncommitted_changes": 5,
+      "status": "dirty"
+    },
+    "extension_health": {
+      "total_extensions": 78,
+      "critical_missing": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vscode-remote.remote-containers"
+      ],
+      "health_score": 0.4
+    },
+    "network_connectivity": true,
+    "system_resources": {
+      "disk_usage": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/loop4       32G   16G   15G  52% /workspaces\n",
+      "memory": {
+        "total": "8134320",
+        "free": "853800"
+      }
+    }
+  },
+  "problems": [
+    {
+      "category": "vscode",
+      "severity": "high",
+      "description": "Critical VS Code extension missing: GitHub.copilot",
+      "probable_cause": "Extension not installed or disabled",
+      "astrid_confidence": 0.95,
+      "auto_fixable": true,
+      "fix_commands": [
+        "code --install-extension GitHub.copilot"
+      ],
+      "verification_commands": [
+        "code --list-extensions"
+      ]
+    },
+    {
+      "category": "vscode",
+      "severity": "high",
+      "description": "Critical VS Code extension missing: GitHub.copilot-chat",
+      "probable_cause": "Extension not installed or disabled",
+      "astrid_confidence": 0.95,
+      "auto_fixable": true,
+      "fix_commands": [
+        "code --install-extension GitHub.copilot-chat"
+      ],
+      "verification_commands": [
+        "code --list-extensions"
+      ]
+    },
+    {
+      "category": "vscode",
+      "severity": "high",
+      "description": "Critical VS Code extension missing: ms-vscode-remote.remote-containers",
+      "probable_cause": "Extension not installed or disabled",
+      "astrid_confidence": 0.95,
+      "auto_fixable": true,
+      "fix_commands": [
+        "code --install-extension ms-vscode-remote.remote-containers"
+      ],
+      "verification_commands": [
+        "code --list-extensions"
+      ]
+    }
+  ],
+  "astrid_signature": "KAUSALITETS_ARKITEKTEN_v1.0"
+}

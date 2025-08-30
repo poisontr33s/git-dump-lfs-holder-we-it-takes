@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"extensions.ignoreRecommendations": false,
+		"chat.mcp.autostart": "newAndOutdated"
+	}
+}
