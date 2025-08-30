@@ -1,0 +1,481 @@
+# 🎭 PSYCHO-NOIR KONTRAPUNKT PRODUCTION ENVIRONMENT 🎭
+# =======================================================
+#
+# Production-grade environment configuration med complete
+# security hardening, performance optimization, og resilience
+#
+# PRODUCTION_SIGNATURE: 0xPRODUCTION_GRADE_OPERATIONAL
+# SECURITY_LEVEL: ENTERPRISE_HARDENED
+
+version: "3.8"
+
+# 🏷️ Global Labels
+x-common-labels: &common-labels
+  com.psychonoir.project: "psycho-noir-kontrapunkt"
+  com.psychonoir.environment: "production"
+  com.psychonoir.maintainer: "neural-archaeology-team"
+  com.psychonoir.security-level: "hardened"
+
+# 🔧 Common Environment Variables
+x-common-env: &common-env
+  TZ: "UTC"
+  LANG: "en_US.UTF-8"
+  LC_ALL: "en_US.UTF-8"
+
+# 🛡️ Security Configuration
+x-security-opts: &security-opts
+  security_opt:
+    - no-new-privileges:true
+    - apparmor:docker-default
+  cap_drop:
+    - ALL
+  cap_add:
+    - CHOWN
+    - DAC_OVERRIDE
+    - FOWNER
+    - SETGID
+    - SETUID
+    - NET_BIND_SERVICE
+  read_only: true
+  tmpfs:
+    - /tmp:noexec,nosuid,size=100m
+    - /var/tmp:noexec,nosuid,size=50m
+
+services:
+  # 🎭 Main Application - Production Hardened
+  psychonoir-app-prod:
+    build:
+      context: ../../
+      dockerfile: backend/docker/Dockerfile
+      args:
+        BUILD_ENV: production
+        SECURITY_SCAN: enabled
+    image: ghcr.io/poisontr33s/psychonoir-kontrapunkt:production
+    container_name: psychonoir-app-prod
+    restart: unless-stopped
+    <<: *security-opts
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - psychonoir-data-prod:/app/data:rw
+      - psychonoir-logs-prod:/var/log/psychonoir:rw
+      - psychonoir-nginx-logs-prod:/var/log/nginx:rw
+      - psychonoir-ssl-certs:/etc/ssl/certs:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      <<: *common-env
+      FLASK_ENV: production
+      LOG_LEVEL: INFO
+      DB_PATH: /app/data/db/psycho_noir_production.db
+      FRONTEND_PATH: /app/frontend
+      CORS_ORIGINS: "${PRODUCTION_CORS_ORIGINS}"
+      MAX_WORKERS: "${PRODUCTION_MAX_WORKERS:-8}"
+      WORKER_CLASS: gevent
+      WORKER_CONNECTIONS: "${PRODUCTION_WORKER_CONNECTIONS:-1000}"
+      BIND_ADDRESS: 0.0.0.0:5000
+      HEALTH_CHECK_FORMAT: json
+      SSL_ENABLED: "true"
+      SSL_CERT_PATH: /etc/ssl/certs/psychonoir.crt
+      SSL_KEY_PATH: /etc/ssl/certs/psychonoir.key
+      RATE_LIMIT_ENABLED: "true"
+      RATE_LIMIT_REQUESTS: "1000"
+      RATE_LIMIT_WINDOW: "3600"
+      SECURITY_HEADERS_ENABLED: "true"
+      SESSION_COOKIE_SECURE: "true"
+      SESSION_COOKIE_HTTPONLY: "true"
+      SESSION_COOKIE_SAMESITE: "Strict"
+      CSRF_PROTECTION_ENABLED: "true"
+      SQL_INJECTION_PROTECTION: "true"
+    healthcheck:
+      test:
+        ["CMD", "python", "/app/healthcheck.py", "--format=json", "--timeout=5"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - psychonoir-network-prod
+      - psychonoir-monitoring-network
+    depends_on:
+      psychonoir-redis-prod:
+        condition: service_healthy
+      psychonoir-database-prod:
+        condition: service_healthy
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "main-application"
+      com.psychonoir.tier: "frontend"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+        labels: "com.psychonoir.service,com.psychonoir.environment"
+
+  # 🗄️ Production Database (PostgreSQL)
+  psychonoir-database-prod:
+    image: postgres:15-alpine
+    container_name: psychonoir-database-prod
+    restart: unless-stopped
+    <<: *security-opts
+    environment:
+      <<: *common-env
+      POSTGRES_DB: "${POSTGRES_DB:-psychonoir_production}"
+      POSTGRES_USER: "${POSTGRES_USER:-psychonoir_user}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=en_US.UTF-8"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - psychonoir-postgres-data:/var/lib/postgresql/data:rw
+      - psychonoir-postgres-backups:/backups:rw
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./postgres/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+    command: >
+      postgres
+      -c config_file=/etc/postgresql/postgresql.conf
+      -c hba_file=/etc/postgresql/pg_hba.conf
+      -c log_statement=all
+      -c log_min_duration_statement=1000
+      -c shared_preload_libraries=pg_stat_statements
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-psychonoir_user} -d ${POSTGRES_DB:-psychonoir_production}",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - psychonoir-network-prod
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "database"
+      com.psychonoir.tier: "backend"
+
+  # 📊 Redis Cache - Production Configuration
+  psychonoir-redis-prod:
+    image: redis:7-alpine
+    container_name: psychonoir-redis-prod
+    restart: unless-stopped
+    <<: *security-opts
+    environment:
+      <<: *common-env
+    volumes:
+      - psychonoir-redis-data-prod:/data:rw
+      - ./redis/redis-production.conf:/usr/local/etc/redis/redis.conf:ro
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --appendonly yes
+      --appendfsync everysec
+      --save 900 1
+      --save 300 10
+      --save 60 10000
+      --maxmemory 1gb
+      --maxmemory-policy allkeys-lru
+      --timeout 0
+      --tcp-keepalive 300
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - psychonoir-network-prod
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "cache"
+      com.psychonoir.tier: "backend"
+
+  # 🔍 Prometheus - Production Monitoring
+  psychonoir-prometheus-prod:
+    image: prom/prometheus:latest
+    container_name: psychonoir-prometheus-prod
+    restart: unless-stopped
+    <<: *security-opts
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus-production.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - psychonoir-prometheus-data-prod:/prometheus:rw
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=90d"
+      - "--storage.tsdb.retention.size=10GB"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+      - "--web.enable-admin-api"
+      - "--log.level=info"
+      - "--query.max-concurrency=50"
+      - "--query.timeout=2m"
+    networks:
+      - psychonoir-monitoring-network
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "monitoring"
+      com.psychonoir.tier: "monitoring"
+
+  # 📈 Grafana - Production Dashboard
+  psychonoir-grafana-prod:
+    image: grafana/grafana:latest
+    container_name: psychonoir-grafana-prod
+    restart: unless-stopped
+    <<: *security-opts
+    ports:
+      - "3000:3000"
+    volumes:
+      - psychonoir-grafana-data-prod:/var/lib/grafana:rw
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/grafana-production.ini:/etc/grafana/grafana.ini:ro
+      - psychonoir-ssl-certs:/etc/ssl/certs:ro
+    environment:
+      <<: *common-env
+      GF_SECURITY_ADMIN_PASSWORD: "${GRAFANA_ADMIN_PASSWORD}"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_USERS_ALLOW_ORG_CREATE: "false"
+      GF_USERS_AUTO_ASSIGN_ORG: "true"
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Viewer"
+      GF_SERVER_DOMAIN: "${GRAFANA_DOMAIN:-grafana.psychonoir.local}"
+      GF_SERVER_ROOT_URL: "https://${GRAFANA_DOMAIN:-grafana.psychonoir.local}"
+      GF_SERVER_PROTOCOL: "https"
+      GF_SERVER_CERT_FILE: "/etc/ssl/certs/grafana.crt"
+      GF_SERVER_CERT_KEY: "/etc/ssl/certs/grafana.key"
+      GF_SECURITY_COOKIE_SECURE: "true"
+      GF_SECURITY_COOKIE_SAMESITE: "strict"
+      GF_SECURITY_STRICT_TRANSPORT_SECURITY: "true"
+      GF_SECURITY_CONTENT_TYPE_PROTECTION: "true"
+      GF_AUTH_DISABLE_LOGIN_FORM: "false"
+      GF_AUTH_DISABLE_SIGNOUT_MENU: "true"
+      GF_SNAPSHOTS_EXTERNAL_ENABLED: "false"
+      GF_SMTP_ENABLED: "${SMTP_ENABLED:-false}"
+      GF_SMTP_HOST: "${SMTP_HOST}"
+      GF_SMTP_USER: "${SMTP_USER}"
+      GF_SMTP_PASSWORD: "${SMTP_PASSWORD}"
+      GF_SMTP_FROM_ADDRESS: "${SMTP_FROM_ADDRESS}"
+    networks:
+      - psychonoir-monitoring-network
+    depends_on:
+      psychonoir-prometheus-prod:
+        condition: service_healthy
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "dashboard"
+      com.psychonoir.tier: "monitoring"
+
+  # 🚨 Alert Manager
+  psychonoir-alertmanager-prod:
+    image: prom/alertmanager:latest
+    container_name: psychonoir-alertmanager-prod
+    restart: unless-stopped
+    <<: *security-opts
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager/alertmanager-production.yml:/etc/alertmanager/alertmanager.yml:ro
+      - psychonoir-alertmanager-data:/alertmanager:rw
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+      - "--storage.path=/alertmanager"
+      - "--web.external-url=https://alerts.psychonoir.local"
+      - "--web.route-prefix=/"
+      - "--cluster.advertise-address=0.0.0.0:9093"
+      - "--log.level=info"
+    networks:
+      - psychonoir-monitoring-network
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "alerting"
+      com.psychonoir.tier: "monitoring"
+
+  # 🔄 Backup Service - Production Schedule
+  psychonoir-backup-prod:
+    build:
+      context: ../../
+      dockerfile: backend/docker/Dockerfile
+    image: ghcr.io/poisontr33s/psychonoir-kontrapunkt:production
+    container_name: psychonoir-backup-prod
+    restart: "no"
+    <<: *security-opts
+    volumes:
+      - psychonoir-data-prod:/app/data:ro
+      - psychonoir-postgres-data:/var/lib/postgresql/data:ro
+      - psychonoir-backups-prod:/backups:rw
+      - psychonoir-backup-config:/backup-config:ro
+    environment:
+      <<: *common-env
+      BACKUP_SCHEDULE: "0 2 * * *" # Daily at 2 AM
+      BACKUP_RETENTION: "30" # 30 days
+      BACKUP_COMPRESSION: "true"
+      BACKUP_ENCRYPTION: "true"
+      BACKUP_S3_ENABLED: "${BACKUP_S3_ENABLED:-false}"
+      BACKUP_S3_BUCKET: "${BACKUP_S3_BUCKET}"
+      BACKUP_S3_REGION: "${BACKUP_S3_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      BACKUP_NOTIFICATION_ENABLED: "true"
+      BACKUP_WEBHOOK_URL: "${BACKUP_WEBHOOK_URL}"
+    command: ["python", "/app/backend/python/backup_service.py", "--production"]
+    networks:
+      - psychonoir-network-prod
+    profiles:
+      - backup
+    labels:
+      <<: *common-labels
+      com.psychonoir.service: "backup"
+      com.psychonoir.tier: "maintenance"
+
+# 📦 Production Volumes
+volumes:
+  psychonoir-data-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/data
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "application-data"
+
+  psychonoir-postgres-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/postgres
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "database-data"
+
+  psychonoir-postgres-backups:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/postgres-backups
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "database-backups"
+
+  psychonoir-logs-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/log/psychonoir/production
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "application-logs"
+
+  psychonoir-nginx-logs-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/log/nginx/psychonoir
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "nginx-logs"
+
+  psychonoir-redis-data-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/redis
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "cache-data"
+
+  psychonoir-prometheus-data-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/prometheus
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "monitoring-metrics"
+
+  psychonoir-grafana-data-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/grafana
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "dashboard-data"
+
+  psychonoir-alertmanager-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/alertmanager
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "alerting-data"
+
+  psychonoir-backups-prod:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/psychonoir/production/backups
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "backup-storage"
+
+  psychonoir-ssl-certs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /etc/ssl/psychonoir
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "ssl-certificates"
+
+  psychonoir-backup-config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /etc/psychonoir/backup
+    labels:
+      <<: *common-labels
+      com.psychonoir.volume: "backup-configuration"
+
+# 🌐 Production Networks
+networks:
+  psychonoir-network-prod:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: psychonoir-prod
+      com.docker.network.driver.mtu: 1500
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+    labels:
+      <<: *common-labels
+      com.psychonoir.network: "application"
+
+  psychonoir-monitoring-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: psychonoir-monitoring
+      com.docker.network.driver.mtu: 1500
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
+    labels:
+      <<: *common-labels
+      com.psychonoir.network: "monitoring"

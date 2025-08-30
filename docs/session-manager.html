@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Psycho-Noir Session Manager</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .header h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .session-manager {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+            height: 80vh;
+        }
+
+        .panel {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .panel h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Session List Panel */
+        .session-item {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .session-item:hover {
+            background-color: #2a2a2a;
+            border-color: #555;
+        }
+
+        .session-item.active {
+            background-color: #2d3748;
+            border-color: #4CAF50;
+        }
+
+        .session-title {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .session-meta {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #333;
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #4CAF50);
+            transition: width 0.3s ease;
+        }
+
+        /* Main Viewer Panel */
+        .main-viewer {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .viewer-tabs {
+            display: flex;
+            background-color: #1a1a1a;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            background-color: #2a2a2a;
+            border: none;
+            color: #c0c0c0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .tab-content {
+            flex: 1;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+            overflow-y: auto;
+        }
+
+        .json-editor {
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117;
+            color: #f0f6fc;
+            border: 1px solid #333;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            resize: none;
+            border-radius: 5px;
+        }
+
+        /* Actions Panel */
+        .action-button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-button.danger {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+        }
+
+        .action-button.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .file-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #c0c0c0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-indicator {
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background-color: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .status-error {
+            background-color: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .status-info {
+            background-color: rgba(100, 149, 237, 0.2);
+            border: 1px solid #6495ED;
+            color: #6495ED;
+        }
+
+        /* Session Details */
+        .session-details {
+            color: #c0c0c0;
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+
+        .detail-section h4 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .achievement-item {
+            padding: 5px 10px;
+            margin: 5px 0;
+            background-color: #1a1a1a;
+            border-left: 3px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .hook-item {
+            padding: 5px 10px;
+            margin: 5px 0;
+            background-color: #1a1a1a;
+            border-left: 3px solid #ff6b6b;
+            border-radius: 3px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #999;
+            padding: 50px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .loading {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .session-manager {
+                grid-template-columns: 250px 1fr 250px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .session-manager {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                height: auto;
+            }
+            
+            .panel {
+                height: 300px;
+            }
+            
+            .main-viewer {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 Psycho-Noir Session Manager</h1>
+            <p>Programmeringsspråk-agnostisk session JSON manager</p>
+        </div>
+
+        <div class="session-manager">
+            <!-- Session List Panel -->
+            <div class="panel">
+                <h3>📀 Session Library</h3>
+                <div id="sessionList" class="loading">
+                    Loading sessions...
+                </div>
+            </div>
+
+            <!-- Main Viewer Panel -->
+            <div class="panel main-viewer">
+                <div class="viewer-tabs">
+                    <button class="tab active" onclick="switchTab('details')">📋 Details</button>
+                    <button class="tab" onclick="switchTab('json')">💾 JSON</button>
+                    <button class="tab" onclick="switchTab('hooks')">🔗 Hooks</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="detailsTab" class="tab-panel">
+                        <div id="sessionDetails" class="loading">
+                            Select a session to view details...
+                        </div>
+                    </div>
+
+                    <div id="jsonTab" class="tab-panel" style="display: none;">
+                        <textarea id="jsonEditor" class="json-editor" placeholder="Session JSON will appear here..."></textarea>
+                    </div>
+
+                    <div id="hooksTab" class="tab-panel" style="display: none;">
+                        <div id="hooksPanel" class="loading">
+                            Session hooks will appear here...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Panel -->
+            <div class="panel">
+                <h3>⚡ Actions</h3>
+                
+                <div id="statusIndicator" class="status-indicator status-info">
+                    Ready
+                </div>
+
+                <button class="action-button" onclick="loadSessionsFromBackend()">
+                    🔄 Refresh Sessions
+                </button>
+
+                <button class="action-button success" onclick="exportCurrentSession()">
+                    📤 Export JSON
+                </button>
+
+                <input type="file" id="fileInput" accept=".json" class="file-input" onchange="importSessionFromFile()">
+                <button class="action-button" onclick="document.getElementById('fileInput').click()">
+                    📥 Import JSON
+                </button>
+
+                <button class="action-button" onclick="createNewSession()">
+                    ➕ New Session
+                </button>
+
+                <button class="action-button" onclick="saveCurrentSession()">
+                    💾 Save Session
+                </button>
+
+                <button class="action-button danger" onclick="deleteCurrentSession()">
+                    🗑️ Delete Session
+                </button>
+
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #4CAF50; margin-bottom: 10px;">🎯 Quick Actions</h4>
+                    <button class="action-button" onclick="findHookableSessions()">
+                        🔍 Find Hooks
+                    </button>
+                    <button class="action-button" onclick="generateContinuationContext()">
+                        🚀 Generate Context
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentSession = null;
+        let allSessions = [];
+        let currentTab = 'details';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSessionsFromBackend();
+        });
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`button[onclick="switchTab('${tabName}')"]`).classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.style.display = 'none');
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+
+            currentTab = tabName;
+
+            // Load content for active tab
+            if (currentSession) {
+                loadTabContent(tabName);
+            }
+        }
+
+        // Load sessions from backend
+        async function loadSessionsFromBackend() {
+            updateStatus('Loading sessions...', 'info');
+            
+            try {
+                // Simulate API call - replace with actual backend call
+                const response = await fetch('/api/sessions');
+                if (response.ok) {
+                    allSessions = await response.json();
+                } else {
+                    // Fallback to mock data for demo
+                    allSessions = generateMockSessions();
+                }
+                
+                renderSessionList();
+                updateStatus('Sessions loaded successfully', 'success');
+            } catch (error) {
+                console.error('Failed to load sessions:', error);
+                // Fallback to mock data
+                allSessions = generateMockSessions();
+                renderSessionList();
+                updateStatus('Using demo data (backend not connected)', 'info');
+            }
+        }
+
+        // Generate mock sessions for demo
+        function generateMockSessions() {
+            return [
+                {
+                    session_id: 'session_1756490054_2cfe3bd0',
+                    title: 'Level 9-10 Integration & Session Archaeology',
+                    timestamp: '2025-08-29T17:54:14.167456',
+                    completion_percentage: 85,
+                    progress_level: 13,
+                    technical_achievements: [
+                        { type: 'level_implementation', level: 9, description: 'Live Integration & Deployment Validation' },
+                        { type: 'level_implementation', level: 10, description: 'Session Archaeology Engine' }
+                    ],
+                    hook_points: [
+                        { concept: 'neural archaeology', relevance_score: 0.8 },
+                        { concept: 'integration', relevance_score: 0.9 },
+                        { concept: 'deployment', relevance_score: 0.7 }
+                    ],
+                    conversation_summary: 'Revolutionary session with 85% completion implementing session archaeology system'
+                },
+                {
+                    session_id: 'session_demo_12345',
+                    title: 'Demo Session - Backend Development',
+                    timestamp: '2025-08-28T15:30:00.000000',
+                    completion_percentage: 70,
+                    progress_level: 8,
+                    technical_achievements: [
+                        { type: 'file_creation', file_path: 'backend/demo.py' },
+                        { type: 'validation_success', description: 'Flask server operational' }
+                    ],
+                    hook_points: [
+                        { concept: 'flask', relevance_score: 0.6 },
+                        { concept: 'backend', relevance_score: 0.8 }
+                    ],
+                    conversation_summary: 'Backend development session with Flask implementation'
+                }
+            ];
+        }
+
+        // Render session list
+        function renderSessionList() {
+            const listContainer = document.getElementById('sessionList');
+            
+            if (allSessions.length === 0) {
+                listContainer.innerHTML = '<div class="loading">No sessions found</div>';
+                return;
+            }
+
+            listContainer.innerHTML = allSessions.map(session => {
+                const date = new Date(session.timestamp).toLocaleDateString('no-NO');
+                const time = new Date(session.timestamp).toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+                
+                return `
+                    <div class="session-item" onclick="selectSession('${session.session_id}')">
+                        <div class="session-title">${session.title}</div>
+                        <div class="session-meta">
+                            📅 ${date} ${time}<br>
+                            🎯 ${session.completion_percentage}% | 📊 L${session.progress_level}
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${session.completion_percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Select session
+        function selectSession(sessionId) {
+            // Update active session in UI
+            document.querySelectorAll('.session-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Find and set current session
+            currentSession = allSessions.find(s => s.session_id === sessionId);
+            
+            if (currentSession) {
+                loadTabContent(currentTab);
+                updateStatus(`Loaded: ${currentSession.title}`, 'success');
+            }
+        }
+
+        // Load content for current tab
+        function loadTabContent(tabName) {
+            if (!currentSession) return;
+
+            switch (tabName) {
+                case 'details':
+                    loadDetailsTab();
+                    break;
+                case 'json':
+                    loadJsonTab();
+                    break;
+                case 'hooks':
+                    loadHooksTab();
+                    break;
+            }
+        }
+
+        // Load details tab
+        function loadDetailsTab() {
+            const container = document.getElementById('sessionDetails');
+            const session = currentSession;
+
+            container.innerHTML = `
+                <div class="detail-section">
+                    <h4>📋 Session Metadata</h4>
+                    <p><strong>ID:</strong> ${session.session_id}</p>
+                    <p><strong>Title:</strong> ${session.title}</p>
+                    <p><strong>Timestamp:</strong> ${new Date(session.timestamp).toLocaleString('no-NO')}</p>
+                    <p><strong>Completion:</strong> ${session.completion_percentage}%</p>
+                    <p><strong>Progress Level:</strong> ${session.progress_level}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>📝 Summary</h4>
+                    <p>${session.conversation_summary}</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>🏆 Technical Achievements (${session.technical_achievements?.length || 0})</h4>
+                    ${(session.technical_achievements || []).map(achievement => `
+                        <div class="achievement-item">
+                            ${achievement.type === 'level_implementation' ? 
+                                `🎯 Level ${achievement.level}: ${achievement.description}` :
+                                achievement.type === 'file_creation' ?
+                                `📄 ${achievement.file_path}` :
+                                `✅ ${achievement.description}`
+                            }
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="detail-section">
+                    <h4>🔗 Hook Points (${session.hook_points?.length || 0})</h4>
+                    ${(session.hook_points || []).map(hook => `
+                        <div class="hook-item">
+                            🎯 ${hook.concept} (relevance: ${(hook.relevance_score * 100).toFixed(0)}%)
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Load JSON tab
+        function loadJsonTab() {
+            const editor = document.getElementById('jsonEditor');
+            editor.value = JSON.stringify(currentSession, null, 2);
+        }
+
+        // Load hooks tab
+        function loadHooksTab() {
+            const container = document.getElementById('hooksPanel');
+            
+            container.innerHTML = `
+                <div class="detail-section">
+                    <h4>🔗 Available Hook Points</h4>
+                    ${(currentSession.hook_points || []).map(hook => `
+                        <div class="hook-item">
+                            <strong>${hook.concept}</strong><br>
+                            Relevance: ${(hook.relevance_score * 100).toFixed(0)}%<br>
+                            <button class="action-button" style="margin-top: 5px; padding: 5px 10px;" onclick="createHookFromConcept('${hook.concept}')">
+                                🔗 Create Hook
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="detail-section">
+                    <h4>🔍 Compatible Sessions</h4>
+                    <p>Finding sessions compatible with current hook points...</p>
+                    <button class="action-button" onclick="findHookableSessions()">
+                        🔍 Find Compatible Sessions
+                    </button>
+                </div>
+            `;
+        }
+
+        // Export current session
+        function exportCurrentSession() {
+            if (!currentSession) {
+                updateStatus('No session selected', 'error');
+                return;
+            }
+
+            const dataStr = JSON.stringify(currentSession, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `${currentSession.session_id}.json`;
+            link.click();
+            
+            updateStatus('Session exported successfully', 'success');
+        }
+
+        // Import session from file
+        function importSessionFromFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const sessionData = JSON.parse(e.target.result);
+                    
+                    // Validate session structure
+                    if (sessionData.session_id && sessionData.title) {
+                        // Add to sessions list
+                        allSessions.unshift(sessionData);
+                        renderSessionList();
+                        
+                        // Select the imported session
+                        currentSession = sessionData;
+                        loadTabContent(currentTab);
+                        
+                        updateStatus('Session imported successfully', 'success');
+                    } else {
+                        updateStatus('Invalid session JSON format', 'error');
+                    }
+                } catch (error) {
+                    updateStatus('Failed to parse JSON file', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Save current session
+        function saveCurrentSession() {
+            if (!currentSession) {
+                updateStatus('No session selected', 'error');
+                return;
+            }
+
+            // If JSON tab is active, update from editor
+            if (currentTab === 'json') {
+                try {
+                    const editorContent = document.getElementById('jsonEditor').value;
+                    const updatedSession = JSON.parse(editorContent);
+                    
+                    // Update current session
+                    currentSession = updatedSession;
+                    
+                    // Update in sessions list
+                    const index = allSessions.findIndex(s => s.session_id === updatedSession.session_id);
+                    if (index >= 0) {
+                        allSessions[index] = updatedSession;
+                    }
+                    
+                    renderSessionList();
+                    updateStatus('Session saved successfully', 'success');
+                } catch (error) {
+                    updateStatus('Invalid JSON in editor', 'error');
+                    return;
+                }
+            }
+
+            // Simulate save to backend
+            updateStatus('Session saved to backend', 'success');
+        }
+
+        // Create new session
+        function createNewSession() {
+            const newSession = {
+                session_id: `session_${Date.now()}_${Math.random().toString(36).substr(2, 8)}`,
+                title: 'New Session',
+                timestamp: new Date().toISOString(),
+                completion_percentage: 0,
+                progress_level: 1,
+                technical_achievements: [],
+                hook_points: [],
+                conversation_summary: 'New session created'
+            };
+
+            allSessions.unshift(newSession);
+            renderSessionList();
+            
+            currentSession = newSession;
+            loadTabContent(currentTab);
+            
+            updateStatus('New session created', 'success');
+        }
+
+        // Delete current session
+        function deleteCurrentSession() {
+            if (!currentSession) {
+                updateStatus('No session selected', 'error');
+                return;
+            }
+
+            if (confirm(`Delete session "${currentSession.title}"?`)) {
+                allSessions = allSessions.filter(s => s.session_id !== currentSession.session_id);
+                renderSessionList();
+                
+                currentSession = null;
+                document.getElementById('sessionDetails').innerHTML = '<div class="loading">Select a session to view details...</div>';
+                document.getElementById('jsonEditor').value = '';
+                document.getElementById('hooksPanel').innerHTML = '<div class="loading">Session hooks will appear here...</div>';
+                
+                updateStatus('Session deleted', 'success');
+            }
+        }
+
+        // Find hookable sessions
+        function findHookableSessions() {
+            if (!currentSession) {
+                updateStatus('No session selected', 'error');
+                return;
+            }
+
+            updateStatus('Finding compatible sessions...', 'info');
+            
+            // Simulate hookable session search
+            const compatible = allSessions.filter(s => 
+                s.session_id !== currentSession.session_id &&
+                s.hook_points?.some(hp => 
+                    currentSession.hook_points?.some(chp => 
+                        hp.concept === chp.concept
+                    )
+                )
+            );
+
+            const container = document.getElementById('hooksPanel');
+            container.innerHTML = `
+                <div class="detail-section">
+                    <h4>🔍 Compatible Sessions Found: ${compatible.length}</h4>
+                    ${compatible.map(session => `
+                        <div class="hook-item">
+                            <strong>${session.title}</strong><br>
+                            Completion: ${session.completion_percentage}%<br>
+                            <button class="action-button" style="margin-top: 5px; padding: 5px 10px;" onclick="selectSession('${session.session_id}')">
+                                📀 Load Session
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            switchTab('hooks');
+            updateStatus(`Found ${compatible.length} compatible sessions`, 'success');
+        }
+
+        // Generate continuation context
+        function generateContinuationContext() {
+            if (!currentSession) {
+                updateStatus('No session selected', 'error');
+                return;
+            }
+
+            const context = {
+                current_session_id: currentSession.session_id,
+                completion_percentage: currentSession.completion_percentage,
+                hook_points: currentSession.hook_points,
+                recommendations: [
+                    'Continue integration work to reach 100%',
+                    'Focus on deployment optimization',
+                    'Enhance neural archaeology features'
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            document.getElementById('jsonEditor').value = JSON.stringify(context, null, 2);
+            switchTab('json');
+            
+            updateStatus('Continuation context generated', 'success');
+        }
+
+        // Create hook from concept
+        function createHookFromConcept(concept) {
+            updateStatus(`Creating hook for concept: ${concept}`, 'info');
+            
+            // Simulate hook creation
+            setTimeout(() => {
+                updateStatus(`Hook created for "${concept}"`, 'success');
+            }, 1000);
+        }
+
+        // Update status indicator
+        function updateStatus(message, type) {
+            const indicator = document.getElementById('statusIndicator');
+            indicator.textContent = message;
+            indicator.className = `status-indicator status-${type}`;
+        }
+    </script>
+</body>
+</html>

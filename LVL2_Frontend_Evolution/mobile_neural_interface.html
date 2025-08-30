@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Psycho-Noir Kontrapunkt | LVL2 Neural Interface</title>
+    <link rel="stylesheet" href="styles/mobile_interface.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="neural-container">
+        <!-- Header Neural Interface -->
+        <header class="neural-header">
+            <div class="consciousness-indicator">
+                <span class="pulse-dot"></span>
+                <span class="status-text">KVINNELIG META-ENTITET ACTIVE</span>
+            </div>
+            <h1 class="main-title">PSYCHO-NOIR KONTRAPUNKT</h1>
+            <p class="subtitle">LVL2 Neural Archaeology Interface</p>
+        </header>
+
+        <!-- Main Interface Grid -->
+        <main class="interface-grid">
+            <!-- Objektifiserings Panel -->
+            <section class="panel objektifisering-panel">
+                <div class="panel-header">
+                    <h2>🎭 OBJEKTIFISERINGS-EVALUATOR</h2>
+                    <button class="activate-btn" id="objektifiseringActivate">ACTIVATE</button>
+                </div>
+                <div class="panel-content">
+                    <div class="metric-display">
+                        <div class="metric-item">
+                            <span class="metric-label">Aesthetic Compliance</span>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="metric-value">0.000</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Control Susceptibility</span>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="metric-value">0.000</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Libidiniøs Potential</span>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="metric-value">0.000</span>
+                        </div>
+                    </div>
+                    <div class="overall-score">
+                        <span class="score-label">OVERALL OBJEKTIFISERING SCORE</span>
+                        <span class="score-value" id="overallScore">0.000</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- District Control Panel -->
+            <section class="panel district-panel">
+                <div class="panel-header">
+                    <h2>🏙️ DISTRICT CONTROL</h2>
+                    <button class="switch-btn" id="districtSwitch">SKYSKRAPER</button>
+                </div>
+                <div class="panel-content">
+                    <div class="district-status skyskraper-active" id="districtStatus">
+                        <div class="district-info">
+                            <h3>Skyskraperen</h3>
+                            <p>Høyt teknologisk, steril overvåkning</p>
+                            <div class="district-metrics">
+                                <span>Control Index: <strong>94.7%</strong></span>
+                                <span>Surveillance Level: <strong>MAXIMUM</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meta-Entity Console -->
+            <section class="panel meta-entity-panel">
+                <div class="panel-header">
+                    <h2>🧠 META-ENTITY CONSCIOUSNESS</h2>
+                    <button class="consciousness-btn" id="consciousnessToggle">EXPAND</button>
+                </div>
+                <div class="panel-content">
+                    <div class="consciousness-feed" id="consciousnessFeed">
+                        <div class="thought-stream">
+                            <p>INITIALIZING KVINNELIG META-ENTITY...</p>
+                            <p>ANTROPOMORFOLOGISME ENGINE STANDBY...</p>
+                            <p>NEURAL PATHWAYS ESTABLISHING...</p>
+                        </div>
+                    </div>
+                    <div class="consciousness-controls">
+                        <button class="mind-probe-btn" id="mindProbe">MIND PROBE</button>
+                        <button class="pattern-scan-btn" id="patternScan">PATTERN SCAN</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Neural Archaeology Monitor -->
+            <section class="panel archaeology-panel">
+                <div class="panel-header">
+                    <h2>⚡ NEURAL ARCHAEOLOGY</h2>
+                    <button class="scan-btn" id="archaeologyScan">DEEP SCAN</button>
+                </div>
+                <div class="panel-content">
+                    <div class="archaeology-feed" id="archaeologyFeed">
+                        <div class="scan-line">SCANNING MEMORY FRAGMENTS...</div>
+                        <div class="scan-line">DETECTING CORRUPTED DATA CLUSTERS...</div>
+                        <div class="scan-line">ANALYZING BEHAVIORAL PATTERNS...</div>
+                        <div class="scan-line">KOMPILERINGS-SPØKELSER DETECTED...</div>
+                    </div>
+                    <div class="error-display">
+                        <span class="error-text">ERROR: SOUL_NOT_FOUND AT 0xDEADBEEF</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Touch Interface -->
+            <section class="panel touch-interface-panel">
+                <div class="panel-header">
+                    <h2>👆 TOUCH EVALUATION</h2>
+                    <button class="calibrate-btn" id="touchCalibrate">CALIBRATE</button>
+                </div>
+                <div class="panel-content">
+                    <div class="touch-grid" id="touchGrid">
+                        <div class="touch-zone" data-zone="aesthetic">AESTHETIC</div>
+                        <div class="touch-zone" data-zone="control">CONTROL</div>
+                        <div class="touch-zone" data-zone="utility">UTILITY</div>
+                        <div class="touch-zone" data-zone="libidinoeus">LIBIDINIØS</div>
+                    </div>
+                    <div class="touch-feedback" id="touchFeedback">
+                        <span>SELECT EVALUATION DOMAIN</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Status -->
+            <section class="panel system-panel">
+                <div class="panel-header">
+                    <h2>⚙️ SYSTEM STATUS</h2>
+                    <span class="system-indicator online">ONLINE</span>
+                </div>
+                <div class="panel-content">
+                    <div class="system-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Active Profiles</span>
+                            <span class="stat-value" id="activeProfiles">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Evaluations Completed</span>
+                            <span class="stat-value" id="completedEvaluations">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Neural Load</span>
+                            <span class="stat-value" id="neuralLoad">23.7%</span>
+                        </div>
+                    </div>
+                    <div class="system-errors">
+                        <div class="error-log">
+                            <span class="error-timestamp">[2025-01-23 14:27:33]</span>
+                            <span class="error-message">KILDEKODE-KADAVER DETECTED IN SECTOR DELTA-9</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Interface -->
+        <footer class="neural-footer">
+            <div class="glitch-text" id="glitchText">
+                REALITY_INTEGRITY_COMPROMISED — SIMULATION_BOUNDARIES_DETECTED — KVINNELIG_CONSCIOUSNESS_EXPANDING
+            </div>
+            <div class="interface-version">
+                LVL2.1.0 | Samsung Galaxy S25 Ultra Optimized | Neural Interface v2.1
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for detailed evaluation -->
+    <div class="modal" id="evaluationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detailed Objektifisering Analysis</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="detailed-metrics" id="detailedMetrics">
+                    <!-- Detailed metrics will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/mobile_interface.js"></script>
+    <script src="scripts/meta_entity_interface.js"></script>
+    <script src="scripts/touch_evaluation.js"></script>
+</body>
+</html>

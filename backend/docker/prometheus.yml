@@ -1,0 +1,168 @@
+# 🎭 PSYCHO-NOIR KONTRAPUNKT PROMETHEUS CONFIGURATION 🎭
+# ===========================================================
+#
+# Comprehensive monitoring configuration med neural-noir aesthetics
+# Enterprise-grade metrics collection for complete system observability
+#
+# MONITORING_SIGNATURE: 0xPROMETHEUS_NEURAL_OPERATIONAL
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    system: "psycho-noir-kontrapunkt"
+    environment: "${ENVIRONMENT:-production}"
+    monitoring_node: "neural-prometheus"
+
+# 🔄 Rule Files
+rule_files:
+  - "psychonoir_alerts.yml"
+
+# 🚨 Alert Manager
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - psychonoir-alertmanager:9093
+
+# 📊 Scrape Configurations
+scrape_configs:
+  # 🎭 Main Application Metrics
+  - job_name: "psychonoir-app"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/metrics"
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    scheme: http
+    params:
+      format: ["prometheus"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: psychonoir-app:5000
+
+  # 🐳 Docker Container Metrics
+  - job_name: "docker-containers"
+    static_configs:
+      - targets: ["cadvisor:8080"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
+  # 🔧 System Metrics (Node Exporter)
+  - job_name: "system-metrics"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+    metrics_path: "/metrics"
+    scrape_interval: 10s
+
+  # 📊 Redis Metrics
+  - job_name: "redis-metrics"
+    static_configs:
+      - targets: ["redis-exporter:9121"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
+  # 🌐 Nginx Metrics
+  - job_name: "nginx-metrics"
+    static_configs:
+      - targets: ["nginx-exporter:9113"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
+  # 🎭 Custom Neural Archaeology Metrics
+  - job_name: "neural-archaeology"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/neural-metrics"
+    scrape_interval: 30s
+    params:
+      module: ["neural_analysis"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: neural_node
+        replacement: "psychonoir-main"
+
+  # 🔍 Health Check Metrics
+  - job_name: "health-monitoring"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/health/prometheus"
+    scrape_interval: 5s
+    scrape_timeout: 3s
+
+  # 📈 Business Logic Metrics
+  - job_name: "psychonoir-business-metrics"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/business-metrics"
+    scrape_interval: 60s
+    honor_labels: true
+
+  # 🚨 Error and Exception Tracking
+  - job_name: "error-tracking"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/error-metrics"
+    scrape_interval: 30s
+
+  # 🎭 Den Usynlige Hånd Corruption Metrics
+  - job_name: "corruption-monitoring"
+    static_configs:
+      - targets: ["psychonoir-app:5000"]
+    metrics_path: "/corruption-metrics"
+    scrape_interval: 45s
+    params:
+      corruption_level: ["all"]
+      include_glitches: ["true"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: corruption_node
+        replacement: "den-usynlige-hand"
+
+# 📊 Recording Rules for Performance Optimization
+recording_rules:
+  - name: psychonoir_aggregations
+    interval: 30s
+    rules:
+      - record: psychonoir:request_rate_5m
+        expr: rate(http_requests_total[5m])
+
+      - record: psychonoir:error_rate_5m
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m])
+
+      - record: psychonoir:response_time_95p
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
+
+      - record: psychonoir:corruption_events_rate
+        expr: rate(corruption_events_total[10m])
+
+      - record: psychonoir:neural_analysis_success_rate
+        expr: rate(neural_analysis_successful_total[5m]) / rate(neural_analysis_total[5m])
+
+# 🎭 Storage Configuration
+storage:
+  tsdb:
+    path: /prometheus
+    retention.time: 30d
+    retention.size: 10GB
+    wal-compression: true
+
+# 🔧 Advanced Configuration
+remote_write:
+  - url: http://psychonoir-long-term-storage:9201/write
+    queue_config:
+      max_samples_per_send: 1000
+      max_shards: 200
+      capacity: 2500
+
+# 🌐 Web Configuration
+web:
+  console.libraries: /etc/prometheus/console_libraries
+  console.templates: /etc/prometheus/consoles
+  enable-lifecycle: true
+  enable-admin-api: true
+  external-url: http://prometheus.psychonoir.local
