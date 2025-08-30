@@ -1,0 +1,184 @@
+# 🎭 PSYCHO-NOIR KONTRAPUNKT GRAFANA DATASOURCES 🎭
+# ====================================================
+#
+# Automated datasource provisioning for comprehensive monitoring
+# Neural-noir themed data connections and configurations
+#
+# DATASOURCE_SIGNATURE: 0xGRAFANA_NEURAL_DATASOURCES
+
+apiVersion: 1
+
+datasources:
+  # 📊 Primary Prometheus Instance
+  - name: Psycho-Noir-Prometheus
+    type: prometheus
+    access: proxy
+    url: http://psychonoir-monitor:9090
+    isDefault: true
+    uid: psychonoir-prometheus
+    editable: true
+    version: 1
+    jsonData:
+      httpMethod: POST
+      timeInterval: "5s"
+      queryTimeout: "60s"
+      defaultRegion: "neural-default"
+      customQueryParameters: "corruption_filter=active"
+      prometheusType: "Prometheus"
+      prometheusVersion: "2.40.0"
+      cacheLevel: "High"
+      incrementalQuerying: true
+      incrementalQueryOverlapWindow: "10m"
+      exemplarTraceIdDestinations:
+        - name: "Neural Trace"
+          datasourceUid: "psychonoir-jaeger"
+          url: "http://jaeger.psychonoir.local/trace/{}"
+
+  # 🗄️ Neural Database Metrics
+  - name: Psycho-Noir-Database
+    type: postgres
+    access: proxy
+    url: psychonoir-app:5432
+    database: psycho_noir_monitoring
+    user: neural_monitor
+    uid: psychonoir-database
+    editable: true
+    version: 1
+    jsonData:
+      sslmode: "disable"
+      maxOpenConns: 5
+      maxIdleConns: 2
+      maxIdleConnsAuto: true
+      connMaxLifetime: 300
+      postgresVersion: 1400
+      tlsAuth: false
+      tlsAuthWithCACert: false
+      tlsConfigurationMethod: "file-path"
+      tlsSkipVerify: true
+    secureJsonData:
+      password: "${POSTGRES_MONITOR_PASSWORD}"
+
+  # 📋 Log Aggregation (Loki)
+  - name: Psycho-Noir-Logs
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    uid: psychonoir-loki
+    editable: true
+    version: 1
+    jsonData:
+      timeout: "60s"
+      maxLines: 1000
+      httpHeaderName1: "X-Scope-OrgID"
+      derivedFields:
+        - name: "Trace ID"
+          matcherRegex: "trace_id=(\\w+)"
+          url: "http://jaeger.psychonoir.local/trace/$${__value.raw}"
+          datasourceUid: "psychonoir-jaeger"
+
+  # 🔍 Distributed Tracing (Jaeger)
+  - name: Psycho-Noir-Tracing
+    type: jaeger
+    access: proxy
+    url: http://jaeger:14268
+    uid: psychonoir-jaeger
+    editable: true
+    version: 1
+    jsonData:
+      timeout: "30s"
+      queryTimeout: "30s"
+      tracesToLogs:
+        datasourceUid: "psychonoir-loki"
+        tags: ["service", "instance"]
+        mappedTags: [{ "key": "service_name", "value": "service" }]
+        mapTagNamesEnabled: true
+        spanStartTimeShift: "-1m"
+        spanEndTimeShift: "1m"
+        filterByTraceID: true
+        filterBySpanID: false
+
+  # 🎭 Custom Neural Metrics Endpoint
+  - name: Neural-Archaeology-API
+    type: simpod-json-datasource
+    access: proxy
+    url: http://psychonoir-app:5000/api/neural-metrics
+    uid: neural-archaeology-api
+    editable: true
+    version: 1
+    jsonData:
+      httpMethod: "GET"
+      timeout: "30s"
+      httpHeaderName1: "Authorization"
+      httpHeaderName2: "X-Neural-Signature"
+    secureJsonData:
+      httpHeaderValue1: "Bearer ${NEURAL_API_TOKEN}"
+      httpHeaderValue2: "0xNEURAL_ARCHAEOLOGY_ACCESS"
+
+  # 📊 Time Series Database (InfluxDB)
+  - name: Psycho-Noir-InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: psychonoir_metrics
+    uid: psychonoir-influxdb
+    editable: true
+    version: 1
+    jsonData:
+      organization: "psychonoir-org"
+      defaultBucket: "neural-metrics"
+      timeout: "60s"
+      httpMode: "POST"
+      httpMethod: "POST"
+    secureJsonData:
+      token: "${INFLUXDB_TOKEN}"
+
+  # 🚨 Alert Management
+  - name: Psycho-Noir-AlertManager
+    type: camptocamp-prometheus-alertmanager-datasource
+    access: proxy
+    url: http://alertmanager:9093
+    uid: psychonoir-alertmanager
+    editable: true
+    version: 1
+    jsonData:
+      timeout: "40s"
+      implementation: "prometheus"
+
+  # 🔧 System Performance (Node Exporter)
+  - name: System-Performance
+    type: prometheus
+    access: proxy
+    url: http://node-exporter:9100/metrics
+    uid: system-performance
+    editable: false
+    version: 1
+    jsonData:
+      httpMethod: "GET"
+      timeInterval: "15s"
+      customQueryParameters: "collect[]=cpu&collect[]=meminfo&collect[]=diskstats"
+
+  # 🐳 Container Metrics (cAdvisor)
+  - name: Container-Metrics
+    type: prometheus
+    access: proxy
+    url: http://cadvisor:8080/metrics
+    uid: container-metrics
+    editable: false
+    version: 1
+    jsonData:
+      httpMethod: "GET"
+      timeInterval: "10s"
+      customQueryParameters: "storage_driver=overlay2"
+
+  # 🌐 Network Monitoring
+  - name: Network-Monitoring
+    type: prometheus
+    access: proxy
+    url: http://blackbox-exporter:9115
+    uid: network-monitoring
+    editable: true
+    version: 1
+    jsonData:
+      httpMethod: "GET"
+      timeInterval: "30s"
+      customQueryParameters: "module=http_2xx&target=http://psychonoir-app/health"

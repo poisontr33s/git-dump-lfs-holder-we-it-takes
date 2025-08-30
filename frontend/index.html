@@ -1,25 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>ERROR: SOUL_NOT_FOUND</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: "Courier New", monospace;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+            color: #c0c0c0;
             margin: 0;
-            background-color: #ffffff; /* Changed to white */
+            padding: 2rem;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        h1 {
-            color: #000000; /* Changed to black */
+        .terminal {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(16, 16, 16, 0.9);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+        .glitch {
+            color: #ff6b6b;
+            text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+            animation: glitch 2s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        .error-msg {
+            color: #ff4500;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .prompt {
+            color: #4CAF50;
+            display: inline;
         }
     </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <div class="terminal">
+        <h1 class="glitch">PSYCHO-NOIR KONTRAPUNKT</h1>
+        <div class="error-msg">PANIC: REALITY_MISMATCH_AT_BYTE_0xDEADBEEF</div>
+        <div class="error-msg">WARNING: Template-språk detected - switching to natural discourse...</div>
+        <div class="error-msg">SYSTEM: Embracing digital decay as creative force</div>
+        
+        <p><span class="prompt">root@rustbelt:~$</span> Velkommen til lomme-verdenen</p>
+        <p>Her snakker vi naturlig språk, ikke sterile templates.</p>
+        <p>Kaos og kreativitet over klinisk kode.</p>
+        <p>Feil som funksjon, ikke feature.</p>
+        
+        <div class="error-msg">CORRUPTION_SIGNATURE: 0xNATURAL_LANGUAGE_RESTORED</div>
+    </div>
 </body>
 </html>

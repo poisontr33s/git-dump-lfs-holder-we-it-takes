@@ -1,0 +1,143 @@
+name: 'Necromancer Collect'
+description: 'Wrap commands to capture failures, classify errors, and emit structured outcome data for the Necropolis system'
+author: 'Psycho-Noir Kontrapunkt'
+
+inputs:
+  name:
+    description: 'Human-readable name for this command execution'
+    required: true
+  run:
+    description: 'Command to execute'
+    required: true
+  cwd:
+    description: 'Working directory (optional)'
+    required: false
+    default: '.'
+  category:
+    description: 'Failure category classification'
+    required: true
+    type: choice
+    options:
+      - frontend
+      - backend
+      - security
+      - integration
+      - deployment
+  variant:
+    description: 'Variant identifier (e.g., browser type, python version, OS)'
+    required: true
+  shell:
+    description: 'Shell to use for command execution'
+    required: false
+    default: 'bash'
+  timeout-minutes:
+    description: 'Timeout in minutes for command execution'
+    required: false
+    default: '10'
+
+outputs:
+  outcome:
+    description: 'Command outcome (SUCCESS|FAILURE)'
+    value: ${{ steps.execute-command.outputs.outcome }}
+  error-type:
+    description: 'Classified error type'
+    value: ${{ steps.classify-errors.outputs.error-type }}
+  duration:
+    description: 'Command execution duration in seconds'
+    value: ${{ steps.execute-command.outputs.duration }}
+  exit-code:
+    description: 'Command exit code'
+    value: ${{ steps.execute-command.outputs.exit-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Necromancer Environment
+      shell: bash
+      run: |
+        # Create logs directory structure
+        mkdir -p logs/necromancer
+        mkdir -p artifacts/necromancer
+        
+        # Setup problem matchers for common tools
+        echo "::add-matcher::.github/scripts/necromancer/matchers/jest.json" || true
+        echo "::add-matcher::.github/scripts/necromancer/matchers/pytest.json" || true
+        echo "::add-matcher::.github/scripts/necromancer/matchers/eslint.json" || true
+        echo "::add-matcher::.github/scripts/necromancer/matchers/tsc.json" || true
+        echo "::add-matcher::.github/scripts/necromancer/matchers/generic.json" || true
+
+    - name: Execute Command with Monitoring
+      id: execute-command
+      shell: ${{ inputs.shell }}
+      working-directory: ${{ inputs.cwd }}
+      run: |
+        # Record start time
+        START_TIME=$(date +%s)
+        LOG_FILE="logs/necromancer/${{ inputs.name }}-command.log"
+        
+        echo "🧙‍♂️ NECROMANCER: Executing '${{ inputs.name }}' in category '${{ inputs.category }}'"
+        echo "📁 Working directory: ${{ inputs.cwd }}"
+        echo "⏰ Started at: $(date -Iseconds)"
+        echo "🔧 Command: ${{ inputs.run }}"
+        echo "---"
+        
+        # Execute command with tee to capture both stdout and stderr
+        set +e
+        ( ${{ inputs.run }} ) 2>&1 | tee "$LOG_FILE"
+        EXIT_CODE=${PIPESTATUS[0]}
+        set -e
+        
+        # Record end time and calculate duration
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+        
+        echo "---"
+        echo "⏱️  Duration: ${DURATION}s"
+        echo "🚦 Exit code: $EXIT_CODE"
+        
+        # Set outputs
+        echo "exit-code=$EXIT_CODE" >> $GITHUB_OUTPUT
+        echo "duration=$DURATION" >> $GITHUB_OUTPUT
+        
+        if [ $EXIT_CODE -eq 0 ]; then
+          echo "outcome=SUCCESS" >> $GITHUB_OUTPUT
+          echo "✅ Command succeeded"
+        else
+          echo "outcome=FAILURE" >> $GITHUB_OUTPUT
+          echo "❌ Command failed with exit code $EXIT_CODE"
+        fi
+
+    - name: Classify Errors and Generate Outcome
+      id: classify-errors
+      shell: bash
+      run: |
+        # Invoke error classification script
+        python3 .github/scripts/necromancer/parse_errors.py \
+          --log-file "logs/necromancer/${{ inputs.name }}-command.log" \
+          --name "${{ inputs.name }}" \
+          --category "${{ inputs.category }}" \
+          --variant "${{ inputs.variant }}" \
+          --exit-code "${{ steps.execute-command.outputs.exit-code }}" \
+          --duration "${{ steps.execute-command.outputs.duration }}" \
+          --outcome "${{ steps.execute-command.outputs.outcome }}" \
+          --output-dir "artifacts/necromancer"
+        
+        # Read error type from classification output
+        if [ -f "artifacts/necromancer/outcome.json" ]; then
+          ERROR_TYPE=$(python3 -c "import json; print(json.load(open('artifacts/necromancer/outcome.json'))['error_type'])")
+          echo "error-type=$ERROR_TYPE" >> $GITHUB_OUTPUT
+          echo "🏷️ Classified as: $ERROR_TYPE"
+        else
+          echo "error-type=UNKNOWN" >> $GITHUB_OUTPUT
+          echo "⚠️ Classification failed, defaulting to UNKNOWN"
+        fi
+
+    - name: Upload Necromancer Artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: necromancer-${{ runner.os }}-${{ inputs.category }}-${{ inputs.variant }}
+        path: |
+          logs/necromancer/
+          artifacts/necromancer/
+        retention-days: ${{ vars.NECRO_ARTIFACT_RETENTION_DAYS || '14' }}

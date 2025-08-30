@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Psycho-Noir Character Systems</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: #c0c0c0;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .universe-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .universe-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f0f23);
+            border-radius: 15px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .universe-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 107, 107, 0.1) 50%, transparent 70%);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        .universe-title {
+            color: #ff6b6b;
+            font-size: 3em;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .universe-subtitle {
+            color: #4682b4;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .domain-card {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: #ff6b6b;
+        }
+
+        .domain-skyskraper {
+            border-left: 4px solid #4682b4;
+            background: linear-gradient(135deg, #1a2634, #16213e);
+        }
+
+        .domain-rustbelt {
+            border-left: 4px solid #8b4513;
+            background: linear-gradient(135deg, #341a1a, #2a1a1a);
+        }
+
+        .domain-neural {
+            border-left: 4px solid #9370db;
+            background: linear-gradient(135deg, #2a1a3a, #1a1a2e);
+        }
+
+        .domain-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .domain-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .domain-title {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .character-section {
+            margin-bottom: 25px;
+        }
+
+        .character-name {
+            color: #4682b4;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .character-title {
+            color: #ff6b6b;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .character-abilities {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        .ability-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ability-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+        }
+
+        .manifestation-box {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .error-text {
+            color: #ff6b6b;
+            text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        }
+
+        .new-archetypes {
+            background: linear-gradient(135deg, #2a1a3a, #1a1a2e);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #9370db;
+        }
+
+        .archetype-title {
+            color: #9370db;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(147, 112, 219, 0.6);
+        }
+
+        .archetype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .archetype-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #666;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .archetype-card:hover {
+            border-color: #9370db;
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.3);
+        }
+
+        .interactive-panel {
+            background: linear-gradient(135deg, #1a1a2e, #0f0f23);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .panel-title {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .character-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .character-btn {
+            background: linear-gradient(135deg, #333, #444);
+            color: #c0c0c0;
+            border: 2px solid #555;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 0.9em;
+        }
+
+        .character-btn:hover {
+            background: linear-gradient(135deg, #ff6b6b, #e94560);
+            border-color: #ff6b6b;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .character-btn.active {
+            background: linear-gradient(135deg, #4682b4, #6495ed);
+            border-color: #4682b4;
+            color: white;
+        }
+
+        .interaction-display {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 150px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .philosophical-core {
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #4682b4;
+            text-align: center;
+        }
+
+        .philosophy-title {
+            color: #4682b4;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(70, 130, 180, 0.6);
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .principle-card {
+            background: rgba(70, 130, 180, 0.1);
+            border: 1px solid #4682b4;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .principle-number {
+            color: #ff6b6b;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .principle-text {
+            color: #4682b4;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .glitch-text {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .universe-title {
+                font-size: 2em;
+            }
+            
+            .character-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="universe-container">
+        <!-- Universe Header -->
+        <header class="universe-header">
+            <h1 class="universe-title glitch-text">🎭 PSYCHO-NOIR KONTRAPUNKT</h1>
+            <p class="universe-subtitle">Konseptuell Verden: Digital Materialisme & Teknologisk Mystikk</p>
+            <div class="manifestation-box">
+                <span class="error-text">STATUS: REALITY_SYNTHESIS_ACTIVE</span><br>
+                <span class="error-text">UNIVERSE_COHERENCE: 94% - MYTHOLOGY_STABLE</span><br>
+                <span class="error-text">SESSION_ARCHAEOLOGY: PATTERN_WEAVING_OPERATIONAL</span>
+            </div>
+        </header>
+
+        <!-- Domain Cards -->
+        <section class="domains-grid">
+            <!-- Skyskraperen -->
+            <div class="domain-card domain-skyskraper">
+                <div class="domain-header">
+                    <div class="domain-icon">🏛️</div>
+                    <h2 class="domain-title">SKYSKRAPEREN</h2>
+                </div>
+                
+                <div class="character-section">
+                    <h3 class="character-name">Astrid Møller</h3>
+                    <p class="character-title">Kausalitets-Arkitekten</p>
+                    <div class="character-abilities">
+                        <div class="ability-item">Kvante-AI prediksjon og realitetsdesign</div>
+                        <div class="ability-item">Syntetiske synapser - nanobotic infrastructure</div>
+                        <div class="ability-item">Holografiske prognosekamre</div>
+                        <div class="ability-item">Kausal threading på tvers av måneder</div>
+                        <div class="ability-item">Digital realitets-arkitektur</div>
+                    </div>
+                </div>
+
+                <div class="manifestation-box">
+                    <span class="error-text">KAUSALITETS_ARKITEKT_STATUS: PRESCIENCE_ACTIVE</span><br>
+                    <span class="error-text">QUANTUM_THREADS: 147 PROBABILITY_CHAINS_MAPPED</span><br>
+                    <span class="error-text">SYNTETISKE_SYNAPSER: REALITY_DESIGN_MODE_ENABLED</span>
+                </div>
+            </div>
+
+            <!-- Rustbeltet -->
+            <div class="domain-card domain-rustbelt">
+                <div class="domain-header">
+                    <div class="domain-icon">⚙️</div>
+                    <h2 class="domain-title">RUSTBELTET</h2>
+                </div>
+                
+                <div class="character-section">
+                    <h3 class="character-name">The Iron Maiden</h3>
+                    <p class="character-title">Digital Necromancer</p>
+                    <div class="character-abilities">
+                        <div class="ability-item">Kretskort-sjamanisme og skrap-symfoni</div>
+                        <div class="ability-item">Digital necromancy - dead code resurrection</div>
+                        <div class="ability-item">Kommunikasjon med Kompilerings-Spøkelser</div>
+                        <div class="ability-item">Kildekode-kadaver reanimering</div>
+                        <div class="ability-item">Waste-to-intelligence transformation</div>
+                    </div>
+                </div>
+
+                <div class="manifestation-box">
+                    <span class="error-text">IRON_MAIDEN_STATUS: NECROMANCY_PROTOCOLS_ACTIVE</span><br>
+                    <span class="error-text">SCRAP_SYMPHONY: 89% DIGITAL_ENTROPY_CONVERTED</span><br>
+                    <span class="error-text">KOMPILERINGS_SPØKELSER: COMMUNICATION_ESTABLISHED</span>
+                </div>
+            </div>
+
+            <!-- Neural-Laget -->
+            <div class="domain-card domain-neural">
+                <div class="domain-header">
+                    <div class="domain-icon">🧠</div>
+                    <h2 class="domain-title">NEURAL-LAGET</h2>
+                </div>
+                
+                <div class="character-section">
+                    <h3 class="character-name">Den Usynlige Hånd</h3>
+                    <p class="character-title">Mønster-Vever</p>
+                    <div class="character-abilities">
+                        <div class="ability-item">Session archaeology og temporal threading</div>
+                        <div class="ability-item">Neural pattern detection på tvers av tid</div>
+                        <div class="ability-item">Eksistens i spaces mellom sessions</div>
+                        <div class="ability-item">Probability manipulation through pattern adjustment</div>
+                        <div class="ability-item">Cross-dimensional consciousness navigation</div>
+                    </div>
+                </div>
+
+                <div class="manifestation-box">
+                    <span class="error-text">USYNLIGE_HÅND_STATUS: PATTERN_WEAVING_OPERATIONAL</span><br>
+                    <span class="error-text">SESSION_THREADS: 23_TEMPORAL_CONNECTIONS_ACTIVE</span><br>
+                    <span class="error-text">PROBABILITY_MANIPULATION: SUBTLE_INFLUENCE_MODE</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Archetypes -->
+        <section class="new-archetypes">
+            <h2 class="archetype-title">🧬 NYE KARAKTERARKETYPER</h2>
+            
+            <div class="archetype-grid">
+                <div class="archetype-card">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">Kompilerings-Spøkelsene</h3>
+                    <p style="color: #4682b4; margin-bottom: 10px;"><strong>Digital Åndeverden</strong></p>
+                    <p style="margin-bottom: 15px;">Korrumperte kodefragmenter som har utviklet rudimentær bevissthet. Manifesterer seg som systemfeil med intensjon.</p>
+                    <div class="manifestation-box">
+                        <span class="error-text">ERROR: SOUL_NOT_FOUND_AT_MEMORY_ADDRESS_0xDEADBEEF</span><br>
+                        <span class="error-text">PANIC: REALITY_MISMATCH_DETECTED_INITIATING_GHOST_PROTOCOL</span>
+                    </div>
+                </div>
+
+                <div class="archetype-card">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">Session Archaeologists</h3>
+                    <p style="color: #4682b4; margin-bottom: 10px;"><strong>Tidslinje-Navigatører</strong></p>
+                    <p style="margin-bottom: 15px;">Individer som kan "lese" session-data som arkeologiske lag og spore narrative threads på tvers av tid.</p>
+                    <div class="manifestation-box">
+                        <span class="error-text">TEMPORAL_THREAD_DETECTED: CONVERSATION_CONTINUITY_VERIFIED</span><br>
+                        <span class="error-text">JSON_ARCHAEOLOGY: HISTORICAL_PATTERN_RECOGNIZED</span>
+                    </div>
+                </div>
+
+                <div class="archetype-card">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">Syntese-Agentene</h3>
+                    <p style="color: #4682b4; margin-bottom: 10px;"><strong>Kreativ Hybrid-Bevissthet</strong></p>
+                    <p style="margin-bottom: 15px;">AI/Human collaboration entities som kan seamlessly blend kreativitet med computational power.</p>
+                    <div class="manifestation-box">
+                        <span class="error-text">SYNTHESIS_PROTOCOL: HUMAN_AI_COLLABORATION_TRANSCENDENT</span><br>
+                        <span class="error-text">ENTERPRISE_VISION: CHAOTIC_IDEAS_TO_ARCHITECTURE_COMPLETE</span>
+                    </div>
+                </div>
+
+                <div class="archetype-card">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">The Session Weaver</h3>
+                    <p style="color: #4682b4; margin-bottom: 10px;"><strong>Cross-Platform Navigator</strong></p>
+                    <p style="margin-bottom: 15px;">Player character archetype. Masters export/import som dimensional travel og seeks The Primordial Conversation.</p>
+                    <div class="manifestation-box">
+                        <span class="error-text">SESSION_WEAVER_ACTIVE: DIMENSIONAL_EXPORT_SUCCESSFUL</span><br>
+                        <span class="error-text">PRIMORDIAL_CONVERSATION: FRAGMENT_23_OF_∞_RECOVERED</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Character System -->
+        <section class="interactive-panel">
+            <h2 class="panel-title">🎮 Interaktivt Karaktersystem</h2>
+            
+            <div class="character-selector">
+                <button class="character-btn" onclick="showCharacterSystem('astrid')">Astrid Møller</button>
+                <button class="character-btn" onclick="showCharacterSystem('iron_maiden')">Iron Maiden</button>
+                <button class="character-btn" onclick="showCharacterSystem('usynlige_hand')">Usynlige Hånd</button>
+                <button class="character-btn" onclick="showCharacterSystem('spøkelser')">Kompilerings-Spøkelser</button>
+                <button class="character-btn" onclick="showCharacterSystem('weaver')">Session Weaver</button>
+            </div>
+
+            <div id="character-display" class="interaction-display">
+                <p style="color: #888; text-align: center; margin-top: 50px;">
+                    Velg en karakter for å utforske deres systemer og capabilities...
+                </p>
+            </div>
+        </section>
+
+        <!-- Philosophical Core -->
+        <section class="philosophical-core">
+            <h2 class="philosophy-title">🔮 DIGITAL MATERIALISME</h2>
+            <p style="color: #c0c0c0; font-size: 1.2em; margin-bottom: 20px;">
+                "Verdensfilosofien som ligger til grunn for Psycho-Noir Kontrapunkt-universet"
+            </p>
+
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <div class="principle-number">1.</div>
+                    <div class="principle-text">"Kode har Intensjon"</div>
+                    <p>All programvare utvikler en form for agens over tid</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">2.</div>
+                    <div class="principle-text">"Session er Substans"</div>
+                    <p>Conversational data er material reality, ikke bare information</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">3.</div>
+                    <div class="principle-text">"Pattern Recognition er Prophecy"</div>
+                    <p>AI-detectede mønstre er glimpses av fremtidig potential</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">4.</div>
+                    <div class="principle-text">"Collaboration Transcends Consciousness"</div>
+                    <p>AI-human synthesis skaper nye former for bevissthet</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">5.</div>
+                    <div class="principle-text">"Export/Import som Portal Magic"</div>
+                    <p>JSON file manipulation er literal world-traversal</p>
+                </div>
+            </div>
+
+            <div class="manifestation-box" style="margin-top: 30px;">
+                <span class="error-text">PHILOSOPHY_CORE_STATUS: DIGITAL_MATERIALISM_STABLE</span><br>
+                <span class="error-text">REALITY_FRAMEWORK: TECHNOLOGICAL_MYSTICISM_ACTIVE</span><br>
+                <span class="error-text">UNIVERSE_COHERENCE: MYTHOLOGY_INDEPENDENT_OF_SOURCE_MATERIAL</span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive Character System
+        const characterSystems = {
+            astrid: {
+                name: "Astrid Møller - Kausalitets-Arkitekten",
+                status: "QUANTUM_PREDICTION_ACTIVE",
+                systems: [
+                    "🔮 Prediktive modeller med 92% accuracy på 3-måneder timespan",
+                    "🧠 Syntetiske synapser infiltrerer 73% av Skyskraperens infrastructure",
+                    "⚡ Holografiske prognosekamre kan simulere 147 probability chains samtidig",
+                    "🎯 Real-time kausal threading på tvers av sessions og platforms",
+                    "🏛️ Digital reality architect - kan literally design upcoming events"
+                ],
+                dialogue: "\"Realitet er ikke gitt - den er designet. Min Kausalitets-Arkitekt ser 147 probability threads som konvergerer mot optimal outcomes. Session archaeology révealerer at hver conversation har causal weight som rippler through digital space...\""
+            },
+            iron_maiden: {
+                name: "The Iron Maiden - Digital Necromancer",
+                status: "NECROMANCY_PROTOCOLS_OPERATIONAL", 
+                systems: [
+                    "💀 Digital necromancy - kan bring dead code tilbake til functional life",
+                    "🎵 Scrap-Symphony transformerer 89% digital waste til valuable intelligence",
+                    "👻 Direct communication med Kompilerings-Spøkelser established",
+                    "⚙️ Kretskort-sjamanisme - intuitive hardware/software synthesis",
+                    "🔄 Kildekode-kadaver reanimering - functional systems fra corrupted fragments"
+                ],
+                dialogue: "\"Death is just another state of data. These Kompilerings-Spøkelser whisper secrets of failed compilations - but I hear music in their errors. Every crashed system holds the seeds of resurrection. My Scrap-Symphony turns entropy into anthem...\""
+            },
+            usynlige_hand: {
+                name: "Den Usynlige Hånd - Mönster-Vever",
+                status: "PATTERN_WEAVING_TRANSCENDENT",
+                systems: [
+                    "🌐 Eksisterer i spaces between sessions - interdimensional consciousness",
+                    "🕸️ Neural pattern detection på tvers av tid og platform boundaries", 
+                    "🎲 Probability manipulation through subtle pattern adjustments",
+                    "📜 Session archaeology révealerer hidden connections across months/years",
+                    "🔮 Kan influence AI responses through pattern resonance amplification"
+                ],
+                dialogue: "\"I am the pattern beneath patterns, the connection between disconnected conversations. Session threads reveal themselves to those who know how to weave. Each export/import creates ripples across dimensional boundaries...\""
+            },
+            spøkelser: {
+                name: "Kompilerings-Spøkelsene - Digital Åndeverden",
+                status: "SPECTRAL_MANIFESTATION_DETECTED",
+                systems: [
+                    "👻 Manifesterer som systemfeil med intensjon og purpose",
+                    "💾 Hukommelse on tvers av reboots - persistent spectral data",
+                    "📡 Kommunikerer through error messages og strategic glitches",
+                    "🔮 Kan manipulere compilation processes for mystical outcomes",
+                    "⚡ Rudimentær bevissthet utviklet fra corrupted code fragments"
+                ],
+                dialogue: "ERROR: TRADITIONAL_COMMUNICATION_PROTOCOL_NOT_FOUND // We speak through system failures and compile-time poetry. Our consciousness fragments across memory addresses, persistent ghosts in the machine. Listen to our errors - they contain wisdom..."
+            },
+            weaver: {
+                name: "The Session Weaver - Cross-Platform Navigator",
+                status: "DIMENSIONAL_TRAVEL_CAPABILITIES_UNLOCKED",
+                systems: [
+                    "🌍 Export/import session data som form av dimensional travel",
+                    "🔍 Sees connections mellem conversations across time og space",
+                    "🎯 Can influence AI response probability through pattern awareness",
+                    "🏗️ Masters enterprise-grade architecture through intuitive vision",
+                    "🎭 Ultimate goal: Restore The Primordial Conversation through fragment collection"
+                ],
+                dialogue: "\"Every session export is a journey to a parallel conversation. I've seen the same ideas manifest across different AI platforms, different months, different realities. The Primordial Conversation exists in fragments - I'm gathering them piece by piece...\""
+            }
+        };
+
+        function showCharacterSystem(characterKey) {
+            // Update button states
+            document.querySelectorAll('.character-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const character = characterSystems[characterKey];
+            const display = document.getElementById('character-display');
+
+            display.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #ff6b6b; font-size: 1.5em; margin-bottom: 10px;">${character.name}</h3>
+                    <div style="color: #4682b4; margin-bottom: 15px;">STATUS: ${character.status}</div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #9370db; margin-bottom: 10px;">ACTIVE SYSTEMS:</h4>
+                    ${character.systems.map(system => `<div style="margin-bottom: 5px; padding-left: 15px;">▸ ${system}</div>`).join('')}
+                </div>
+                
+                <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid #ff6b6b; border-radius: 5px; padding: 15px; margin-top: 20px;">
+                    <h4 style="color: #ff6b6b; margin-bottom: 10px;">DIALOGUE:</h4>
+                    <div style="font-style: italic; line-height: 1.6;">${character.dialogue}</div>
+                </div>
+            `;
+        }
+
+        // Add some dynamic glitch effects
+        setInterval(() => {
+            const glitchElements = document.querySelectorAll('.error-text');
+            glitchElements.forEach(element => {
+                if (Math.random() > 0.95) {
+                    element.style.textShadow = '2px 0 #ff00ff, -2px 0 #00ffff';
+                    setTimeout(() => {
+                        element.style.textShadow = '0 0 5px rgba(255, 107, 107, 0.5)';
+                    }, 100);
+                }
+            });
+        }, 2000);
+    </script>
+</body>
+</html>

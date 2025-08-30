@@ -1,0 +1,215 @@
+{
+  "name": "psycho-noir-session-weaver",
+  "displayName": "Psycho-Noir Session Weaver",
+  "description": "Cross-platform AI session archaeology and pattern weaving for GitHub Copilot integration",
+  "version": "1.0.0",
+  "publisher": "poisontr33s",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning",
+    "Notebooks"
+  ],
+  "keywords": [
+    "ai",
+    "copilot",
+    "session",
+    "archaeology",
+    "psycho-noir"
+  ],
+  "activationEvents": [
+    "onCommand:psychoNoir.activateSessionWeaver",
+    "onCommand:psychoNoir.archaeologyMode",
+    "onCommand:psychoNoir.connectCopilot",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "psychoNoir.activateSessionWeaver",
+        "title": "🧠 Activate Session Weaver",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.archaeologyMode",
+        "title": "🔍 Enter Archaeology Mode",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.connectCopilot",
+        "title": "🤖 Connect to Copilot",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.exportSession",
+        "title": "📤 Export Current Session",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.importSession",
+        "title": "📥 Import Session Archive",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.scanPatterns",
+        "title": "🔬 Scan Neural Patterns",
+        "category": "Psycho-Noir"
+      },
+      {
+        "command": "psychoNoir.openPortal",
+        "title": "🚀 Open Connector Portal",
+        "category": "Psycho-Noir"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "psychoNoir.archaeologyMode",
+          "group": "psycho-noir",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "psychoNoir.exportSession",
+          "group": "psycho-noir",
+          "when": "resourceExtname == .json"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "psycho-noir-explorer",
+          "title": "Psycho-Noir Session Weaver",
+          "icon": "$(github-copilot)"
+        }
+      ]
+    },
+    "views": {
+      "psycho-noir-explorer": [
+        {
+          "id": "psychoNoir.sessionArchive",
+          "name": "Session Archive",
+          "when": "true"
+        },
+        {
+          "id": "psychoNoir.neuralPatterns",
+          "name": "Neural Patterns",
+          "when": "true"
+        },
+        {
+          "id": "psychoNoir.connectedPlatforms",
+          "name": "Connected Platforms",
+          "when": "true"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Psycho-Noir Session Weaver",
+      "properties": {
+        "psychoNoir.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token for Copilot integration",
+          "scope": "machine-overridable"
+        },
+        "psychoNoir.username": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub username for authentication"
+        },
+        "psychoNoir.connectorApiUrl": {
+          "type": "string",
+          "default": "http://localhost:5000",
+          "description": "URL for the Psycho-Noir Connector API"
+        },
+        "psychoNoir.autoArchaeology": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic session archaeology in background"
+        },
+        "psychoNoir.neuralPatternThreshold": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0.1,
+          "maximum": 1.0,
+          "description": "Minimum confidence threshold for neural pattern detection"
+        },
+        "psychoNoir.archaeologyInterval": {
+          "type": "number",
+          "default": 30000,
+          "description": "Interval for background archaeology scanning (milliseconds)"
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "psychoNoir.gettingStarted",
+        "title": "Getting Started with Session Weaving",
+        "description": "Learn to navigate the interdimensional session archaeology portal",
+        "steps": [
+          {
+            "id": "authenticate",
+            "title": "Connect to GitHub",
+            "description": "Authenticate with your GitHub account to enable Copilot integration\n[Open Connector Portal](command:psychoNoir.openPortal)",
+            "media": {
+              "markdown": "docs/walkthrough/step1.md"
+            }
+          },
+          {
+            "id": "firstArchaeology",
+            "title": "Your First Session Archaeology",
+            "description": "Discover patterns in your AI collaboration history\n[Enter Archaeology Mode](command:psychoNoir.archaeologyMode)",
+            "media": {
+              "markdown": "docs/walkthrough/step2.md"
+            }
+          },
+          {
+            "id": "crossPlatform",
+            "title": "Cross-Platform Session Weaving",
+            "description": "Import sessions from other AI platforms\n[Import Session](command:psychoNoir.importSession)",
+            "media": {
+              "markdown": "docs/walkthrough/step3.md"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "ws": "^8.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poisontr33s/PsychoNoir-Kontrapunkt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/poisontr33s/PsychoNoir-Kontrapunkt/issues"
+  },
+  "homepage": "https://github.com/poisontr33s/PsychoNoir-Kontrapunkt#readme",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "extensionDependencies": [
+    "GitHub.copilot",
+    "GitHub.vscode-pull-request-github"
+  ]
+}

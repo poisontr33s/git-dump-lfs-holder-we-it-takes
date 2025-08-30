@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "id": "session_test_google_ai_studio_style",
+    "title": "Demo: Google AI Studio Style JSON Export",
+    "created": "2025-08-29T18:32:00.000Z",
+    "completion_percentage": 75,
+    "achievements": ["Session Management", "JSON Export", "Offline Tools"],
+    "summary": "Demonstrasjon av programmeringsspråk-agnostisk session management med Google AI Studio-lignende funksjonalitet"
+  },
+  "conversation": [
+    {
+      "role": "user",
+      "content": "Dey må være en gui eller logikk som faktisl kan gjøre det basert på json filer, som fels i google ai studio, i <> knappen så er chat sesjonen tilstede bare i json",
+      "timestamp": "2025-08-29T18:30:00.000Z"
+    },
+    {
+      "role": "assistant", 
+      "content": "PERFEKT! Du tenker eksakt som jeg gjorde - Google AI Studio sin <> knapp er genial. La meg implementere en komplett programmeringsspråk-agnostisk session manager...",
+      "timestamp": "2025-08-29T18:30:15.000Z"
+    },
+    {
+      "role": "user",
+      "content": "Teste offline session manager",
+      "timestamp": "2025-08-29T18:32:00.000Z"
+    }
+  ],
+  "context": {
+    "workspace": "/workspaces/PsychoNoir-Kontrapunkt",
+    "project": "Psycho-Noir Kontrapunkt",
+    "mode": "JÆVLIG CODING-AGGRESSIVE",
+    "domain": "Session Archaeology & Management"
+  },
+  "hook_points": [
+    {
+      "type": "session_export",
+      "description": "Google AI Studio style JSON export functionality",
+      "data": {"export_format": "standard_json", "compatibility": "cross_platform"}
+    },
+    {
+      "type": "offline_tools", 
+      "description": "Standalone JSON file manipulation",
+      "data": {"dependencies": "none", "language_agnostic": true}
+    }
+  ]
+}

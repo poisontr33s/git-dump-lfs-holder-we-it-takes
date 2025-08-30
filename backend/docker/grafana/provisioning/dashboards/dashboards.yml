@@ -1,0 +1,82 @@
+# 🎭 PSYCHO-NOIR KONTRAPUNKT GRAFANA DASHBOARDS 🎭
+# ===================================================
+#
+# Automated dashboard provisioning for neural monitoring
+# Comprehensive visual analytics with noir aesthetics
+#
+# DASHBOARD_SIGNATURE: 0xGRAFANA_NEURAL_DASHBOARDS
+
+apiVersion: 1
+
+providers:
+  # 🎭 Main System Dashboards
+  - name: "psychonoir-system"
+    orgId: 1
+    folder: "System Overview"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 60
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/system
+
+  # 🧠 Neural Analysis Dashboards
+  - name: "neural-archaeology"
+    orgId: 1
+    folder: "Neural Archaeology"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/neural
+
+  # 🎭 Psycho-Noir Specific Dashboards
+  - name: "psychonoir-business"
+    orgId: 1
+    folder: "Psycho-Noir Analytics"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 45
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/business
+
+  # 🔍 Corruption & Glitch Monitoring
+  - name: "corruption-monitoring"
+    orgId: 1
+    folder: "Den Usynlige Hånd"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 15
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/corruption
+
+  # 🚨 Alert & Incident Dashboards
+  - name: "incident-management"
+    orgId: 1
+    folder: "Incident Response"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/incidents
+
+  # 🐳 Infrastructure Dashboards
+  - name: "infrastructure"
+    orgId: 1
+    folder: "Infrastructure"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 60
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/infrastructure

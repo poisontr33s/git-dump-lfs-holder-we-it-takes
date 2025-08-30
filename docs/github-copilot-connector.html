@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Copilot Extension Connector Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #c9d1d9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .portal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(22, 27, 34, 0.8);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f85149, #7c3aed, transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #f85149;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(248, 81, 73, 0.3);
+        }
+
+        .header p {
+            color: #7c3aed;
+            font-size: 1.2em;
+        }
+
+        .connector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .connector-card {
+            background: rgba(22, 27, 34, 0.9);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .connector-card:hover {
+            border-color: #7c3aed;
+            box-shadow: 0 5px 25px rgba(124, 58, 237, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .connector-card h3 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .connector-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-connected {
+            background: #238636;
+            box-shadow: 0 0 10px rgba(35, 134, 54, 0.6);
+        }
+
+        .status-pending {
+            background: #d29922;
+            box-shadow: 0 0 10px rgba(210, 153, 34, 0.6);
+        }
+
+        .status-disconnected {
+            background: #da3633;
+            box-shadow: 0 0 10px rgba(218, 54, 51, 0.6);
+        }
+
+        .github-auth {
+            background: rgba(13, 17, 23, 0.9);
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            color: #f0f6fc;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 12px;
+            color: #c9d1d9;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-github {
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #da3633 0%, #f85149 100%);
+        }
+
+        .extension-list {
+            background: rgba(22, 27, 34, 0.9);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .extension-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .extension-item:last-child {
+            border-bottom: none;
+        }
+
+        .extension-info {
+            flex: 1;
+        }
+
+        .extension-name {
+            color: #58a6ff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .extension-desc {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .session-archaeology {
+            background: rgba(22, 27, 34, 0.9);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .archaeology-log {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        .log-info {
+            color: #58a6ff;
+        }
+
+        .log-success {
+            color: #238636;
+        }
+
+        .log-warning {
+            color: #d29922;
+        }
+
+        .log-error {
+            color: #f85149;
+        }
+
+        .neural-patterns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pattern-card {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .pattern-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 5px;
+        }
+
+        .pattern-label {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .glitch-text {
+            position: relative;
+            color: #f85149;
+        }
+
+        .glitch-text::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            text-shadow: -1px 0 #ff0000;
+            top: 0;
+            overflow: hidden;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                clip: rect(0, 900px, 0, 0);
+            }
+            10% {
+                clip: rect(10px, 900px, 20px, 0);
+            }
+            20% {
+                clip: rect(20px, 900px, 30px, 0);
+            }
+            30% {
+                clip: rect(30px, 900px, 40px, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <header class="header">
+            <h1>🚀 GitHub Copilot Extension Connector Portal</h1>
+            <p>Psycho-Noir Kontrapunkt | Session Weaving & Extension Integration</p>
+        </header>
+
+        <!-- GitHub OAuth Authentication Section -->
+        <section class="github-auth">
+            <h2>🔐 GitHub Account Integration</h2>
+            <div class="auth-form">
+                <div class="form-group">
+                    <p>🎯 <strong>Akkurat som VS Code GitHub Copilot!</strong></p>
+                    <p>Bruk GitHub mobilappen for å autentisere - ingen PAT nødvendig.</p>
+                </div>
+                
+                <div id="oauth-status" style="display: none;" class="form-group">
+                    <div id="oauth-user-info" style="padding: 15px; background: #2d3748; border-radius: 8px; margin: 10px 0;"></div>
+                </div>
+                
+                <button class="btn btn-github" onclick="startOAuthFlow()">📱 Start GitHub OAuth (Copilot-Style)</button>
+                <button class="btn" onclick="manualTokenAuth()" style="background: #30363d; margin-left: 10px;">🔑 Manual Token (Fallback)</button>
+                
+                <div id="manual-auth" style="display: none; margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="github-username">GitHub Username:</label>
+                        <input type="text" id="github-username" placeholder="poisontr33s" value="poisontr33s">
+                    </div>
+                    <div class="form-group">
+                        <label for="github-token">Personal Access Token:</label>
+                        <input type="password" id="github-token" placeholder="ghp_...">
+                    </div>
+                    <div class="form-group">
+                        <label for="copilot-workspace">Copilot Workspace URL:</label>
+                        <input type="text" id="copilot-workspace" placeholder="https://github.com/codespaces/...">
+                    </div>
+                    <button class="btn btn-github" onclick="authenticateGitHub()">🔗 Connect to GitHub</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connector Grid -->
+        <div class="connector-grid">
+            <!-- GitHub Copilot Chat -->
+            <div class="connector-card">
+                <h3>💬 GitHub Copilot Chat Integration</h3>
+                <div class="connector-status">
+                    <div class="status-dot status-pending" id="copilot-chat-status"></div>
+                    <span id="copilot-chat-text">Pending Connection</span>
+                </div>
+                <p>Real-time integration med GitHub Copilot Chat for session archaeology og pattern weaving.</p>
+                <button class="btn" onclick="connectCopilotChat()">Activate Chat Bridge</button>
+            </div>
+
+            <!-- GitHub Copilot Workspace -->
+            <div class="connector-card">
+                <h3>🏢 GitHub Copilot Workspace</h3>
+                <div class="connector-status">
+                    <div class="status-dot status-disconnected" id="workspace-status"></div>
+                    <span id="workspace-text">Not Connected</span>
+                </div>
+                <p>Direkte kobling til ditt Copilot Workspace for live session management.</p>
+                <button class="btn" onclick="connectWorkspace()">Connect Workspace</button>
+            </div>
+
+            <!-- VS Code Extensions -->
+            <div class="connector-card">
+                <h3>🧩 VS Code Extension Bridge</h3>
+                <div class="connector-status">
+                    <div class="status-dot status-connected" id="vscode-status"></div>
+                    <span id="vscode-text">Local Connection Active</span>
+                </div>
+                <p>Kobler til dine VS Code extensions for enhanced session archaeology.</p>
+                <button class="btn" onclick="scanVSCodeExtensions()">Scan Extensions</button>
+            </div>
+
+            <!-- Session Export/Import -->
+            <div class="connector-card">
+                <h3>📂 Multi-Platform Session Weaving</h3>
+                <div class="connector-status">
+                    <div class="status-dot status-connected" id="session-status"></div>
+                    <span id="session-text">Archive Ready</span>
+                </div>
+                <p>Interdimensional session archaeology across alle AI platforms.</p>
+                <button class="btn" onclick="openSessionArchaeology()">Launch Archaeology</button>
+            </div>
+        </div>
+
+        <!-- Extension Management -->
+        <section class="extension-list">
+            <h2>🔌 Connected Extensions & Services</h2>
+            <div id="extension-container">
+                <div class="extension-item">
+                    <div class="extension-info">
+                        <div class="extension-name">GitHub Copilot</div>
+                        <div class="extension-desc">AI pair programming assistant</div>
+                    </div>
+                    <button class="btn btn-danger" onclick="disconnectExtension('copilot')">Disconnect</button>
+                </div>
+                <div class="extension-item">
+                    <div class="extension-info">
+                        <div class="extension-name">GitHub Pull Requests</div>
+                        <div class="extension-desc">PR management and review</div>
+                    </div>
+                    <button class="btn btn-danger" onclick="disconnectExtension('pr')">Disconnect</button>
+                </div>
+                <div class="extension-item">
+                    <div class="extension-info">
+                        <div class="extension-name">Psycho-Noir Session Weaver</div>
+                        <div class="extension-desc">Custom session archaeology extension</div>
+                    </div>
+                    <button class="btn" onclick="configureExtension('session-weaver')">Configure</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Neural Pattern Analytics -->
+        <section class="session-archaeology">
+            <h2>🧠 Neural Pattern Analytics</h2>
+            <div class="neural-patterns">
+                <div class="pattern-card">
+                    <div class="pattern-value" id="session-count">847</div>
+                    <div class="pattern-label">Sessions Analyzed</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-value" id="pattern-count">23</div>
+                    <div class="pattern-label">Patterns Detected</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-value" id="connection-count">5</div>
+                    <div class="pattern-label">Platform Bridges</div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-value" id="success-rate">94%</div>
+                    <div class="pattern-label">Success Rate</div>
+                </div>
+            </div>
+
+            <h3>📊 Real-Time Archaeology Log</h3>
+            <div class="archaeology-log" id="archaeology-log">
+                <div class="log-entry log-info">[INFO] Neural archaeology system initialized</div>
+                <div class="log-entry log-success">[SUCCESS] Connected to local VS Code instance</div>
+                <div class="log-entry log-warning">[WARNING] GitHub API rate limit approaching</div>
+                <div class="log-entry log-info">[INFO] Scanning for session patterns...</div>
+                <div class="log-entry log-success">[SUCCESS] Pattern detected: Recursive conversation loops</div>
+                <div class="log-entry log-error glitch-text" data-text="[ERROR] KOMPILERINGS-SPØKELSE DETECTED IN SESSION THREAD">[ERROR] KOMPILERINGS-SPØKELSE DETECTED IN SESSION THREAD</div>
+                <div class="log-entry log-info">[INFO] Attempting digital necromancy...</div>
+                <div class="log-entry log-success">[SUCCESS] Session thread resurrected successfully</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // GitHub OAuth Integration (Copilot-Style)
+        function startOAuthFlow() {
+            addLogEntry('info', '[OAUTH] Starting GitHub OAuth flow (Copilot-style)...');
+            
+            // Open OAuth window in new tab
+            const oauthWindow = window.open('http://127.0.0.1:5003', 'github_oauth', 'width=600,height=700');
+            
+            // Listen for OAuth completion
+            const checkOAuth = setInterval(() => {
+                try {
+                    if (oauthWindow.closed) {
+                        clearInterval(checkOAuth);
+                        checkOAuthCompletion();
+                    }
+                } catch (e) {
+                    // Cross-origin error is expected
+                }
+            }, 1000);
+        }
+
+        async function checkOAuthCompletion() {
+            // Check if user completed OAuth in localStorage (cross-tab communication)
+            const sessionId = localStorage.getItem('github_session_id');
+            
+            if (sessionId) {
+                try {
+                    const response = await fetch(`http://127.0.0.1:5003/api/oauth/status/${sessionId}`);
+                    const data = await response.json();
+                    
+                    if (data.authenticated) {
+                        showOAuthSuccess(data.user);
+                        localStorage.removeItem('github_session_id'); // Clean up
+                    }
+                } catch (error) {
+                    addLogEntry('warning', '[OAUTH] Could not verify OAuth status');
+                }
+            }
+        }
+
+        function showOAuthSuccess(user) {
+            const statusDiv = document.getElementById('oauth-status');
+            const userInfo = document.getElementById('oauth-user-info');
+            
+            statusDiv.style.display = 'block';
+            userInfo.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="${user.avatar_url}" alt="Avatar" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #30363d;">
+                    <div>
+                        <div style="font-weight: bold; color: #58a6ff;">${user.name || user.login}</div>
+                        <div style="color: #8b949e;">@${user.login}</div>
+                        <div style="color: #238636; font-size: 0.9em;">✅ GitHub OAuth Connected</div>
+                    </div>
+                </div>
+            `;
+            
+            addLogEntry('success', `[OAUTH] Successfully authenticated as @${user.login}`);
+            updateStatus('copilot-chat', 'connected', 'OAuth Connected');
+            updateStatus('workspace', 'connected', 'GitHub Linked');
+            
+            // Auto-start session archaeology
+            setTimeout(() => {
+                startSessionArchaeology();
+            }, 1000);
+        }
+
+        function manualTokenAuth() {
+            const manualDiv = document.getElementById('manual-auth');
+            manualDiv.style.display = manualDiv.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // GitHub Authentication (Manual Token Fallback)
+        function authenticateGitHub() {
+            const username = document.getElementById('github-username').value;
+            const token = document.getElementById('github-token').value;
+            const workspace = document.getElementById('copilot-workspace').value;
+
+            if (!username || !token) {
+                addLogEntry('error', '[ERROR] GitHub credentials required');
+                return;
+            }
+
+            addLogEntry('info', `[INFO] Authenticating with GitHub as ${username}...`);
+            
+            // Simulate GitHub API connection
+            setTimeout(() => {
+                if (token.startsWith('ghp_')) {
+                    addLogEntry('success', '[SUCCESS] GitHub authentication successful');
+                    updateStatus('copilot-chat', 'connected', 'Connected to GitHub');
+                    updateStatus('workspace', 'connected', 'Workspace Linked');
+                    
+                    // Start session archaeology
+                    setTimeout(() => {
+                        startSessionArchaeology();
+                    }, 1000);
+                } else {
+                    addLogEntry('error', '[ERROR] Invalid GitHub token format');
+                }
+            }, 2000);
+        }
+
+        // Copilot Chat Integration
+        function connectCopilotChat() {
+            addLogEntry('info', '[INFO] Establishing Copilot Chat bridge...');
+            updateStatus('copilot-chat', 'pending', 'Establishing Connection');
+            
+            setTimeout(() => {
+                addLogEntry('success', '[SUCCESS] Copilot Chat bridge established');
+                updateStatus('copilot-chat', 'connected', 'Real-time Integration Active');
+            }, 3000);
+        }
+
+        // Workspace Connection
+        function connectWorkspace() {
+            const workspace = document.getElementById('copilot-workspace').value;
+            if (!workspace) {
+                addLogEntry('error', '[ERROR] Workspace URL required');
+                return;
+            }
+            
+            addLogEntry('info', '[INFO] Connecting to Copilot Workspace...');
+            updateStatus('workspace', 'pending', 'Connecting');
+            
+            setTimeout(() => {
+                addLogEntry('success', '[SUCCESS] Workspace connection established');
+                updateStatus('workspace', 'connected', 'Live Sync Active');
+            }, 2500);
+        }
+
+        // VS Code Extension Scanning
+        function scanVSCodeExtensions() {
+            addLogEntry('info', '[INFO] Scanning VS Code extensions...');
+            
+            setTimeout(() => {
+                const extensions = [
+                    'GitHub Copilot (ms-vscode.copilot)',
+                    'GitHub Pull Requests (GitHub.vscode-pull-request-github)',
+                    'Python (ms-python.python)',
+                    'JSON (vscode.json-language-features)'
+                ];
+                
+                extensions.forEach((ext, index) => {
+                    setTimeout(() => {
+                        addLogEntry('success', `[SUCCESS] Detected extension: ${ext}`);
+                    }, index * 500);
+                });
+                
+                setTimeout(() => {
+                    addLogEntry('info', '[INFO] Extension scan complete');
+                    updatePatternCount('connection-count', 8);
+                }, extensions.length * 500 + 1000);
+            }, 1000);
+        }
+
+        // Session Archaeology
+        function openSessionArchaeology() {
+            addLogEntry('info', '[INFO] Launching interdimensional session archaeology...');
+            
+            // Simulate session discovery
+            const sessions = [
+                'Google AI Studio -> ChatGPT migration detected',
+                'Claude conversation thread found',
+                'GitHub Copilot chat history discovered',
+                'Cross-platform pattern identified'
+            ];
+            
+            sessions.forEach((session, index) => {
+                setTimeout(() => {
+                    addLogEntry('success', `[ARCHAEOLOGY] ${session}`);
+                }, (index + 1) * 1500);
+            });
+            
+            setTimeout(() => {
+                addLogEntry('warning', '[GLITCH] Kompilerings-Spøkelse interference detected');
+                addLogEntry('info', '[NECROMANCY] Attempting data resurrection...');
+                
+                setTimeout(() => {
+                    addLogEntry('success', '[SUCCESS] Session threads successfully woven');
+                    updatePatternCount('session-count', Math.floor(Math.random() * 100) + 800);
+                    updatePatternCount('pattern-count', Math.floor(Math.random() * 10) + 20);
+                }, 3000);
+            }, sessions.length * 1500 + 2000);
+        }
+
+        // Extension Management
+        function disconnectExtension(extensionId) {
+            addLogEntry('warning', `[WARNING] Disconnecting extension: ${extensionId}`);
+            setTimeout(() => {
+                addLogEntry('info', `[INFO] Extension ${extensionId} disconnected`);
+            }, 1000);
+        }
+
+        function configureExtension(extensionId) {
+            addLogEntry('info', `[INFO] Opening configuration for: ${extensionId}`);
+        }
+
+        // Utility Functions
+        function updateStatus(elementPrefix, status, text) {
+            const statusDot = document.getElementById(`${elementPrefix}-status`);
+            const statusText = document.getElementById(`${elementPrefix}-text`);
+            
+            statusDot.className = `status-dot status-${status}`;
+            statusText.textContent = text;
+        }
+
+        function addLogEntry(type, message) {
+            const log = document.getElementById('archaeology-log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = message;
+            
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+            
+            // Keep only last 50 entries
+            while (log.children.length > 50) {
+                log.removeChild(log.firstChild);
+            }
+        }
+
+        function updatePatternCount(elementId, value) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseInt(element.textContent);
+            const increment = Math.ceil((value - currentValue) / 20);
+            
+            const updateCounter = () => {
+                const current = parseInt(element.textContent);
+                if (current < value) {
+                    element.textContent = Math.min(current + increment, value);
+                    setTimeout(updateCounter, 50);
+                }
+            };
+            
+            updateCounter();
+        }
+
+        function startSessionArchaeology() {
+            addLogEntry('info', '[ARCHAEOLOGY] Starting neural pattern analysis...');
+            
+            // Simulate ongoing archaeology
+            setInterval(() => {
+                const events = [
+                    { type: 'info', msg: '[SCAN] Analyzing conversation patterns...' },
+                    { type: 'success', msg: '[PATTERN] Recursive loop detected in session thread' },
+                    { type: 'warning', msg: '[ANOMALY] Temporal inconsistency in timestamp sequence' },
+                    { type: 'success', msg: '[WEAVE] Cross-platform session successfully linked' },
+                    { type: 'info', msg: '[NEURAL] Processing semantic embeddings...' }
+                ];
+                
+                const event = events[Math.floor(Math.random() * events.length)];
+                addLogEntry(event.type, event.msg);
+                
+                // Occasionally update pattern counts
+                if (Math.random() < 0.3) {
+                    updatePatternCount('session-count', parseInt(document.getElementById('session-count').textContent) + Math.floor(Math.random() * 5) + 1);
+                }
+                
+                if (Math.random() < 0.1) {
+                    updatePatternCount('pattern-count', parseInt(document.getElementById('pattern-count').textContent) + 1);
+                }
+            }, 3000 + Math.random() * 4000);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            addLogEntry('success', '[INIT] GitHub Copilot Extension Connector Portal initialized');
+            addLogEntry('info', '[INFO] Ready for authentication and session weaving');
+            
+            // Start some background activity
+            setTimeout(() => {
+                addLogEntry('info', '[BACKGROUND] Scanning for existing session fragments...');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

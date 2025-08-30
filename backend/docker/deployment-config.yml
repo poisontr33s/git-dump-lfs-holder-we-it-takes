@@ -1,0 +1,173 @@
+# 🎭 PSYCHO-NOIR KONTRAPUNKT DEPLOYMENT CONFIGURATION 🎭
+# ========================================================
+#
+# Environment-specific deployment configurations
+# 100% robust multi-environment orchestration
+#
+# CONFIG_SIGNATURE: 0xDEPLOYMENT_CONFIG_OPERATIONAL
+
+# 🌟 Production Environment
+production:
+  image_tag: "latest"
+  replicas: 3
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "2000m"
+      memory: "4Gi"
+  environment:
+    FLASK_ENV: "production"
+    LOG_LEVEL: "INFO"
+    DB_PATH: "/app/data/db/psycho_noir_production.db"
+    CORS_ORIGINS: "https://psychonoir.production.com"
+    MAX_WORKERS: 4
+    WORKER_CLASS: "gevent"
+    HEALTH_CHECK_INTERVAL: 30
+  volumes:
+    - "/var/psychonoir/production/data:/app/data"
+    - "/var/psychonoir/production/logs:/var/log/psychonoir"
+  ports:
+    - "80:80"
+    - "443:443"
+  health_check:
+    path: "/health"
+    initial_delay: 60
+    timeout: 10
+    period: 30
+  backup:
+    schedule: "0 2 * * *" # Daily at 02:00
+    retention: 30 # 30 days
+    encryption: true
+
+# 🧪 Staging Environment
+staging:
+  image_tag: "staging"
+  replicas: 2
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  environment:
+    FLASK_ENV: "staging"
+    LOG_LEVEL: "DEBUG"
+    DB_PATH: "/app/data/db/psycho_noir_staging.db"
+    CORS_ORIGINS: "https://psychonoir-staging.example.com"
+    MAX_WORKERS: 2
+    WORKER_CLASS: "gevent"
+    HEALTH_CHECK_INTERVAL: 15
+  volumes:
+    - "/var/psychonoir/staging/data:/app/data"
+    - "/var/psychonoir/staging/logs:/var/log/psychonoir"
+  ports:
+    - "8080:80"
+  health_check:
+    path: "/health"
+    initial_delay: 30
+    timeout: 5
+    period: 15
+  backup:
+    schedule: "0 4 * * *" # Daily at 04:00
+    retention: 7 # 7 days
+    encryption: false
+
+# 🔬 Testing Environment
+testing:
+  image_tag: "testing"
+  replicas: 1
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  environment:
+    FLASK_ENV: "testing"
+    LOG_LEVEL: "DEBUG"
+    DB_PATH: "/app/data/db/psycho_noir_testing.db"
+    CORS_ORIGINS: "*"
+    MAX_WORKERS: 1
+    WORKER_CLASS: "sync"
+    HEALTH_CHECK_INTERVAL: 10
+  volumes:
+    - "/tmp/psychonoir/testing/data:/app/data"
+    - "/tmp/psychonoir/testing/logs:/var/log/psychonoir"
+  ports:
+    - "8888:80"
+  health_check:
+    path: "/health"
+    initial_delay: 15
+    timeout: 3
+    period: 10
+  backup:
+    schedule: "0 6 * * 0" # Weekly on Sunday at 06:00
+    retention: 3 # 3 backups
+    encryption: false
+
+# 👨‍💻 Development Environment
+development:
+  image_tag: "dev"
+  replicas: 1
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+    limits:
+      cpu: "250m"
+      memory: "512Mi"
+  environment:
+    FLASK_ENV: "development"
+    LOG_LEVEL: "DEBUG"
+    DB_PATH: "/app/data/db/psycho_noir_dev.db"
+    CORS_ORIGINS: "*"
+    MAX_WORKERS: 1
+    WORKER_CLASS: "sync"
+    HEALTH_CHECK_INTERVAL: 5
+    FLASK_DEBUG: "1"
+    RELOAD_ON_CHANGE: "true"
+  volumes:
+    - "./:/app"
+    - "/tmp/psychonoir/dev/logs:/var/log/psychonoir"
+  ports:
+    - "5000:5000"
+    - "8000:80"
+  health_check:
+    path: "/health"
+    initial_delay: 10
+    timeout: 2
+    period: 5
+  backup:
+    schedule: "manual"
+    retention: 1
+    encryption: false
+
+# 🔧 Global Configuration
+global:
+  registry: "ghcr.io/poisontr33s/psychonoir-kontrapunkt"
+  network: "psychonoir-network"
+  labels:
+    project: "psycho-noir-kontrapunkt"
+    maintainer: "neural-archaeology-team"
+    environment: "${ENVIRONMENT}"
+  monitoring:
+    prometheus:
+      enabled: true
+      port: 9090
+    grafana:
+      enabled: true
+      port: 3000
+      admin_password: "${GRAFANA_ADMIN_PASSWORD}"
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "100m"
+      max-file: "3"
+  security:
+    scan_schedule: "0 2 * * *" # Daily security scan
+    vulnerability_threshold: "high"
+    auto_update_base_images: true

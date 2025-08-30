@@ -1,0 +1,32 @@
+# Psycho-Noir Kontrapunkt Backend Requirements
+# 100% robust, production-ready dependencies only
+
+# Core web framework - battle-tested, robust
+flask==2.3.3
+flask-cors==4.0.0
+
+# Database - SQLite included in Python, no external dependencies
+# (using sqlite3 from standard library)
+
+# Command line interface - stable and widely used
+click==8.1.7
+
+# JSON handling and data validation - reliable
+pydantic==2.4.2
+
+# Date/time handling - standard library datetime is sufficient
+# (no external datetime libraries needed)
+
+# Logging - using standard library logging
+# (no external logging dependencies)
+
+# Testing framework - if needed for development
+pytest==7.4.2
+
+# Optional: Development server (only for development)
+gunicorn==21.2.0
+
+# NO experimental or bleeding-edge dependencies
+# NO dependencies that require external services
+# NO dependencies with known stability issues
+# ONLY proven, stable, widely-adopted packages

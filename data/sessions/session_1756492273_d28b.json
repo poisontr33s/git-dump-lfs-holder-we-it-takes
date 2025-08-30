@@ -1,0 +1,23 @@
+{
+  "session_metadata": {
+    "session_id": "session_1756492273_d28b",
+    "timestamp": "2025-08-29T18:31:13.586453",
+    "title": "9",
+    "conversation_length": 0,
+    "session_type": "manual_creation"
+  },
+  "technical_achievements": [],
+  "decision_points": [],
+  "code_implementations": [],
+  "completion_metrics": {
+    "latest_completion_percentage": 0,
+    "success_indicators": 0,
+    "error_indicators": 0,
+    "success_ratio": 0,
+    "progress_momentum": "new"
+  },
+  "hook_points": [],
+  "learning_patterns": [],
+  "conversation_summary": "New session: 9",
+  "raw_conversation": ""
+}
