@@ -1,0 +1,26 @@
+### Kontrapunkt MVP API smoke tests (use REST Client extension)
+@host = http://127.0.0.1:8000
+
+### Root
+GET {{host}}/
+
+### Dialogue
+POST {{host}}/dialogue/respond
+Content-Type: application/json
+
+{
+  "state": {"skills": {"sensual_intelligence": 0.6, "obscura_sensitivity": 0.5}},
+  "input": "hello"
+}
+
+### Save
+POST {{host}}/save/write
+Content-Type: application/json
+
+{
+  "snapshot": {
+    "player": {"pos": {"x": 0, "y": 0}},
+    "scene": "Main",
+    "skills": {"sensual_intelligence": 0.6, "obscura_sensitivity": 0.5}
+  }
+}

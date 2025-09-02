@@ -1,51 +1,55 @@
 #!/usr/bin/env python3
+
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+
+# Auto-generated constants for magic numbers
+const_magic_300 = 300
+const_ten = 10
+
 """
 🎭 PSYCHO-NOIR CODESPACES SESSION IMPORTER
 Specialized tool for importing mobile sessions into GitHub Codespaces PWA environment
 """
-
-import json
-import os
-import sys
-from datetime import datetime
-from pathlib import Path
 
 class CodespacesSessionImporter:
     def __init__(self):
         self.workspace_root = Path.cwd()
         self.mobile_session_file = self.workspace_root / "data" / "current_session_context.json"
         self.session_files = list((self.workspace_root / "data" / "sessions").glob("*.json"))
-        
+
     def extract_mobile_session_summary(self):
         """Extracts key points from mobile session for Copilot Chat context"""
         if not self.mobile_session_file.exists():
-            print("❌ No mobile session file found")
+
             return None
-            
+
         with open(self.mobile_session_file, 'r', encoding='utf-8') as f:
             session_data = json.load(f)
-            
+
         # Extract key information
         session_metadata = session_data.get("current_session", {}).get("session_metadata", {})
         achievements = session_data.get("current_session", {}).get("technical_achievements", [])
-        
+
         summary = {
             "session_id": session_metadata.get("session_id"),
             "timestamp": session_metadata.get("timestamp"),
             "conversation_length": session_metadata.get("conversation_length"),
             "session_type": session_metadata.get("session_type"),
-            "key_achievements": achievements[:10],  # Top 10 achievements
+            "key_achievements": achievements[:const_ten],  # Top const_ten achievements
             "total_achievements": len(achievements)
         }
-        
+
         return summary
-        
+
     def generate_copilot_context_prompt(self):
         """Generates a context prompt that can be pasted into Copilot Chat"""
         summary = self.extract_mobile_session_summary()
         if not summary:
             return None
-            
+
         prompt = f"""🎭 **iPHONE CODESPACES SESSION RESTORATION REQUEST**
 
 **Context:** I was working on the Psycho-Noir Kontrapunkt project on my iPhone using a CUSTOM MOBILE PORTAL through GitHub Codespaces preview URL. The session data has been preserved in the backend but is not visible in the current standard Codespaces interface.
@@ -70,13 +74,13 @@ class CodespacesSessionImporter:
             achievement_type = achievement.get('type', 'unknown')
             description = achievement.get('description', 'No description')
             level = achievement.get('level', 'N/A')
-            
+
             if achievement_type == 'level_implementation':
                 prompt += f"{i}. **Level {level}:** {description}\n"
             else:
                 prompt += f"{i}. **{achievement_type.title()}:** {description}\n"
 
-        prompt += f"""
+        prompt += """
 **Files and Systems Created in Mobile Session:**
 - Session Archaeology Engine (`backend/python/session_archaeology_engine.py`)
 - Mobile Neural Interface (`LVL2_Frontend_Evolution/mobile_neural_interface.html`)
@@ -98,7 +102,7 @@ class CodespacesSessionImporter:
         summary = self.extract_mobile_session_summary()
         if not summary:
             return None
-            
+
         markdown_content = f"""# 🎭 Mobile Session Summary - Psycho-Noir Kontrapunkt
 
 **Generated:** {datetime.now().isoformat()}
@@ -118,7 +122,7 @@ class CodespacesSessionImporter:
             achievement_type = achievement.get('type', 'unknown')
             description = achievement.get('description', 'No description')
             level = achievement.get('level', 'N/A')
-            
+
             markdown_content += f"### {i}. {achievement_type.title()}"
             if level != 'N/A':
                 markdown_content += f" (Level {level})"
@@ -134,14 +138,16 @@ class CodespacesSessionImporter:
 
 ```
 """
-        markdown_content += self.generate_copilot_context_prompt()
+        context_prompt = self.generate_copilot_context_prompt()
+        if context_prompt:
+            markdown_content += context_prompt
         markdown_content += """
 ```
 
 ## Next Steps
 
 - [ ] Review mobile session achievements
-- [ ] Identify current development priorities  
+- [ ] Identify current development priorities
 - [ ] Resume work on incomplete features
 - [ ] Test imported systems in Codespaces environment
 
@@ -152,41 +158,33 @@ class CodespacesSessionImporter:
         summary_file = self.workspace_root / "MOBILE_SESSION_SUMMARY.md"
         with open(summary_file, 'w', encoding='utf-8') as f:
             f.write(markdown_content)
-            
+
         return summary_file
 
     def run_import(self):
         """Main import process"""
-        print("🎭 PSYCHO-NOIR CODESPACES SESSION IMPORTER")
-        print("=" * 50)
-        
+
         # Check mobile session availability
-        print(f"📱 Mobile session file: {self.mobile_session_file}")
+
         print(f"📂 Additional sessions: {len(self.session_files)} files")
-        
+
         if not self.mobile_session_file.exists():
-            print("❌ No mobile session data found!")
-            print("💡 Make sure you've run 'git merge origin/main' to get the session files")
+
             return False
-            
+
         # Generate summary and context
         summary_file = self.create_session_summary_file()
         context_prompt = self.generate_copilot_context_prompt()
-        
+
         if summary_file and context_prompt:
-            print(f"✅ Session summary created: {summary_file}")
-            print("\n🎯 NEXT STEPS:")
+
             print("1. Open GitHub Copilot Chat (Ctrl+Shift+I)")
-            print("2. Paste the context prompt from MOBILE_SESSION_SUMMARY.md")
-            print("3. Start with: 'Help me resume my mobile session work'")
-            print("\n📋 Context prompt preview:")
-            print("-" * 40)
-            print(context_prompt[:300] + "..." if len(context_prompt) > 300 else context_prompt)
-            print("-" * 40)
-            
+
+            print(context_prompt[:const_magic_300] + "..." if len(context_prompt) > const_magic_300 else context_prompt)
+
             return True
         else:
-            print("❌ Failed to generate session context")
+
             return False
 
 if __name__ == "__main__":

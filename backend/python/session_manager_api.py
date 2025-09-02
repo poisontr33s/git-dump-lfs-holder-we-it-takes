@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# Auto-generated constants for magic numbers
+const_magic_5000 = const_magic_5000
+const_magic_500 = const_magic_500
+const_magic_404 = const_magic_404
+const_magic_400 = const_magic_400
+const_magic_201 = const_magic_201
+
 """
 🎭 SESSION MANAGER API SERVER 🎭
 ===============================
@@ -6,7 +13,7 @@
 RESTful API for session JSON management
 - GET /api/sessions - List all sessions
 - GET /api/sessions/{id} - Get specific session
-- POST /api/sessions - Create new session  
+- POST /api/sessions - Create new session
 - PUT /api/sessions/{id} - Update session
 - DELETE /api/sessions/{id} - Delete session
 - POST /api/sessions/import - Import session JSON
@@ -55,26 +62,26 @@ def list_sessions():
     try:
         with sqlite3.connect(session_engine.session_db) as conn:
             cursor = conn.cursor()
-            
+
             cursor.execute("""
-                SELECT session_id, title, timestamp, completion_percentage, 
-                       progress_level, technical_achievements, hook_points, 
+                SELECT session_id, title, timestamp, completion_percentage,
+                       progress_level, technical_achievements, hook_points,
                        conversation_summary
                 FROM session_disks
                 ORDER BY timestamp DESC
             """)
-            
+
             sessions = []
             for row in cursor.fetchall():
                 session_id, title, timestamp, completion, progress, achievements_json, hooks_json, summary = row
-                
+
                 try:
                     achievements = json.loads(achievements_json) if achievements_json else []
                     hooks = json.loads(hooks_json) if hooks_json else []
                 except:
                     achievements = []
                     hooks = []
-                
+
                 sessions.append({
                     "session_id": session_id,
                     "title": title,
@@ -85,12 +92,12 @@ def list_sessions():
                     "hook_points": hooks,
                     "conversation_summary": summary
                 })
-            
+
             return jsonify(sessions)
-            
+
     except Exception as e:
         logger.error(f"Failed to list sessions: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>', methods=['GET'])
 def get_session(session_id):
@@ -100,18 +107,18 @@ def get_session(session_id):
         if session_disk:
             return jsonify(session_disk)
         else:
-            return jsonify({"error": "Session not found"}), 404
-            
+            return jsonify({"error": "Session not found"}), const_magic_404
+
     except Exception as e:
         logger.error(f"Failed to get session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions', methods=['POST'])
 def create_session():
     """Create new session"""
     try:
         data = request.get_json()
-        
+
         # Generate session from conversation if provided
         if 'conversation_text' in data:
             session_disk = session_engine.parse_conversation_to_session_disk(
@@ -141,31 +148,31 @@ def create_session():
                 "conversation_summary": data.get('conversation_summary', 'Manually created session'),
                 "learning_patterns": data.get('learning_patterns', [])
             }
-        
+
         # Save session
         session_file = session_engine.save_session_disk(session_disk)
-        
+
         return jsonify({
             "success": True,
             "session_id": session_disk["session_metadata"]["session_id"],
             "file_path": session_file
-        }), 201
-        
+        }), const_magic_201
+
     except Exception as e:
         logger.error(f"Failed to create session: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>', methods=['PUT'])
 def update_session(session_id):
     """Update existing session"""
     try:
         data = request.get_json()
-        
+
         # Load existing session
         existing_session = session_engine.load_session_disk(session_id)
         if not existing_session:
-            return jsonify({"error": "Session not found"}), 404
-        
+            return jsonify({"error": "Session not found"}), const_magic_404
+
         # Update session data
         if 'title' in data:
             existing_session["session_metadata"]["title"] = data['title']
@@ -177,22 +184,22 @@ def update_session(session_id):
             existing_session["technical_achievements"] = data['technical_achievements']
         if 'hook_points' in data:
             existing_session["hook_points"] = data['hook_points']
-        
+
         # Update timestamp
         existing_session["session_metadata"]["timestamp"] = datetime.now().isoformat()
-        
+
         # Save updated session
         session_file = session_engine.save_session_disk(existing_session)
-        
+
         return jsonify({
             "success": True,
             "session_id": session_id,
             "file_path": session_file
         })
-        
+
     except Exception as e:
         logger.error(f"Failed to update session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>', methods=['DELETE'])
 def delete_session(session_id):
@@ -201,60 +208,60 @@ def delete_session(session_id):
         # Delete from database
         with sqlite3.connect(session_engine.session_db) as conn:
             cursor = conn.cursor()
-            
+
             cursor.execute("DELETE FROM session_disks WHERE session_id = ?", (session_id,))
-            cursor.execute("DELETE FROM session_hooks WHERE source_session = ? OR target_session = ?", 
+            cursor.execute("DELETE FROM session_hooks WHERE source_session = ? OR target_session = ?",
                          (session_id, session_id))
             cursor.execute("DELETE FROM session_learning WHERE session_id = ?", (session_id,))
-            
+
             if cursor.rowcount == 0:
-                return jsonify({"error": "Session not found"}), 404
-            
+                return jsonify({"error": "Session not found"}), const_magic_404
+
             conn.commit()
-        
+
         # Delete session file
         session_file = session_engine.archive_dir / f"{session_id}.json"
         if session_file.exists():
             session_file.unlink()
-        
+
         return jsonify({"success": True, "session_id": session_id})
-        
+
     except Exception as e:
         logger.error(f"Failed to delete session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/import', methods=['POST'])
 def import_session():
     """Import session from JSON"""
     try:
         if 'file' not in request.files:
-            return jsonify({"error": "No file provided"}), 400
-        
+            return jsonify({"error": "No file provided"}), const_magic_400
+
         file = request.files['file']
         if file.filename == '':
-            return jsonify({"error": "No file selected"}), 400
-        
+            return jsonify({"error": "No file selected"}), const_magic_400
+
         # Parse JSON
         session_data = json.loads(file.read().decode('utf-8'))
-        
+
         # Validate session structure
         if not session_data.get('session_metadata', {}).get('session_id'):
-            return jsonify({"error": "Invalid session format - missing session_id"}), 400
-        
+            return jsonify({"error": "Invalid session format - missing session_id"}), const_magic_400
+
         # Save imported session
         session_file = session_engine.save_session_disk(session_data)
-        
+
         return jsonify({
             "success": True,
             "session_id": session_data["session_metadata"]["session_id"],
             "file_path": session_file
         })
-        
+
     except json.JSONDecodeError:
-        return jsonify({"error": "Invalid JSON format"}), 400
+        return jsonify({"error": "Invalid JSON format"}), const_magic_400
     except Exception as e:
         logger.error(f"Failed to import session: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>/export', methods=['GET'])
 def export_session(session_id):
@@ -262,18 +269,18 @@ def export_session(session_id):
     try:
         session_file = session_engine.archive_dir / f"{session_id}.json"
         if not session_file.exists():
-            return jsonify({"error": "Session file not found"}), 404
-        
+            return jsonify({"error": "Session file not found"}), const_magic_404
+
         return send_file(
             session_file,
             as_attachment=True,
             download_name=f"{session_id}.json",
             mimetype='application/json'
         )
-        
+
     except Exception as e:
         logger.error(f"Failed to export session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>/hooks', methods=['GET'])
 def get_session_hooks(session_id):
@@ -281,14 +288,14 @@ def get_session_hooks(session_id):
     try:
         with sqlite3.connect(session_engine.session_db) as conn:
             cursor = conn.cursor()
-            
+
             cursor.execute("""
                 SELECT hook_id, target_session, hook_type, hook_concept, hook_strength, timestamp
                 FROM session_hooks
                 WHERE source_session = ?
                 ORDER BY hook_strength DESC
             """, (session_id,))
-            
+
             hooks = []
             for row in cursor.fetchall():
                 hooks.append({
@@ -299,30 +306,30 @@ def get_session_hooks(session_id):
                     "hook_strength": row[4],
                     "timestamp": row[5]
                 })
-            
+
             return jsonify(hooks)
-            
+
     except Exception as e:
         logger.error(f"Failed to get hooks for session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/<session_id>/hooks', methods=['POST'])
 def create_session_hook(session_id):
     """Create hook from session to another session"""
     try:
         data = request.get_json()
-        
+
         required_fields = ['target_session', 'hook_concept']
         if not all(field in data for field in required_fields):
-            return jsonify({"error": "Missing required fields"}), 400
-        
+            return jsonify({"error": "Missing required fields"}), const_magic_400
+
         hook_id = session_engine.create_session_hook(
             session_id,
             data['target_session'],
             data['hook_concept'],
             data.get('hook_type', 'continuation')
         )
-        
+
         return jsonify({
             "success": True,
             "hook_id": hook_id,
@@ -330,10 +337,10 @@ def create_session_hook(session_id):
             "target_session": data['target_session'],
             "hook_concept": data['hook_concept']
         })
-        
+
     except Exception as e:
         logger.error(f"Failed to create hook from session {session_id}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/sessions/hookable/<concept>', methods=['GET'])
 def find_hookable_sessions(concept):
@@ -341,12 +348,12 @@ def find_hookable_sessions(concept):
     try:
         limit = request.args.get('limit', 5, type=int)
         hookable_sessions = session_engine.find_hookable_sessions(concept, limit)
-        
+
         return jsonify(hookable_sessions)
-        
+
     except Exception as e:
         logger.error(f"Failed to find hookable sessions for concept {concept}: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), const_magic_500
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -362,10 +369,10 @@ if __name__ == '__main__':
     logger.info("🎭 Starting Session Manager API Server...")
     logger.info(f"📀 Session archive: {session_engine.archive_dir}")
     logger.info(f"💾 Database: {session_engine.session_db}")
-    logger.info(f"🌐 GUI available at: http://localhost:5000/")
-    
+    logger.info(f"🌐 GUI available at: http://localhost:const_magic_5000/")
+
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=const_magic_5000,
         debug=True
     )

@@ -6,16 +6,20 @@ from typing import Optional
 # Transmutator De Lingua - The Neural Weaver of Linguistic Shadows
 # SYSTEM: COGNITIVE_DISTORTION_PROTOCOL_v3.7
 
-
 # ERROR_CONSTANTS: REALITY_FABRIC_PARAMETERS
+# Auto-generated constants for magic numbers
+const_thousand = const_thousand
+const_magic_500 = const_magic_500
+const_magic_12 = const_magic_12
+const_ten = const_ten
+
 ERROR_MEMETIC_HAZARD = "MEMETIC_HAZARD_DETECTED_AT_SYNAPSE"
 ERROR_REALITY_BREACH = "REALITY_INTEGRITY_COMPROMISED_AT_0xDEADBEEF"
-
 
 class TransmutatorDeLingua:
     def __init__(self, mode: str = "ask"):
         self.mode = mode  # Operational mode: "ask", "transform", "analyze"
-        self.corruption_level = 0.12  # Default reality distortion coefficient
+        self.corruption_level = 0.const_magic_12  # Default reality distortion coefficient
         self.linguistic_patterns = {
             "skyskraper": {
                 "tone": ["klinisk", "presist", "korporativt", "eufemistisk"],
@@ -33,14 +37,11 @@ class TransmutatorDeLingua:
     def _initialize_neural_matrix(self) -> None:
         """Etablerer kognitive synapser for lingvistisk transmutasjon"""
         # TRANSMISSION_LOG: Initierer kausale noder i den lingvistiske veven
-        print("//SYSTEM: INITIALIZING LINGUISTIC_TRANSMUTATION_MATRIX")
-        print(f"//STATUS: CORRUPTION_INDEX={self.corruption_level * 100:.1f}%")
 
         # Simulerer systemoppstart med psycho-noir estetikk
         for i in range(3):
-            print(f"//CALIBRATING_COGNITIVE_THREADS: {i + 1}/3")
+
             time.sleep(0.2)
-        print("//NEURAL_MATRIX_STABILIZED... AWAITING_TEXTUAL_INPUT")
 
     def _apply_glitch(self, text: str, intensity: Optional[float] = None) -> str:
         """Påfører kunstige 'glitches' i teksten som reflekterer Den Usynlige Hånd"""
@@ -54,7 +55,7 @@ class TransmutatorDeLingua:
             lambda t: t.replace("e", "æ") if random.random() < 0.3 else t,
             lambda t: t.upper() if len(t) < 8 else t,
             lambda t: f"{t[0 : len(t) // 2]}[DATAKORRUPSJON]{t[len(t) // 2 :]}"
-            if len(t) > 10
+            if len(t) > const_ten
             else t,
             lambda t: "".join([c if random.random() > 0.2 else "_" for c in t])
             if len(t) > 5
@@ -115,8 +116,8 @@ class TransmutatorDeLingua:
         result = " ".join(transformed_sentences)
 
         # Performance metrics
-        processing_time = (time.time() - start_time) * 1000  # ms
-        if processing_time > 500:
+        processing_time = (time.time() - start_time) * const_thousand  # ms
+        if processing_time > const_magic_500:
             print(
                 f"//ADVARSÆL: Prosesseringstid {processing_time:.1f}ms overstiger terskel (500ms)"
             )
@@ -126,7 +127,7 @@ class TransmutatorDeLingua:
     def process(self, input_text: str) -> str:
         """Hovedgrensesnitt for tekstprosessering"""
         if self.mode == "ask":
-            print("//SYSTEM: Hvilket domene skal teksten transformeres mot?")
+
             print("1. Skyskraper (klinisk/korporativt)")
             print("2. Rustbelte (rått/fragmentert)")
             choice = input("Velg domene (1/2): ")
@@ -139,7 +140,6 @@ class TransmutatorDeLingua:
             return f"[ANALYSERESULTAT]\nTekstlengde: {len(input_text)}\nOrd: {len(input_text.split())}"
         else:
             return f"{ERROR_MEMETIC_HAZARD}: Ukjent modus '{self.mode}'"
-
 
 # Hovedkonfigurasjon
 mode = "ask"  # Mode setting for the transmutator
@@ -159,10 +159,6 @@ constraints = """
 if __name__ == "__main__":
     transmutator = TransmutatorDeLingua(mode=mode)
 
-    print("\nTRANSMUTATOR DE LINGUA v3.7")
-    print("===========================")
-    print("En lingvistisk realitetsfordreier")
-
     sample_text = """
   Dette er en test av tekstomformeren. Den skal transformere vanlig tekst
   til noe som reflekterer enten Skyskraperens kliniske presisjon eller
@@ -170,7 +166,4 @@ if __name__ == "__main__":
   men endrer tone og atmosfære.
   """
 
-    print("\nOriginal tekst:")
-    print(sample_text)
-    print("\nTransformert tekst:")
     print(transmutator.process(sample_text))

@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# Auto-generated constants for magic numbers
+const_hundred = const_hundred
+const_magic_90 = const_magic_90
+const_magic_85 = const_magic_85
+const_magic_80 = const_magic_80
+const_magic_60 = const_magic_60
+const_magic_24 = const_magic_24
+const_magic_15 = const_magic_15
+
 """
 🎭 PSYCHO-NOIR KONTRAPUNKT NEURAL ARCHAEOLOGY ORCHESTRATOR 🎭
 ==============================================================
@@ -90,7 +99,7 @@ class DeploymentMetrics:
 class NeuralArchaeologyOrchestrator:
     """
     🎭 PSYCHO-NOIR KONTRAPUNKT NEURAL ARCHAEOLOGY ORCHESTRATOR
-    
+
     Advanced orchestration system som kombinerer:
     - Neural archaeology analysis
     - Docker deployment management
@@ -110,8 +119,8 @@ class NeuralArchaeologyOrchestrator:
         self.deployment_config = self._load_deployment_config()
         self.active_services: Dict[str, ServiceMetrics] = {}
         self.corruption_detector_active = True
-        self.monitoring_interval = 15  # seconds
-        
+        self.monitoring_interval = const_magic_15  # seconds
+
         logger.info(f"🎭 Neural Archaeology Orchestrator initialized for {environment.value}")
         self._initialize_neural_database()
     def _load_deployment_config(self) -> Dict[str, Any]:
@@ -129,7 +138,7 @@ class NeuralArchaeologyOrchestrator:
         """🧠 Initialize neural archaeology database"""
         try:
             self.neural_db_path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             with sqlite3.connect(self.neural_db_path) as conn:
                 conn.executescript('''
                 CREATE TABLE IF NOT EXISTS neural_orchestration_metrics (
@@ -169,16 +178,16 @@ class NeuralArchaeologyOrchestrator:
                     neural_fingerprint TEXT
                 );
 
-                CREATE INDEX IF NOT EXISTS idx_neural_metrics_timestamp 
+                CREATE INDEX IF NOT EXISTS idx_neural_metrics_timestamp
                 ON neural_orchestration_metrics(timestamp);
-                
-                CREATE INDEX IF NOT EXISTS idx_deployment_events_timestamp 
+
+                CREATE INDEX IF NOT EXISTS idx_deployment_events_timestamp
                 ON deployment_events(timestamp);
-                
-                CREATE INDEX IF NOT EXISTS idx_corruption_incidents_timestamp 
+
+                CREATE INDEX IF NOT EXISTS idx_corruption_incidents_timestamp
                 ON corruption_incidents(timestamp);
                 ''')
-                
+
             logger.info("🧠 Neural archaeology database initialized")
         except Exception as e:
             logger.error(f"❌ Neural database initialization failed: {e}")
@@ -205,7 +214,7 @@ class NeuralArchaeologyOrchestrator:
                         if 'psychonoir' in container.name.lower():
                             service_analysis = await self._analyze_service_neural_state(container)
                             analysis["services"][container.name] = service_analysis
-                            
+
                             # Check for corruption indicators
                             if service_analysis.get("anomaly_detected", False):
                                 analysis["corruption_level"] += 1
@@ -225,7 +234,7 @@ class NeuralArchaeologyOrchestrator:
 
             # Calculate system coherence
             if analysis["services"]:
-                healthy_services = sum(1 for s in analysis["services"].values() 
+                healthy_services = sum(1 for s in analysis["services"].values()
                                      if s.get("health_status") == "healthy")
                 total_services = len(analysis["services"])
                 analysis["system_coherence"] = healthy_services / total_services
@@ -233,13 +242,13 @@ class NeuralArchaeologyOrchestrator:
             # Generate recommendations
             if analysis["corruption_level"] > 0:
                 analysis["recommendations"].append("🕳️ Corruption detected - initiate neural cleansing protocol")
-            
+
             if analysis["system_coherence"] < 0.8:
                 analysis["recommendations"].append("⚠️ System coherence below threshold - review service health")
 
             # Store analysis in neural database
             await self._store_neural_analysis(analysis)
-            
+
             return analysis
 
         except Exception as e:
@@ -255,15 +264,15 @@ class NeuralArchaeologyOrchestrator:
         try:
             # Get container stats
             stats = container.stats(stream=False)
-            
+
             # Calculate metrics
             cpu_usage = self._calculate_cpu_usage(stats)
             memory_usage = self._calculate_memory_usage(stats)
-            
+
             # Neural-specific analysis
             neural_activity = self._calculate_neural_activity(container, stats)
             anomaly_detected = self._detect_service_anomalies(container, stats)
-            
+
             analysis = {
                 "name": container.name,
                 "status": container.status,
@@ -278,11 +287,11 @@ class NeuralArchaeologyOrchestrator:
             # Check for specific corruption patterns
             if anomaly_detected:
                 analysis["anomaly_type"] = "performance_degradation"
-                analysis["severity"] = 2 if cpu_usage > 80 or memory_usage > 80 else 1
+                analysis["severity"] = 2 if cpu_usage > const_magic_80 or memory_usage > const_magic_80 else 1
 
             # Store service metrics
             await self._store_service_metrics(analysis)
-            
+
             return analysis
 
         except Exception as e:
@@ -298,12 +307,12 @@ class NeuralArchaeologyOrchestrator:
         try:
             cpu_stats = stats['cpu_stats']
             precpu_stats = stats['precpu_stats']
-            
+
             cpu_delta = cpu_stats['cpu_usage']['total_usage'] - precpu_stats['cpu_usage']['total_usage']
             system_delta = cpu_stats['system_cpu_usage'] - precpu_stats['system_cpu_usage']
-            
+
             if system_delta > 0:
-                cpu_percent = (cpu_delta / system_delta) * len(cpu_stats['cpu_usage']['percpu_usage']) * 100.0
+                cpu_percent = (cpu_delta / system_delta) * len(cpu_stats['cpu_usage']['percpu_usage']) * const_hundred.0
                 return round(cpu_percent, 2)
             return 0.0
         except (KeyError, ZeroDivisionError):
@@ -315,7 +324,7 @@ class NeuralArchaeologyOrchestrator:
             memory_stats = stats['memory_stats']
             usage = memory_stats['usage']
             limit = memory_stats['limit']
-            return round((usage / limit) * 100.0, 2) if limit > 0 else 0.0
+            return round((usage / limit) * const_hundred.0, 2) if limit > 0 else 0.0
         except (KeyError, ZeroDivisionError):
             return 0.0
 
@@ -324,21 +333,21 @@ class NeuralArchaeologyOrchestrator:
         try:
             # Simulate neural activity based on container behavior
             base_activity = 0.5
-            
+
             # Factor in CPU usage (higher CPU = more neural activity)
-            cpu_factor = self._calculate_cpu_usage(stats) / 100.0
-            
+            cpu_factor = self._calculate_cpu_usage(stats) / const_hundred.0
+
             # Factor in memory usage
-            memory_factor = self._calculate_memory_usage(stats) / 100.0
-            
+            memory_factor = self._calculate_memory_usage(stats) / const_hundred.0
+
             # Check for psychonoir-specific containers
             if 'psychonoir' in container.name.lower():
                 base_activity += 0.3
-            
+
             # Calculate final neural activity
             neural_activity = base_activity + (cpu_factor * 0.3) + (memory_factor * 0.2)
             return round(min(neural_activity, 1.0), 3)
-            
+
         except Exception:
             return 0.0
 
@@ -347,19 +356,19 @@ class NeuralArchaeologyOrchestrator:
         try:
             cpu_usage = self._calculate_cpu_usage(stats)
             memory_usage = self._calculate_memory_usage(stats)
-            
+
             # Anomaly thresholds
-            if cpu_usage > 85 or memory_usage > 90:
+            if cpu_usage > const_magic_85 or memory_usage > const_magic_90:
                 logger.warning(f"🕳️ Performance anomaly detected in {container.name}")
                 return True
-            
+
             # Check for unusual behavior patterns
             if container.status in ["exited", "dead"]:
                 logger.warning(f"🕳️ Service state anomaly detected in {container.name}")
                 return True
-                
+
             return False
-            
+
         except Exception:
             return False
 
@@ -368,7 +377,7 @@ class NeuralArchaeologyOrchestrator:
         try:
             with sqlite3.connect(self.neural_db_path) as conn:
                 conn.execute('''
-                INSERT INTO deployment_events 
+                INSERT INTO deployment_events
                 (environment, event_type, success, neural_signature, metadata)
                 VALUES (?, ?, ?, ?, ?)
                 ''', (
@@ -386,7 +395,7 @@ class NeuralArchaeologyOrchestrator:
         try:
             with sqlite3.connect(self.neural_db_path) as conn:
                 conn.execute('''
-                INSERT INTO neural_orchestration_metrics 
+                INSERT INTO neural_orchestration_metrics
                 (environment, service_name, cpu_usage, memory_usage, state, neural_activity, metadata)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
                 ''', (
@@ -407,25 +416,25 @@ class NeuralArchaeologyOrchestrator:
             with sqlite3.connect(self.neural_db_path) as conn:
                 # Get recent metrics
                 metrics_data = conn.execute('''
-                SELECT * FROM neural_orchestration_metrics 
+                SELECT * FROM neural_orchestration_metrics
                 WHERE timestamp > datetime('now', '-1 hour')
                 ORDER BY timestamp DESC
                 ''').fetchall()
-                
+
                 # Get deployment events
                 deployment_data = conn.execute('''
-                SELECT * FROM deployment_events 
-                WHERE timestamp > datetime('now', '-24 hours')
+                SELECT * FROM deployment_events
+                WHERE timestamp > datetime('now', '-const_magic_24 hours')
                 ORDER BY timestamp DESC
                 ''').fetchall()
-                
+
                 # Get corruption incidents
                 corruption_data = conn.execute('''
-                SELECT * FROM corruption_incidents 
-                WHERE timestamp > datetime('now', '-24 hours')
+                SELECT * FROM corruption_incidents
+                WHERE timestamp > datetime('now', '-const_magic_24 hours')
                 ORDER BY timestamp DESC
                 ''').fetchall()
-                
+
             report = {
                 "timestamp": datetime.now().isoformat(),
                 "environment": self.environment.value,
@@ -441,10 +450,10 @@ class NeuralArchaeologyOrchestrator:
                     "neural_activity_average": sum(row[7] for row in metrics_data if len(row) > 7) / len(metrics_data) if metrics_data else 0.0
                 }
             }
-            
+
             logger.info(f"📋 Neural orchestration report generated: {report['report_signature']}")
             return report
-            
+
         except Exception as e:
             logger.error(f"❌ Neural report generation failed: {e}")
             return {
@@ -456,9 +465,9 @@ class NeuralArchaeologyOrchestrator:
 async def main():
     """🎭 Main neural orchestration interface"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="🎭 Psycho-Noir Kontrapunkt Neural Archaeology Orchestrator")
-    parser.add_argument("--environment", "-e", 
+    parser.add_argument("--environment", "-e",
                        choices=[env.value for env in EnvironmentType],
                        default="development",
                        help="Target environment")
@@ -466,29 +475,29 @@ async def main():
                        choices=["analyze", "deploy", "monitor", "report"],
                        default="analyze",
                        help="Action to perform")
-    parser.add_argument("--duration", "-d", type=int, default=60,
+    parser.add_argument("--duration", "-d", type=int, default=const_magic_60,
                        help="Monitoring duration in minutes")
-    
+
     args = parser.parse_args()
-    
+
     # Initialize orchestrator
     environment = EnvironmentType(args.environment)
     orchestrator = NeuralArchaeologyOrchestrator(environment)
-    
+
     logger.info(f"🎭 Starting neural orchestration: {args.action} on {environment.value}")
-    
+
     try:
         if args.action == "analyze":
             result = await orchestrator.analyze_system_neural_state()
             print(json.dumps(result, indent=2, default=str))
-            
+
         elif args.action == "report":
             result = orchestrator.generate_neural_report()
             print(json.dumps(result, indent=2, default=str))
-            
+
         else:
             logger.info(f"🎭 Action '{args.action}' implementation coming in next phase...")
-            
+
     except KeyboardInterrupt:
         logger.info("🛑 Neural orchestration interrupted by user")
     except Exception as e:

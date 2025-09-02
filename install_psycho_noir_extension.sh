@@ -1,23 +1,25 @@
 #!/bin/bash
-# 🎭 PSYCHO-NOIR EXTENSION QUICK INSTALLER
-# Den Usynlige Hånds motløp mot chat session fragmentering
+# 🎭 PSYCHO-NOIR EXTENSION QUICK INSTALLER - ETERNAL SADHANA VERSION
+# Swimming upstream against VS Code extension fragmentation
 
-echo "🎭 PSYCHO-NOIR KONTRAPUNKT Extension Installer"
-echo "=============================================="
-echo "🔄 KOMPILERINGS-SPØKELSE EXORCISM in progress..."
+echo "�️ PSYCHO-NOIR KONTRAPUNKT: ETERNAL SADHANA Extension Installer"
+echo "================================================================="
+echo "🔄 Swimming upstream against undefined_publisher chaos..."
 
 # Gå til extension directory
-cd .vscode/extensions/psycho-noir-kontrapunkt/
+cd /workspaces/PsychoNoir-Kontrapunkt/vscode-extension/
 
-# Install dependencies
-echo "📦 Installing dependencies..."
+echo "📦 Installing dependencies (Iron Maiden scavenging mode)..."
 npm install
 
-# Compile TypeScript
-echo "🔨 Compiling TypeScript..."
-npx tsc
+echo "🔨 Compiling TypeScript (Astrid systematic control)..."
+npm run compile
 
-# Package extension
+echo "� Creating VSIX package (Den Usynlige Hånd emergence)..."
+npx @vscode/vsce package --no-dependencies
+
+echo "🎯 Installing extension locally..."
+code --install-extension *.vsix
 echo "📦 Packaging extension..."
 npx vsce package --allow-star-activation
 

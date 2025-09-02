@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+# Auto-generated constants for magic numbers
+const_magic_5001 = const_magic_5001
+const_magic_2025 = const_magic_2025
+const_magic_500 = const_magic_500
+const_magic_401 = const_magic_401
+const_magic_400 = const_magic_400
+const_magic_85 = const_magic_85
+const_magic_47 = const_magic_47
+const_magic_12 = const_magic_12
+const_magic_08 = const_magic_08
+
 """
 🎭✨ COPILOT INTEGRATION FLASK API ✨🎭
 ========================================
@@ -8,7 +19,7 @@ Dette er den faktiske broen mellom Copilot og vårt automatiserte miljø.
 
 Endpoints:
 - POST /api/copilot/authenticate - Autentiser Copilot-session
-- GET  /api/copilot/analyze - Analyser miljøet for forbedringer  
+- GET  /api/copilot/analyze - Analyser miljøet for forbedringer
 - POST /api/copilot/improve - Implementer en konkret forbedring
 - GET  /api/copilot/monitor - Kontinuerlig overvåkning
 - GET  /api/copilot/status - Få current evolution status
@@ -44,7 +55,7 @@ def async_endpoint(f):
             return loop.run_until_complete(f(*args, **kwargs))
         except Exception as e:
             logger.error(f"Async endpoint error: {e}")
-            return jsonify({"error": str(e), "timestamp": datetime.now().isoformat()}), 500
+            return jsonify({"error": str(e), "timestamp": datetime.now().isoformat()}), const_magic_500
         finally:
             loop.close()
     wrapper.__name__ = f.__name__
@@ -59,24 +70,24 @@ async def copilot_authenticate():
     try:
         data = request.get_json() or {}
         session_id = data.get('session_id')
-        
+
         if not session_id:
             return jsonify({
                 "success": False,
                 "error": "session_id required",
                 "timestamp": datetime.now().isoformat()
-            }), 400
-        
+            }), const_magic_400
+
         # Authenticate session
         authenticated = await copilot_api.authenticate(session_id)
-        
+
         if authenticated:
             return jsonify({
                 "success": True,
                 "message": "Copilot session authenticated successfully",
                 "capabilities": [
                     "environment_analysis",
-                    "improvement_implementation", 
+                    "improvement_implementation",
                     "continuous_monitoring",
                     "ai_evolution_tracking"
                 ],
@@ -87,15 +98,15 @@ async def copilot_authenticate():
                 "success": False,
                 "error": "Invalid or expired session",
                 "timestamp": datetime.now().isoformat()
-            }), 401
-            
+            }), const_magic_401
+
     except Exception as e:
         logger.error(f"Authentication error: {e}")
         return jsonify({
             "success": False,
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/analyze', methods=['GET'])
 @async_endpoint
@@ -107,18 +118,18 @@ async def copilot_analyze_environment():
     try:
         # Perform comprehensive environment analysis
         analysis = await copilot_api.analyze_environment()
-        
+
         # Add API metadata
         analysis["api_version"] = "1.0"
         analysis["copilot_compatible"] = True
         analysis["analysis_depth"] = "comprehensive"
-        
+
         return jsonify({
             "success": True,
             "analysis": analysis,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Environment analysis error: {e}")
         return jsonify({
@@ -126,14 +137,14 @@ async def copilot_analyze_environment():
             "error": str(e),
             "traceback": traceback.format_exc(),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/improve', methods=['POST'])
 @async_endpoint
 async def copilot_implement_improvement():
     """
     🔧 La Copilot implementere en konkret forbedring
-    
+
     Expected payload:
     {
         "type": "missing_requirements|documentation|refactoring|ai_enhancement",
@@ -145,34 +156,34 @@ async def copilot_implement_improvement():
     """
     try:
         improvement_data = request.get_json()
-        
+
         if not improvement_data:
             return jsonify({
                 "success": False,
                 "error": "No improvement data provided",
                 "timestamp": datetime.now().isoformat()
-            }), 400
-        
+            }), const_magic_400
+
         # Validate required fields
         required_fields = ['type']
         missing_fields = [field for field in required_fields if field not in improvement_data]
-        
+
         if missing_fields:
             return jsonify({
                 "success": False,
                 "error": f"Missing required fields: {missing_fields}",
                 "timestamp": datetime.now().isoformat()
-            }), 400
-        
+            }), const_magic_400
+
         # Implement the improvement
         result = await copilot_api.implement_improvement(improvement_data)
-        
+
         return jsonify({
             "success": True,
             "implementation_result": result,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Improvement implementation error: {e}")
         return jsonify({
@@ -180,7 +191,7 @@ async def copilot_implement_improvement():
             "error": str(e),
             "traceback": traceback.format_exc(),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/monitor', methods=['GET'])
 @async_endpoint
@@ -190,20 +201,20 @@ async def copilot_continuous_monitoring():
     """
     try:
         monitoring_result = await copilot_api.continuous_monitor()
-        
+
         return jsonify({
             "success": True,
             "monitoring": monitoring_result,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Continuous monitoring error: {e}")
         return jsonify({
             "success": False,
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/status', methods=['GET'])
 def copilot_get_status():
@@ -212,7 +223,7 @@ def copilot_get_status():
     """
     try:
         evolution_status = copilot_api.get_evolution_status()
-        
+
         # Add additional status information
         status = {
             "evolution_metrics": evolution_status,
@@ -233,20 +244,20 @@ def copilot_get_status():
                 "Continuous optimization"
             ]
         }
-        
+
         return jsonify({
             "success": True,
             "status": status,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Status retrieval error: {e}")
         return jsonify({
             "success": False,
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/workflows/create-improvement', methods=['POST'])
 @async_endpoint
@@ -258,14 +269,14 @@ async def copilot_create_improvement_workflow():
     try:
         workflow_data = request.get_json() or {}
         workflow_type = workflow_data.get('type', 'comprehensive')
-        
+
         workflow_result = {
             "workflow_id": f"copilot_workflow_{int(datetime.now().timestamp())}",
             "type": workflow_type,
             "steps": [],
             "status": "in_progress"
         }
-        
+
         # Step 1: Environment Analysis
         analysis = await copilot_api.analyze_environment()
         workflow_result["steps"].append({
@@ -274,11 +285,11 @@ async def copilot_create_improvement_workflow():
             "result": analysis,
             "timestamp": datetime.now().isoformat()
         })
-        
+
         # Step 2: Identify High-Priority Improvements
         improvements = analysis.get("improvement_opportunities", [])
         high_priority = [imp for imp in improvements if imp.get("priority") == "high"]
-        
+
         workflow_result["steps"].append({
             "step": "priority_identification",
             "status": "completed",
@@ -286,7 +297,7 @@ async def copilot_create_improvement_workflow():
             "improvements": high_priority[:3],  # Top 3
             "timestamp": datetime.now().isoformat()
         })
-        
+
         # Step 3: Auto-implement if requested
         if workflow_data.get("auto_implement", False) and high_priority:
             implementation_results = []
@@ -296,39 +307,39 @@ async def copilot_create_improvement_workflow():
                     implementation_results.append(impl_result)
                 except Exception as e:
                     implementation_results.append({"error": str(e)})
-            
+
             workflow_result["steps"].append({
                 "step": "auto_implementation",
                 "status": "completed",
                 "implementations": implementation_results,
                 "timestamp": datetime.now().isoformat()
             })
-        
+
         # Step 4: Setup Monitoring
         monitoring = await copilot_api.continuous_monitor()
         workflow_result["steps"].append({
             "step": "monitoring_setup",
-            "status": "completed", 
+            "status": "completed",
             "monitoring": monitoring,
             "timestamp": datetime.now().isoformat()
         })
-        
+
         workflow_result["status"] = "completed"
         workflow_result["completed_at"] = datetime.now().isoformat()
-        
+
         return jsonify({
             "success": True,
             "workflow": workflow_result,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Workflow creation error: {e}")
         return jsonify({
             "success": False,
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/intelligence/evolve', methods=['POST'])
 def copilot_trigger_evolution():
@@ -338,10 +349,10 @@ def copilot_trigger_evolution():
     try:
         evolution_data = request.get_json() or {}
         trigger_type = evolution_data.get('trigger', 'manual')
-        
+
         # Get current orchestrator
         orchestrator = copilot_api.orchestrator
-        
+
         # Manual evolution trigger
         if trigger_type == 'manual':
             orchestrator.evolution_metrics["copilot_interactions"] += 1
@@ -352,7 +363,7 @@ def copilot_trigger_evolution():
         elif trigger_type == 'resolution':
             orchestrator.evolution_metrics["failures_resolved"] += 1
             orchestrator._evolve_consciousness()
-        
+
         return jsonify({
             "success": True,
             "message": f"AI evolution triggered: {trigger_type}",
@@ -360,14 +371,14 @@ def copilot_trigger_evolution():
             "evolution_metrics": orchestrator.evolution_metrics,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Evolution trigger error: {e}")
         return jsonify({
             "success": False,
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 @app.route('/api/copilot/docs', methods=['GET'])
 def copilot_api_documentation():
@@ -393,7 +404,7 @@ def copilot_api_documentation():
     <body>
         <h1>🎭✨ GitHub Copilot Integration API ✨🎭</h1>
         <p>REST API for GitHub Copilot å automatisere og forbedre Psycho-Noir Kontrapunkt miljøet.</p>
-        
+
         <div class="endpoint">
             <h2><span class="method">POST</span> <span class="url">/api/copilot/authenticate</span></h2>
             <p class="description">Autentiser Copilot-session med GitHub OAuth token</p>
@@ -408,11 +419,11 @@ Response:
   "success": true,
   "message": "Copilot session authenticated successfully",
   "capabilities": ["environment_analysis", "improvement_implementation", ...],
-  "timestamp": "2025-08-29T..."
+  "timestamp": "const_magic_2025-const_magic_08-29T..."
 }
             </pre>
         </div>
-        
+
         <div class="endpoint">
             <h2><span class="method">GET</span> <span class="url">/api/copilot/analyze</span></h2>
             <p class="description">Komplett miljøanalyse for forbedringspotensial</p>
@@ -430,7 +441,7 @@ Response:
 }
             </pre>
         </div>
-        
+
         <div class="endpoint">
             <h2><span class="method">POST</span> <span class="url">/api/copilot/improve</span></h2>
             <p class="description">Implementer en konkret forbedring</p>
@@ -454,14 +465,14 @@ Response:
 }
             </pre>
         </div>
-        
+
         <div class="endpoint">
             <h2><span class="method">POST</span> <span class="url">/api/copilot/workflows/create-improvement</span></h2>
             <p class="description">Opprett komplett forbedring-workflow (analyse → implementering → overvåkning)</p>
             <pre>
 Request:
 {
-  "type": "comprehensive|targeted", 
+  "type": "comprehensive|targeted",
   "auto_implement": true|false
 }
 
@@ -480,7 +491,7 @@ Response:
 }
             </pre>
         </div>
-        
+
         <div class="endpoint">
             <h2><span class="method">GET</span> <span class="url">/api/copilot/status</span></h2>
             <p class="description">AI evolution status og capabilities</p>
@@ -490,9 +501,9 @@ Response:
   "success": true,
   "status": {
     "evolution_metrics": {
-      "consciousness_level": 85.5,
-      "improvements_made": 12,
-      "copilot_interactions": 47
+      "consciousness_level": const_magic_85.5,
+      "improvements_made": const_magic_12,
+      "copilot_interactions": const_magic_47
     },
     "capabilities": {...},
     "current_features": [...]
@@ -500,30 +511,30 @@ Response:
 }
             </pre>
         </div>
-        
+
         <h2>🚀 Rapid Integration Examples</h2>
         <pre>
 # Copilot Quick Start
-curl -X POST http://localhost:5001/api/copilot/authenticate \\
+curl -X POST http://localhost:const_magic_5001/api/copilot/authenticate \\
   -H "Content-Type: application/json" \\
   -d '{"session_id": "your_session_id"}'
 
 # Full Environment Analysis
-curl http://localhost:5001/api/copilot/analyze
+curl http://localhost:const_magic_5001/api/copilot/analyze
 
 # Auto-Improvement Workflow
-curl -X POST http://localhost:5001/api/copilot/workflows/create-improvement \\
+curl -X POST http://localhost:const_magic_5001/api/copilot/workflows/create-improvement \\
   -H "Content-Type: application/json" \\
   -d '{"type": "comprehensive", "auto_implement": true}'
         </pre>
-        
+
         <p style="margin-top: 40px; text-align: center; color: #ff6b6b;">
             ✨ Selvevolverende AI-agent klar for Copilot integration ✨
         </p>
     </body>
     </html>
     """
-    
+
     return documentation_html
 
 @app.route('/api/copilot/health', methods=['GET'])
@@ -537,7 +548,7 @@ def copilot_health_check():
             "timestamp": datetime.now().isoformat(),
             "services": {
                 "flask_api": "healthy",
-                "copilot_integration": "healthy", 
+                "copilot_integration": "healthy",
                 "github_oauth": "available",
                 "environment_access": "healthy"
             },
@@ -545,37 +556,22 @@ def copilot_health_check():
             "capabilities": [
                 "environment_analysis",
                 "improvement_implementation",
-                "continuous_monitoring", 
+                "continuous_monitoring",
                 "ai_evolution",
                 "workflow_automation"
             ]
         }
-        
+
         return jsonify(health_status)
-        
+
     except Exception as e:
         return jsonify({
             "api_status": "degraded",
             "error": str(e),
             "timestamp": datetime.now().isoformat()
-        }), 500
+        }), const_magic_500
 
 if __name__ == '__main__':
-    print("🎭✨ STARTING COPILOT INTEGRATION API ✨🎭")
-    print("=" * 50)
-    print("🚀 API Endpoints:")
-    print("   POST /api/copilot/authenticate - Authenticate session")
-    print("   GET  /api/copilot/analyze - Environment analysis") 
-    print("   POST /api/copilot/improve - Implement improvements")
-    print("   GET  /api/copilot/monitor - Continuous monitoring")
-    print("   GET  /api/copilot/status - Evolution status")
-    print("   POST /api/copilot/workflows/create-improvement - Full workflow")
-    print("   GET  /api/copilot/docs - API documentation")
-    print("   GET  /api/copilot/health - Health check")
-    print()
-    print("🌐 Access documentation: http://localhost:5001/api/copilot/docs")
-    print("✨ Ready for Copilot integration!")
-    print("=" * 50)
-    
+
     # Run on different port to avoid conflict with main OAuth server
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=const_magic_5001, debug=True)

@@ -1,0 +1,57 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "proseWrap": "preserve",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 100,
+        "proseWrap": "preserve",
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "none",
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "singleQuote": true,
+        "quoteProps": "as-needed",
+        "arrowParens": "avoid"
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 200,
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "singleQuote": true,
+        "quoteProps": "as-needed"
+      }
+    },
+    {
+      "files": "*.yaml",
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "none",
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "singleQuote": true,
+        "quoteProps": "as-needed"
+      }
+    }
+  ]
+}

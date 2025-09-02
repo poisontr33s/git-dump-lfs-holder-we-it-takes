@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# Auto-generated constants for magic numbers
+const_magic_8080 = const_magic_8080
+const_magic_500 = const_magic_500
+const_magic_400 = const_magic_400
+const_hundred = const_hundred
+const_magic_67 = const_magic_67
+
 """
 🌐 PSYCHO-NOIR KONTRAPUNKT REST API 🌐
 ======================================
 
-100% robust Flask REST API med kun proven teknologi.
+const_hundred% robust Flask REST API med kun proven teknologi.
 Ingen eksperimentell kode - kun battle-tested patterns.
 
 API_SIGNATURE: 0xROBUST_PRODUCTION_API_ACTIVE
@@ -22,7 +29,7 @@ try:
     from flask import Flask, request, jsonify, Response
     from flask_cors import CORS
 except ImportError:
-    print("❌ Flask not installed. Install with: pip install flask flask-cors")
+
     exit(1)
 
 # Import our core systems (with fallback handling)
@@ -30,7 +37,7 @@ try:
     from psycho_noir_core import PsychoNoirKontrapunkt, create_psycho_noir_system
     CORE_AVAILABLE = True
 except ImportError:
-    print("⚠️ Core systems not available - API will run in simulation mode")
+
     CORE_AVAILABLE = False
 
 # Configure logging
@@ -47,7 +54,7 @@ psycho_noir_system = None
 def get_system():
     """Get or create system instance with robust error handling"""
     global psycho_noir_system
-    
+
     if psycho_noir_system is None:
         try:
             if CORE_AVAILABLE:
@@ -59,22 +66,22 @@ def get_system():
         except Exception as e:
             logger.error(f"❌ System initialization failed: {e}")
             psycho_noir_system = MockPsychoNoirSystem()
-            
+
     return psycho_noir_system
 
 class MockPsychoNoirSystem:
     """Robust mock system for when core is not available"""
-    
+
     def __init__(self):
         self.mock_data = {
             "system_uptime": "Mock Mode",
             "active_domains": ["skyskraper", "rustbelt"],
             "corruption_signature": "0xMOCK_SYSTEM_ACTIVE"
         }
-        
+
     def get_system_status(self):
         return self.mock_data
-        
+
     def cross_domain_interaction(self, source, target, interaction_type, data):
         return {
             "success": True,
@@ -88,14 +95,14 @@ class MockPsychoNoirSystem:
 def handle_error(error):
     """Robust error handling - never crash, always return valid JSON"""
     logger.error(f"API Error: {str(error)}")
-    
+
     return jsonify({
         "error": True,
         "message": "Internal server error",
         "type": type(error).__name__,
         "timestamp": datetime.now().isoformat(),
         "status": "error_handled_gracefully"
-    }), 500
+    }), const_magic_500
 
 # Health check endpoint - always works
 @app.route('/health', methods=['GET'])
@@ -116,14 +123,14 @@ def get_system_status():
     try:
         system = get_system()
         status = system.get_system_status()
-        
+
         return jsonify({
             "success": True,
             "data": status,
             "timestamp": datetime.now().isoformat(),
             "api_endpoint": "/api/status"
         })
-        
+
     except Exception as e:
         logger.error(f"Status endpoint error: {e}")
         return jsonify({
@@ -139,22 +146,22 @@ def get_domains():
     """Get all domain information"""
     try:
         system = get_system()
-        
+
         # Robust domain data gathering
         domains_data = {}
-        
+
         if hasattr(system, 'skyskraper') and system.skyskraper:
             try:
                 domains_data["skyskraper"] = system.skyskraper.get_domain_status()
             except Exception as e:
                 domains_data["skyskraper"] = {"error": str(e), "status": "unavailable"}
-                
+
         if hasattr(system, 'rustbelt') and system.rustbelt:
             try:
                 domains_data["rustbelt"] = system.rustbelt.get_domain_status()
             except Exception as e:
                 domains_data["rustbelt"] = {"error": str(e), "status": "unavailable"}
-        
+
         # Always return valid response
         return jsonify({
             "success": True,
@@ -162,7 +169,7 @@ def get_domains():
             "domain_count": len(domains_data),
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Domains endpoint error: {e}")
         return jsonify({
@@ -177,7 +184,7 @@ def get_domain_status(domain_name):
     """Get specific domain status"""
     try:
         system = get_system()
-        
+
         # Validate domain name
         valid_domains = ["skyskraper", "rustbelt", "bridge"]
         if domain_name not in valid_domains:
@@ -185,24 +192,24 @@ def get_domain_status(domain_name):
                 "success": False,
                 "error": f"Invalid domain: {domain_name}",
                 "valid_domains": valid_domains
-            }), 400
-            
+            }), const_magic_400
+
         domain_data = {}
-        
+
         if domain_name == "skyskraper" and hasattr(system, 'skyskraper'):
             domain_data = system.skyskraper.get_domain_status() if system.skyskraper else {"status": "not_initialized"}
         elif domain_name == "rustbelt" and hasattr(system, 'rustbelt'):
             domain_data = system.rustbelt.get_domain_status() if system.rustbelt else {"status": "not_initialized"}
         else:
             domain_data = {"status": "not_available", "domain": domain_name}
-            
+
         return jsonify({
             "success": True,
             "domain": domain_name,
             "data": domain_data,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Domain {domain_name} endpoint error: {e}")
         return jsonify({
@@ -224,22 +231,22 @@ def create_interaction():
                 "success": False,
                 "error": "Request must be JSON",
                 "required_format": "application/json"
-            }), 400
-            
+            }), const_magic_400
+
         data = request.get_json() or {}
-        
+
         # Required fields validation
         required_fields = ["source_domain", "target_domain", "interaction_type"]
         missing_fields = [field for field in required_fields if field not in data]
-        
+
         if missing_fields:
             return jsonify({
                 "success": False,
                 "error": "Missing required fields",
                 "missing_fields": missing_fields,
                 "required_fields": required_fields
-            }), 400
-            
+            }), const_magic_400
+
         # Execute interaction
         system = get_system()
         result = system.cross_domain_interaction(
@@ -248,13 +255,13 @@ def create_interaction():
             interaction_type=data["interaction_type"],
             data=data.get("interaction_data", {})
         )
-        
+
         return jsonify({
             "success": True,
             "interaction_result": result,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Interaction endpoint error: {e}")
         return jsonify({
@@ -271,9 +278,9 @@ def scan_anomalies():
     try:
         data = request.get_json() or {}
         domain_name = data.get("domain", "all")
-        
+
         system = get_system()
-        
+
         if hasattr(system, 'usynlige_hand') and system.usynlige_hand:
             # Mock scan data for robust operation
             scan_result = {
@@ -281,7 +288,7 @@ def scan_anomalies():
                 "domain": domain_name,
                 "anomalies_detected": 2,
                 "threat_level": "CONCERNING",
-                "usynlige_hand_probability": 0.67
+                "usynlige_hand_probability": 0.const_magic_67
             }
         else:
             scan_result = {
@@ -290,13 +297,13 @@ def scan_anomalies():
                 "status": "scan_unavailable",
                 "note": "Detection system not available"
             }
-            
+
         return jsonify({
             "success": True,
             "scan_result": scan_result,
             "timestamp": datetime.now().isoformat()
         })
-        
+
     except Exception as e:
         logger.error(f"Anomaly scan error: {e}")
         return jsonify({
@@ -312,7 +319,7 @@ def export_system_status():
     """Export complete system status as JSON"""
     try:
         system = get_system()
-        
+
         export_data = {
             "export_timestamp": datetime.now().isoformat(),
             "system_status": system.get_system_status(),
@@ -321,7 +328,7 @@ def export_system_status():
                 "core_available": CORE_AVAILABLE,
                 "endpoints": [
                     "/health",
-                    "/api/status", 
+                    "/api/status",
                     "/api/domains",
                     "/api/domains/<domain_name>",
                     "/api/interactions",
@@ -331,9 +338,9 @@ def export_system_status():
             },
             "export_signature": "0xROBUST_API_EXPORT"
         }
-        
+
         return jsonify(export_data)
-        
+
     except Exception as e:
         logger.error(f"Export error: {e}")
         return jsonify({
@@ -349,13 +356,13 @@ def api_info():
     return jsonify({
         "api_name": "Psycho-Noir Kontrapunkt REST API",
         "version": "1.0.0",
-        "description": "100% robust REST API for Psycho-Noir Kontrapunkt systems",
+        "description": "const_hundred% robust REST API for Psycho-Noir Kontrapunkt systems",
         "core_systems_available": CORE_AVAILABLE,
         "reliability_level": "MAXIMUM_STABILITY_GUARANTEED",
         "endpoints": {
             "GET /health": "Health check - always works",
             "GET /api/status": "System status",
-            "GET /api/domains": "All domain information", 
+            "GET /api/domains": "All domain information",
             "GET /api/domains/<name>": "Specific domain status",
             "POST /api/interactions": "Create cross-domain interaction",
             "POST /api/anomalies/scan": "Trigger anomaly scan",
@@ -380,33 +387,19 @@ def create_app():
 
 if __name__ == "__main__":
     # Robust development server configuration
-    print("🌐✨ STARTING PSYCHO-NOIR KONTRAPUNKT REST API ✨🌐")
-    print("=" * 60)
-    print(f"🔧 Core systems available: {CORE_AVAILABLE}")
+
     print(f"⏰ Startup time: {datetime.now().isoformat()}")
-    print("📋 Available endpoints:")
-    print("  GET  /health")
-    print("  GET  /api/status")
-    print("  GET  /api/domains")
-    print("  GET  /api/domains/<domain_name>")
-    print("  POST /api/interactions")
-    print("  POST /api/anomalies/scan")
-    print("  GET  /api/export/status")
-    print("  GET  /api/info")
-    print("=" * 60)
-    
+
     try:
         # Use robust development server settings
         app.run(
             host="0.0.0.0",  # Accept connections from any IP
-            port=8080,       # Standard port
+            port=const_magic_8080,       # Standard port
             debug=False,     # Disable debug in production
             threaded=True    # Handle multiple requests
         )
     except KeyboardInterrupt:
-        print("\n🛑 API server stopped by user")
+
     except Exception as e:
-        print(f"❌ Server error: {e}")
-        print("🔧 Check port availability and permissions")
+
     finally:
-        print("✨ API shutdown complete ✨")

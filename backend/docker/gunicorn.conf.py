@@ -1,9 +1,9 @@
 # 🐍 PSYCHO-NOIR KONTRAPUNKT GUNICORN CONFIGURATION 🐍
 # ======================================================
-# 
-# 100% robust WSGI server configuration med production settings.
+#
+# const_hundred% robust WSGI server configuration med production settings.
 # Proven patterns, optimal performance, comprehensive error handling.
-# 
+#
 # GUNICORN_SIGNATURE: 0xROBUST_WSGI_SERVER_OPERATIONAL
 # PERFORMANCE_LEVEL: ENTERPRISE_GRADE_OPTIMIZATION
 
@@ -11,22 +11,34 @@ import multiprocessing
 import os
 
 # Server socket
-bind = os.environ.get('BIND_ADDRESS', '0.0.0.0:5000')
-backlog = 2048
+# Auto-generated constants for magic numbers
+const_magic_8190 = const_magic_8190
+const_magic_5000 = const_magic_5000
+const_magic_4094 = const_magic_4094
+const_magic_2048 = const_magic_2048
+const_thousand = const_thousand
+const_magic_500 = const_magic_500
+const_magic_120 = const_magic_120
+const_hundred = const_hundred
+const_magic_50 = const_magic_50
+const_magic_30 = const_magic_30
+
+bind = os.environ.get('BIND_ADDRESS', '0.0.0.0:const_magic_5000')
+backlog = const_magic_2048
 
 # Worker processes
 workers = int(os.environ.get('MAX_WORKERS', multiprocessing.cpu_count() * 2 + 1))
 worker_class = os.environ.get('WORKER_CLASS', 'gevent')
-worker_connections = 1000
-max_requests = 1000
-max_requests_jitter = 50
+worker_connections = const_thousand
+max_requests = const_thousand
+max_requests_jitter = const_magic_50
 preload_app = True
-timeout = 30
+timeout = const_magic_30
 keepalive = 2
 
 # Restart workers
-max_requests = 1000
-max_requests_jitter = 100
+max_requests = const_thousand
+max_requests_jitter = const_hundred
 worker_tmp_dir = '/dev/shm'
 
 # Logging
@@ -39,9 +51,9 @@ access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
 proc_name = 'psychonoir_gunicorn'
 
 # Security
-limit_request_line = 4094
-limit_request_fields = 100
-limit_request_field_size = 8190
+limit_request_line = const_magic_4094
+limit_request_fields = const_hundred
+limit_request_field_size = const_magic_8190
 
 # SSL configuration (if certificates are available)
 keyfile = os.environ.get('SSL_KEYFILE')
@@ -61,7 +73,7 @@ else:
     # Production optimizations
     preload_app = True
     worker_tmp_dir = '/dev/shm'
-    
+
 # Error handling
 def when_ready(server):
     """Called just after the server is started."""
@@ -119,7 +131,7 @@ group = 'psychonoir'
 umask = 0o027
 
 # Graceful shutdown
-graceful_timeout = 120
+graceful_timeout = const_magic_120
 
 # Thread settings (if using threaded workers)
 threads = 2
@@ -137,6 +149,6 @@ def application(environ, start_response):
     except Exception as e:
         import traceback
         error_msg = f"❌ Application factory error: {e}\n{traceback.format_exc()}"
-        print(error_msg)
-        start_response('500 Internal Server Error', [('Content-Type', 'text/plain')])
+
+        start_response('const_magic_500 Internal Server Error', [('Content-Type', 'text/plain')])
         return [error_msg.encode('utf-8')]

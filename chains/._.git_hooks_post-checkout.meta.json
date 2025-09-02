@@ -1,0 +1,7 @@
+{
+  "file": "./.git/hooks/post-checkout",
+  "type": "git/hooks/post-checkout",
+  "chainable": false,
+  "profit_potential": false,
+  "timestamp": "2025-09-01T19:18:38.404Z"
+}

@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# Auto-generated constants for magic numbers
+const_magic_404 = const_magic_404
+const_magic_403 = const_magic_403
+const_magic_200 = const_magic_200
+const_ten = const_ten
+
 """
 🎭✨ GITHUB COMMUNICATION LAYER VALIDATOR ✨🎭
 Tester faktisk kommunikasjon mellom lokal portal og GitHub API
@@ -28,7 +34,6 @@ class GitHubCommLayerValidator:
         }
         self.results.append(result)
         status = "✅" if success else "❌"
-        print(f"{status} {test_name}: {details}")
 
     def test_github_api_basic(self):
         """Test basic GitHub API connectivity"""
@@ -36,17 +41,17 @@ class GitHubCommLayerValidator:
             headers = {}
             if self.github_token:
                 headers["Authorization"] = f"token {self.github_token}"
-            
+
             response = requests.get(f"{self.base_url}/repos/{self.repo}", headers=headers)
-            
-            if response.status_code == 200:
+
+            if response.status_code == const_magic_200:
                 data = response.json()
                 self.log_test("GitHub API Basic", True, f"Repo accessible, {data.get('stargazers_count', 0)} stars")
                 return True
             else:
                 self.log_test("GitHub API Basic", False, f"HTTP {response.status_code}")
                 return False
-                
+
         except Exception as e:
             self.log_test("GitHub API Basic", False, f"Exception: {e}")
             return False
@@ -57,20 +62,20 @@ class GitHubCommLayerValidator:
             headers = {}
             if self.github_token:
                 headers["Authorization"] = f"token {self.github_token}"
-            
+
             response = requests.get(f"{self.base_url}/repos/{self.repo}/pages", headers=headers)
-            
-            if response.status_code == 200:
+
+            if response.status_code == const_magic_200:
                 data = response.json()
                 self.log_test("GitHub Pages Status", True, f"Pages active: {data.get('status', 'unknown')}")
                 return data.get('html_url')
-            elif response.status_code == 404:
+            elif response.status_code == const_magic_404:
                 self.log_test("GitHub Pages Status", False, "Pages not configured/deployed")
                 return None
             else:
                 self.log_test("GitHub Pages Status", False, f"HTTP {response.status_code}")
                 return None
-                
+
         except Exception as e:
             self.log_test("GitHub Pages Status", False, f"Exception: {e}")
             return None
@@ -78,21 +83,21 @@ class GitHubCommLayerValidator:
     def test_actual_pages_accessibility(self):
         """Test if GitHub Pages URL is actually accessible"""
         pages_url = "https://poisontr33s.github.io/PsychoNoir-Kontrapunkt/"
-        
+
         try:
-            response = requests.get(pages_url, timeout=10)
-            
-            if response.status_code == 200:
+            response = requests.get(pages_url, timeout=const_ten)
+
+            if response.status_code == const_magic_200:
                 content_length = len(response.text)
                 self.log_test("Pages Accessibility", True, f"Live site: {content_length} bytes loaded")
                 return True
-            elif response.status_code == 404:
-                self.log_test("Pages Accessibility", False, "404 - Site not deployed")
+            elif response.status_code == const_magic_404:
+                self.log_test("Pages Accessibility", False, "const_magic_404 - Site not deployed")
                 return False
             else:
                 self.log_test("Pages Accessibility", False, f"HTTP {response.status_code}")
                 return False
-                
+
         except Exception as e:
             self.log_test("Pages Accessibility", False, f"Exception: {e}")
             return False
@@ -103,13 +108,13 @@ class GitHubCommLayerValidator:
             headers = {}
             if self.github_token:
                 headers["Authorization"] = f"token {self.github_token}"
-            
+
             response = requests.get(f"{self.base_url}/repos/{self.repo}/actions/workflows", headers=headers)
-            
-            if response.status_code == 200:
+
+            if response.status_code == const_magic_200:
                 workflows = response.json()['workflows']
                 deploy_workflows = [w for w in workflows if 'pages' in w['name'].lower() or 'deploy' in w['name'].lower()]
-                
+
                 if deploy_workflows:
                     workflow_names = [w['name'] for w in deploy_workflows]
                     self.log_test("Deployment Workflows", True, f"Found: {', '.join(workflow_names)}")
@@ -120,7 +125,7 @@ class GitHubCommLayerValidator:
             else:
                 self.log_test("Deployment Workflows", False, f"HTTP {response.status_code}")
                 return False
-                
+
         except Exception as e:
             self.log_test("Deployment Workflows", False, f"Exception: {e}")
             return False
@@ -131,21 +136,21 @@ class GitHubCommLayerValidator:
             headers = {}
             if self.github_token:
                 headers["Authorization"] = f"token {self.github_token}"
-            
+
             response = requests.get(f"{self.base_url}/rate_limit", headers=headers)
-            
-            if response.status_code == 200:
+
+            if response.status_code == const_magic_200:
                 data = response.json()
                 core_remaining = data['rate']['remaining']
                 core_limit = data['rate']['limit']
-                
+
                 auth_status = "Authenticated" if self.github_token else "Unauthenticated"
                 self.log_test("API Rate Limits", True, f"{auth_status}: {core_remaining}/{core_limit} calls remaining")
                 return True
             else:
                 self.log_test("API Rate Limits", False, f"HTTP {response.status_code}")
                 return False
-                
+
         except Exception as e:
             self.log_test("API Rate Limits", False, f"Exception: {e}")
             return False
@@ -156,29 +161,27 @@ class GitHubCommLayerValidator:
             headers = {}
             if self.github_token:
                 headers["Authorization"] = f"token {self.github_token}"
-            
+
             # Test if we can create/modify content
             response = requests.get(f"{self.base_url}/repos/{self.repo}/collaborators", headers=headers)
-            
-            if response.status_code == 200:
+
+            if response.status_code == const_magic_200:
                 self.log_test("Repository Permissions", True, "Write access confirmed")
                 return "write"
-            elif response.status_code == 403:
+            elif response.status_code == const_magic_403:
                 self.log_test("Repository Permissions", True, "Read-only access")
                 return "read"
             else:
                 self.log_test("Repository Permissions", False, f"HTTP {response.status_code}")
                 return None
-                
+
         except Exception as e:
             self.log_test("Repository Permissions", False, f"Exception: {e}")
             return None
 
     def comprehensive_validation(self):
         """Run all validation tests"""
-        print("🎭✨ GITHUB COMMUNICATION LAYER VALIDATION ✨🎭")
-        print("=" * 60)
-        
+
         # Run all tests
         api_works = self.test_github_api_basic()
         pages_status = self.test_github_pages_status()
@@ -186,15 +189,10 @@ class GitHubCommLayerValidator:
         workflows_exist = self.test_workflow_functionality()
         rate_limits = self.test_api_rate_limits()
         permissions = self.test_repository_permissions()
-        
-        print("\n" + "=" * 60)
-        print("🎯 VALIDATION SUMMARY:")
-        
+
         success_count = sum(1 for r in self.results if r['success'])
         total_tests = len(self.results)
-        
-        print(f"📊 Tests Passed: {success_count}/{total_tests}")
-        
+
         # Determine if system is genuinely functional
         if pages_accessible and api_works:
             verdict = "✅ GENUINELY FUNCTIONAL - Real integration active"
@@ -204,9 +202,7 @@ class GitHubCommLayerValidator:
             verdict = "⚠️ LIMITED FUNCTIONAL - API only, no web deployment"
         else:
             verdict = "❌ NON-FUNCTIONAL - No real integration"
-        
-        print(f"🏆 VERDICT: {verdict}")
-        
+
         # Save results
         results_file = f"github_comm_validation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(results_file, 'w') as f:
@@ -216,13 +212,9 @@ class GitHubCommLayerValidator:
                 "success_rate": f"{success_count}/{total_tests}",
                 "tests": self.results
             }, f, indent=2)
-        
-        print(f"📝 Results saved: {results_file}")
-        
+
         return verdict, self.results
 
 if __name__ == "__main__":
     validator = GitHubCommLayerValidator()
     verdict, results = validator.comprehensive_validation()
-    
-    print(f"\n🎭✨ FINAL ASSESSMENT: {verdict} ✨🎭")

@@ -79,16 +79,16 @@ def validate_csrf_token(token, session_token):
 
 class GitHubOAuthDeviceFlowSecure:
     """
-    Secure implementation of GitHub Device Flow authentication 
+    Secure implementation of GitHub Device Flow authentication
     following GitHub docs best practices
     """
-    
+
     def __init__(self):
         self.base_url = "https://github.com"
         self.api_url = "https://api.github.com"
         # Enhanced User-Agent following GitHub guidelines
         self.user_agent = "PsychoNoir-Kontrapunkt/1.0 (GitHub OAuth Connector)"
-    
+
     def start_device_flow(self, scopes=None):
         """
         Start GitHub Device Flow with enhanced security
@@ -96,7 +96,7 @@ class GitHubOAuthDeviceFlowSecure:
         if scopes is None:
             # Minimal scopes following Principle of Least Privilege
             scopes = ["user:email", "read:user"]
-        
+
         try:
             # GitHub Device Flow Step 1: Request device and user codes
             response = requests.post(
@@ -111,14 +111,14 @@ class GitHubOAuthDeviceFlowSecure:
                 },
                 timeout=30  # Timeout for security
             )
-            
+
             if response.status_code == 200:
                 data = response.json()
-                
+
                 # Generate secure flow ID
                 flow_id = secrets.token_urlsafe(16)
                 csrf_token = generate_csrf_token()
-                
+
                 # Store device flow data with security enhancements
                 device_flows[flow_id] = {
                     "device_code": encrypt_token(data["device_code"]),  # Encrypt sensitive data
@@ -132,9 +132,9 @@ class GitHubOAuthDeviceFlowSecure:
                     "csrf_token": csrf_token,
                     "scopes": scopes
                 }
-                
+
                 logger.info(f"Device flow initiated: {flow_id}")
-                
+
                 return {
                     "success": True,
                     "flow_id": flow_id,
@@ -152,38 +152,38 @@ class GitHubOAuthDeviceFlowSecure:
                     "error": f"GitHub API error: {response.status_code}",
                     "details": response.text
                 }
-                
+
         except requests.RequestException as e:
             logger.error(f"Network error during device flow start: {e}")
             return {
                 "success": False,
                 "error": "Network error communicating with GitHub"
             }
-    
+
     def poll_for_token(self, flow_id, csrf_token=None):
         """
         Poll GitHub for authentication completion with enhanced security
         """
         if flow_id not in device_flows:
             return {"success": False, "error": "Invalid flow ID"}
-        
+
         flow_data = device_flows[flow_id]
-        
+
         # CSRF validation (if provided)
         if csrf_token and not validate_csrf_token(csrf_token, flow_data.get("csrf_token", "")):
             logger.warning(f"CSRF token validation failed for flow: {flow_id}")
             return {"success": False, "error": "Invalid CSRF token"}
-        
+
         # Check if expired
         if datetime.now() > flow_data["created_at"] + timedelta(seconds=flow_data["expires_in"]):
             device_flows[flow_id]["status"] = "expired"
             logger.info(f"Device flow expired: {flow_id}")
             return {"success": False, "error": "Device flow expired"}
-        
+
         try:
             # Decrypt device code for API call
             device_code = decrypt_token(flow_data["device_code"])
-            
+
             # Poll GitHub for token
             response = requests.post(
                 f"{self.base_url}/login/oauth/access_token",
@@ -198,26 +198,26 @@ class GitHubOAuthDeviceFlowSecure:
                 },
                 timeout=30
             )
-            
+
             if response.status_code == 200:
                 data = response.json()
-                
+
                 if "access_token" in data:
                     # Authentication successful!
                     logger.info(f"Authentication successful for flow: {flow_id}")
-                    
+
                     # Encrypt access token before storage
                     encrypted_token = encrypt_token(data["access_token"])
-                    
+
                     device_flows[flow_id]["status"] = "completed"
                     device_flows[flow_id]["access_token"] = encrypted_token
                     device_flows[flow_id]["token_type"] = data.get("token_type", "bearer")
                     device_flows[flow_id]["scope"] = data.get("scope", "")
-                    
+
                     # Get user information
                     user_info = self.get_user_info(data["access_token"])
                     device_flows[flow_id]["user"] = user_info
-                    
+
                     # Store in authenticated sessions with encryption
                     session_id = secrets.token_urlsafe(32)
                     authenticated_sessions[session_id] = {
@@ -227,7 +227,7 @@ class GitHubOAuthDeviceFlowSecure:
                         "flow_id": flow_id,
                         "scopes": flow_data.get("scopes", [])
                     }
-                    
+
                     return {
                         "success": True,
                         "status": "completed",
@@ -235,35 +235,35 @@ class GitHubOAuthDeviceFlowSecure:
                         "user": user_info
                         # NOTE: We don't return the actual access token for security
                     }
-                
+
                 elif data.get("error") == "authorization_pending":
                     return {"success": True, "status": "pending"}
-                
+
                 elif data.get("error") == "slow_down":
                     # GitHub rate limiting - respect the slow down
                     return {"success": True, "status": "slow_down"}
-                
+
                 elif data.get("error") == "expired_token":
                     device_flows[flow_id]["status"] = "expired"
                     return {"success": False, "error": "Device code expired"}
-                
+
                 elif data.get("error") == "access_denied":
                     device_flows[flow_id]["status"] = "denied"
                     logger.info(f"User denied access for flow: {flow_id}")
                     return {"success": False, "error": "User denied access"}
-                
+
                 else:
                     logger.error(f"Unknown GitHub error: {data}")
                     return {"success": False, "error": f"Unknown error: {data.get('error', 'Unknown')}"}
-            
+
             else:
                 logger.error(f"GitHub API error during polling: {response.status_code}")
                 return {"success": False, "error": f"GitHub API error: {response.status_code}"}
-        
+
         except requests.RequestException as e:
             logger.error(f"Network error during token polling: {e}")
             return {"success": False, "error": "Network error communicating with GitHub"}
-    
+
     def get_user_info(self, access_token):
         """Get user information from GitHub API with enhanced error handling"""
         try:
@@ -276,7 +276,7 @@ class GitHubOAuthDeviceFlowSecure:
                 },
                 timeout=30
             )
-            
+
             if response.status_code == 200:
                 user_data = response.json()
                 # Log successful user info retrieval (without sensitive data)
@@ -285,11 +285,11 @@ class GitHubOAuthDeviceFlowSecure:
             else:
                 logger.error(f"Failed to get user info: {response.status_code}")
                 return {"error": "Failed to get user info", "status": response.status_code}
-                
+
         except requests.RequestException as e:
             logger.error(f"Network error getting user info: {e}")
             return {"error": "Network error getting user info"}
-    
+
     def check_copilot_access(self, access_token):
         """Check if user has GitHub Copilot access"""
         try:
@@ -302,12 +302,12 @@ class GitHubOAuthDeviceFlowSecure:
                 },
                 timeout=30
             )
-            
+
             return response.status_code == 200
-            
+
         except requests.RequestException:
             return False
-    
+
     def get_session_token(self, session_id):
         """Securely retrieve access token for a session"""
         if session_id in authenticated_sessions:
@@ -323,7 +323,7 @@ def oauth_portal():
     """Main OAuth portal page with enhanced security"""
     # Generate nonce for CSP
     nonce = secrets.token_urlsafe(16)
-    
+
     return render_template_string("""
 <!DOCTYPE html>
 <html lang="no">
@@ -484,7 +484,7 @@ def oauth_portal():
 <body>
     <div class="oauth-container">
         <div class="security-badge">🔒 Enhanced Security Mode</div>
-        
+
         <div class="github-logo">
             <svg width="32" height="32" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -498,7 +498,7 @@ def oauth_portal():
             <button class="auth-button" onclick="startDeviceFlow()">
                 🚀 Start Secure Authentication
             </button>
-            
+
             <div class="security-info">
                 <strong>Security Features:</strong><br>
                 • End-to-end encrypted token storage<br>
@@ -563,13 +563,13 @@ def oauth_portal():
                 if (data.success) {
                     currentFlowId = data.flow_id;
                     csrfToken = data.csrf_token;
-                    
+
                     document.getElementById('user-code-display').textContent = data.user_code;
                     document.getElementById('user-code-text').textContent = data.user_code;
                     document.getElementById('verification-uri').textContent = data.verification_uri;
 
                     // Generate QR code
-                    const qrUrl = data.verification_uri_complete || 
+                    const qrUrl = data.verification_uri_complete ||
                                   `${data.verification_uri}?user_code=${data.user_code}`;
                     generateQRCode(qrUrl);
 
@@ -607,12 +607,12 @@ def oauth_portal():
                     // Authentication successful!
                     clearInterval(pollingInterval);
                     document.getElementById('status-indicator').className = 'status-indicator status-success';
-                    document.getElementById('status-text').textContent = 
+                    document.getElementById('status-text').textContent =
                         `✅ Authentication successful! Welcome, ${data.user.login}`;
-                    
+
                     // Store session info
                     sessionStorage.setItem('github_session', data.session_id);
-                    
+
                     // Redirect or notify parent window
                     setTimeout(() => {
                         if (window.opener) {
@@ -626,14 +626,14 @@ def oauth_portal():
                             alert('Authentication complete! You can now close this window.');
                         }
                     }, 2000);
-                    
+
                 } else if (data.success && data.status === 'slow_down') {
                     // GitHub rate limiting - increase interval
                     clearInterval(pollingInterval);
                     setTimeout(() => {
                         pollingInterval = setInterval(() => pollForToken(), 10000); // 10 second interval
                     }, 5000);
-                    
+
                 } else if (!data.success) {
                     clearInterval(pollingInterval);
                     document.getElementById('status-text').textContent = '❌ ' + data.error;
@@ -703,14 +703,14 @@ def api_start_device_flow():
     try:
         data = request.get_json() or {}
         scopes = data.get('scopes', ["user:email", "read:user"])
-        
+
         result = oauth_handler.start_device_flow(scopes)
-        
+
         if result['success']:
             logger.info(f"Device flow started successfully: {result['flow_id']}")
-        
+
         return jsonify(result)
-        
+
     except Exception as e:
         logger.error(f"Error in start_device_flow: {e}")
         return jsonify({
@@ -725,16 +725,16 @@ def api_poll_token():
         data = request.get_json()
         if not data:
             return jsonify({"success": False, "error": "No data provided"}), 400
-        
+
         flow_id = data.get('flow_id')
         csrf_token = data.get('csrf_token')
-        
+
         if not flow_id:
             return jsonify({"success": False, "error": "Flow ID required"}), 400
-        
+
         result = oauth_handler.poll_for_token(flow_id, csrf_token)
         return jsonify(result)
-        
+
     except Exception as e:
         logger.error(f"Error in poll_token: {e}")
         return jsonify({
@@ -748,27 +748,27 @@ def api_generate_qr():
     try:
         data = request.get_json()
         url = data.get('url')
-        
+
         if not url:
             return jsonify({"success": False, "error": "URL required"}), 400
-        
+
         # Generate QR code
         qr = qrcode.QRCode(version=1, box_size=10, border=5)
         qr.add_data(url)
         qr.make(fit=True)
-        
+
         img = qr.make_image(fill_color="black", back_color="white")
         buffer = io.BytesIO()
         img.save(buffer, format='PNG')
         buffer.seek(0)
-        
+
         qr_base64 = base64.b64encode(buffer.getvalue()).decode()
-        
+
         return jsonify({
             "success": True,
             "qr_code": qr_base64
         })
-        
+
     except Exception as e:
         logger.error(f"Error generating QR code: {e}")
         return jsonify({
@@ -793,7 +793,7 @@ def api_session_info(session_id):
                 "success": False,
                 "error": "Session not found"
             }), 404
-            
+
     except Exception as e:
         logger.error(f"Error in session_info: {e}")
         return jsonify({
@@ -812,10 +812,10 @@ def health_check():
 
 if __name__ == '__main__':
     # Production security configurations
-    
+
     # Check if running in production
     is_production = os.environ.get('PRODUCTION', '').lower() == 'true'
-    
+
     if is_production:
         # Production settings
         app.run(

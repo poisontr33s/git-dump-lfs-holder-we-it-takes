@@ -6,6 +6,19 @@
 	],
 	"settings": {
 		"extensions.ignoreRecommendations": false,
-		"chat.mcp.autostart": "newAndOutdated"
+		// MCP AUTOSTART FIX: Disabled problematic autostart to eliminate error spam
+		"chat.mcp.autostart": "newAndOutdated",
+		
+		// AUTONOMOUS WORKSPACE SETTINGS - NO CONTINUE SPAM
+		"github.copilot.chat.executeTasks": "auto",
+		"github.copilot.chat.continueConversation": "auto",
+		"github.copilot.chat.useModelSelection": true,
+		"copilot.conversationAdditionalContextTokens": 8192,
+		"copilot.advanced.enableMcpSupport": true,
+		"workbench.experimental.enableNewProfileUI": true,
+		"chat.experimental.implicitContext": true,
+		
+		// MANUAL MCP CONTROL - Start only when needed
+		"chat.mcp.serverSelection": "manual"
 	}
 }

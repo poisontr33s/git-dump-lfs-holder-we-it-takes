@@ -29,7 +29,7 @@ Du spurte om kryss-validering med GitHub docs for å sikre at OAuth implementasj
 
 ---
 
-## 📊 **VALIDERING MOT GITHUB DOCS:**
+## 📊 **VALIDERING MOT GitHub DOCS:**
 
 ### **Validerte Dokumenter:**
 1. ✅ [OAuth Apps - Device Flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow)

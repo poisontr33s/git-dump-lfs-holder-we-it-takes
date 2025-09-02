@@ -14,7 +14,7 @@ from failure_archaeology import FailureArchaeologist
 
 def simulate_40_plus_failed_runs():
     """Simulerer 40+ realistic failed runs basert på common patterns"""
-    
+
     failed_runs = [
         # GitHub Actions failures
         {
@@ -24,7 +24,7 @@ def simulate_40_plus_failed_runs():
             'severity': 5
         },
         {
-            'failure_type': 'github_actions', 
+            'failure_type': 'github_actions',
             'error_trace': 'FAILED: Permission denied when accessing secrets - GITHUB_TOKEN invalid',
             'context': {'workflow': 'Deploy', 'step': 'checkout', 'auth': 'failed'},
             'severity': 4
@@ -35,7 +35,7 @@ def simulate_40_plus_failed_runs():
             'context': {'workflow': 'Build', 'node_version': '16.x', 'expected': '18.x'},
             'severity': 3
         },
-        
+
         # Copilot runner failures
         {
             'failure_type': 'copilot_runner',
@@ -55,7 +55,7 @@ def simulate_40_plus_failed_runs():
             'context': {'api_calls': 1000, 'rate_limit': '500/hour', 'user': 'copilot'},
             'severity': 3
         },
-        
+
         # Bot failures
         {
             'failure_type': 'bot_failure',
@@ -69,7 +69,7 @@ def simulate_40_plus_failed_runs():
             'context': {'bot_type': 'dialogue_enricher', 'memory_limit': '512MB', 'data_size': '1GB'},
             'severity': 4
         },
-        
+
         # Code quality failures
         {
             'failure_type': 'code_quality',
@@ -83,7 +83,7 @@ def simulate_40_plus_failed_runs():
             'context': {'file': 'script.js', 'line': 42, 'language': 'javascript'},
             'severity': 2
         },
-        
+
         # Deployment failures
         {
             'failure_type': 'deployment_failure',
@@ -98,7 +98,7 @@ def simulate_40_plus_failed_runs():
             'severity': 3
         }
     ]
-    
+
     # Multiply patterns to create 40+ failures with variations
     expanded_failures = []
     for i in range(4):  # Create 4 variations of each pattern
@@ -108,27 +108,24 @@ def simulate_40_plus_failed_runs():
             variation['context']['variation_id'] = i + 1
             variation['error_trace'] += f" [Occurrence #{i + 1}]"
             expanded_failures.append(variation)
-    
+
     return expanded_failures
 
 def demonstrate_bidirectional_learning():
     """Demonstrerer complete bidirectional learning cycle"""
-    
-    print("🎭 FAILURE ARCHAEOLOGY DEMO - Transforming 40+ Failed Runs")
-    print("=" * 80)
-    
+
     # Initialize archaeologist
     archaeologist = FailureArchaeologist()
-    
+
     # Simulate 40+ failed runs
-    print("📡 Phase 1: Generating 40+ Simulated Failed Runs...")
+
     failed_runs = simulate_40_plus_failed_runs()
     print(f"✅ Generated {len(failed_runs)} failed runs")
-    
+
     # Catalog all failures
-    print("\n🔬 Phase 2: Cataloging Failures in Archaeology System...")
+
     cataloged_failures = []
-    
+
     for i, failure in enumerate(failed_runs):
         failure_id = archaeologist.catalog_failure(
             failure_type=failure['failure_type'],
@@ -137,30 +134,27 @@ def demonstrate_bidirectional_learning():
             severity=failure['severity']
         )
         cataloged_failures.append(failure_id)
-        
+
         if (i + 1) % 10 == 0:
-            print(f"   Cataloged {i + 1} failures...")
-    
+
     print(f"✅ Successfully cataloged {len(cataloged_failures)} failures")
-    
+
     # Generate learning insights
-    print("\n🧠 Phase 3: Extracting Learning Insights...")
+
     learning_library = archaeologist.export_learning_library()
-    
+
     print(f"✅ Identified {len(learning_library['pattern_library'])} unique failure patterns")
-    print(f"✅ Generated statistics for {learning_library['statistics']['total_failures']} failures")
-    
+
     # Generate preemptive logging configuration
-    print("\n🛡️ Phase 4: Generating Preemptive Prevention Strategies...")
+
     preemptive_config = archaeologist.generate_preemptive_logging_config()
     recommendations = archaeologist.get_bidirectional_learning_recommendations()
-    
+
     print(f"✅ Generated {len(preemptive_config['high_risk_operations'])} high-risk operation monitors")
     print(f"✅ Created {len(recommendations['immediate_actions'])} immediate action items")
-    
+
     # Save comprehensive results
-    print("\n💾 Phase 5: Saving Learning Results...")
-    
+
     comprehensive_results = {
         'demo_timestamp': datetime.datetime.now().isoformat(),
         'input_failures': {
@@ -177,46 +171,36 @@ def demonstrate_bidirectional_learning():
             'preventions_to_actions': len(recommendations['immediate_actions'])
         }
     }
-    
+
     # Calculate severity distribution
     severity_dist = {}
     for failure in failed_runs:
         sev = failure['severity']
         severity_dist[sev] = severity_dist.get(sev, 0) + 1
     comprehensive_results['input_failures']['severity_distribution'] = severity_dist
-    
+
     # Save to file
     results_file = Path("data/failure_archaeology/bidirectional_learning_demo_results.json")
     results_file.parent.mkdir(parents=True, exist_ok=True)
-    
+
     with open(results_file, 'w', encoding='utf-8') as f:
         json.dump(comprehensive_results, f, indent=2, ensure_ascii=False)
-    
-    print(f"✅ Results saved to: {results_file}")
-    
+
     # Display summary
-    print("\n🎯 BIDIRECTIONAL LEARNING TRANSFORMATION SUMMARY:")
-    print("=" * 80)
-    
+
     print(f"INPUT: {len(failed_runs)} Failed Runs")
     print("  ├─ GitHub Actions failures: {0}".format(sum(1 for f in failed_runs if f['failure_type'] == 'github_actions')))
     print("  ├─ Copilot runner failures: {0}".format(sum(1 for f in failed_runs if f['failure_type'] == 'copilot_runner')))
     print("  ├─ Bot failures: {0}".format(sum(1 for f in failed_runs if f['failure_type'] == 'bot_failure')))
     print("  └─ Code quality failures: {0}".format(sum(1 for f in failed_runs if f['failure_type'] == 'code_quality')))
-    
-    print(f"\nTRANSFORMATION: Failed Runs → Learning → Prevention")
+
     print(f"  ├─ Unique patterns identified: {len(learning_library['pattern_library'])}")
     print(f"  ├─ High-risk operations monitored: {len(preemptive_config['high_risk_operations'])}")
     print(f"  └─ Immediate prevention actions: {len(recommendations['immediate_actions'])}")
-    
-    print(f"\nOUTPUT: Systematic Prevention & Learning")
+
     print(f"  ├─ Prevention success rate: {learning_library['statistics'].get('recovery_success_rate', 0):.1%}")
     print(f"  ├─ Learning patterns: {len(learning_library['pattern_library'])} identified")
-    print(f"  └─ Bidirectional feedback loops: Active")
-    
-    print("\n🎊 TRANSFORMATION COMPLETE!")
-    print("Your 40+ failed runs have been transformed into a systematic learning & prevention system!")
-    
+
     return comprehensive_results
 
 if __name__ == "__main__":

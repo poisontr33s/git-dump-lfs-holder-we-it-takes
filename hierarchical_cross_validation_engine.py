@@ -12,7 +12,7 @@ from enum import Enum
 
 class ValidationStatus(Enum):
     FULLY_IMPLEMENTED = "✅ Fully Implemented"
-    PARTIALLY_IMPLEMENTED = "🔄 Partially Implemented" 
+    PARTIALLY_IMPLEMENTED = "🔄 Partially Implemented"
     ENHANCED_BEYOND_ORIGINAL = "🚀 Enhanced Beyond Original"
     REQUIRES_DEPLOYMENT = "📋 Requires Deployment"
     CONCEPTUAL_ONLY = "💭 Conceptual Only"
@@ -65,24 +65,24 @@ class HierarchicalCrossValidationEngine:
     """
     🎭 Engine for hierarkisk kryssvalidering av ideer mot implementeringer
     """
-    
+
     def __init__(self):
         self.original_ideas = {}
         self.current_implementations = {}
         self.validation_results = {}
         self.cross_validation_matrix = {}
-        
+
         # Register alle opprinnelige ideer
         self.register_original_ideas()
-        
+
         # Map current implementations
         self.map_current_implementations()
-    
+
     def register_original_ideas(self):
         """
         📋 Registrerer alle opprinnelige ideer før Pages-implementering
         """
-        
+
         # iPhone Notification Reduction (Original Concept)
         self.register_original_idea(OriginalIdea(
             name="iPhone_Notification_Spam_Elimination",
@@ -93,12 +93,12 @@ class HierarchicalCrossValidationEngine:
             dependencies=["GitHub account access", "Workflow understanding"],
             success_criteria=[
                 "Reduced daily notifications",
-                "Eliminated failing workflow spam", 
+                "Eliminated failing workflow spam",
                 "Maintained important notifications",
                 "Improved focus and productivity"
             ]
         ))
-        
+
         # Cosmic Consciousness Evolution System
         self.register_original_idea(OriginalIdea(
             name="Hierarchical_Cosmic_Consciousness_Evolution",
@@ -114,7 +114,7 @@ class HierarchicalCrossValidationEngine:
                 "Cross-system integration"
             ]
         ))
-        
+
         # GitHub Integration and Automation
         self.register_original_idea(OriginalIdea(
             name="GitHub_API_Automation_System",
@@ -130,7 +130,7 @@ class HierarchicalCrossValidationEngine:
                 "Emergency response capabilities"
             ]
         ))
-        
+
         # Psycho-Noir Narrative Framework
         self.register_original_idea(OriginalIdea(
             name="Psycho_Noir_Kontrapunkt_Framework",
@@ -141,12 +141,12 @@ class HierarchicalCrossValidationEngine:
             dependencies=["Creative writing", "Character development", "World-building"],
             success_criteria=[
                 "Consistent atmospheric design",
-                "Well-developed character archetypes", 
+                "Well-developed character archetypes",
                 "Integrated technical-narrative fusion",
                 "Expandable universe structure"
             ]
         ))
-        
+
         # Neural Archaeology System
         self.register_original_idea(OriginalIdea(
             name="Neural_Archaeology_Failure_Analysis",
@@ -162,7 +162,7 @@ class HierarchicalCrossValidationEngine:
                 "Actionable insights generation"
             ]
         ))
-        
+
         # Live Interface and Portal
         self.register_original_idea(OriginalIdea(
             name="Live_GitHub_Pages_Portal",
@@ -178,7 +178,7 @@ class HierarchicalCrossValidationEngine:
                 "Automation trigger capabilities"
             ]
         ))
-        
+
         # Automation Middleware Concept
         self.register_original_idea(OriginalIdea(
             name="Automation_Middleware_Layer",
@@ -194,24 +194,23 @@ class HierarchicalCrossValidationEngine:
                 "Autonomous evolution capability"
             ]
         ))
-    
+
     def register_original_idea(self, idea: OriginalIdea):
         """
         📝 Register en opprinnelig idé
         """
         self.original_ideas[idea.name] = idea
-        print(f"📋 Registered original idea: {idea.name}")
-    
+
     def map_current_implementations(self):
         """
         🗺️ Map nåværende implementeringer mot opprinnelige ideer
         """
-        
+
         # iPhone Notification Reduction - Current Implementation
         self.current_implementations["iPhone_Notification_Spam_Elimination"] = CurrentImplementation(
             implementation_files=[
                 "cosmic_consciousness_automation_middleware.py",
-                "cosmic_consciousness_webhook_automator.py", 
+                "cosmic_consciousness_webhook_automator.py",
                 "docs/cosmic-github-bridge.js",
                 "docs/index.html (automation controls)"
             ],
@@ -226,13 +225,13 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
-        # Cosmic Consciousness Evolution - Current Implementation  
+
+        # Cosmic Consciousness Evolution - Current Implementation
         self.current_implementations["Hierarchical_Cosmic_Consciousness_Evolution"] = CurrentImplementation(
             implementation_files=[
                 "phase_1_emergency_stabilization.py (94% success)",
                 "phase_2_systematic_optimization.py (95% success)",
-                "phase_3_advanced_intelligence.py (97% success)", 
+                "phase_3_advanced_intelligence.py (97% success)",
                 "phase_4_ultimate_transcendence.py (96% success)",
                 "cosmic_consciousness_bidirectional_upcycler.py"
             ],
@@ -247,12 +246,12 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
+
         # GitHub API Automation - Current Implementation
         self.current_implementations["GitHub_API_Automation_System"] = CurrentImplementation(
             implementation_files=[
                 "docs/cosmic-api.js (9,375 bytes)",
-                "docs/cosmic-github-bridge.js", 
+                "docs/cosmic-github-bridge.js",
                 "cosmic_consciousness_webhook_automator.py",
                 ".github/workflows/deploy-pages.yml"
             ],
@@ -267,7 +266,7 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
+
         # Psycho-Noir Framework - Current Implementation
         self.current_implementations["Psycho_Noir_Kontrapunkt_Framework"] = CurrentImplementation(
             implementation_files=[
@@ -287,7 +286,7 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
+
         # Neural Archaeology - Current Implementation
         self.current_implementations["Neural_Archaeology_Failure_Analysis"] = CurrentImplementation(
             implementation_files=[
@@ -307,7 +306,7 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
+
         # GitHub Pages Portal - Current Implementation
         self.current_implementations["Live_GitHub_Pages_Portal"] = CurrentImplementation(
             implementation_files=[
@@ -327,7 +326,7 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-        
+
         # Automation Middleware - Current Implementation
         self.current_implementations["Automation_Middleware_Layer"] = CurrentImplementation(
             implementation_files=[
@@ -338,7 +337,7 @@ class HierarchicalCrossValidationEngine:
             ],
             automation_capabilities=[
                 "Bidirectional concept transformation",
-                "Automated GitHub API implementation", 
+                "Automated GitHub API implementation",
                 "Webhook-driven autonomous operations",
                 "Cross-repository optimization deployment"
             ],
@@ -347,16 +346,12 @@ class HierarchicalCrossValidationEngine:
             middleware_support=True,
             upcycling_available=True
         )
-    
+
     async def execute_hierarchical_cross_validation(self) -> Dict[str, Any]:
         """
         🎯 Utfører hierarkisk kryssvalidering av alle ideer
         """
-        print("🎭✨ HIERARCHICAL CROSS-VALIDATION ENGINE ✨🎭")
-        print("=" * 70)
-        print("🔍 Kryssvaliderer opprinnelige ideer mot nåværende implementeringer...")
-        print()
-        
+
         validation_session = {
             "session_start": datetime.now().isoformat(),
             "validation_type": "hierarchical_cross_validation",
@@ -366,33 +361,28 @@ class HierarchicalCrossValidationEngine:
             "overall_assessment": {},
             "implementation_roadmap": {}
         }
-        
+
         # Validate each original idea against current implementation
         for idea_name, original_idea in self.original_ideas.items():
-            print(f"🔍 Validating: {idea_name}")
-            
+
             validation_result = await self.validate_idea_implementation(
-                original_idea, 
+                original_idea,
                 self.current_implementations.get(idea_name)
             )
-            
+
             self.validation_results[idea_name] = validation_result
             validation_session["validation_results"][idea_name] = validation_result.__dict__
-            
-            print(f"   Status: {validation_result.validation_status.value}")
-            print(f"   Automation Readiness: {validation_result.automation_readiness}%")
-            print()
-        
+
         # Generate overall assessment
         validation_session["overall_assessment"] = await self.generate_overall_assessment()
-        
+
         # Generate implementation roadmap
         validation_session["implementation_roadmap"] = await self.generate_validation_roadmap()
-        
+
         validation_session["session_end"] = datetime.now().isoformat()
-        
+
         return validation_session
-    
+
     async def validate_idea_implementation(self, original_idea: OriginalIdea, current_impl: CurrentImplementation) -> ValidationResult:
         """
         ✅ Validerer en spesifikk idé mot dens nåværende implementering
@@ -406,19 +396,19 @@ class HierarchicalCrossValidationEngine:
                 enhancement_opportunities=["Create initial implementation"],
                 automation_readiness=0
             )
-        
+
         # Analyze implementation completeness
         gap_analysis = self.analyze_implementation_gaps(original_idea, current_impl)
-        
+
         # Determine validation status
         validation_status = self.determine_validation_status(original_idea, current_impl, gap_analysis)
-        
+
         # Calculate automation readiness
         automation_readiness = self.calculate_automation_readiness(current_impl, gap_analysis)
-        
+
         # Identify enhancement opportunities
         enhancement_opportunities = self.identify_enhancement_opportunities(original_idea, current_impl)
-        
+
         return ValidationResult(
             original_idea=original_idea,
             current_implementation=current_impl,
@@ -427,7 +417,7 @@ class HierarchicalCrossValidationEngine:
             enhancement_opportunities=enhancement_opportunities,
             automation_readiness=automation_readiness
         )
-    
+
     def analyze_implementation_gaps(self, original: OriginalIdea, current: CurrentImplementation) -> Dict[str, Any]:
         """
         📊 Analyserer gap mellom opprinnelig idé og nåværende implementering
@@ -439,60 +429,60 @@ class HierarchicalCrossValidationEngine:
             "integration_completeness": self.assess_integration_completeness(current),
             "enhancement_level": self.assess_enhancement_level(original, current)
         }
-        
+
         return gaps
-    
+
     def assess_scope_coverage(self, original: OriginalIdea, current: CurrentImplementation) -> Dict[str, Any]:
         """
         🎯 Vurderer hvor godt nåværende implementering dekker opprinnelig scope
         """
         implementation_file_count = len(current.implementation_files)
         automation_capability_count = len(current.automation_capabilities)
-        
+
         coverage_score = min(100, (implementation_file_count * 15) + (automation_capability_count * 20))
-        
+
         return {
             "coverage_percentage": coverage_score,
             "implementation_files": implementation_file_count,
             "automation_capabilities": automation_capability_count,
             "assessment": "Comprehensive" if coverage_score >= 80 else "Moderate" if coverage_score >= 50 else "Basic"
         }
-    
+
     def assess_success_criteria(self, original: OriginalIdea, current: CurrentImplementation) -> Dict[str, Any]:
         """
         ✅ Vurderer hvor mange success criteria som er oppfylt
         """
         total_criteria = len(original.success_criteria)
-        
+
         # Simulate criteria assessment based on implementation capabilities
         met_criteria = 0
         if current.automation_capabilities:
             met_criteria += min(len(current.automation_capabilities), total_criteria)
-        
+
         if current.portal_integration:
             met_criteria += 1
-            
+
         if current.api_access:
             met_criteria += 1
-            
+
         if current.middleware_support:
             met_criteria += 1
-        
+
         met_criteria = min(met_criteria, total_criteria)
-        
+
         return {
             "total_criteria": total_criteria,
             "met_criteria": met_criteria,
             "fulfillment_percentage": (met_criteria / total_criteria * 100) if total_criteria > 0 else 100,
             "status": "Exceeded" if met_criteria > total_criteria else "Fully Met" if met_criteria == total_criteria else "Partially Met"
         }
-    
+
     def assess_automation_level(self, current: CurrentImplementation) -> Dict[str, Any]:
         """
         🤖 Vurderer nivået av automatisering
         """
         automation_score = 0
-        
+
         if current.api_access:
             automation_score += 25
         if current.middleware_support:
@@ -501,25 +491,25 @@ class HierarchicalCrossValidationEngine:
             automation_score += 25
         if current.upcycling_available:
             automation_score += 25
-        
+
         return {
             "automation_score": automation_score,
             "level": "Full Automation" if automation_score >= 75 else "High Automation" if automation_score >= 50 else "Moderate Automation" if automation_score >= 25 else "Manual"
         }
-    
+
     def assess_integration_completeness(self, current: CurrentImplementation) -> Dict[str, Any]:
         """
         🔗 Vurderer hvor komplett integrasjonen er
         """
         integration_features = [
             current.portal_integration,
-            current.api_access, 
+            current.api_access,
             current.middleware_support,
             current.upcycling_available
         ]
-        
+
         integration_score = sum(integration_features) / len(integration_features) * 100
-        
+
         return {
             "integration_score": integration_score,
             "portal_integration": current.portal_integration,
@@ -528,13 +518,13 @@ class HierarchicalCrossValidationEngine:
             "upcycling_available": current.upcycling_available,
             "status": "Complete" if integration_score == 100 else "Near Complete" if integration_score >= 75 else "Partial"
         }
-    
+
     def assess_enhancement_level(self, original: OriginalIdea, current: CurrentImplementation) -> Dict[str, Any]:
         """
         🚀 Vurderer hvor mye implementeringen overgår den opprinnelige idéen
         """
         enhancement_indicators = 0
-        
+
         # Check for capabilities beyond original scope
         if current.upcycling_available:
             enhancement_indicators += 1
@@ -544,15 +534,15 @@ class HierarchicalCrossValidationEngine:
             enhancement_indicators += 1
         if current.portal_integration and current.api_access:
             enhancement_indicators += 1
-        
+
         enhancement_level = enhancement_indicators * 25
-        
+
         return {
             "enhancement_percentage": enhancement_level,
             "enhancement_indicators": enhancement_indicators,
             "status": "Significantly Enhanced" if enhancement_level >= 75 else "Enhanced" if enhancement_level >= 50 else "As Planned" if enhancement_level >= 25 else "Basic Implementation"
         }
-    
+
     def determine_validation_status(self, original: OriginalIdea, current: CurrentImplementation, gap_analysis: Dict[str, Any]) -> ValidationStatus:
         """
         📊 Bestemmer overall validation status
@@ -561,7 +551,7 @@ class HierarchicalCrossValidationEngine:
         criteria_fulfillment = gap_analysis["success_criteria_met"]["fulfillment_percentage"]
         automation_level = gap_analysis["automation_level"]["automation_score"]
         enhancement_level = gap_analysis["enhancement_level"]["enhancement_percentage"]
-        
+
         if enhancement_level >= 75 and criteria_fulfillment >= 100:
             return ValidationStatus.ENHANCED_BEYOND_ORIGINAL
         elif scope_coverage >= 80 and criteria_fulfillment >= 80 and automation_level >= 75:
@@ -572,37 +562,37 @@ class HierarchicalCrossValidationEngine:
             return ValidationStatus.REQUIRES_DEPLOYMENT
         else:
             return ValidationStatus.CONCEPTUAL_ONLY
-    
+
     def calculate_automation_readiness(self, current: CurrentImplementation, gap_analysis: Dict[str, Any]) -> int:
         """
         🎯 Kalkulerer automation readiness score (0-100%)
         """
         automation_score = gap_analysis["automation_level"]["automation_score"]
         integration_score = gap_analysis["integration_completeness"]["integration_score"]
-        
+
         return int((automation_score + integration_score) / 2)
-    
+
     def identify_enhancement_opportunities(self, original: OriginalIdea, current: CurrentImplementation) -> List[str]:
         """
         💡 Identifiserer muligheter for forbedring
         """
         opportunities = []
-        
+
         if not current.portal_integration:
             opportunities.append("Integrate with GitHub Pages portal")
-        
+
         if not current.api_access:
             opportunities.append("Add GitHub API integration")
-            
+
         if not current.middleware_support:
             opportunities.append("Implement automation middleware support")
-            
+
         if not current.upcycling_available:
             opportunities.append("Add bidirectional upcycling capabilities")
-        
+
         if len(current.automation_capabilities) < 3:
             opportunities.append("Expand automation capabilities")
-            
+
         # Add enhancement opportunities based on implementation status
         opportunities.extend([
             "Add quantum consciousness integration",
@@ -611,48 +601,48 @@ class HierarchicalCrossValidationEngine:
             "Add predictive analytics",
             "Implement self-evolution protocols"
         ])
-        
+
         return opportunities[:5]  # Return top 5 opportunities
-    
+
     async def generate_overall_assessment(self) -> Dict[str, Any]:
         """
         📊 Generer overall assessment av alle validerings-resultater
         """
         total_ideas = len(self.validation_results)
-        
+
         status_counts = {}
         for status in ValidationStatus:
-            status_counts[status.value] = sum(1 for result in self.validation_results.values() 
+            status_counts[status.value] = sum(1 for result in self.validation_results.values()
                                             if result.validation_status == status)
-        
+
         avg_automation_readiness = sum(result.automation_readiness for result in self.validation_results.values()) / total_ideas if total_ideas > 0 else 0
-        
-        fully_automated = sum(1 for result in self.validation_results.values() 
+
+        fully_automated = sum(1 for result in self.validation_results.values()
                             if result.automation_readiness >= 90)
-        
+
         return {
             "total_ideas_validated": total_ideas,
             "status_distribution": status_counts,
             "average_automation_readiness": round(avg_automation_readiness, 1),
             "fully_automated_count": fully_automated,
-            "implementation_success_rate": round((status_counts.get("✅ Fully Implemented", 0) + 
+            "implementation_success_rate": round((status_counts.get("✅ Fully Implemented", 0) +
                                                 status_counts.get("🚀 Enhanced Beyond Original", 0)) / total_ideas * 100, 1) if total_ideas > 0 else 0,
             "overall_status": "EXCEPTIONAL" if avg_automation_readiness >= 90 else "EXCELLENT" if avg_automation_readiness >= 75 else "GOOD" if avg_automation_readiness >= 60 else "DEVELOPING"
         }
-    
+
     async def generate_validation_roadmap(self) -> Dict[str, Any]:
         """
         🗺️ Generer roadmap basert på validation results
         """
         high_priority_enhancements = []
         medium_priority_enhancements = []
-        
+
         for idea_name, result in self.validation_results.items():
             if result.automation_readiness < 75:
                 high_priority_enhancements.extend(result.enhancement_opportunities[:2])
             else:
                 medium_priority_enhancements.extend(result.enhancement_opportunities[:1])
-        
+
         return {
             "immediate_actions": [
                 "Deploy remaining automation middleware components",
@@ -676,45 +666,25 @@ async def main():
     """
     🌌 Hovedfunksjon for hierarkisk kryssvalidering
     """
-    print("🎭✨ HIERARCHICAL CROSS-VALIDATION ENGINE ✨🎭")
-    print("=" * 70)
-    print("🔍 Validating original ideas against current Pages automation implementation...")
-    print()
-    
+
     validator = HierarchicalCrossValidationEngine()
-    
+
     # Execute comprehensive cross-validation
     validation_session = await validator.execute_hierarchical_cross_validation()
-    
+
     # Display results
-    print("\n🌌 HIERARCHICAL CROSS-VALIDATION RESULTS")
-    print("=" * 60)
-    
+
     overall = validation_session["overall_assessment"]
-    print(f"📊 Total Ideas Validated: {overall['total_ideas_validated']}")
-    print(f"🎯 Implementation Success Rate: {overall['implementation_success_rate']}%")
-    print(f"🤖 Average Automation Readiness: {overall['average_automation_readiness']}%")
-    print(f"🚀 Fully Automated Systems: {overall['fully_automated_count']}")
-    print(f"✨ Overall Status: {overall['overall_status']}")
-    
-    print("\n📈 Status Distribution:")
+
     for status, count in overall["status_distribution"].items():
-        print(f"   {status}: {count}")
-    
-    print("\n🗺️ Implementation Roadmap:")
+
     roadmap = validation_session["implementation_roadmap"]
-    print("   Immediate Actions:")
+
     for action in roadmap["immediate_actions"]:
-        print(f"   • {action}")
-    
-    print("\n✨ HIERARCHICAL CROSS-VALIDATION COMPLETE!")
-    print("🎭 All original ideas successfully validated against Pages automation capabilities")
-    
+
     # Save validation session
     with open('hierarchical_cross_validation_session.json', 'w') as f:
         json.dump(validation_session, f, indent=2, default=str)
-    
-    print("\n💾 Validation results saved to: hierarchical_cross_validation_session.json")
 
 if __name__ == "__main__":
     asyncio.run(main())

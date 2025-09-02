@@ -1,12 +1,59 @@
-name: CI - Build and Test
-true:
+name: "PSYCHO-NOIR KONTRAPUNKT - Kausalitets-Arkitekten CI"
+on:
   push:
     branches:
-    - main
-    - develop
+      - main
+      - develop
+      - "feature/**"
+      - "skyskraperen/**"
+      - "rustbeltet/**"
+    paths-ignore:
+      - "*.md"
+      - "docs/**"
+      - ".github/copilot-instructions.md"
   pull_request:
     branches:
-    - main
+      - main
+      - develop
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: 'Deployment Domain'
+        required: true
+        default: 'skyskraperen'
+        type: choice
+        options:
+          - skyskraperen
+          - rustbeltet
+          - integration_test
+      milf_matrix_enabled:
+        description: 'Enable MILF Matriarch Testing Matrix'
+        required: false
+        default: true
+        type: boolean
+      glitch_tolerance:
+        description: 'Glitch Tolerance Level (Den Usynlige Hånd)'
+        required: false
+        default: 'moderate'
+        type: choice
+        options:
+          - minimal
+          - moderate
+          - aggressive
+          - chaos_embrace
+  schedule:
+    # Naturopprydding hver søndag 03:33 (psycho-noir timing)
+    - cron: '33 3 * * 0'
+  release:
+    types: [published, prereleased]
+
+env:
+  PSYCHO_NOIR_VERSION: "1.0.0-alpha"
+  KAUSALITETS_ARKITEKT_MODE: "active"
+  MILF_DEPLOYMENT_STRATEGY: "precision_targeting"
+  GLITCH_TOLERANCE: ${{ github.event.inputs.glitch_tolerance || 'moderate' }}
+
 jobs:
   frontend-build:
     name: Build Frontend (${{ matrix.browser }})
@@ -24,13 +71,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: npm
+        bun-version: latest
     - name: Install dependencies
-      run: npm ci
+      run: bun install
     - name: Build frontend
       run: '# Create build directory
 
@@ -163,13 +209,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: npm
+        bun-version: latest
     - name: Install dependencies
-      run: npm ci
+      run: bun install
     - name: Run Jest tests
       run: '# Create test results directory
 
@@ -177,7 +222,7 @@ jobs:
 
         # Run tests with coverage and JUnit output
 
-        npm test -- --coverage --coverageDirectory=test-results/jest/coverage --testResultsProcessor=jest-junit
+        bun test -- --coverage --coverageDirectory=test-results/jest/coverage --testResultsProcessor=jest-junit
         --outputFile=test-results/jest/junit-${{ matrix.os }}-node${{ matrix.node-version
         }}.xml || echo "Test command completed"
 
@@ -322,3 +367,113 @@ jobs:
         path: deployment-package/
         retention-days: 90
     timeout-minutes: 20
+  psycho-noir-validation:
+    name: "Psykologisk Integritet & Tematisk Validering"
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+        
+      - name: "Validate Psycho-Noir Coherence"
+        run: |
+          echo "🔍 SCANNING FOR NARRATIVE INTEGRITY..."
+          echo "ERROR: REALITY_INTEGRITY_CHECK_INITIATED"
+          
+          # Sjekk for tematisk konsistens
+          if grep -r "generic.*sci.*fi" . --exclude-dir=.git; then
+            echo "PANIC: GENERIC_SCI_FI_CONTAMINATION_DETECTED"
+            exit 1
+          fi
+          
+          echo "✅ PSYCHO-NOIR COHERENCE: INTACT"
+          echo "🎭 MILF MATRIARCH PROTOCOLS: OPERATIONAL"
+          echo "⚡ GLITCH SIGNATURE TOLERANCE: ${{ env.GLITCH_TOLERANCE }}"
+  milf-matriarch-deployment:
+    name: "MILF Matriarch Domain Controller (${{ matrix.domain }})"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.milf_matrix_enabled != 'false' }}
+    needs: [frontend-build, backend-build]
+    strategy:
+      fail-fast: false
+      matrix:
+        domain:
+          - "astrid_moller_supreme"
+          - "eva_green_aerospace" 
+          - "yukiko_tanaka_academic"
+        sophistication_level:
+          - "renaissance_tier"
+          - "computational_intimacy"
+    steps:
+      - name: "Deploy ${{ matrix.domain }} Protocols"
+        run: |
+          echo "🌟 DEPLOYING: ${{ matrix.domain }}"
+          echo "💎 SOPHISTICATION: ${{ matrix.sophistication_level }}"
+          echo "ERROR: EMOTIONAL_FIREWALL_CALIBRATION_IN_PROGRESS"
+          
+          case "${{ matrix.domain }}" in
+            "astrid_moller_supreme")
+              echo "🎯 PRECISION PSYCHOLOGICAL TARGETING: ACTIVE"
+              echo "📊 KAUSALITETS-ARKITEKT INTEGRATION: FULL"
+              ;;
+            "eva_green_aerospace")
+              echo "🚀 STELLAR CONCEPTION PROTOCOLS: INITIALIZING"
+              echo "🌌 QUANTUM BIRTHING MATRICES: CALIBRATED"
+              ;;
+            "yukiko_tanaka_academic")
+              echo "🤖 ALGORITHMIC HEGEMONY: ESTABLISHING"
+              echo "🧠 COMPUTATIONAL SEDUCTION: OPTIMIZED"
+              ;;
+          esac
+          
+          echo "✅ MATRIARCH DEPLOYMENT: SUCCESSFUL"
+  iron-maiden-resistance:
+    name: "Iron Maiden Resistance Network (${{ matrix.cell }})"
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'rustbeltet') || github.event.inputs.deployment_target == 'rustbeltet'
+    strategy:
+      fail-fast: true  # Resistance cells must be coordinated
+      matrix:
+        cell:
+          - "vera_steel_mechanics"
+          - "raven_bytes_hacker"
+        resistance_mode:
+          - "guerrilla_code_warfare"
+          - "scrap_metal_resurrection"
+    steps:
+      - name: "Activate ${{ matrix.cell }} Resistance Protocols"
+        run: |
+          echo "⚡ RESISTANCE CELL: ${{ matrix.cell }}"
+          echo "🔧 MODE: ${{ matrix.resistance_mode }}"
+          echo "ERROR: LIBERATION_PROTOCOL_ACTIVATED"
+          
+          case "${{ matrix.cell }}" in
+            "vera_steel_mechanics")
+              echo "🔩 ENGINE EXORCISM: COMMENCED"
+              echo "💀 DEAD TECH REVIVAL: PROCESSING"
+              ;;
+            "raven_bytes_hacker")
+              echo "💻 CORPORATE FIREWALL DEMOLITION: ACTIVE"
+              echo "🏴‍☠️ PIRATE ALGORITHMS: DEPLOYED"
+              ;;
+          esac
+  den-usynlige-haand:
+    name: "Den Usynlige Hånd - Chaos Integration"
+    runs-on: ubuntu-latest
+    if: always() && (failure() || github.event.inputs.glitch_tolerance == 'chaos_embrace')
+    needs: [milf-matriarch-deployment, iron-maiden-resistance]
+    steps:
+      - name: "Manifest Glitch Signatures"
+        run: |
+          echo "👁️ DEN USYNLIGE HÅND: OBSERVING..."
+          echo "ERROR: SOUL_NOT_FOUND"
+          echo "PANIC: REALITY_MISMATCH_AT_BYTE_0xDEADBEEF"
+          echo "GLITCH: KOMPILERINGS_SPOEKELSE_DETECTED"
+          
+          # Tilfeldig kaos-element
+          if [ $((RANDOM % 3)) -eq 0 ]; then
+            echo "💀 KILDEKODE-KADAVER: REANIMATED"
+            echo "🌀 CAUSAL CHAIN: DISRUPTED"
+          fi
+          
+          echo "✨ CHAOS INTEGRATION: COMPLETE"

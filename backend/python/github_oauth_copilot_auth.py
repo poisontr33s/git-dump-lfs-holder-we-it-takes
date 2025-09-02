@@ -37,11 +37,11 @@ class GitHubOAuthDeviceFlow:
     """
     Implements GitHub Device Flow authentication exactly like VS Code Copilot
     """
-    
+
     def __init__(self):
         self.base_url = "https://github.com"
         self.api_url = "https://api.github.com"
-    
+
     def start_device_flow(self, scopes=None):
         """
         Start GitHub Device Flow - same as VS Code Copilot authentication
@@ -49,7 +49,7 @@ class GitHubOAuthDeviceFlow:
         """
         if scopes is None:
             scopes = ["user:email", "read:user", "repo"]
-        
+
         # GitHub Device Flow Step 1: Request device and user codes
         response = requests.post(
             f"{self.base_url}/login/device/code",
@@ -62,10 +62,10 @@ class GitHubOAuthDeviceFlow:
                 "scope": " ".join(scopes)
             }
         )
-        
+
         if response.status_code == 200:
             data = response.json()
-            
+
             # Store device flow data
             flow_id = secrets.token_urlsafe(16)
             device_flows[flow_id] = {
@@ -78,7 +78,7 @@ class GitHubOAuthDeviceFlow:
                 "created_at": datetime.now(),
                 "status": "pending"
             }
-            
+
             return {
                 "success": True,
                 "flow_id": flow_id,
@@ -94,21 +94,21 @@ class GitHubOAuthDeviceFlow:
                 "error": f"GitHub API error: {response.status_code}",
                 "details": response.text
             }
-    
+
     def poll_for_token(self, flow_id):
         """
         Poll GitHub for authentication completion
         """
         if flow_id not in device_flows:
             return {"success": False, "error": "Invalid flow ID"}
-        
+
         flow_data = device_flows[flow_id]
-        
+
         # Check if expired
         if datetime.now() > flow_data["created_at"] + timedelta(seconds=flow_data["expires_in"]):
             device_flows[flow_id]["status"] = "expired"
             return {"success": False, "error": "Device flow expired"}
-        
+
         # Poll GitHub for token
         response = requests.post(
             f"{self.base_url}/login/oauth/access_token",
@@ -122,21 +122,21 @@ class GitHubOAuthDeviceFlow:
                 "grant_type": "urn:ietf:params:oauth:grant-type:device_code"
             }
         )
-        
+
         if response.status_code == 200:
             data = response.json()
-            
+
             if "access_token" in data:
                 # Authentication successful!
                 device_flows[flow_id]["status"] = "completed"
                 device_flows[flow_id]["access_token"] = data["access_token"]
                 device_flows[flow_id]["token_type"] = data.get("token_type", "bearer")
                 device_flows[flow_id]["scope"] = data.get("scope", "")
-                
+
                 # Get user information
                 user_info = self.get_user_info(data["access_token"])
                 device_flows[flow_id]["user"] = user_info
-                
+
                 # Store in authenticated sessions
                 session_id = secrets.token_urlsafe(32)
                 authenticated_sessions[session_id] = {
@@ -145,7 +145,7 @@ class GitHubOAuthDeviceFlow:
                     "authenticated_at": datetime.now(),
                     "flow_id": flow_id
                 }
-                
+
                 return {
                     "success": True,
                     "status": "completed",
@@ -153,27 +153,27 @@ class GitHubOAuthDeviceFlow:
                     "access_token": data["access_token"],
                     "user": user_info
                 }
-            
+
             elif data.get("error") == "authorization_pending":
                 return {"success": True, "status": "pending"}
-            
+
             elif data.get("error") == "slow_down":
                 return {"success": True, "status": "slow_down"}
-            
+
             elif data.get("error") == "expired_token":
                 device_flows[flow_id]["status"] = "expired"
                 return {"success": False, "error": "Device code expired"}
-            
+
             elif data.get("error") == "access_denied":
                 device_flows[flow_id]["status"] = "denied"
                 return {"success": False, "error": "User denied access"}
-            
+
             else:
                 return {"success": False, "error": f"Unknown error: {data}"}
-        
+
         else:
             return {"success": False, "error": f"GitHub API error: {response.status_code}"}
-    
+
     def get_user_info(self, access_token):
         """Get user information from GitHub API"""
         response = requests.get(
@@ -184,12 +184,12 @@ class GitHubOAuthDeviceFlow:
                 "User-Agent": "PsychoNoir-Kontrapunkt/1.0"
             }
         )
-        
+
         if response.status_code == 200:
             return response.json()
         else:
             return {"error": "Failed to get user info"}
-    
+
     def check_copilot_access(self, access_token):
         """Check if user has GitHub Copilot access"""
         response = requests.get(
@@ -200,7 +200,7 @@ class GitHubOAuthDeviceFlow:
                 "User-Agent": "PsychoNoir-Kontrapunkt/1.0"
             }
         )
-        
+
         return response.status_code == 200
 
 # Initialize OAuth handler
@@ -393,30 +393,30 @@ def oauth_portal():
         <div class="github-logo">🐙</div>
         <h1>GitHub Copilot Authentication</h1>
         <p class="subtitle">Akkurat som VS Code - bruk GitHub mobilappen!</p>
-        
+
         <div id="auth-status" class="auth-status status-waiting" style="display: none;">
             <div id="status-content"></div>
         </div>
-        
+
         <div id="device-code-section" style="display: none;">
             <div class="instructions">
                 <div class="step">Åpne GitHub mobilappen eller gå til github.com/login/device</div>
                 <div class="step">Skriv inn denne koden:</div>
             </div>
-            
+
             <div id="device-code" class="device-code"></div>
-            
+
             <div class="instructions">
                 <div class="step">Eller skann QR-koden:</div>
             </div>
-            
+
             <div id="qr-code" class="qr-code" style="display: none;"></div>
-            
+
             <a id="mobile-link" class="btn btn-mobile" target="_blank" style="display: none;">
                 📱 Åpne i GitHub Mobilapp
             </a>
         </div>
-        
+
         <div id="success-section" style="display: none;">
             <div class="auth-status status-success">
                 <div id="success-content"></div>
@@ -424,11 +424,11 @@ def oauth_portal():
             <div id="user-info" class="user-info"></div>
             <button class="btn" onclick="proceedToCopilot()">🚀 Fortsett til Copilot Portal</button>
         </div>
-        
+
         <button id="start-auth" class="btn" onclick="startAuthentication()">
             🔐 Start GitHub Authentication
         </button>
-        
+
         <div id="error-section" style="display: none;">
             <div class="auth-status status-error">
                 <div id="error-content"></div>
@@ -444,22 +444,22 @@ def oauth_portal():
         async function startAuthentication() {
             const startBtn = document.getElementById('start-auth');
             startBtn.style.display = 'none';
-            
+
             const statusDiv = document.getElementById('auth-status');
             const statusContent = document.getElementById('status-content');
-            
+
             statusDiv.style.display = 'block';
             statusDiv.className = 'auth-status status-waiting';
             statusContent.innerHTML = '<div class="spinner"></div>Starter GitHub Device Flow...';
-            
+
             try {
                 const response = await fetch('/api/oauth/start', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (data.success) {
                     currentFlowId = data.flow_id;
                     showDeviceCode(data);
@@ -477,15 +477,15 @@ def oauth_portal():
             const deviceCodeSection = document.getElementById('device-code-section');
             const deviceCodeDiv = document.getElementById('device-code');
             const mobileLink = document.getElementById('mobile-link');
-            
+
             statusContent.innerHTML = '<div class="spinner"></div>Venter på autentisering...';
             deviceCodeSection.style.display = 'block';
             deviceCodeDiv.textContent = data.user_code;
-            
+
             if (data.verification_uri_complete) {
                 mobileLink.href = data.verification_uri_complete;
                 mobileLink.style.display = 'inline-block';
-                
+
                 // Generate QR code for mobile convenience
                 generateQRCode(data.verification_uri_complete);
             }
@@ -503,7 +503,7 @@ def oauth_portal():
                 try {
                     const response = await fetch(`/api/oauth/poll/${currentFlowId}`);
                     const data = await response.json();
-                    
+
                     if (data.success && data.status === 'completed') {
                         clearInterval(pollInterval);
                         showSuccess(data);
@@ -522,14 +522,14 @@ def oauth_portal():
         function showSuccess(data) {
             document.getElementById('auth-status').style.display = 'none';
             document.getElementById('device-code-section').style.display = 'none';
-            
+
             const successSection = document.getElementById('success-section');
             const successContent = document.getElementById('success-content');
             const userInfo = document.getElementById('user-info');
-            
+
             successSection.style.display = 'block';
             successContent.innerHTML = '✅ GitHub autentisering vellykket!';
-            
+
             if (data.user && data.user.login) {
                 userInfo.innerHTML = `
                     <img src="${data.user.avatar_url}" alt="Avatar" class="avatar">
@@ -539,7 +539,7 @@ def oauth_portal():
                     </div>
                 `;
             }
-            
+
             // Store session for redirect
             localStorage.setItem('github_session_id', data.session_id);
         }
@@ -547,10 +547,10 @@ def oauth_portal():
         function showError(error) {
             document.getElementById('auth-status').style.display = 'none';
             document.getElementById('device-code-section').style.display = 'none';
-            
+
             const errorSection = document.getElementById('error-section');
             const errorContent = document.getElementById('error-content');
-            
+
             errorSection.style.display = 'block';
             errorContent.textContent = error;
         }
@@ -601,7 +601,7 @@ def get_oauth_status(session_id):
 def copilot_portal():
     """Redirect to main Copilot portal after authentication"""
     session_id = request.args.get('session')
-    
+
     if session_id and session_id in authenticated_sessions:
         # User is authenticated, show the full portal
         return redirect('http://127.0.0.1:5001')
@@ -614,12 +614,12 @@ def get_github_user(session_id):
     """Get GitHub user info for authenticated session"""
     if session_id not in authenticated_sessions:
         return jsonify({"error": "Not authenticated"}), 401
-    
+
     session = authenticated_sessions[session_id]
-    
+
     # Check Copilot access
     has_copilot = oauth_handler.check_copilot_access(session["access_token"])
-    
+
     return jsonify({
         "user": session["user"],
         "has_copilot": has_copilot,
@@ -627,14 +627,5 @@ def get_github_user(session_id):
     })
 
 if __name__ == '__main__':
-    print("🔐 GitHub OAuth Copilot-Style Authentication starting...")
-    print("📱 Mobile-friendly device flow enabled")
-    print("🔗 OAuth Portal: http://localhost:5002")
-    print("")
-    print("⚠️  SETUP REQUIRED:")
-    print("1. Create GitHub OAuth App at: https://github.com/settings/applications/new")
-    print("2. Set Authorization callback URL to: http://localhost:5002/callback")
-    print("3. Update GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET in this file")
-    print("")
-    
+
     app.run(host='0.0.0.0', port=5002, debug=True)

@@ -1,36 +1,20 @@
-// filepath: c:\Users\eldno\Downloads\PROJECTS\LÆRE_HTML\.vscode\devcontainer.json
-// This file is used to configure the development container for the project.
-// It specifies the Dockerfile to use, the context for building the image, and the ports to expose.
-// It also specifies the remote user to use when connecting to the container.
 {
-  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
-  "name": "Psycho-Noir Kontrapunkt Container",
-  "dockerFile": "Dockerfile",
-  "context": "..",
-  "appPort": [8888],
-  "remoteUser": "vscode",
-  "workspaceFolder": "/workspace",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter",
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
-        "ms-vscode.cmake-tools-helper"
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "node",
+      "args": [
+        "/workspaces/PsychoNoir-Kontrapunkt/node_modules/@modelcontextprotocol/server-sequential-thinking/dist/index.js"
       ],
-      "settings": {
-        "python.languageServer": "Pylance",
-        "python.analysis.typeCheckingMode": "basic",
-        "python.autoComplete.addBrackets": true,
-        "python.autoComplete.showTypeHints": true,
-        "python.formatting.provider": "black",
-        "python.linting.enabled": true,
-        "python.linting.flake8Enabled": true,
-        "python.linting.mypyEnabled": true,
-        "python.linting.pylintEnabled": false,
-        "python.linting.flake8Args": ["--disable=all", "--enable=E,F,W,C,R"]
-      }
+      "env": {},
+      "disabled": false
+    },
+    "memory": {
+      "command": "node", 
+      "args": [
+        "/workspaces/PsychoNoir-Kontrapunkt/node_modules/@modelcontextprotocol/server-memory/dist/index.js"
+      ],
+      "env": {},
+      "disabled": false
     }
   }
 }

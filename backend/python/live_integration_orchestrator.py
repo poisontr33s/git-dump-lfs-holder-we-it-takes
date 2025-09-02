@@ -4,7 +4,7 @@
 ============================================================
 
 LEVEL 9: Complete integration mellom alle komponenter
-- GitHub Pages ↔ Backend bridge  
+- GitHub Pages ↔ Backend bridge
 - Docker deployment validation
 - Real-time communication layer
 - Production environment testing
@@ -44,10 +44,10 @@ logger = logging.getLogger(__name__)
 class LiveIntegrationOrchestrator:
     """
     🎭 LEVEL 9: Complete Live Integration System
-    
+
     Koordinerer all kommunikasjon mellom:
     - GitHub Pages frontend
-    - Docker backend services  
+    - Docker backend services
     - Neural archaeology systems
     - Production deployment
     """
@@ -58,19 +58,19 @@ class LiveIntegrationOrchestrator:
         self.frontend_url = GITHUB_PAGES_URL
         self.docker_client = None
         self.integration_status = {}
-        
+
         try:
             self.docker_client = docker.from_env()
             logger.info("✅ Docker client connected")
         except Exception as e:
             logger.warning(f"⚠️ Docker client unavailable: {e}")
-        
+
         logger.info("🎭 Live Integration Orchestrator initialized")
 
     async def validate_complete_integration(self) -> Dict[str, Any]:
         """🔍 Complete integration validation"""
         logger.info("🎯 Starting complete integration validation...")
-        
+
         validation_results = {
             "timestamp": datetime.now().isoformat(),
             "integration_signature": f"0x{int(time.time()) % 0xFFFFFF:06X}_LIVE_VALIDATED",
@@ -106,13 +106,13 @@ class LiveIntegrationOrchestrator:
 
         # Calculate overall status
         validation_results = self._calculate_integration_status(validation_results)
-        
+
         return validation_results
 
     async def _test_docker_infrastructure(self) -> Dict[str, Any]:
         """🐳 Test Docker deployment infrastructure"""
         logger.info("🐳 Testing Docker infrastructure...")
-        
+
         result = {
             "name": "Docker Infrastructure",
             "status": "unknown",
@@ -128,7 +128,7 @@ class LiveIntegrationOrchestrator:
                 proc = subprocess.run([
                     "docker", "compose", "-f", str(compose_file), "config"
                 ], capture_output=True, text=True, timeout=30)
-                
+
                 if proc.returncode == 0:
                     result["details"]["compose_syntax"] = "✅ Valid"
                 else:
@@ -173,7 +173,7 @@ class LiveIntegrationOrchestrator:
     async def _test_backend_services(self) -> Dict[str, Any]:
         """🔧 Test backend API services"""
         logger.info("🔧 Testing backend services...")
-        
+
         result = {
             "name": "Backend Services",
             "status": "unknown",
@@ -214,7 +214,7 @@ class LiveIntegrationOrchestrator:
                     proc = subprocess.run([
                         "python3", str(cli_path), "status", "--format=json"
                     ], capture_output=True, text=True, timeout=10, cwd=self.project_root)
-                    
+
                     if proc.returncode == 0:
                         result["details"]["neural_cli"] = "✅ Functional"
                         try:
@@ -243,7 +243,7 @@ class LiveIntegrationOrchestrator:
     async def _test_frontend_integration(self) -> Dict[str, Any]:
         """🎨 Test frontend integration"""
         logger.info("🎨 Testing frontend integration...")
-        
+
         result = {
             "name": "Frontend Integration",
             "status": "unknown",
@@ -289,7 +289,7 @@ class LiveIntegrationOrchestrator:
     async def _test_github_pages_deployment(self) -> Dict[str, Any]:
         """🌐 Test GitHub Pages deployment"""
         logger.info("🌐 Testing GitHub Pages deployment...")
-        
+
         result = {
             "name": "GitHub Pages Deployment",
             "status": "unknown",
@@ -305,21 +305,21 @@ class LiveIntegrationOrchestrator:
                     content_length = len(response.text)
                     result["details"]["pages_accessibility"] = f"✅ Live! ({content_length:,} bytes)"
                     result["details"]["pages_url"] = self.frontend_url
-                    
+
                     # Check if content looks like our portal
                     if "Psycho-Noir Kontrapunkt" in response.text:
                         result["details"]["content_validation"] = "✅ Correct content"
                     else:
                         result["details"]["content_validation"] = "⚠️ Content may be default GitHub Pages"
                         result["issues"].append("GitHub Pages may not be serving our content")
-                        
+
                 elif response.status_code == 404:
                     result["details"]["pages_accessibility"] = "❌ Not deployed (404)"
                     result["issues"].append("GitHub Pages not deployed or configured")
                 else:
                     result["details"]["pages_accessibility"] = f"❌ HTTP {response.status_code}"
                     result["issues"].append("GitHub Pages deployment issues")
-                    
+
             except requests.RequestException as e:
                 result["details"]["pages_accessibility"] = f"❌ Not accessible: {e}"
                 result["issues"].append("GitHub Pages not accessible")
@@ -339,10 +339,10 @@ class LiveIntegrationOrchestrator:
     async def _test_communication_bridge(self) -> Dict[str, Any]:
         """🌉 Test communication bridge between frontend and backend"""
         logger.info("🌉 Testing communication bridge...")
-        
+
         result = {
             "name": "Communication Bridge",
-            "status": "unknown", 
+            "status": "unknown",
             "details": {},
             "issues": []
         }
@@ -400,7 +400,7 @@ class LiveIntegrationOrchestrator:
     async def _test_neural_integration(self) -> Dict[str, Any]:
         """🧠 Test neural archaeology integration"""
         logger.info("🧠 Testing neural archaeology integration...")
-        
+
         result = {
             "name": "Neural Integration",
             "status": "unknown",
@@ -416,7 +416,7 @@ class LiveIntegrationOrchestrator:
                     proc = subprocess.run([
                         "python3", str(orchestrator_path), "--action", "report", "--environment", "development"
                     ], capture_output=True, text=True, timeout=15, cwd=self.project_root)
-                    
+
                     if proc.returncode == 0:
                         result["details"]["neural_orchestrator"] = "✅ Functional"
                         # Try to parse JSON output
@@ -460,11 +460,11 @@ class LiveIntegrationOrchestrator:
     def _calculate_integration_status(self, validation_results: Dict[str, Any]) -> Dict[str, Any]:
         """📊 Calculate overall integration status"""
         tests = validation_results["tests"]
-        
+
         # Count healthy vs unhealthy tests
         healthy_tests = sum(1 for test in tests.values() if test["status"] == "healthy")
         total_tests = len(tests)
-        
+
         # Collect all critical gaps
         for test in tests.values():
             validation_results["critical_gaps"].extend(test.get("issues", []))
@@ -494,7 +494,7 @@ class LiveIntegrationOrchestrator:
     async def deploy_missing_integrations(self) -> Dict[str, Any]:
         """🚀 Deploy missing integration components"""
         logger.info("🚀 Deploying missing integration components...")
-        
+
         deployment_results = {
             "timestamp": datetime.now().isoformat(),
             "deployments": {},
@@ -592,14 +592,14 @@ from flask_cors import CORS
 
 def configure_cors(app):
     """Configure CORS for GitHub Pages integration"""
-    CORS(app, 
+    CORS(app,
          origins=["https://poisontr33s.github.io", "http://localhost:3000", "http://127.0.0.1:3000"],
          allow_headers=["Content-Type", "Authorization"],
          methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 '''
             cors_config_path.write_text(cors_content)
             logger.info("✅ Created CORS configuration")
-            
+
             return {"success": True, "message": "CORS configuration deployed"}
         except Exception as e:
             return {"success": False, "message": f"CORS deployment failed: {e}"}
@@ -611,18 +611,18 @@ def configure_cors(app):
             api_js_path = DOCS_DIR / "cosmic-api.js"
             if api_js_path.exists():
                 api_content = api_js_path.read_text()
-                
+
                 # Add fallback mechanisms if not present
                 if "fallback" not in api_content.lower():
                     fallback_code = '''
-    
+
     // 🎭 Enhanced with fallback mechanisms
     const API_FALLBACKS = [
         'http://localhost:5000',
         'https://api.psycho-noir-kontrapunkt.herokuapp.com',
         'https://psychonoir-api.railway.app'
     ];
-    
+
     async function tryApiCall(endpoint, options = {}) {
         for (const baseUrl of API_FALLBACKS) {
             try {
@@ -642,7 +642,7 @@ def configure_cors(app):
         throw new Error('All API endpoints failed');
     }
 '''
-                    
+
                     updated_content = api_content + fallback_code
                     api_js_path.write_text(updated_content)
                     logger.info("✅ Enhanced cosmic-api.js with fallbacks")
@@ -654,44 +654,44 @@ def configure_cors(app):
 async def main():
     """🎭 Main Live Integration Interface"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="🎭 Psycho-Noir Kontrapunkt Live Integration Orchestrator")
     parser.add_argument("--action", "-a",
                        choices=["validate", "deploy", "full"],
                        default="validate",
                        help="Action to perform")
-    
+
     args = parser.parse_args()
-    
+
     orchestrator = LiveIntegrationOrchestrator()
-    
+
     logger.info(f"🎭 Starting live integration: {args.action}")
-    
+
     try:
         if args.action == "validate":
             result = await orchestrator.validate_complete_integration()
             print(json.dumps(result, indent=2, default=str))
-            
+
         elif args.action == "deploy":
             result = await orchestrator.deploy_missing_integrations()
             print(json.dumps(result, indent=2, default=str))
-            
+
         elif args.action == "full":
             # Full validation and deployment
             validation = await orchestrator.validate_complete_integration()
-            print("🔍 VALIDATION RESULTS:")
+
             print(json.dumps(validation, indent=2, default=str))
-            
+
             if validation["health_percentage"] < 90:
-                print("\n🚀 DEPLOYING MISSING INTEGRATIONS:")
+
                 deployment = await orchestrator.deploy_missing_integrations()
                 print(json.dumps(deployment, indent=2, default=str))
-                
+
                 # Re-validate
-                print("\n🔍 RE-VALIDATION:")
+
                 final_validation = await orchestrator.validate_complete_integration()
                 print(json.dumps(final_validation, indent=2, default=str))
-            
+
     except KeyboardInterrupt:
         logger.info("🛑 Live integration interrupted by user")
     except Exception as e:

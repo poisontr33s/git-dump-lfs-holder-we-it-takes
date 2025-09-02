@@ -1,11 +1,21 @@
 {
-  "name": "laere-html-helper",
-  "version": "1.0.0",
-  "main": "script.js",
+  "name": "@psycho-noir-kontrapunkt/hooker-ecosystem",
+  "version": "3.7.0",
+  "type": "module",
+  "description": "Sophisticated file-chaining system med universal compatibility",
+  "main": "hooker_orchestrator.ts",
   "scripts": {
+    "init": "bun install && bun run submodule bum, & setup-hooks",
+    "setup-hooks": "bun run hooks/setup_file_chains.ts",
+    "chain": "bun run hooks/chain_files.ts",
+    "mirror": "bun run hooks/prismatic_mirror.ts",
+    "validate": "bun run hooks/profit_validation.ts",
+    "emigrate": "bun run emigration/structured_upcycle.ts",
+    "dev": "bun --watch hooks/hooker_orchestrator.ts",
+    "build": "bun build --target node --outdir dist hooks/hooker_orchestrator.ts",
     "test": "jest"
   },
-  "author": "Your Name or Organization",
+  "author": "http://www.esabbr.com",
   "license": "ISC",
   "keywords": [
     "html",
@@ -15,9 +25,15 @@
     "education"
   ],
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@types/bun": "1.2.21",
+    "@types/node": "24.3.0",
+    "bun-types": "1.2.21",
+    "jest": "^29.7.0",
+    "typescript": "5.9.2"
   },
   "dependencies": {
+    "@modelcontextprotocol/server-memory": "2025.8.4",
+    "@modelcontextprotocol/server-sequential-thinking": "2025.7.1",
     "ansi-escapes": "7.0.0",
     "ansi-regex": "6.0.1",
     "ansi-styles": "6.2.1",
@@ -84,7 +100,6 @@
     "human-signals": "^2.1.0",
     "import-local": "^3.2.0",
     "imurmurhash": "^0.1.4",
-    "lru-cache": "10.3.0",
     "inherits": "^2.0.4",
     "is-arrayish": "^0.2.1",
     "is-core-module": "^2.16.1",
@@ -132,6 +147,7 @@
     "leven": "^3.1.0",
     "lines-and-columns": "^1.2.4",
     "locate-path": "^5.0.0",
+    "lru-cache": "10.3.0",
     "make-dir": "^4.0.0",
     "makeerror": "^1.0.12",
     "merge-stream": "^2.0.0",
@@ -203,6 +219,5 @@
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1",
     "yocto-queue": "^0.1.0"
-  },
-  "description": "A helper project for learning HTML with useful tools and scripts."
+  }
 }

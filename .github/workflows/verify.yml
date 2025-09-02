@@ -30,17 +30,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          bun-version: latest
 
       - name: Install dependencies with Necromancer
         uses: ./.github/actions/necromancer-collect
         with:
-          name: "npm-install"
-          run: "npm ci"
+          name: "bun-install"
+          run: "bun install"
           category: "frontend"
           variant: "node-${{ matrix.node-version }}"
           timeout-minutes: 8
@@ -65,10 +64,10 @@ jobs:
           run: |
             # Run tests with fallback for permission issues
             if [ -x "node_modules/.bin/jest" ]; then
-              npm test
+              bun test
             else
-              echo "Jest not executable, running via npx"
-              npx --yes jest --passWithNoTests --verbose
+              echo "Jest not executable, running via bunx"
+              bunx --bun jest --passWithNoTests --verbose
             fi
           category: "frontend"
           variant: "node-${{ matrix.node-version }}"

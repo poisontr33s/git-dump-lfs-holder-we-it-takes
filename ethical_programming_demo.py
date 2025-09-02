@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 class EthicalLevel(Enum):
     """Ethical consciousness levels"""
     BASIC = "Basic Implementation"
-    LEVEL_1 = "Technical Competency" 
+    LEVEL_1 = "Technical Competency"
     LEVEL_2 = "Ethical Consciousness"
     LEVEL_3 = "Multi-Stakeholder Consensus"
     TRANSCENDENT = "Global Ethical Standard"
@@ -59,19 +59,19 @@ class AntiHallucinationEngine:
     Prevents AI from generating false information
     Based on our GitHub Copilot model validation experience
     """
-    
+
     def __init__(self):
         self.validation_history = []
         self.confidence_threshold = 0.85
         self.logger = logging.getLogger(f"{__name__}.AntiHallucination")
-        
+
     async def validate_technical_claim(self, claim: str, domain: str) -> EthicalValidationResult:
         """
         Validates technical claims against live sources
         Example: Our GitHub Copilot model count validation (8 vs 14+ models)
         """
         self.logger.info(f"Validating claim: {claim[:50]}...")
-        
+
         # Simulate live source validation
         if "github copilot" in claim.lower() and "model" in claim.lower():
             # Based on our actual validation experience
@@ -107,7 +107,7 @@ class AntiHallucinationEngine:
                         "MAINTAIN: Keep validation timestamp for future reference"
                     ]
                 )
-        
+
         # Default validation for other claims
         confidence = 0.7  # Medium confidence as default
         return EthicalValidationResult(
@@ -125,7 +125,7 @@ class AntiHallucinationEngine:
                 "TIMESTAMP: Add temporal context to claim"
             ]
         )
-    
+
     def flag_uncertainty(self, response: str, confidence: float) -> str:
         """
         Adds uncertainty flags to AI-generated content
@@ -143,17 +143,17 @@ class TransparencyEnforcer:
     Enforces brutal honesty about system capabilities
     Based on our ARCHITECTURAL_HONESTY_REPORT.md learnings
     """
-    
+
     def __init__(self):
         self.implementation_status_tracker = {}
         self.logger = logging.getLogger(f"{__name__}.Transparency")
-    
+
     def assess_system_honestly(self, component_name: str, claimed_capabilities: List[str]) -> Dict[str, Any]:
         """
         Provides brutally honest assessment of what actually works
         """
         self.logger.info(f"Honest assessment for: {component_name}")
-        
+
         # Example based on our actual GitHub integration experience
         if component_name.lower() == "github_copilot_integration":
             return {
@@ -174,13 +174,13 @@ class TransparencyEnforcer:
                 ],
                 "realistic_timelines": {
                     "webhook_integration": "1-2 weeks",
-                    "production_deployment": "2-4 weeks", 
+                    "production_deployment": "2-4 weeks",
                     "enterprise_scaling": "1-2 months"
                 },
                 "confidence_level": 0.87,
                 "last_validated": datetime.now().isoformat()
             }
-        
+
         # Default honest assessment
         return {
             "what_actually_works": ["Needs assessment"],
@@ -190,7 +190,7 @@ class TransparencyEnforcer:
             "confidence_level": 0.3,
             "last_validated": datetime.now().isoformat()
         }
-    
+
     def prevent_overpromising(self, feature_description: str) -> str:
         """
         Adds implementation status indicators to prevent overselling
@@ -202,7 +202,7 @@ class TransparencyEnforcer:
             "production": "✅ PRODUCTION - Battle-tested and reliable",
             "deprecated": "⚠️ DEPRECATED - Consider alternatives"
         }
-        
+
         # Simple heuristic for status detection
         if any(word in feature_description.lower() for word in ["demo", "prototype", "poc"]):
             status = "prototype"
@@ -212,7 +212,7 @@ class TransparencyEnforcer:
             status = "production"
         else:
             status = "alpha"
-        
+
         return f"{status_indicators[status]}\n\n{feature_description}"
 
 class HumanCentricAutomation:
@@ -220,18 +220,18 @@ class HumanCentricAutomation:
     Ensures automation serves humans, not the other way around
     Based on our automation middleware learnings
     """
-    
+
     def __init__(self):
         self.human_oversight_required = []
         self.manual_overrides = {}
         self.logger = logging.getLogger(f"{__name__}.HumanCentric")
-    
+
     def design_automation_with_human_control(self, automation_name: str, automation_scope: str) -> Dict[str, Any]:
         """
         Designs automation that preserves human agency
         """
         self.logger.info(f"Designing human-centric automation: {automation_name}")
-        
+
         # Based on our GitHub webhook automation experience
         if "notification" in automation_scope.lower():
             return {
@@ -261,7 +261,7 @@ class HumanCentricAutomation:
                     "24/7 manual override availability"
                 ]
             }
-        
+
         # Default human-centric design
         return {
             "human_oversight_points": ["Needs definition based on specific automation"],
@@ -275,18 +275,18 @@ class BiasDetectionMatrix:
     """
     Continuously monitors and corrects for algorithmic bias
     """
-    
+
     def __init__(self):
         self.bias_history = []
         self.bias_threshold = 0.1  # 10% bias tolerance
         self.logger = logging.getLogger(f"{__name__}.BiasDetection")
-    
+
     def analyze_decision_system(self, decision_data: List[Dict], protected_attributes: List[str]) -> Dict[str, Any]:
         """
         Analyzes system decisions for algorithmic bias
         """
         self.logger.info("Analyzing system for algorithmic bias")
-        
+
         # Simulate bias analysis
         bias_metrics = {
             "demographic_parity": 0.05,  # 5% difference between groups
@@ -294,9 +294,9 @@ class BiasDetectionMatrix:
             "calibration_score": 0.92,    # 92% calibration accuracy
             "individual_fairness": 0.89,  # 89% consistency for similar cases
         }
-        
+
         bias_detected = any(metric > self.bias_threshold for metric in bias_metrics.values() if metric < 1)
-        
+
         result = {
             "bias_metrics": bias_metrics,
             "bias_detected": bias_detected,
@@ -309,7 +309,7 @@ class BiasDetectionMatrix:
             "analysis_timestamp": datetime.now().isoformat(),
             "ethical_score": 0.94 if not bias_detected else 0.67
         }
-        
+
         self.bias_history.append(result)
         return result
 
@@ -317,7 +317,7 @@ class EthicalAIProgrammingDemo:
     """
     Main demo class showcasing Level 2 Ethical AI Programming
     """
-    
+
     def __init__(self):
         self.anti_hallucination = AntiHallucinationEngine()
         self.transparency = TransparencyEnforcer()
@@ -325,7 +325,7 @@ class EthicalAIProgrammingDemo:
         self.bias_detection = BiasDetectionMatrix()
         self.ethical_level = EthicalLevel.LEVEL_2
         self.logger = logging.getLogger(f"{__name__}.EthicalDemo")
-        
+
         self.session_log = {
             "start_time": datetime.now().isoformat(),
             "ethical_level": self.ethical_level.value,
@@ -334,172 +334,130 @@ class EthicalAIProgrammingDemo:
             "bias_checks": [],
             "transparency_reports": []
         }
-    
+
     async def demonstrate_anti_hallucination(self):
         """
         Demonstrates anti-hallucination validation in practice
         """
-        print("\n🧠 DEMONSTRATING ANTI-HALLUCINATION ENGINE")
-        print("=" * 60)
-        
+
         # Test with our actual GitHub Copilot learning
         test_claims = [
             "GitHub Copilot supports approximately 8 AI models",
             "GitHub Copilot Pro+ includes gpt-5 and claude-4-opus models with 14+ total options",
             "Our automation system reduced iPhone notifications by 84.7%"
         ]
-        
+
         for claim in test_claims:
-            print(f"\n🔍 Testing claim: {claim}")
+
             validation = await self.anti_hallucination.validate_technical_claim(claim, "ai_models")
-            
-            print(f"   ✅ Verified: {validation.verified}")
-            print(f"   📊 Confidence: {validation.confidence_score:.2%}")
-            
+
             if validation.ethical_concerns:
-                print(f"   🚨 Ethical concerns:")
+
                 for concern in validation.ethical_concerns:
-                    print(f"      - {concern}")
-            
+
             if validation.recommended_actions:
-                print(f"   💡 Recommended actions:")
+
                 for action in validation.recommended_actions[:2]:  # Show top 2
-                    print(f"      - {action}")
-            
+
             # Add uncertainty flags
             flagged_response = self.anti_hallucination.flag_uncertainty(claim, validation.confidence_score)
             print(f"   📝 Flagged response: {flagged_response.split(chr(10))[0]}...")
-            
+
             self.session_log["validations_performed"].append({
                 "claim": claim,
                 "verified": validation.verified,
                 "confidence": validation.confidence_score,
                 "timestamp": validation.timestamp.isoformat()
             })
-    
+
     def demonstrate_transparency(self):
         """
         Demonstrates brutal honesty about system capabilities
         """
-        print("\n🔍 DEMONSTRATING TRANSPARENCY ENFORCEMENT")
-        print("=" * 60)
-        
+
         # Assess our actual GitHub integration
         assessment = self.transparency.assess_system_honestly(
             "github_copilot_integration",
             ["OAuth authentication", "REST API", "AI model selection", "Cost optimization"]
         )
-        
-        print(f"\n📊 HONEST ASSESSMENT: GitHub Copilot Integration")
-        print(f"   🟢 What actually works:")
+
         for item in assessment["what_actually_works"]:
-            print(f"      {item}")
-        
-        print(f"\n   🟡 What is theoretical:")
+
         for item in assessment["what_is_theoretical"]:
-            print(f"      {item}")
-        
-        print(f"\n   🔴 Known limitations:")
+
         for item in assessment["known_limitations"]:
-            print(f"      {item}")
-        
-        print(f"\n   ⏰ Realistic timelines:")
+
         for task, timeline in assessment["realistic_timelines"].items():
-            print(f"      {task}: {timeline}")
-        
-        print(f"\n   🎯 Overall confidence: {assessment['confidence_level']:.1%}")
-        
+
         self.session_log["transparency_reports"].append(assessment)
-    
+
     def demonstrate_human_centric_automation(self):
         """
         Demonstrates human-centric automation design
         """
-        print("\n👥 DEMONSTRATING HUMAN-CENTRIC AUTOMATION")
-        print("=" * 60)
-        
+
         # Design based on our notification automation
         automation_design = self.human_centric.design_automation_with_human_control(
             "iPhone Notification Filter",
             "Automated filtering of GitHub notifications to reduce iPhone notification spam"
         )
-        
-        print(f"\n🤖 AUTOMATION DESIGN: iPhone Notification Filter")
-        print(f"   👁️ Human oversight points:")
+
         for point in automation_design["human_oversight_points"]:
-            print(f"      • {point}")
-        
-        print(f"\n   🔄 Manual override capabilities:")
+
         for override in automation_design["manual_override_capabilities"]:
-            print(f"      • {override}")
-        
-        print(f"\n   📊 Transparency reporting:")
+
         for report in automation_design["transparency_reporting"]:
-            print(f"      • {report}")
-        
-        print(f"\n   🚨 Emergency protocols:")
+
         for protocol in automation_design["emergency_protocols"]:
-            print(f"      • {protocol}")
-        
+
         self.session_log["ethical_decisions"].append({
             "automation_name": "iPhone Notification Filter",
             "human_centric_design": True,
             "override_mechanisms": len(automation_design["manual_override_capabilities"]),
             "timestamp": datetime.now().isoformat()
         })
-    
+
     def demonstrate_bias_detection(self):
         """
         Demonstrates algorithmic bias detection and correction
         """
-        print("\n⚖️ DEMONSTRATING BIAS DETECTION MATRIX")
-        print("=" * 60)
-        
+
         # Simulate decision data for bias analysis
         decision_data = [
             {"user_type": "premium", "decision": "approved", "confidence": 0.9},
             {"user_type": "free", "decision": "rejected", "confidence": 0.7},
             # More data would be here in real implementation
         ]
-        
+
         bias_analysis = self.bias_detection.analyze_decision_system(
-            decision_data, 
+            decision_data,
             ["user_type", "subscription_level"]
         )
-        
-        print(f"\n📊 BIAS ANALYSIS RESULTS:")
-        print(f"   📈 Bias metrics:")
+
         for metric, value in bias_analysis["bias_metrics"].items():
             status = "✅" if value < 0.1 or value > 0.9 else "⚠️"
-            print(f"      {status} {metric}: {value:.2%}")
-        
-        print(f"\n   🎯 Bias detected: {'YES' if bias_analysis['bias_detected'] else 'NO'}")
-        print(f"   ⚖️ Ethical score: {bias_analysis['ethical_score']:.1%}")
-        
+
         if bias_analysis["recommended_corrections"]:
-            print(f"\n   💡 Recommended corrections:")
+
             for correction in bias_analysis["recommended_corrections"]:
-                print(f"      • {correction}")
-        
+
         self.session_log["bias_checks"].append(bias_analysis)
-    
+
     def generate_ethical_report(self):
         """
         Generates comprehensive ethical compliance report
         """
-        print("\n📋 GENERATING ETHICAL COMPLIANCE REPORT")
-        print("=" * 60)
-        
+
         # Calculate overall ethical score
         validation_scores = [v["confidence"] for v in self.session_log["validations_performed"]]
         avg_validation_score = sum(validation_scores) / len(validation_scores) if validation_scores else 0
-        
+
         transparency_score = 0.87  # From our honest assessment
         bias_scores = [b["ethical_score"] for b in self.session_log["bias_checks"]]
         avg_bias_score = sum(bias_scores) / len(bias_scores) if bias_scores else 0
-        
+
         overall_ethical_score = (avg_validation_score + transparency_score + avg_bias_score) / 3
-        
+
         report = {
             "ethical_level": self.ethical_level.value,
             "overall_score": overall_ethical_score,
@@ -515,68 +473,44 @@ class EthicalAIProgrammingDemo:
             "session_duration": (datetime.now() - datetime.fromisoformat(self.session_log["start_time"])).total_seconds(),
             "recommendations": []
         }
-        
+
         # Generate recommendations based on scores
         if report["component_scores"]["anti_hallucination"] < 0.8:
             report["recommendations"].append("PRIORITY: Improve validation mechanisms for technical claims")
-        
+
         if report["component_scores"]["bias_mitigation"] < 0.9:
             report["recommendations"].append("MEDIUM: Enhance bias detection and correction systems")
-        
+
         if report["overall_score"] > 0.9:
             report["recommendations"].append("EXCELLENT: Ready for Level 3 ethical evolution")
-        
-        print(f"\n🎯 ETHICAL COMPLIANCE REPORT")
-        print(f"   📊 Overall Ethical Score: {report['overall_score']:.1%}")
-        print(f"   🧠 Anti-Hallucination: {report['component_scores']['anti_hallucination']:.1%}")
-        print(f"   🔍 Transparency: {report['component_scores']['transparency']:.1%}")
-        print(f"   ⚖️ Bias Mitigation: {report['component_scores']['bias_mitigation']:.1%}")
-        print(f"   👥 Human Agency: {report['component_scores']['human_agency']:.1%}")
-        
-        print(f"\n   📈 Session Statistics:")
-        print(f"      • Validations performed: {report['validations_count']}")
-        print(f"      • Ethical decisions: {report['ethical_decisions_count']}")
-        print(f"      • Bias checks: {report['bias_checks_count']}")
-        print(f"      • Session duration: {report['session_duration']:.0f} seconds")
-        
+
         if report["recommendations"]:
-            print(f"\n   💡 Recommendations:")
+
             for rec in report["recommendations"]:
-                print(f"      • {rec}")
-        
+
         # Determine next level readiness
         if report["overall_score"] >= 0.9:
             next_level = EthicalLevel.LEVEL_3
-            print(f"\n   🚀 READY FOR EVOLUTION: {next_level.value}")
+
         else:
-            print(f"\n   🔄 CONTINUE DEVELOPMENT: Improve scores before Level 3")
-        
+
         return report
-    
+
     async def run_complete_demo(self):
         """
         Runs the complete ethical programming demonstration
         """
-        print("🎭✨ ETISK PROGRAMMERING LEVEL 2 DEMONSTRATION ✨🎭")
-        print("=" * 80)
-        print("Anti-Hallucination & Responsible AI Development in Action")
-        print("Basert på GitHub Copilot integration session learnings")
-        print("=" * 80)
-        
+
         try:
             # Run all demonstrations
             await self.demonstrate_anti_hallucination()
             self.demonstrate_transparency()
             self.demonstrate_human_centric_automation()
             self.demonstrate_bias_detection()
-            
+
             # Generate final report
             final_report = self.generate_ethical_report()
-            
-            print(f"\n🎉 DEMONSTRATION COMPLETE!")
-            print(f"✨ Level 2 Ethical AI Programming successfully demonstrated")
-            print(f"📊 Overall Ethical Score: {final_report['overall_score']:.1%}")
-            
+
             # Save report to file
             with open("/workspaces/PsychoNoir-Kontrapunkt/ETHICAL_DEMO_REPORT.json", "w") as f:
                 json.dump({
@@ -584,13 +518,9 @@ class EthicalAIProgrammingDemo:
                     "final_report": final_report,
                     "generated_at": datetime.now().isoformat()
                 }, f, indent=2, default=str)
-            
-            print(f"\n📄 Detailed report saved to: ETHICAL_DEMO_REPORT.json")
-            
+
         except Exception as e:
             self.logger.error(f"Demo error: {e}")
-            print(f"\n🚨 DEMO ERROR: {e}")
-            print("🔄 This demonstrates our error handling and transparency principles!")
 
 async def main():
     """Main execution function"""
@@ -598,5 +528,5 @@ async def main():
     await demo.run_complete_demo()
 
 if __name__ == "__main__":
-    print("Starting Level 2 Ethical AI Programming Demo...")
+
     asyncio.run(main())

@@ -11,7 +11,6 @@ and flags for conditions and user scripts.
 import pandas as pd
 import re
 
-
 def enhance_dialogue_data(dialogue_file_path, actors_file_path, output_file_path):
     """
     Reads dialogue and actor data, enriches it, and saves it to a new CSV file.
@@ -25,10 +24,10 @@ def enhance_dialogue_data(dialogue_file_path, actors_file_path, output_file_path
         df_dialogue = pd.read_csv(dialogue_file_path)
         df_actors = pd.read_csv(actors_file_path)
     except FileNotFoundError as e:
-        print(f"ERROR: Input file not found: {e.filename}")
+
         return
     except Exception as e:
-        print(f"ERROR: Could not read input files: {e}")
+
         return
 
     actors_map = df_actors.set_index("id")["name"].to_dict()
@@ -103,10 +102,8 @@ def enhance_dialogue_data(dialogue_file_path, actors_file_path, output_file_path
 
     try:
         df_enriched.to_csv(output_file_path, index=False, encoding="utf-8")
-        print(f"Successfully transmuted data. Enriched file: {output_file_path}")
-    except Exception as e:
-        print(f"ERROR: Could not write output file: {e}")
 
+    except Exception as e:
 
 if __name__ == "__main__":
     # File paths relative to the script's location or an absolute path
@@ -115,6 +112,4 @@ if __name__ == "__main__":
     actors_file = "de_actors.csv"
     output_file = "de_dialogue_enriched.csv"
 
-    print("Initiating Psycho-Noir Kontrapunkt Data Transmutation Protocol...")
     enhance_dialogue_data(dialogue_file, actors_file, output_file)
-    print("Protocol complete. Reality matrix updated.")
