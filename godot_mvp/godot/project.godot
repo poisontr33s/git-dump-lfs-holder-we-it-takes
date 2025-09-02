@@ -1,0 +1,10 @@
+; Godot 4 minimal project
+config_version=5
+
+[application]
+config/name="Kontrapunkt_MVP"
+run/main_scene="res://scenes/Main.tscn"
+
+[rendering]
+renderer/rendering_method="forward_plus"
+quality/driver/driver_name="Vulkan"

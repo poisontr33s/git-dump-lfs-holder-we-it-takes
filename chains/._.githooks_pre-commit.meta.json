@@ -1,0 +1,7 @@
+{
+  "file": "./.githooks/pre-commit",
+  "type": "githooks/pre-commit",
+  "chainable": false,
+  "profit_potential": false,
+  "timestamp": "2025-09-01T19:18:38.410Z"
+}

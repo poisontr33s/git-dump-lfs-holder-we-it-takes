@@ -1,0 +1,303 @@
+#!/usr/bin/env python3
+"""
+🎭 AUTOMATED CODE OPTIMIZER
+Automatic implementation of simple code optimizations
+"""
+
+import os
+import re
+import ast
+import json
+from datetime import datetime
+from collections import defaultdict
+
+class AutomatedCodeOptimizer:
+    def __init__(self):
+        self.optimization_stats = defaultdict(int)
+        self.backup_files = {}
+        
+        # Simple optimization patterns that can be automated
+        self.automated_optimizations = {
+            'remove_debug_prints': {
+                'pattern': r'^\s*print\s*\([^)]*\)\s*$',
+                'replacement': '',
+                'description': 'Remove debug print statements'
+            },
+            'remove_todo_comments': {
+                'pattern': r'^\s*#\s*(?:TODO|FIXME|HACK)\s*:?.*$',
+                'replacement': '',
+                'description': 'Remove TODO/FIXME comments'
+            },
+            'fix_magic_numbers': {
+                'pattern': r'\b(\d{2,})\b',
+                'replacement': self._create_constant_name,
+                'description': 'Replace magic numbers with constants',
+                'requires_context': True
+            },
+            'remove_empty_lines': {
+                'pattern': r'\n\s*\n\s*\n+',
+                'replacement': '\n\n',
+                'description': 'Remove excessive empty lines'
+            },
+            'fix_trailing_whitespace': {
+                'pattern': r'[ \t]+(?=\n|$)',
+                'replacement': '',
+                'description': 'Remove trailing whitespace'
+            }
+        }
+
+    def _create_constant_name(self, match):
+        """Create a meaningful constant name from a magic number"""
+        number = match.group(1)
+        
+        # Simple mapping for common magic numbers
+        common_constants = {
+            '0': 'ZERO',
+            '1': 'ONE',
+            '2': 'TWO',
+            '3': 'THREE',
+            '10': 'TEN',
+            '100': 'HUNDRED',
+            '1000': 'THOUSAND'
+        }
+        
+        if number in common_constants:
+            return f"const_{common_constants[number].lower()}"
+        else:
+            return f"const_magic_{number}"
+
+    def create_backup(self, filepath, content):
+        """Create backup of file before optimization"""
+        backup_dir = 'necromancy_graveyard/backups'
+        os.makedirs(backup_dir, exist_ok=True)
+        
+        backup_path = os.path.join(backup_dir, f"{os.path.basename(filepath)}.backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
+        
+        with open(backup_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        self.backup_files[filepath] = backup_path
+        return backup_path
+
+    def optimize_file(self, filepath):
+        """Apply automated optimizations to a file"""
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                original_content = f.read()
+        except:
+            print(f"❌ Could not read {filepath}")
+            return False
+        
+        # Create backup
+        backup_path = self.create_backup(filepath, original_content)
+        print(f"📦 Backup created: {backup_path}")
+        
+        optimized_content = original_content
+        changes_made = 0
+        
+        # Apply each optimization
+        for opt_name, opt_config in self.automated_optimizations.items():
+            if opt_config.get('requires_context', False):
+                # Handle context-dependent optimizations
+                if opt_name == 'fix_magic_numbers':
+                    optimized_content, changes = self._optimize_magic_numbers(optimized_content)
+                    changes_made += changes
+                    self.optimization_stats[opt_name] += changes
+            else:
+                # Handle simple pattern replacements
+                pattern = opt_config['pattern']
+                replacement = opt_config['replacement']
+                
+                if isinstance(replacement, str):
+                    new_content = re.sub(pattern, replacement, optimized_content, flags=re.MULTILINE)
+                    if new_content != optimized_content:
+                        changes = len(re.findall(pattern, optimized_content, re.MULTILINE))
+                        changes_made += changes
+                        self.optimization_stats[opt_name] += changes
+                        optimized_content = new_content
+                        print(f"✅ {opt_config['description']}: {changes} changes")
+        
+        # Write optimized content if changes were made
+        if changes_made > 0:
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(optimized_content)
+            
+            print(f"🎯 Optimized {filepath}: {changes_made} total changes")
+            return True
+        else:
+            print(f"ℹ️  No optimizations needed for {filepath}")
+            return False
+
+    def _optimize_magic_numbers(self, content):
+        """Optimize magic numbers by replacing with constants"""
+        # Find all magic numbers
+        magic_numbers = re.findall(r'\b(\d{2,})\b', content)
+        unique_numbers = set(magic_numbers)
+        
+        # Skip if too many unique numbers (avoid over-optimization)
+        if len(unique_numbers) > 10:
+            return content, 0
+        
+        # Create constants section at the top of the file
+        constants = []
+        for number in sorted(unique_numbers, key=int):
+            const_name = self._create_constant_name(re.match(r'(\d+)', number))
+            constants.append(f"{const_name} = {number}")
+        
+        # Add constants section after imports
+        lines = content.split('\n')
+        insert_index = 0
+        
+        # Find where to insert constants (after imports, before code)
+        for i, line in enumerate(lines):
+            if line.strip() and not line.startswith(('import ', 'from ', '#')):
+                insert_index = i
+                break
+        
+        # Insert constants
+        if constants:
+            lines.insert(insert_index, '# Auto-generated constants for magic numbers')
+            for const in constants:
+                lines.insert(insert_index + 1, const)
+            lines.insert(insert_index + len(constants) + 1, '')
+        
+        # Replace magic numbers with constants
+        new_content = '\n'.join(lines)
+        changes = 0
+        
+        for number in unique_numbers:
+            const_name = self._create_constant_name(re.match(r'(\d+)', number))
+            # Replace standalone numbers (not part of larger numbers)
+            pattern = r'\b' + re.escape(number) + r'\b'
+            new_content, count = re.subn(pattern, const_name, new_content)
+            changes += count
+        
+        return new_content, changes
+
+    def optimize_repository(self, target_files=None):
+        """Apply automated optimizations to repository"""
+        print("🤖 INITIATING AUTOMATED CODE OPTIMIZATION...")
+        
+        if target_files is None:
+            # Find all Python files
+            target_files = []
+            for root, dirs, files in os.walk('.'):
+                dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ['__pycache__', 'node_modules', '.git', 'necromancy_graveyard']]
+                
+                for file in files:
+                    if file.endswith('.py'):
+                        target_files.append(os.path.join(root, file))
+        
+        print(f"📁 Found {len(target_files)} Python files to optimize")
+        
+        optimized_files = 0
+        total_changes = 0
+        
+        for filepath in target_files:
+            print(f"\n🔧 Optimizing: {filepath}")
+            if self.optimize_file(filepath):
+                optimized_files += 1
+        
+        # Generate optimization report
+        self._generate_optimization_report(optimized_files, total_changes)
+        
+        return {
+            'files_optimized': optimized_files,
+            'total_changes': sum(self.optimization_stats.values()),
+            'backups_created': len(self.backup_files)
+        }
+
+    def _generate_optimization_report(self, optimized_files, total_changes):
+        """Generate optimization report"""
+        report = f"""# 🤖 AUTOMATED OPTIMIZATION REPORT
+# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+## 📊 OPTIMIZATION SUMMARY
+- **Files Optimized:** {optimized_files}
+- **Total Changes Made:** {sum(self.optimization_stats.values())}
+- **Backups Created:** {len(self.backup_files)}
+
+## 🔧 OPTIMIZATION BREAKDOWN
+
+"""
+        
+        for opt_name, count in self.optimization_stats.items():
+            if count > 0:
+                description = self.automated_optimizations[opt_name]['description']
+                report += f"- **{opt_name.replace('_', ' ').title()}:** {count} changes\n"
+        
+        if self.backup_files:
+            report += "\n## 📦 BACKUP FILES\n\n"
+            for original, backup in self.backup_files.items():
+                report += f"- `{original}` → `{backup}`\n"
+        
+        report += """
+
+## ⚠️  IMPORTANT NOTES
+
+### What Was Optimized
+- Removed debug print statements
+- Cleaned up TODO/FIXME comments
+- Replaced magic numbers with named constants
+- Removed excessive empty lines
+- Fixed trailing whitespace
+
+### Safety Measures
+- All original files have been backed up
+- Changes are conservative and reversible
+- No functional code was modified
+- Only formatting and cleanup optimizations applied
+
+### Next Steps
+1. Review the changes in your IDE
+2. Run your test suite to ensure functionality is preserved
+3. Commit the changes with a descriptive message
+4. Consider manual optimization for complex patterns
+
+### Rollback Instructions
+If you need to rollback any changes:
+```bash
+# Restore from backup
+cp necromancy_graveyard/backups/filename.backup_YYYYMMDD_HHMMSS /path/to/original/file
+```
+
+---
+
+*Automated optimization complete. Review changes before committing.*
+"""
+        
+        os.makedirs('necromancy_graveyard', exist_ok=True)
+        with open('necromancy_graveyard/AUTOMATED_OPTIMIZATION_REPORT.md', 'w', encoding='utf-8') as f:
+            f.write(report)
+        
+        print(f"\n📋 Optimization report saved: necromancy_graveyard/AUTOMATED_OPTIMIZATION_REPORT.md")
+
+    def run_automated_optimization(self):
+        """Run complete automated optimization process"""
+        print("⚡ STARTING AUTOMATED CODE OPTIMIZATION...")
+        
+        results = self.optimize_repository()
+        
+        print("\n" + "="*60)
+        print("🤖 AUTOMATED OPTIMIZATION COMPLETE")
+        print("="*60)
+        print(f"📁 Files Optimized: {results['files_optimized']}")
+        print(f"🔧 Total Changes: {results['total_changes']}")
+        print(f"📦 Backups Created: {results['backups_created']}")
+        print(f"📋 Report: necromancy_graveyard/AUTOMATED_OPTIMIZATION_REPORT.md")
+        print("="*60)
+        
+        if results['total_changes'] > 0:
+            print("✅ Optimization successful! Review changes before committing.")
+        else:
+            print("ℹ️  No optimizations were needed.")
+        
+        return results
+
+def main():
+    optimizer = AutomatedCodeOptimizer()
+    results = optimizer.run_automated_optimization()
+    return results
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,935 @@
+{
+  "scan_timestamp": "2025-09-02T15:56:46.448211",
+  "total_deletions_found": 188,
+  "deletion_commits": [
+    {
+      "hash": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)",
+      "date": "2025-08-23 14:56:25 +0200",
+      "author": "E.s.Abbr.",
+      "deleted_files": [
+        ".github/runner-logging/BIDIRECTIONAL_LEARNING_LOG.md",
+        ".github/runner-logging/CHAOS_ENGINEERING_SUMMARY.md",
+        ".github/runner-logging/INTELLIGENCE_SYSTEM_README.md",
+        ".github/runner-logging/README.md",
+        ".github/runner-logging/error-classifier/psycho_noir_classifier.py",
+        ".github/runner-logging/failure-orchestrator/README.md",
+        ".github/runner-logging/failure-orchestrator/chaos_engineering.py",
+        ".github/runner-logging/integration/chaos_integration.sh",
+        ".github/runner-logging/integration/ci_integration.sh",
+        ".github/runner-logging/intelligence-engine/psycho_noir_intelligence.py",
+        ".github/runner-logging/log-aggregator/psycho_noir_aggregator.py",
+        ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/current_status.json",
+        ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/interaction_log.json",
+        ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/queue.json",
+        ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/silence_3b4c53dc-f2dc-451f-b9e9-eb672e1b1dc7.json",
+        ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/silence_ec6ef9a6-d56b-4638-b89d-888351ddb23a.json",
+        ".github/runner-logging/passive-observer/README.md",
+        ".github/runner-logging/passive-observer/activate_for_comment.py",
+        ".github/runner-logging/passive-observer/mention_handler.py",
+        ".github/runner-logging/passive-observer/queue_system.py",
+        ".github/runner-logging/passive-observer/response_gate.py",
+        ".github/runner-logging/passive-observer/silence_enforcer.py",
+        ".github/runner-logging/reporting/psycho_noir_reports.py",
+        ".github/workflows/chaos-ci.yml",
+        ".github/workflows/enhanced-ci.yml",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/00/5e/79ad95e97bbb6b984ca56da1351afe78c27eabc14d376a9b6f46854818ff18ca4a12c6a7552d5d537f07e504213f42d1e6aad3fc49695310da9b2bc18249\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/05/1e/d5bc30951cefaadb10445ac9314ba0c9135a919dbec3c7352ba206fbd425a849f89c07162c88019df8a9749a6abf329ac6f7202b464cab4314cee978cccc\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/05/78/1097d91fe164c23c20a99851a8264cfffae86f9bb87b3c529463187ba9aad0777111df7bc71bffea684f1e376e65d3b62a64fa475d4f48d3d97f443e5a19\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/09/75f49fe0f876e36efe18de614d3571442ffe6dfca0a0f0f382b94a9de2b30a8c61be8f5c9b111f37871579f332fe7452353d392ddc634548746df9df2a11\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/91/b0355cc0fcd021f943e23c45a9979b0c2bf076b13d2ae4b33c3ba29e625d662e842638febebcea909e343a6da0e46aab69cdb68be8dc52773ae4df54682e\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/e4/76a7b3c262b983fec3dec062a858a80b8adf77d6f6aa4b8f9d3dce4a4f92232c269f97c3af727855c45e70b85c90e9be8dbdb56cbc5f0a65fcfeaccbee8c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/14/d0/080560b1f6a7118681dc81c27482f53b48dd65614d995ee49f974e1b482e4ea6f0c71722428dd347a263d7c6342508153aed85bae0fcd8eff548107ec5db\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/17/7d/cdb078f7455955d0000936bab9bbbaec5901ff3d169f842a585b74c7965ab512fa4dfad77d741203532ba959e683793a9aca10d672a47abf7e742ca9cb2b\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/1f/c1e451e31497f559db3a335432630ead99d4935aa06134610ace94b19d87ca41f7691808956417e66d366967feff7593b115eff9b79faa360135d3ce304f\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/bb/958b22422b0f7f73434276e71a1532877dbd26412cd1ad166ff93d24d4eee5e6d3d8cb996ea4807f1d7dd83e59ed150866f1419f2fa91a55583e0734f606\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/d6/0eedaeb5991d1f3a502cbc2f7fac81dfecbf7ab0173a7445b378ebbe28079ae5b6724113c8a688eb5682380171894bfc9cbbf7c14dd2eb524038383aef8f\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/1c/9c/12f67e64a078278cacd7ec0ef95187effc9d9e167c92ac2dc3d8522541e0c60c8b809ffe111258ec97c1700c9464028151370a7880bf1f04692d180e7daf\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/24/7a/fb6af5d8c29fde3b66940849673e059428ae8e7d3657fdab1f44e76137fb98fea2634868dcc7a9f5a69293b551ecfa996eada9b24f0bba7a9fb94fb93a33\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/2a/93/40450037230bfe8d3034bad51555bae1f8996baf516fd1ee7a186cc014e5cdedd93f16f89a0d6f0b1e62b9d8395c1f858fda7ea023cbcdd5a7ac045828f7\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/30/a0/2d6eeb17d78c02c4357ddacd4d14f5a96f35aab1c282f723b4f60a1f56b87889b99da0fc172a8ff6369a6c46304be0b9de18c36d3bfd6e4a3fc87ba69b48\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/34/8c/b7a00169f6c85d6b5f61cb81cad0745358ab4f26619d9efcb0bb4d673aa342daf660f99f9fbc90f1a4c400f3c79bd88f4471a7dc763620b03b619d84ef1b\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/37/03/59448ec6a621fc3e734a719eff11bdd7599110160f9d72d423dd2d9097597404b6562af37778e8d6925cf9b68ec1eff111c72e32d03d59502c8f0bd6478c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/37/db/58b1541fd8a6ddc00a51dc01c5ef1d1294642a4da56beb41ce47c521ca073169795d9d9c3ad40e762522e343c6da727bc849d9e1b9ec96ab1a8f6c9c5411\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/39/55/686f0d88b9b37f19262cc444e2fa039eeca6b9f4414c47fb70394dc96f61a728a78c189079486514ac4cf7485566240494759533cbcdec2cd350da066c96\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/40/b7/66777cdb75b9c804840af3246d5979099739137b2c98f4be26ea35fde52c3a5038f8b5cb6d1c2cb95818ba7ea82a135c60f9f7bf6434f8f5ba71d96d4dda\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/48/74/8a14769d8d5039a11e0f3ea86d01575c056c1161577a83a7005e721b4622307361213eb4ee29405d48bbe510ac883f71827fcf5f96dbdc6623fd30c140d7\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/51/7d/0ec2661161041eb5facb11979ec0814523ec124e87c2fa93012cdb87dd152ebbfc731b5a33f38502103392a1094dddf678f80ce6579d1962f1aa90c87dc8\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/52/38/1aa6e99695b3219018334fb624739617513e3a17488abbc4865ead1b7303f9773fe1d0f963e9e9c9aa3cf565bab697959aa989eb55bc16396332177178ee\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/63/52/10a24f7cdb5702f689c2c79a2d8057d19bb2e6f88fb0c313b1ef7f0cfd62cf67d438da6e081b95b414d5fc58b2f6818319a37264b97207d833a958cfaac0\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/68/25/911730721a8cdd0002bf7abc56992ac00ec9859a9e755fc27e3f705a370ff7d8f11d77dc72eb301ba7060dfbe5c1d6350fb3f8cc0cd5071a613de737c72c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/6c/de/fdf2015f417faf8b0dd1ef2ac6591aa7acdda84641245238e5e09367e04f06c716e3b46dc56eb108218de5f3f86bc14c0878266f8b842e3933f8304ad5ba\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/80/a5/e3e402eb29640bb181bd8e54d1991ff12a5bb11d5f99f501303488027ccd7fbb03cc0aecd55678799b04ddf8eb8165cc1220c6eab2c356466d65139d5069\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/97/70/62914c6f3ce727e44ef87598aae411ac4dbe7213085a4d2cdc714eade2c0ce1fc356242b2d28ee504f60afb45a0ae85d2c68bee9f711c0a873a508f27280\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/9f/93/3ce797ca6f64ac7cc222145a15ac0047242f10b47c15c7e98758fdd0704a811d889e9e3e5d1d28236f1b42d161195d8b78c1c0faceb4049433e116e6607c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a3/63/94daa25ee2a542d599973952ba0c122978e1c2a4f698baa0dc3047ca4e882d0cf82799e76a61e89c3fadc0b2e398b34d2b016800c946feefff3414b7159b\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a3/94/68cbab4d1b848bfc53a408037a4738e26a4652db944b605adc32db49a9b75df015ab9c0f9f1b3e7b88de4f6f4ea9bc11af979810d01e3c74996c957be84e\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a7/3a/ada77d672effd714ecd71aebe109bf2a863993568e6f8d5935f571380919525b3d0aa1e2776f0f57b00ee73a9f5805fe2a1e3c01c640f329c304fc9dbd62\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a8/67/7acbe95d31739427686a74dca1396831983dca75a497635b997390c9347284b3f214f187cbee05343618a3087ecd6e6ed975b9e8ebaa16368fd46e133847\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/aa/e2/505e54d25062f62c7f52517a3c570b18e2ca1a9e1828e8b3529bce04d4b05c13cb373b4c29762473c91f73fd9649325316bf7eea38e6fda5d26531410a15\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/b8/11/d4dcbddccec232617297f3c7ddac6a2fc5d482a13183459e92617b524712d95331e0e4fffae87b7aba85251eef4466877e8a75e12a8dea420c17513ff2d7\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/c5/4b/683e432081bcf430fc8f8885abd4aa7869e5898c367a48cbd44618a68dd660b11b83a65179fecf617201a1c97321b3eeafa67ba8899da4162bb714c9d2f1\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/c8/6c/92d75079d70ba41af0b2dfd29b1fbb6e61cd905a62a1b6a69b6a92715c7a0724d5579a446ca161e8825cdb0b415fbc648d17f9714163043ae1c6ca730249\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/cd/b0/7dac22404f5adb8e25436f686a2851cd60bc60b64f0d511c59dc86700f717a36dc5b5d94029e74a2d4b931f880e885d3e5169db6db05402c885e64941212\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f0/ed/bb387d85a7712d84cb7795bcb24335dccf813391e8820a97b03711abca66f36b31589226aebb5a7aa38a68755c8f10ebb99dd5e11a1e56b41f75f7aa456c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f3/ef/56a9e6db173a57f4e47e59ae8edbd6ac22881e44ccdc1ad00835da4c1c7c80835d1fd3969215505b704a867ff3d7c35123019faadbf6c4060dc3beeacadd\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f7/3f/1365a18cd697ecc18797ad4a733eb931f149d661d849725b2260c9bac7fc39fa737ef137ff2e70207cb1900a6e7da803b153c5b01c4ab6bcdc05ea2e23f9\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/0f/75/0ed8f4d0f3a4cf2fdb3f1e84667ab02d6f97a1b8bfb53baeb358cfad135a\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/17/bb/26f9ed24289b8784a1d9fa8ef0689fba963d8fce2a3f9c207b9eee595339\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/22/cc/2f522a79b1c6a7bf14e0dc737883a840d06248adf98e2a4b97a91f7cccf3\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/2a/ab/38f94f4c688dbab985f10a06035c8391b0097c90372f2cb6b7c72a81d73d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/37/89/aa1fdc2937f96dadc16c245793d60ae617b505e3fecd193bb7712fefe677\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/3d/47/fed9ffb5d9984c4e3d3fdae39b0edd1e078c5ca753d69e8f6f4ca75b6416\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/46/33/b2abd228ca638980cfe42d12d418a89da30648e35d497277d5713e38c7ed\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/4a/72/5f9e4f229cb04e29c07834547b435fad123e069f88d92499e29db0d9e35c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/4d/11/7187e7fc42ccba59e77df7bbf53d622cedcd8d775ef19b4e431b4de8eaed\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/54/f2/8564e828d51dff28fbe936e2a9096759841c3eac4056b72f2cd638e7ab50\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/5b/93/97e8d6081ac64bc68ba5fe52511d9f7d8928ad26edbf0f08ba3c733391a0\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/5d/ad/1cb61ae613816d5f049cd87dd24009e364126f73726b1f8eab2350fec505\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/61/86/40d9643cdf43595a8d97c6cf0b5ea8ea9456c007a5ee0f8145bfdf78a2ea\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/67/5f/28c12321d8b73cabed8e5f6d334222738f3757d989855c298742f545c38d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/72/ba/6052f9b7b7c39d12067339763f1c9b7e1a2d9ca4312a5161bc6356a7f60d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/72/e0/54dfe463c5b99f79ec2916da9c9fb1d1bfa18f5225ae5f110abb5920558b\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/78/42/27dfe3fe7f1702c67c2d376c633a4b914d7783c9b5510e257897a6e6f86a\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/79/a3/244c3ff6ff08892188d6652a56a606458abaa22dba0b74a8a2c6ee9c1b7b\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/7b/ed/fafead1b4f3760fc22dbd7c3f9c8accc519ed94522d16de5b0dca1d5e86a\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/7c/e8/d64b456602776243537bce3031a9657ed90b24e229b3a2ec727eaa9bf599\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/83/ef/aff47278d7ef72e864717a2bb5e09eca947c1b761d2a3f590af1b5f1b379\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/84/87/eb20fb9a76740381a2d50d34d9e6c5c6f9fdbbd1bf2e497ece0dd753649c\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/86/e1/b38b4dbd7dbc5690eac65ebb2e6f52b388a009a91e9b1b5ba2e523182abd\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/8b/ee/c2ea22c4bf9c5ddcd0333850e543442de3364478847c7ebc382b1ff3a70d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/8e/58/1ce1355f39c75fa063f8dc1c958c11d57446438253b206afc18efb9f28c9\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/90/53/8c061789582f306e5cd49035ee51582e6495bd621f643d2451345dc3b3dc\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/9d/6b/339b9832e323abb280eb874ec64f59486423026430be7b1c2ec42ca7e1b7\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/a0/31/db76ddf829b918559e0c79c0da7b606daa1228abf277b09a4435068a7a81\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/a6/90/a0c70e43d2d3c26d0d468b972e3e63a9c451efaa75037f65732894407784\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/b3/b3/05a8af0a671c32b41850c1223429fe74449cfcb4c7cac54a9c7c213dfcae\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/b9/bf/1e3daaea93f68bf9dcdd7e978b6dd8f43627145028c05ccc5d6187e7a25d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/c3/8c/b0aa0df14c7a78e188080e7f466332e730fda2740c7de498b9198c2f5d4d\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/c8/9e/79ae818dc54868007f98687a7c4843206e099cf99094ccc4cd27d777f46e\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/ca/c5/1ba9bafc3cdb872601b504de91eaa342519dfa4fd0eba7fc6ff0ffcf00dd\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/dd/a3/3a65eccea4ca04855d7844772466a7bd372d2aafee069252572fec3cc2bb\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e1/87/8e7ff11dd0fe25b7d40c7f2721c5c2d99d60b0990695b20923170f8eec18\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e1/f3/e8fdc76c3a50f4affaac8b03ab40b0b1d9e9dd7cabb58b12d7365eb83f4f\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e2/db/35a07ca94b6294d4da9beb91f5f126663b81b96d0d02676f1c4d7bd1b992\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e4/94/93b8de52deebae0492f687a349d097ed0b3cada10b77f539dd1f3b0c6aca\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/f7/05/7f3d7ab71095c636b2fd54a6dac2eb353d3ccea0f2bdfebf43fc2a99a7ab\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/f7/3f/9c0fad120c917808893aac66f088217af3f880bb8e51845eec83481f0272\"",
+        "backend/python/__init__.py",
+        "backend/python/setup.py",
+        "backend/python/test_backend.py"
+      ]
+    },
+    {
+      "hash": "bc5142c33371dc2220ec14e537c39596117536da",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)",
+      "date": "2025-08-22 03:05:41 +0200",
+      "author": "Copilot",
+      "deleted_files": [
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-07-27T15_41_27_544Z-debug-0.log\"",
+        "node_modules/.bin/jest",
+        "node_modules/argparse/index.js",
+        "node_modules/argparse/lib/action.js",
+        "node_modules/argparse/lib/action/append.js",
+        "node_modules/argparse/lib/action/append/constant.js",
+        "node_modules/argparse/lib/action/count.js",
+        "node_modules/argparse/lib/action/help.js",
+        "node_modules/argparse/lib/action/store.js",
+        "node_modules/argparse/lib/action/store/constant.js",
+        "node_modules/argparse/lib/action/store/false.js",
+        "node_modules/argparse/lib/action/store/true.js",
+        "node_modules/argparse/lib/action/subparsers.js",
+        "node_modules/argparse/lib/action/version.js",
+        "node_modules/argparse/lib/action_container.js",
+        "node_modules/argparse/lib/argparse.js",
+        "node_modules/argparse/lib/argument/error.js",
+        "node_modules/argparse/lib/argument/exclusive.js",
+        "node_modules/argparse/lib/argument/group.js",
+        "node_modules/argparse/lib/argument_parser.js",
+        "node_modules/argparse/lib/const.js",
+        "node_modules/argparse/lib/help/added_formatters.js",
+        "node_modules/argparse/lib/help/formatter.js",
+        "node_modules/argparse/lib/namespace.js",
+        "node_modules/argparse/lib/utils.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/constants.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/index.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/instrumenter.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/read-coverage.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/source-coverage.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/visitor.js",
+        "node_modules/lru-cache/index.js",
+        "node_modules/semver/semver.js",
+        "node_modules/source-map/CHANGELOG.md",
+        "node_modules/source-map/dist/source-map.debug.js",
+        "node_modules/source-map/dist/source-map.min.js",
+        "node_modules/source-map/dist/source-map.min.js.map",
+        "node_modules/source-map/lib/quick-sort.js"
+      ]
+    },
+    {
+      "hash": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "message": "Update package-lock.json and validate Jules system implementation",
+      "date": "2025-08-21 00:07:26 +0000",
+      "author": "copilot-swe-agent[bot]",
+      "deleted_files": [
+        "node_modules/argparse/index.js",
+        "node_modules/argparse/lib/action.js",
+        "node_modules/argparse/lib/action/append.js",
+        "node_modules/argparse/lib/action/append/constant.js",
+        "node_modules/argparse/lib/action/count.js",
+        "node_modules/argparse/lib/action/help.js",
+        "node_modules/argparse/lib/action/store.js",
+        "node_modules/argparse/lib/action/store/constant.js",
+        "node_modules/argparse/lib/action/store/false.js",
+        "node_modules/argparse/lib/action/store/true.js",
+        "node_modules/argparse/lib/action/subparsers.js",
+        "node_modules/argparse/lib/action/version.js",
+        "node_modules/argparse/lib/action_container.js",
+        "node_modules/argparse/lib/argparse.js",
+        "node_modules/argparse/lib/argument/error.js",
+        "node_modules/argparse/lib/argument/exclusive.js",
+        "node_modules/argparse/lib/argument/group.js",
+        "node_modules/argparse/lib/argument_parser.js",
+        "node_modules/argparse/lib/const.js",
+        "node_modules/argparse/lib/help/added_formatters.js",
+        "node_modules/argparse/lib/help/formatter.js",
+        "node_modules/argparse/lib/namespace.js",
+        "node_modules/argparse/lib/utils.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/constants.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/index.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/instrumenter.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/read-coverage.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/source-coverage.js",
+        "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/visitor.js",
+        "node_modules/lru-cache/index.js",
+        "node_modules/semver/semver.js",
+        "node_modules/source-map/CHANGELOG.md",
+        "node_modules/source-map/dist/source-map.debug.js",
+        "node_modules/source-map/dist/source-map.min.js",
+        "node_modules/source-map/dist/source-map.min.js.map",
+        "node_modules/source-map/lib/quick-sort.js"
+      ]
+    },
+    {
+      "hash": "1f486e715f37ca0d27ea5355f30bb4255fb871bc",
+      "message": "Implement Jules caching and dependency management system",
+      "date": "2025-08-21 00:06:14 +0000",
+      "author": "copilot-swe-agent[bot]",
+      "deleted_files": [
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-07-27T15_41_27_544Z-debug-0.log\"",
+        "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-08-20T23_54_51_731Z-debug-0.log\""
+      ]
+    },
+    {
+      "hash": "5f1fe5b7c25c649239ebdec52703b61b8b02683f",
+      "message": "poisontr33s",
+      "date": "2025-05-14 09:36:52 +0200",
+      "author": "vesseengina",
+      "deleted_files": [
+        ".github/workflows/rubyonrails.yml",
+        "PsychoNoir_CommandCore.code-workspace.code-workspace"
+      ]
+    }
+  ],
+  "critical_deletions": [
+    {
+      "file": ".github/runner-logging/BIDIRECTIONAL_LEARNING_LOG.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/CHAOS_ENGINEERING_SUMMARY.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/INTELLIGENCE_SYSTEM_README.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/README.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/error-classifier/psycho_noir_classifier.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/failure-orchestrator/README.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/failure-orchestrator/chaos_engineering.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/integration/chaos_integration.sh",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/integration/ci_integration.sh",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/intelligence-engine/psycho_noir_intelligence.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/log-aggregator/psycho_noir_aggregator.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/current_status.json",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/interaction_log.json",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/queue.json",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/silence_3b4c53dc-f2dc-451f-b9e9-eb672e1b1dc7.json",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/.github/runner-logging/passive-observer/silence_ec6ef9a6-d56b-4638-b89d-888351ddb23a.json",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/README.md",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/activate_for_comment.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/mention_handler.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/queue_system.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/response_gate.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/passive-observer/silence_enforcer.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/runner-logging/reporting/psycho_noir_reports.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/workflows/chaos-ci.yml",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": ".github/workflows/enhanced-ci.yml",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": "backend/python/__init__.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": "backend/python/setup.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": "backend/python/test_backend.py",
+      "commit": "5054d69474fbdbac2948599de13123c8f0175d60",
+      "date": "2025-08-23 14:56:25 +0200",
+      "message": "Revert \"Implement comprehensive chaos engineering system with passive observe\u2026\" (#9)"
+    },
+    {
+      "file": "node_modules/argparse/index.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/append.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/append/constant.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/count.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/help.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/constant.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/false.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/true.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/subparsers.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/version.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/action_container.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/argparse.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/error.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/exclusive.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/group.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument_parser.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/const.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/help/added_formatters.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/help/formatter.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/namespace.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/lib/utils.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/constants.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/index.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/instrumenter.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/read-coverage.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/source-coverage.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/visitor.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/lru-cache/index.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/semver/semver.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/source-map/CHANGELOG.md",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/source-map/dist/source-map.debug.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/source-map/dist/source-map.min.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/source-map/lib/quick-sort.js",
+      "commit": "bc5142c33371dc2220ec14e537c39596117536da",
+      "date": "2025-08-22 03:05:41 +0200",
+      "message": "Implement comprehensive chaos engineering system with passive observer queue for bidirectional learning validation (#4)"
+    },
+    {
+      "file": "node_modules/argparse/index.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/append.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/append/constant.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/count.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/help.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/constant.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/false.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/store/true.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/subparsers.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action/version.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/action_container.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/argparse.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/error.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/exclusive.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument/group.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/argument_parser.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/const.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/help/added_formatters.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/help/formatter.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/namespace.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/argparse/lib/utils.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/constants.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/index.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/instrumenter.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/read-coverage.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/source-coverage.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/babel-plugin-istanbul/node_modules/istanbul-lib-instrument/src/visitor.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/lru-cache/index.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/semver/semver.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/source-map/CHANGELOG.md",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/source-map/dist/source-map.debug.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/source-map/dist/source-map.min.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": "node_modules/source-map/lib/quick-sort.js",
+      "commit": "7955789b82a6b7f136b8c100c1be6ac3ca03725a",
+      "date": "2025-08-21 00:07:26 +0000",
+      "message": "Update package-lock.json and validate Jules system implementation"
+    },
+    {
+      "file": ".github/workflows/rubyonrails.yml",
+      "commit": "5f1fe5b7c25c649239ebdec52703b61b8b02683f",
+      "date": "2025-05-14 09:36:52 +0200",
+      "message": "poisontr33s"
+    }
+  ],
+  "npm_cache_deletions": [
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/00/5e/79ad95e97bbb6b984ca56da1351afe78c27eabc14d376a9b6f46854818ff18ca4a12c6a7552d5d537f07e504213f42d1e6aad3fc49695310da9b2bc18249\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/05/1e/d5bc30951cefaadb10445ac9314ba0c9135a919dbec3c7352ba206fbd425a849f89c07162c88019df8a9749a6abf329ac6f7202b464cab4314cee978cccc\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/05/78/1097d91fe164c23c20a99851a8264cfffae86f9bb87b3c529463187ba9aad0777111df7bc71bffea684f1e376e65d3b62a64fa475d4f48d3d97f443e5a19\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/09/75f49fe0f876e36efe18de614d3571442ffe6dfca0a0f0f382b94a9de2b30a8c61be8f5c9b111f37871579f332fe7452353d392ddc634548746df9df2a11\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/91/b0355cc0fcd021f943e23c45a9979b0c2bf076b13d2ae4b33c3ba29e625d662e842638febebcea909e343a6da0e46aab69cdb68be8dc52773ae4df54682e\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/09/e4/76a7b3c262b983fec3dec062a858a80b8adf77d6f6aa4b8f9d3dce4a4f92232c269f97c3af727855c45e70b85c90e9be8dbdb56cbc5f0a65fcfeaccbee8c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/14/d0/080560b1f6a7118681dc81c27482f53b48dd65614d995ee49f974e1b482e4ea6f0c71722428dd347a263d7c6342508153aed85bae0fcd8eff548107ec5db\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/17/7d/cdb078f7455955d0000936bab9bbbaec5901ff3d169f842a585b74c7965ab512fa4dfad77d741203532ba959e683793a9aca10d672a47abf7e742ca9cb2b\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/1f/c1e451e31497f559db3a335432630ead99d4935aa06134610ace94b19d87ca41f7691808956417e66d366967feff7593b115eff9b79faa360135d3ce304f\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/bb/958b22422b0f7f73434276e71a1532877dbd26412cd1ad166ff93d24d4eee5e6d3d8cb996ea4807f1d7dd83e59ed150866f1419f2fa91a55583e0734f606\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/19/d6/0eedaeb5991d1f3a502cbc2f7fac81dfecbf7ab0173a7445b378ebbe28079ae5b6724113c8a688eb5682380171894bfc9cbbf7c14dd2eb524038383aef8f\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/1c/9c/12f67e64a078278cacd7ec0ef95187effc9d9e167c92ac2dc3d8522541e0c60c8b809ffe111258ec97c1700c9464028151370a7880bf1f04692d180e7daf\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/24/7a/fb6af5d8c29fde3b66940849673e059428ae8e7d3657fdab1f44e76137fb98fea2634868dcc7a9f5a69293b551ecfa996eada9b24f0bba7a9fb94fb93a33\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/2a/93/40450037230bfe8d3034bad51555bae1f8996baf516fd1ee7a186cc014e5cdedd93f16f89a0d6f0b1e62b9d8395c1f858fda7ea023cbcdd5a7ac045828f7\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/30/a0/2d6eeb17d78c02c4357ddacd4d14f5a96f35aab1c282f723b4f60a1f56b87889b99da0fc172a8ff6369a6c46304be0b9de18c36d3bfd6e4a3fc87ba69b48\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/34/8c/b7a00169f6c85d6b5f61cb81cad0745358ab4f26619d9efcb0bb4d673aa342daf660f99f9fbc90f1a4c400f3c79bd88f4471a7dc763620b03b619d84ef1b\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/37/03/59448ec6a621fc3e734a719eff11bdd7599110160f9d72d423dd2d9097597404b6562af37778e8d6925cf9b68ec1eff111c72e32d03d59502c8f0bd6478c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/37/db/58b1541fd8a6ddc00a51dc01c5ef1d1294642a4da56beb41ce47c521ca073169795d9d9c3ad40e762522e343c6da727bc849d9e1b9ec96ab1a8f6c9c5411\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/39/55/686f0d88b9b37f19262cc444e2fa039eeca6b9f4414c47fb70394dc96f61a728a78c189079486514ac4cf7485566240494759533cbcdec2cd350da066c96\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/40/b7/66777cdb75b9c804840af3246d5979099739137b2c98f4be26ea35fde52c3a5038f8b5cb6d1c2cb95818ba7ea82a135c60f9f7bf6434f8f5ba71d96d4dda\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/48/74/8a14769d8d5039a11e0f3ea86d01575c056c1161577a83a7005e721b4622307361213eb4ee29405d48bbe510ac883f71827fcf5f96dbdc6623fd30c140d7\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/51/7d/0ec2661161041eb5facb11979ec0814523ec124e87c2fa93012cdb87dd152ebbfc731b5a33f38502103392a1094dddf678f80ce6579d1962f1aa90c87dc8\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/52/38/1aa6e99695b3219018334fb624739617513e3a17488abbc4865ead1b7303f9773fe1d0f963e9e9c9aa3cf565bab697959aa989eb55bc16396332177178ee\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/63/52/10a24f7cdb5702f689c2c79a2d8057d19bb2e6f88fb0c313b1ef7f0cfd62cf67d438da6e081b95b414d5fc58b2f6818319a37264b97207d833a958cfaac0\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/68/25/911730721a8cdd0002bf7abc56992ac00ec9859a9e755fc27e3f705a370ff7d8f11d77dc72eb301ba7060dfbe5c1d6350fb3f8cc0cd5071a613de737c72c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/6c/de/fdf2015f417faf8b0dd1ef2ac6591aa7acdda84641245238e5e09367e04f06c716e3b46dc56eb108218de5f3f86bc14c0878266f8b842e3933f8304ad5ba\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/80/a5/e3e402eb29640bb181bd8e54d1991ff12a5bb11d5f99f501303488027ccd7fbb03cc0aecd55678799b04ddf8eb8165cc1220c6eab2c356466d65139d5069\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/97/70/62914c6f3ce727e44ef87598aae411ac4dbe7213085a4d2cdc714eade2c0ce1fc356242b2d28ee504f60afb45a0ae85d2c68bee9f711c0a873a508f27280\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/9f/93/3ce797ca6f64ac7cc222145a15ac0047242f10b47c15c7e98758fdd0704a811d889e9e3e5d1d28236f1b42d161195d8b78c1c0faceb4049433e116e6607c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a3/63/94daa25ee2a542d599973952ba0c122978e1c2a4f698baa0dc3047ca4e882d0cf82799e76a61e89c3fadc0b2e398b34d2b016800c946feefff3414b7159b\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a3/94/68cbab4d1b848bfc53a408037a4738e26a4652db944b605adc32db49a9b75df015ab9c0f9f1b3e7b88de4f6f4ea9bc11af979810d01e3c74996c957be84e\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a7/3a/ada77d672effd714ecd71aebe109bf2a863993568e6f8d5935f571380919525b3d0aa1e2776f0f57b00ee73a9f5805fe2a1e3c01c640f329c304fc9dbd62\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/a8/67/7acbe95d31739427686a74dca1396831983dca75a497635b997390c9347284b3f214f187cbee05343618a3087ecd6e6ed975b9e8ebaa16368fd46e133847\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/aa/e2/505e54d25062f62c7f52517a3c570b18e2ca1a9e1828e8b3529bce04d4b05c13cb373b4c29762473c91f73fd9649325316bf7eea38e6fda5d26531410a15\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/b8/11/d4dcbddccec232617297f3c7ddac6a2fc5d482a13183459e92617b524712d95331e0e4fffae87b7aba85251eef4466877e8a75e12a8dea420c17513ff2d7\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/c5/4b/683e432081bcf430fc8f8885abd4aa7869e5898c367a48cbd44618a68dd660b11b83a65179fecf617201a1c97321b3eeafa67ba8899da4162bb714c9d2f1\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/c8/6c/92d75079d70ba41af0b2dfd29b1fbb6e61cd905a62a1b6a69b6a92715c7a0724d5579a446ca161e8825cdb0b415fbc648d17f9714163043ae1c6ca730249\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/cd/b0/7dac22404f5adb8e25436f686a2851cd60bc60b64f0d511c59dc86700f717a36dc5b5d94029e74a2d4b931f880e885d3e5169db6db05402c885e64941212\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f0/ed/bb387d85a7712d84cb7795bcb24335dccf813391e8820a97b03711abca66f36b31589226aebb5a7aa38a68755c8f10ebb99dd5e11a1e56b41f75f7aa456c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f3/ef/56a9e6db173a57f4e47e59ae8edbd6ac22881e44ccdc1ad00835da4c1c7c80835d1fd3969215505b704a867ff3d7c35123019faadbf6c4060dc3beeacadd\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/content-v2/sha512/f7/3f/1365a18cd697ecc18797ad4a733eb931f149d661d849725b2260c9bac7fc39fa737ef137ff2e70207cb1900a6e7da803b153c5b01c4ab6bcdc05ea2e23f9\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/0f/75/0ed8f4d0f3a4cf2fdb3f1e84667ab02d6f97a1b8bfb53baeb358cfad135a\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/17/bb/26f9ed24289b8784a1d9fa8ef0689fba963d8fce2a3f9c207b9eee595339\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/22/cc/2f522a79b1c6a7bf14e0dc737883a840d06248adf98e2a4b97a91f7cccf3\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/2a/ab/38f94f4c688dbab985f10a06035c8391b0097c90372f2cb6b7c72a81d73d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/37/89/aa1fdc2937f96dadc16c245793d60ae617b505e3fecd193bb7712fefe677\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/3d/47/fed9ffb5d9984c4e3d3fdae39b0edd1e078c5ca753d69e8f6f4ca75b6416\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/46/33/b2abd228ca638980cfe42d12d418a89da30648e35d497277d5713e38c7ed\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/4a/72/5f9e4f229cb04e29c07834547b435fad123e069f88d92499e29db0d9e35c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/4d/11/7187e7fc42ccba59e77df7bbf53d622cedcd8d775ef19b4e431b4de8eaed\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/54/f2/8564e828d51dff28fbe936e2a9096759841c3eac4056b72f2cd638e7ab50\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/5b/93/97e8d6081ac64bc68ba5fe52511d9f7d8928ad26edbf0f08ba3c733391a0\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/5d/ad/1cb61ae613816d5f049cd87dd24009e364126f73726b1f8eab2350fec505\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/61/86/40d9643cdf43595a8d97c6cf0b5ea8ea9456c007a5ee0f8145bfdf78a2ea\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/67/5f/28c12321d8b73cabed8e5f6d334222738f3757d989855c298742f545c38d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/72/ba/6052f9b7b7c39d12067339763f1c9b7e1a2d9ca4312a5161bc6356a7f60d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/72/e0/54dfe463c5b99f79ec2916da9c9fb1d1bfa18f5225ae5f110abb5920558b\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/78/42/27dfe3fe7f1702c67c2d376c633a4b914d7783c9b5510e257897a6e6f86a\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/79/a3/244c3ff6ff08892188d6652a56a606458abaa22dba0b74a8a2c6ee9c1b7b\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/7b/ed/fafead1b4f3760fc22dbd7c3f9c8accc519ed94522d16de5b0dca1d5e86a\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/7c/e8/d64b456602776243537bce3031a9657ed90b24e229b3a2ec727eaa9bf599\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/83/ef/aff47278d7ef72e864717a2bb5e09eca947c1b761d2a3f590af1b5f1b379\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/84/87/eb20fb9a76740381a2d50d34d9e6c5c6f9fdbbd1bf2e497ece0dd753649c\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/86/e1/b38b4dbd7dbc5690eac65ebb2e6f52b388a009a91e9b1b5ba2e523182abd\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/8b/ee/c2ea22c4bf9c5ddcd0333850e543442de3364478847c7ebc382b1ff3a70d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/8e/58/1ce1355f39c75fa063f8dc1c958c11d57446438253b206afc18efb9f28c9\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/90/53/8c061789582f306e5cd49035ee51582e6495bd621f643d2451345dc3b3dc\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/9d/6b/339b9832e323abb280eb874ec64f59486423026430be7b1c2ec42ca7e1b7\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/a0/31/db76ddf829b918559e0c79c0da7b606daa1228abf277b09a4435068a7a81\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/a6/90/a0c70e43d2d3c26d0d468b972e3e63a9c451efaa75037f65732894407784\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/b3/b3/05a8af0a671c32b41850c1223429fe74449cfcb4c7cac54a9c7c213dfcae\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/b9/bf/1e3daaea93f68bf9dcdd7e978b6dd8f43627145028c05ccc5d6187e7a25d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/c3/8c/b0aa0df14c7a78e188080e7f466332e730fda2740c7de498b9198c2f5d4d\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/c8/9e/79ae818dc54868007f98687a7c4843206e099cf99094ccc4cd27d777f46e\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/ca/c5/1ba9bafc3cdb872601b504de91eaa342519dfa4fd0eba7fc6ff0ffcf00dd\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/dd/a3/3a65eccea4ca04855d7844772466a7bd372d2aafee069252572fec3cc2bb\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e1/87/8e7ff11dd0fe25b7d40c7f2721c5c2d99d60b0990695b20923170f8eec18\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e1/f3/e8fdc76c3a50f4affaac8b03ab40b0b1d9e9dd7cabb58b12d7365eb83f4f\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e2/db/35a07ca94b6294d4da9beb91f5f126663b81b96d0d02676f1c4d7bd1b992\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/e4/94/93b8de52deebae0492f687a349d097ed0b3cada10b77f539dd1f3b0c6aca\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/f7/05/7f3d7ab71095c636b2fd54a6dac2eb353d3ccea0f2bdfebf43fc2a99a7ab\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_cacache/index-v5/f7/3f/9c0fad120c917808893aac66f088217af3f880bb8e51845eec83481f0272\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-07-27T15_41_27_544Z-debug-0.log\"",
+    "node_modules/.bin/jest",
+    "node_modules/source-map/dist/source-map.min.js.map",
+    "node_modules/source-map/dist/source-map.min.js.map",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-07-27T15_41_27_544Z-debug-0.log\"",
+    "\"C:\\\\Users\\\\eldno\\\\.npm/_logs/2025-08-20T23_54_51_731Z-debug-0.log\""
+  ],
+  "recoverable_files": [],
+  "wakatime_integration": {
+    "wakatime_config_found": true,
+    "vscode_wakatime_extension": false,
+    "timeline_data_available": false,
+    "integration_suggestions": []
+  },
+  "missing_files_analysis": {
+    "expected_files": [],
+    "missing_critical_files": [
+      "frontend/package.json",
+      "LICENSE"
+    ],
+    "suggestions": []
+  }
+}

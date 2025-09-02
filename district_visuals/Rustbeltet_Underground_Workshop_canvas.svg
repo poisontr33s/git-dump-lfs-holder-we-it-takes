@@ -1,0 +1,20 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="industrial" cx="50%" cy="50%">
+            <stop offset="0%" style="stop-color:#cd853f"/>
+            <stop offset="100%" style="stop-color:#654321"/>
+          </radialGradient></defs>
+          <rect width="800" height="600" fill="url(#industrial)"/>
+          <text x="50" y="50" fill="#d2691e" font-size="24">Rustbeltet Underground</text>
+        
+        <g id="anthropomorphic_objects">
+          <circle cx="100" cy="200" r="30" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+             <text x="100" y="200" text-anchor="middle" fill="white" font-size="8">workshop_bench_restraint_table</text><circle cx="250" cy="250" r="30" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+             <text x="250" y="250" text-anchor="middle" fill="white" font-size="8">vise_grip_pleasure_device</text>
+        </g>
+        <g id="atmospheric_elements">
+          <rect x="500" y="300" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="530" y="315" text-anchor="middle" fill="white" font-size="6">steam_pipes</text><rect x="580" y="340" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="610" y="355" text-anchor="middle" fill="white" font-size="6">sparks_welding</text><rect x="660" y="380" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="690" y="395" text-anchor="middle" fill="white" font-size="6">rust_textures</text>
+        </g>
+      </svg>

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="medical" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" style="stop-color:#e0ffff"/>
+            <stop offset="100%" style="stop-color:#008080"/>
+          </linearGradient></defs>
+          <rect width="800" height="600" fill="url(#medical)"/>
+          <text x="50" y="50" fill="#20b2aa" font-size="24">Medical Bio Enhancement Ward</text>
+        
+        <g id="anthropomorphic_objects">
+          <circle cx="100" cy="200" r="30" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+             <text x="100" y="200" text-anchor="middle" fill="white" font-size="8">medical_examination_table</text><circle cx="250" cy="250" r="30" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+             <text x="250" y="250" text-anchor="middle" fill="white" font-size="8">bio_enhancement_chair</text>
+        </g>
+        <g id="atmospheric_elements">
+          <rect x="500" y="300" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="530" y="315" text-anchor="middle" fill="white" font-size="6">bio_scanners</text><rect x="580" y="340" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="610" y="355" text-anchor="middle" fill="white" font-size="6">medical_holograms</text><rect x="660" y="380" width="60" height="20" fill="rgba(255,255,255,0.2)" rx="10"/>
+             <text x="690" y="395" text-anchor="middle" fill="white" font-size="6">enhancement_pods</text>
+        </g>
+      </svg>

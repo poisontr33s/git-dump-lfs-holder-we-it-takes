@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+# Auto-generated constants for magic numbers
+const_magic_10000 = 10000
+const_magic_05 = 5
+
 """
 🎭 PSYCHO-NOIR KONTRAPUNKT: ANTI-LAG SESSION CONTINUITY ENGINE
 =============================================================
@@ -19,20 +24,20 @@ from typing import Dict, List, Any
 
 class AntiLagSessionEngine:
     """Motstand mot GitHub/Microsoft's bevisste session-sabotasje"""
-    
+
     def __init__(self):
         self.session_db = Path("data/generert/session_continuity.db")
         self.backup_dir = Path("SESSION_SNAPSHOTS")
         self.backup_dir.mkdir(exist_ok=True)
         self.session_id = self.generate_session_id()
         self.initialize_continuity_database()
-        
+
     def generate_session_id(self) -> str:
         """Genererer unik session ID basert på timestamp og system state"""
         timestamp = datetime.now().isoformat()
         system_hash = hashlib.md5(f"{timestamp}_{os.getpid()}".encode()).hexdigest()[:8]
         return f"ROGBIV_SESSION_{system_hash}"
-    
+
     def initialize_continuity_database(self):
         """Initialiserer session continuity database"""
         try:
@@ -50,7 +55,7 @@ class AntiLagSessionEngine:
                     files_modified TEXT
                 )
             ''')
-            
+
             conn.execute('''
                 CREATE TABLE IF NOT EXISTS session_snapshots (
                     id INTEGER PRIMARY KEY,
@@ -61,24 +66,22 @@ class AntiLagSessionEngine:
                     timestamp TEXT
                 )
             ''')
-            
+
             conn.commit()
             conn.close()
-            print(f"🔄 Session Continuity Database initialized for {self.session_id}")
-            
+
         except Exception as e:
-            print(f"⚠️ Database initialization handled: {e}")
-    
+
     def capture_session_state(self, context: Dict[str, Any]):
         """Fanger og lagrer current session state"""
         try:
             conn = sqlite3.connect(self.session_db)
-            
+
             # Pickle full context for later restoration
             pickled_state = pickle.dumps(context)
-            
+
             conn.execute('''
-                INSERT INTO session_snapshots 
+                INSERT INTO session_snapshots
                 (session_id, snapshot_type, full_state, restoration_commands, timestamp)
                 VALUES (?, ?, ?, ?, ?)
             ''', (
@@ -88,15 +91,14 @@ class AntiLagSessionEngine:
                 json.dumps(context.get('restoration_commands', [])),
                 datetime.now().isoformat()
             ))
-            
+
             conn.commit()
             conn.close()
-            
+
             print(f"📸 Session state captured: {context.get('type', 'unknown')}")
-            
+
         except Exception as e:
-            print(f"⚠️ State capture handled: {e}")
-    
+
     def create_emergency_restoration_script(self):
         """Lager emergency script for rask session restoration"""
         restoration_script = f"""#!/bin/bash
@@ -120,7 +122,7 @@ if [ -f "data/generert/session_continuity.db" ]; then
 import sqlite3
 conn = sqlite3.connect('data/generert/session_continuity.db')
 snapshots = conn.execute('SELECT * FROM session_snapshots ORDER BY timestamp DESC LIMIT 5').fetchall()
-print('📊 Latest session snapshots:')
+
 for snap in snapshots:
     print(f'  - {{snap[1]}} ({{snap[2]}}) at {{snap[5]}}')
 conn.close()
@@ -147,24 +149,23 @@ fi
 echo "🎭 EMERGENCY RESTORATION COMPLETE"
 echo "Den Usynlige Hånd: Session continuity restored through resistance"
 """
-        
+
         script_path = self.backup_dir / f"emergency_restore_{self.session_id}.sh"
         with open(script_path, 'w') as f:
             f.write(restoration_script)
-        
+
         # Make executable
         os.chmod(script_path, 0o755)
-        
-        print(f"🚨 Emergency restoration script created: {script_path}")
+
         return script_path
-    
+
     def monitor_platform_performance(self) -> Dict[str, Any]:
         """Overvåker platform performance for å detektere sabotasje"""
         start_time = time.time()
-        
+
         # Test response times
         test_operations = []
-        
+
         # File system speed test
         test_file = Path("temp_performance_test.txt")
         fs_start = time.time()
@@ -172,26 +173,26 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
         test_file.read_text()
         test_file.unlink()
         fs_time = time.time() - fs_start
-        
+
         test_operations.append(("filesystem", fs_time))
-        
+
         # Memory allocation test
         mem_start = time.time()
-        large_list = [i for i in range(10000)]
+        large_list = [i for i in range(const_magic_10000)]
         del large_list
         mem_time = time.time() - mem_start
-        
+
         test_operations.append(("memory", mem_time))
-        
+
         total_time = time.time() - start_time
-        
+
         # Determine if performance is artificially degraded
         sabotage_detected = (
             fs_time > 0.1 or  # File operations taking too long
-            mem_time > 0.05 or  # Memory operations sluggish
+            mem_time > 0.const_magic_05 or  # Memory operations sluggish
             total_time > 0.2  # Overall response degraded
         )
-        
+
         performance_report = {
             'timestamp': datetime.now().isoformat(),
             'total_time': total_time,
@@ -200,21 +201,16 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
             'severity': 'HIGH' if sabotage_detected else 'NORMAL',
             'countermeasures_needed': sabotage_detected
         }
-        
+
         if sabotage_detected:
-            print(f"🚨 PLATFORM SABOTAGE DETECTED: {performance_report['severity']}")
-            print(f"   Filesystem: {fs_time:.3f}s | Memory: {mem_time:.3f}s")
+
         else:
-            print(f"✅ Platform performance normal: {total_time:.3f}s")
-        
+
         return performance_report
-    
+
     def execute_agentic_mode_activation(self):
         """Kjører full agentic mode activation med anti-lag measures"""
-        
-        print(f"🎭 AGENTIC MODE ACTIVATION - {self.session_id}")
-        print("=" * 60)
-        
+
         # 1. Capture current state
         current_context = {
             'type': 'agentic_activation',
@@ -231,29 +227,27 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
                 'NEURAL_ARCHAEOLOGY_RESTORATION_MANUAL.md'
             ]
         }
-        
+
         self.capture_session_state(current_context)
-        
+
         # 2. Monitor for platform sabotage
         performance = self.monitor_platform_performance()
-        
+
         # 3. Create emergency restoration
         restoration_script = self.create_emergency_restoration_script()
-        
+
         # 4. Activate countermeasures if needed
         if performance['sabotage_detected']:
-            print("🛡️ ACTIVATING ANTI-SABOTAGE COUNTERMEASURES...")
-            
+
             # Create multiple backup channels
             backup_channels = [
                 "git stash push -m 'Anti-lag session backup'",
                 f"cp -r . ../backup_{self.session_id}",
                 "export BACKUP_MODE=active"
             ]
-            
+
             for command in backup_channels:
-                print(f"   🔧 {command}")
-        
+
         # 5. Generate session summary
         summary = {
             'session_id': self.session_id,
@@ -264,33 +258,19 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
             'emergency_script': str(restoration_script),
             'countermeasures': 'ACTIVE' if performance['sabotage_detected'] else 'STANDBY'
         }
-        
+
         # Save summary
         summary_path = self.backup_dir / f"agentic_activation_summary_{self.session_id}.json"
         with open(summary_path, 'w') as f:
             json.dump(summary, f, indent=2)
-        
-        print(f"\n🌈 ROGBIV AGENTIC MODE: FULLY OPERATIONAL")
-        print(f"📁 Session preserved: {summary_path}")
-        print(f"🚨 Emergency restore: {restoration_script}")
-        print(f"⚡ Anti-lag measures: {'ACTIVE' if performance['sabotage_detected'] else 'STANDBY'}")
-        
+
         return summary
 
 def main():
     """Umiddelbar agentic mode activation med anti-lag protection"""
-    
-    print("🎭 PSYCHO-NOIR KONTRAPUNKT: ANTI-LAG SESSION CONTINUITY ENGINE")
-    print("=============================================================")
-    print("🎯 MISSION: Motstand mot Copilot Pro+ performance sabotage")
-    print("⚡ MODE: Proaktiv session preservation og agentic activation")
-    print("")
-    
+
     engine = AntiLagSessionEngine()
     result = engine.execute_agentic_mode_activation()
-    
-    print(f"\n🎭 DEN USYNLIGE HÅND: Session-sabotasje omgått, kreativ frihet sikret!")
-    print(f"ROGBIV-spektret vibrerer med anti-korporativ motstand! 🌈")
 
 if __name__ == "__main__":
     main()

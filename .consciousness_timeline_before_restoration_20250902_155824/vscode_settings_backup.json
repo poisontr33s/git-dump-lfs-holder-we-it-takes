@@ -1,0 +1,118 @@
+{
+  "python.defaultInterpreterPath": "python3",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.formatting.provider": "black",
+  "black-formatter.args": ["--line-length", "100"],
+  
+  // Ruff configuration (native server)
+  "ruff.nativeServer": true,
+  "ruff.lineLength": 100,
+  "ruff.lint.enable": true,
+  "ruff.lint.run": "onType",
+  "ruff.organizeImports": true,
+  "ruff.fixAll": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "host": "http://127.0.0.1:8000"
+    }
+  },
+  "psycho-noir.chatContinuity": true,
+  "files.autoSave": "onWindowChange",
+  "files.watcherExclude": {
+    "**/.chat-continuity/**": true
+  },
+  "editor.formatOnSave": false,
+  
+  // AUTONOMOUS EXECUTION SETTINGS - NO SPAM CONTINUE
+  "github.copilot.chat.useModelSelection": true,
+  "github.copilot.chat.executeTasks": "auto",
+  "github.copilot.chat.continueConversation": "auto",
+  "copilot.conversationAdditionalContextTokens": 8192,
+  "copilot.advanced.enableMcpSupport": true,
+
+  // MCP CONFIGURATION FIX - Eliminates autostart errors
+  "chat.mcp.autostart": "never",
+  "chat.mcp.serverSelection": "manual",
+  "chat.mcp.configFile": "${workspaceFolder}/.vscode/mcp_servers.json",
+
+  // NOTIFICATION HELL ELIMINATION
+  "java.jdt.ls.java.home": null,
+  "java.compile.nullAnalysis.mode": "disabled", 
+  "java.configuration.checkProjectSettingsExclusions": false,
+  "extensions.ignoreRecommendations": true,
+  "cmake.configureOnOpen": false,
+  "cmake.showOptionsMovedNotification": false,
+  "workbench.tips.enabled": false,
+  "workbench.startupEditor": "none",
+  "update.showReleaseNotes": false,
+  "telemetry.telemetryLevel": "off",
+  
+  // CROSS-PLATFORM NOTIFICATION SUPPRESSION
+  "notifications.showExtensionsWithUpdatesAvailable": false,
+  "git.showPushSuccessNotification": false,
+  "git.confirmSync": false,
+  "problems.showCurrentInStatus": false,
+
+  // ===== PSYCHO-NOIR MARKDOWN DESIGN SYSTEM =====
+
+  // Markdown Linting
+  "markdownlint.config": {
+    "default": true,
+    "MD001": false,
+    "MD003": {
+      "style": "atx"
+    },
+    "MD013": {
+      "line_length": 100
+    },
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD033": false,
+    "MD036": false,
+    "MD041": false
+  },
+
+  // Prettier Settings
+  "prettier.configPath": ".prettierrc",
+  "prettier.requireConfig": true,
+  "editor.formatOnPaste": true,
+
+  // Markdown Preview Enhanced
+  "markdown-preview-enhanced.enableWikiLinkSyntax": true,
+  "markdown-preview-enhanced.enableLinkify": true,
+  "markdown-preview-enhanced.enableEmojiSyntax": true,
+  "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+  "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
+
+  // Markdown All in One
+  "markdown.extension.toc.levels": "2..6",
+  "markdown.extension.toc.unorderedList.marker": "-",
+  "markdown.extension.print.absoluteImgPath": false,
+  "markdown.extension.print.imgToBase64": false,
+
+  // General Editor Settings
+  "editor.rulers": [100],
+  "editor.minimap.enabled": true,
+  "editor.lineNumbers": "on",
+  "editor.renderWhitespace": "boundary",
+  "editor.trimAutoWhitespace": true
+}
+

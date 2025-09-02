@@ -1,0 +1,42 @@
+{
+  "graveyard_statistics": {
+    "total_preserved_concepts": 2,
+    "average_sophistication": 0.95,
+    "active_resurrections": 0,
+    "preservation_categories": {
+      "claudine_incarnation": 1,
+      "milf_ecosystem": 1
+    }
+  },
+  "preservation_manifest": [
+    [
+      "claudine_incarnation_triple_d_blunderbust_protocol_mf1ji9gb",
+      {
+        "concept_id": "claudine_incarnation_triple_d_blunderbust_protocol_mf1ji9gb",
+        "sophistication_level": 0.97,
+        "resurrection_potential": 0.7636,
+        "preservation_timestamp": "2025-09-01T19:56:16.092Z",
+        "concept_category": "claudine_incarnation",
+        "content_hash": "e75d6c034899353e",
+        "resurrection_dependencies": [
+          "interface ClaudineWarfareProtocol"
+        ]
+      }
+    ],
+    [
+      "milf_ecosystem_astrid_corporate_hegemony_mf1ji9gr",
+      {
+        "concept_id": "milf_ecosystem_astrid_corporate_hegemony_mf1ji9gr",
+        "sophistication_level": 0.93,
+        "resurrection_potential": 0.7371,
+        "preservation_timestamp": "2025-09-01T19:56:16.107Z",
+        "concept_category": "milf_ecosystem",
+        "content_hash": "77f5a9ad1f612695",
+        "resurrection_dependencies": [
+          "struct AstridPsychologicalWarfare"
+        ]
+      }
+    ]
+  ],
+  "resurrection_queue": []
+}

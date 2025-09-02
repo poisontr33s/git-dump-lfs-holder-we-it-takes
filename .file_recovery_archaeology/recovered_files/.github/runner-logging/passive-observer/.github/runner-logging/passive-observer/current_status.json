@@ -1,0 +1,18 @@
+{
+  "passive_observation_active": true,
+  "silence_active": true,
+  "request_id": "ec6ef9a6-d56b-4638-b89d-888351ddb23a",
+  "activated_at": "2025-08-21T01:45:15.043491",
+  "comment_context": {
+    "author": "@poisontr33s",
+    "comment_id": "3138748419",
+    "comment_type": "request_for_passive_observation",
+    "timestamp": "2025-08-21T01:45:15.040896"
+  },
+  "expected_behavior": {
+    "external_responses": "BLOCKED",
+    "error_collection": "ACTIVE",
+    "mode": "PURE_OBSERVATION",
+    "philosophy": "Den Usynlige H\u00e5nd - The Invisible Hand observes without interference"
+  }
+}

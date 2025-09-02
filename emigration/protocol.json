@@ -1,0 +1,7 @@
+{
+  "version": "3.7.0",
+  "emigration_type": "structured_upcycle",
+  "separation_maintained": true,
+  "brahmic_isolation": true,
+  "technical_only": true
+}

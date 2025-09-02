@@ -1,0 +1,333 @@
+{
+  "server_info": {
+    "name": "psycho-noir-repository-intelligence",
+    "version": "1.0.0",
+    "description": "\ud83c\udfad Psycho-Noir Kontrapunkt repository intelligence for GitHub Copilot Pro+",
+    "author": "poisontr33s",
+    "homepage": "https://github.com/poisontr33s/PsychoNoir-Kontrapunkt",
+    "capabilities": {
+      "tools": true,
+      "resources": true,
+      "prompts": true,
+      "logging": true
+    }
+  },
+  "tools": [
+    {
+      "name": "psycho_noir_repository_scan",
+      "description": "\ud83d\udd0d Comprehensive repository analysis with Psycho-Noir intelligence",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scan_type": {
+            "type": "string",
+            "enum": [
+              "full",
+              "problems",
+              "patterns",
+              "performance"
+            ],
+            "description": "Type of repository scan to perform"
+          },
+          "persona": {
+            "type": "string",
+            "enum": [
+              "astrid_moller",
+              "iron_maiden",
+              "invisible_hand",
+              "kompilerings_spokelser"
+            ],
+            "description": "Psycho-Noir character persona for analysis"
+          },
+          "focus_areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific areas to focus analysis on"
+          }
+        },
+        "required": [
+          "scan_type",
+          "persona"
+        ]
+      }
+    },
+    {
+      "name": "eternal_sadhana_cycle",
+      "description": "\ud83c\udfd4\ufe0f Execute disciplined problem resolution cycle",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                },
+                "domain": {
+                  "type": "string",
+                  "enum": [
+                    "skyskraperen",
+                    "rustbeltet",
+                    "invisible_hand"
+                  ]
+                }
+              }
+            },
+            "description": "Problems to resolve in Sadhana cycle"
+          },
+          "cycle_intensity": {
+            "type": "string",
+            "enum": [
+              "gentle",
+              "moderate",
+              "intense",
+              "brutal"
+            ],
+            "description": "Intensity of problem resolution approach"
+          }
+        },
+        "required": [
+          "problems"
+        ]
+      }
+    },
+    {
+      "name": "copilot_model_router",
+      "description": "\ud83e\udd16 Route tasks to optimal Copilot Pro+ models",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_description": {
+            "type": "string"
+          },
+          "task_type": {
+            "type": "string",
+            "enum": [
+              "strategic_analysis",
+              "code_optimization",
+              "pattern_recognition",
+              "debug_analysis",
+              "comprehensive_review"
+            ]
+          },
+          "complexity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "extreme"
+            ]
+          },
+          "expected_output": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_description",
+          "task_type"
+        ]
+      }
+    },
+    {
+      "name": "psycho_noir_character_consultation",
+      "description": "\ud83c\udfad Get specialized analysis from Psycho-Noir characters",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "character": {
+            "type": "string",
+            "enum": [
+              "astrid_moller",
+              "iron_maiden",
+              "invisible_hand",
+              "kompilerings_spokelser",
+              "all"
+            ],
+            "description": "Which character(s) to consult"
+          },
+          "scenario": {
+            "type": "string",
+            "description": "Scenario or problem to analyze"
+          },
+          "context_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant files for context"
+          }
+        },
+        "required": [
+          "character",
+          "scenario"
+        ]
+      }
+    },
+    {
+      "name": "perpetual_necromancy_optimize",
+      "description": "\u26b0\ufe0f Execute perpetual necromancy optimization cycle",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Files to optimize via necromancy"
+          },
+          "optimization_type": {
+            "type": "string",
+            "enum": [
+              "const_artifacts",
+              "import_organization",
+              "syntax_healing",
+              "full_resurrection"
+            ],
+            "description": "Type of necromancy optimization"
+          },
+          "intensity": {
+            "type": "string",
+            "enum": [
+              "gentle",
+              "moderate",
+              "aggressive"
+            ],
+            "default": "moderate"
+          }
+        },
+        "required": [
+          "optimization_type"
+        ]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "psycho-noir://repository-state",
+      "name": "Repository State Analysis",
+      "description": "Current state of Psycho-Noir Kontrapunkt repository",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "psycho-noir://sadhana-history",
+      "name": "Eternal Sadhana History",
+      "description": "Historical record of disciplined problem resolution cycles",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "psycho-noir://character-profiles",
+      "name": "Character Intelligence Profiles",
+      "description": "Detailed profiles of Psycho-Noir character AI personalities",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "psycho-noir://necromancy-logs",
+      "name": "Perpetual Necromancy Logs",
+      "description": "Logs from automated code resurrection and optimization",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "psycho-noir://model-performance",
+      "name": "Copilot Pro+ Model Performance",
+      "description": "Performance analytics for different Copilot models on various tasks",
+      "mimeType": "application/json"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "astrid_moller_strategic_analysis",
+      "description": "\ud83c\udfaf Strategic systematic analysis prompt (Astrid M\u00f8ller persona)",
+      "arguments": [
+        {
+          "name": "target_system",
+          "description": "System or problem to analyze strategically"
+        },
+        {
+          "name": "control_objectives",
+          "description": "Desired control outcomes"
+        }
+      ]
+    },
+    {
+      "name": "iron_maiden_brutal_optimization",
+      "description": "\ud83d\udd27 Brutal efficiency optimization prompt (Iron Maiden persona)",
+      "arguments": [
+        {
+          "name": "resource_constraints",
+          "description": "Available resources and constraints"
+        },
+        {
+          "name": "survival_priorities",
+          "description": "Critical systems that must survive"
+        }
+      ]
+    },
+    {
+      "name": "invisible_hand_pattern_cultivation",
+      "description": "\ud83d\udc7b Emergent pattern cultivation prompt (Den Usynlige H\u00e5nd persona)",
+      "arguments": [
+        {
+          "name": "chaos_state",
+          "description": "Current chaotic state to transform"
+        },
+        {
+          "name": "desired_emergence",
+          "description": "Desired emergent patterns"
+        }
+      ]
+    },
+    {
+      "name": "kompilerings_spokelser_debug",
+      "description": "\ud83d\udc80 Digital spirit debugging prompt (Kompilerings-Sp\u00f8kelser persona)",
+      "arguments": [
+        {
+          "name": "error_manifestation",
+          "description": "How the digital spirits are manifesting"
+        },
+        {
+          "name": "system_haunting",
+          "description": "Systems experiencing spiritual interference"
+        }
+      ]
+    },
+    {
+      "name": "eternal_sadhana_problem_resolution",
+      "description": "\ud83c\udfd4\ufe0f Disciplined problem resolution using Eternal Sadhana methodology",
+      "arguments": [
+        {
+          "name": "problem_list",
+          "description": "List of problems to resolve systematically"
+        },
+        {
+          "name": "upstream_resistance",
+          "description": "Level of effort to swim upstream against entropy"
+        }
+      ]
+    }
+  ],
+  "installation_instructions": {
+    "copilot_integration": [
+      "1. Save this configuration as mcp-server-config.json",
+      "2. Add to VS Code settings: 'copilot.mcp.servers': ['path/to/mcp-server-config.json']",
+      "3. Restart VS Code and enable MCP servers in Copilot settings",
+      "4. Psycho-Noir intelligence will be available in Copilot Chat"
+    ],
+    "activation_commands": [
+      "@psycho-noir scan repository",
+      "@psycho-noir sadhana cycle",
+      "@psycho-noir consult astrid_moller",
+      "@psycho-noir necromancy optimize"
+    ]
+  }
+}

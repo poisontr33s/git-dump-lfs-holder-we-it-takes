@@ -1,9 +1,9 @@
 {
-  "name": "psycho-noir-session-weaver",
-  "displayName": "Psycho-Noir Session Weaver",
-  "description": "Cross-platform AI session archaeology and pattern weaving for GitHub Copilot integration",
+  "name": "psycho-noir-session-resolver",
+  "displayName": "🎭 Psycho-Noir Kontrapunkt: Session Resolver",
+  "description": "🏔️ Eternal Sadhana system for disciplined AI session archaeology and chaos resolution",
   "version": "1.0.0",
-  "publisher": "poisontr33s",
+  "publisher": "psycho-noir-kontrapunkt",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -20,9 +20,6 @@
     "psycho-noir"
   ],
   "activationEvents": [
-    "onCommand:psychoNoir.activateSessionWeaver",
-    "onCommand:psychoNoir.archaeologyMode",
-    "onCommand:psychoNoir.connectCopilot",
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
@@ -85,7 +82,7 @@
         {
           "id": "psycho-noir-explorer",
           "title": "Psycho-Noir Session Weaver",
-          "icon": "$(github-copilot)"
+          "icon": "media/icon.png"
         }
       ]
     },
@@ -94,16 +91,19 @@
         {
           "id": "psychoNoir.sessionArchive",
           "name": "Session Archive",
+          "icon": "$(archive)",
           "when": "true"
         },
         {
           "id": "psychoNoir.neuralPatterns",
           "name": "Neural Patterns",
+          "icon": "$(circuit-board)",
           "when": "true"
         },
         {
           "id": "psychoNoir.connectedPlatforms",
           "name": "Connected Platforms",
+          "icon": "$(link)",
           "when": "true"
         }
       ]
@@ -137,7 +137,7 @@
           "type": "number",
           "default": 0.7,
           "minimum": 0.1,
-          "maximum": 1.0,
+          "maximum": 1,
           "description": "Minimum confidence threshold for neural pattern detection"
         },
         "psychoNoir.archaeologyInterval": {
@@ -191,6 +191,7 @@
     "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/vsce": "^3.6.0",
     "eslint": "^8.28.0",
     "typescript": "^4.9.4"
   },
@@ -207,7 +208,6 @@
   },
   "homepage": "https://github.com/poisontr33s/PsychoNoir-Kontrapunkt#readme",
   "license": "MIT",
-  "icon": "media/icon.png",
   "extensionDependencies": [
     "GitHub.copilot",
     "GitHub.vscode-pull-request-github"

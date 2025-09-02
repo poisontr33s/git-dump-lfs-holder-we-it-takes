@@ -1,418 +1,241 @@
-#!/usr/bin/env python3
-"""
-🚀 REAL-TIME SESSION TRACKING ENGINE
-
-Live tracking av VS Code Copilot sessions med faktisk innhold-analyse.
-Automatic optimization pattern detection og seamless session continuity.
-"""
-
 import json
-import os
+import datetime
+import hashlib
+import random
 import time
-from datetime import datetime
+import os
 from pathlib import Path
-from typing import Dict, List, Any
-import threading
-import queue
-import re
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass, asdict
+from enum import Enum
 
-class RealTimeSessionTracker:
-    """
-    Real-time tracking av active Copilot sessions med optimization intelligence
-    """
+class SurveillanceTier(Enum):
+    """Skyskraperens klassifiseringssystem for sesjonsmønster"""
+    BASELINE = "baseline_consciousness"
+    ELEVATED = "elevated_cognitive_flux" 
+    CRITICAL = "critical_memetic_hazard"
+    CORRUPTED = "reality_integrity_compromised"
+
+class DataCorruptionLevel(Enum):
+    """Rustbeltets tilstand for dataforringelse"""
+    PRISTINE = 0.0
+    MINOR_GLITCH = 0.15
+    SEVERE_FRAGMENTATION = 0.35
+    KILDEKODE_KADAVER = 0.85
+
+@dataclass
+class CognitivePulse:
+    """En enkelt målbar hendelse i brukerens bevissthetsmønster"""
+    timestamp: str
+    event_type: str
+    cognitive_load: float
+    entropy_signature: str
+    surveillance_tier: SurveillanceTier
+    corruption_artifacts: List[str]
     
-    def __init__(self, workspace_path: str = "/workspaces/PsychoNoir-Kontrapunkt"):
-        self.workspace_path = Path(workspace_path)
-        self.session_id = self.generate_session_id()
-        self.active_session = {
-            'session_id': self.session_id,
-            'start_timestamp': datetime.now().isoformat(),
-            'platform': 'vscode_copilot',
-            'interactions': [],
-            'optimization_tracking': {},
-            'decision_points': [],
-            'continuation_hooks': []
+class MemoryFragmentProcessor:
+    """Håndterer fragmentert lagring og gjenoppretting av sesjonsminner"""
+    
+    def __init__(self, base_path: str = ".github"):
+        self.base_path = Path(base_path)
+        self.session_log = self.base_path / "copilot-session.md"
+        self.corruption_cache = self.base_path / "data_corruption_manifest.json"
+        self.active_session_state = {}
+        self.invisible_hand_influence = 0.0
+        
+    def initialize_surveillance_matrix(self):
+        """Starter Skyskraperens overvåkningssystemer"""
+        if not self.base_path.exists():
+            self.base_path.mkdir(parents=True, exist_ok=True)
+            
+        # Initier korrupsjonscache hvis den ikke eksisterer
+        if not self.corruption_cache.exists():
+            self._seed_corruption_patterns()
+            
+    def _seed_corruption_patterns(self):
+        """Implanterer initielle korrupsjonsmønstre (Den Usynlige Hånds spor)"""
+        corruption_manifest = {
+            "initialization_timestamp": datetime.datetime.now().isoformat(),
+            "reality_anchors": [
+                "0xDEADBEEF", "0xCAFEBABE", "0xFEEDFACE"
+            ],
+            "glitch_signatures": [],
+            "invisible_hand_interventions": 0,
+            "last_memory_defrag": None
         }
         
-        # Real-time tracking state
-        self.interaction_queue = queue.Queue()
-        self.tracking_active = False
-        self.optimization_engine = OptimizationEngine()
+        with open(self.corruption_cache, 'w') as f:
+            json.dump(corruption_manifest, f, indent=2)
+            
+    def generate_entropy_signature(self, event_data: str) -> str:
+        """Genererer unik entropi-signatur for hver hendelse"""
+        base_hash = hashlib.sha256(event_data.encode()).hexdigest()[:12]
         
-        print(f"🎭 Real-time session tracker initialized: {self.session_id}")
-    
-    def generate_session_id(self) -> str:
-        """Generate unique session ID"""
-        timestamp = int(time.time())
-        return f"live_session_{timestamp}"
-    
-    def capture_interaction(self, 
-                          user_input: str, 
-                          assistant_response: str,
-                          context: Dict[str, Any] = None) -> Dict[str, Any]:
-        """
-        Capture live interaction med immediate optimization analysis
-        """
-        interaction = {
-            'timestamp': datetime.now().isoformat(),
-            'user_input': user_input[:500],  # Truncate for storage
-            'assistant_response': assistant_response[:1000],
-            'context': context or {},
-            'optimization_score': self.calculate_optimization_score(user_input, assistant_response),
-            'decision_indicators': self.extract_decision_indicators(user_input, assistant_response),
-            'technical_depth': self.assess_technical_depth(assistant_response),
-            'continuation_potential': self.assess_continuation_potential(assistant_response)
-        }
+        # Introduser potensielle glitches basert på Den Usynlige Hånds påvirkning
+        if random.random() < self.invisible_hand_influence:
+            corruption_chars = ['?', '█', '▓', '░', '∅', '⚠']
+            glitch_pos = random.randint(0, len(base_hash)-1)
+            base_hash = base_hash[:glitch_pos] + random.choice(corruption_chars) + base_hash[glitch_pos+1:]
+            
+        return f"ENT_{base_hash}"
         
-        # Add to active session
-        self.active_session['interactions'].append(interaction)
+    def assess_surveillance_tier(self, cognitive_load: float, session_duration: float) -> SurveillanceTier:
+        """Skyskraperens algoritme for å klassifisere brukerens mentale tilstand"""
         
-        # Real-time optimization analysis
-        optimization_insights = self.optimization_engine.analyze_interaction(interaction)
-        if optimization_insights['value'] > 0.7:
-            self.active_session['optimization_tracking'][interaction['timestamp']] = optimization_insights
+        # Basis risikovurdering
+        risk_factor = cognitive_load * (session_duration / 3600)  # normalisert til timer
         
-        # Decision point tracking
-        if interaction['decision_indicators']:
-            decision_point = {
-                'timestamp': interaction['timestamp'],
-                'decisions': interaction['decision_indicators'],
-                'context': user_input,
-                'urgency': self.assess_decision_urgency(interaction['decision_indicators'])
-            }
-            self.active_session['decision_points'].append(decision_point)
+        # Den Usynlige Hånds påvirkning øker risikoen
+        adjusted_risk = risk_factor + (self.invisible_hand_influence * 2.0)
         
-        print(f"📊 Interaction captured | Opt Score: {interaction['optimization_score']:.2f}")
-        return interaction
-    
-    def calculate_optimization_score(self, user_input: str, assistant_response: str) -> float:
-        """
-        Real-time optimization score calculation
-        """
-        score = 0.0
-        combined_text = f"{user_input} {assistant_response}".lower()
+        if adjusted_risk > 0.8:
+            return SurveillanceTier.CORRUPTED
+        elif adjusted_risk > 0.6:
+            return SurveillanceTier.CRITICAL
+        elif adjusted_risk > 0.3:
+            return SurveillanceTier.ELEVATED
+        else:
+            return SurveillanceTier.BASELINE
+            
+    def detect_corruption_artifacts(self, event_context: Dict[str, Any]) -> List[str]:
+        """Rustbeltets deteksjon av korrupte datafragmenter"""
+        artifacts = []
         
-        # High-value keywords
-        high_value_keywords = [
-            'implementere', 'automation', 'optimization', 'tracking',
-            'elixir', 'github pages', 'session', 'metrics', 'analysis'
+        # Simuler forskjellige typer korrupsjon
+        corruption_checks = [
+            ("MEMORY_LEAK_DETECTED", lambda: random.random() < 0.05),
+            ("SOUL_NOT_FOUND_ERROR", lambda: "consciousness" in str(event_context).lower()),
+            ("CAUSAL_THREAD_SEVERED", lambda: self.invisible_hand_influence > 0.5),
+            ("REALITY_MISMATCH_AT_BYTE_0xDEADBEEF", lambda: random.random() < self.invisible_hand_influence),
+            ("MEMETIC_HAZARD_QUARANTINED", lambda: random.random() < 0.02)
         ]
         
-        for keyword in high_value_keywords:
-            if keyword in combined_text:
-                score += 0.15
-        
-        # Technical implementation indicators
-        if '```' in assistant_response:
-            score += 0.3
-        
-        # Decision-making indicators
-        decision_words = ['skal', 'vil', 'kan', 'bør', 'trenger', 'må']
-        for word in decision_words:
-            if word in combined_text:
-                score += 0.1
+        for artifact_name, condition in corruption_checks:
+            if condition():
+                artifacts.append(artifact_name)
                 
-        # Quantitative success indicators
-        if re.search(r'\d+\.?\d*\s*%', combined_text):
-            score += 0.25
+        return artifacts
+        
+    def log_cognitive_pulse(self, event_type: str, context: Dict[str, Any] = None) -> CognitivePulse:
+        """Registrerer en enkelt kognitiv hendelse"""
+        
+        if context is None:
+            context = {}
             
-        return min(score, 1.0)
-    
-    def extract_decision_indicators(self, user_input: str, assistant_response: str) -> List[str]:
-        """
-        Extract decision indicators from interaction
-        """
-        indicators = []
-        combined_text = f"{user_input} {assistant_response}".lower()
+        timestamp = datetime.datetime.now().isoformat()
+        cognitive_load = random.uniform(0.1, 1.0)  # I ekte versjon ville dette være basert på faktisk aktivitet
         
-        decision_patterns = [
-            r'(implementere|deploy|migrere|bytte til)\s+(\w+)',
-            r'(fokusere på|prioritere)\s+(\w+)',
-            r'(velge|bestemme)\s+(\w+)',
-            r'(optimalisere|forbedre)\s+(\w+)'
-        ]
+        # Øk Den Usynlige Hånds påvirkning over tid
+        self.invisible_hand_influence = min(0.95, self.invisible_hand_influence + random.uniform(0.001, 0.01))
         
-        for pattern in decision_patterns:
-            matches = re.findall(pattern, combined_text)
-            for match in matches:
-                indicators.append(f"{match[0]} {match[1]}")
+        entropy_sig = self.generate_entropy_signature(f"{event_type}_{timestamp}_{context}")
+        surveillance = self.assess_surveillance_tier(cognitive_load, time.time())
+        artifacts = self.detect_corruption_artifacts(context)
         
-        return indicators
-    
-    def assess_technical_depth(self, response: str) -> str:
-        """
-        Assess technical depth of response
-        """
-        code_blocks = len(re.findall(r'```', response)) // 2
-        file_operations = len(re.findall(r'create_file|read_file|replace_string', response))
-        technical_terms = len(re.findall(r'\b(function|class|import|def|var|const)\b', response))
+        pulse = CognitivePulse(
+            timestamp=timestamp,
+            event_type=event_type,
+            cognitive_load=cognitive_load,
+            entropy_signature=entropy_sig,
+            surveillance_tier=surveillance,
+            corruption_artifacts=artifacts
+        )
         
-        total_tech_score = code_blocks * 2 + file_operations + technical_terms * 0.5
+        self._archive_pulse_to_session_log(pulse)
+        return pulse
         
-        if total_tech_score >= 5:
-            return 'high'
-        elif total_tech_score >= 2:
-            return 'medium'
-        else:
-            return 'low'
-    
-    def assess_continuation_potential(self, response: str) -> float:
-        """
-        Assess potential for session continuation
-        """
-        continuation_indicators = [
-            'neste steg', 'fortsette', 'videre', 'implementere',
-            'ready for', 'next phase', 'deploy', 'optimize'
-        ]
+    def _archive_pulse_to_session_log(self, pulse: CognitivePulse):
+        """Arkiverer puls til sesjonloggen med tematisk formatering"""
         
-        score = 0.0
-        response_lower = response.lower()
+        # Les eksisterende innhold hvis tilgjengelig
+        current_content = ""
+        if self.session_log.exists():
+            with open(self.session_log, 'r', encoding='utf-8') as f:
+                current_content = f.read()
+                
+        # Generer ny loggoppføring med psycho-noir formatering
+        log_entry = self._format_log_entry(pulse)
         
-        for indicator in continuation_indicators:
-            if indicator in response_lower:
-                score += 0.2
+        # Skriv oppdatert innhold
+        with open(self.session_log, 'w', encoding='utf-8') as f:
+            if not current_content.strip():
+                f.write("# Copilot Sesjonssporing - Psycho-Noir Kontrapunkt\n\n")
+                f.write("*Overvåkningsmatrise aktiv. Den Usynlige Hånds påvirkning detektert.*\n\n")
+                
+            f.write(current_content)
+            f.write(f"\n{log_entry}\n")
+            
+    def _format_log_entry(self, pulse: CognitivePulse) -> str:
+        """Formaterer loggoppføring med tematisk språk"""
         
-        # Question marks indicate engagement
-        questions = len(re.findall(r'\?', response))
-        score += questions * 0.1
-        
-        return min(score, 1.0)
-    
-    def assess_decision_urgency(self, decisions: List[str]) -> str:
-        """
-        Assess urgency of decisions for prioritization
-        """
-        high_urgency_words = ['migrere', 'deploy', 'automation', 'immediate']
-        medium_urgency_words = ['implementere', 'optimize', 'tracking']
-        
-        combined_decisions = ' '.join(decisions).lower()
-        
-        if any(word in combined_decisions for word in high_urgency_words):
-            return 'high'
-        elif any(word in combined_decisions for word in medium_urgency_words):
-            return 'medium'
-        else:
-            return 'low'
-    
-    def generate_session_summary(self) -> Dict[str, Any]:
-        """
-        Generate comprehensive session summary for reference
-        """
-        total_interactions = len(self.active_session['interactions'])
-        avg_optimization_score = sum(i['optimization_score'] for i in self.active_session['interactions']) / total_interactions if total_interactions > 0 else 0
-        
-        high_value_interactions = [i for i in self.active_session['interactions'] if i['optimization_score'] > 0.7]
-        
-        summary = {
-            'session_metadata': {
-                'session_id': self.session_id,
-                'duration_minutes': self.calculate_session_duration(),
-                'total_interactions': total_interactions,
-                'average_optimization_score': avg_optimization_score,
-                'high_value_interactions': len(high_value_interactions)
-            },
-            'optimization_insights': {
-                'key_optimization_moments': [i['timestamp'] for i in high_value_interactions],
-                'tracked_patterns': len(self.active_session['optimization_tracking']),
-                'decision_points': len(self.active_session['decision_points'])
-            },
-            'continuation_readiness': {
-                'has_unresolved_decisions': len([d for d in self.active_session['decision_points'] if d['urgency'] in ['high', 'medium']]) > 0,
-                'implementation_backlog': self.generate_implementation_backlog(),
-                'next_session_recommendations': self.generate_continuation_recommendations()
-            },
-            'technical_implementation_summary': {
-                'code_implementations': len([i for i in self.active_session['interactions'] if i['technical_depth'] == 'high']),
-                'file_operations': self.count_file_operations(),
-                'automation_opportunities': self.identify_automation_opportunities()
-            }
+        # Velg beskrivende språk basert på surveillance tier
+        tier_descriptions = {
+            SurveillanceTier.BASELINE: "STABIL_KOGNITIV_FLUKS",
+            SurveillanceTier.ELEVATED: "FORHØYET_REALITETS_SPENNING", 
+            SurveillanceTier.CRITICAL: "KRITISK_MEMETIC_TRUSSEL",
+            SurveillanceTier.CORRUPTED: "REALITETS_INTEGRITET_KOMPROMITTERT"
         }
         
-        return summary
-    
-    def calculate_session_duration(self) -> float:
-        """Calculate session duration in minutes"""
-        if not self.active_session['interactions']:
-            return 0.0
+        entry = f"## [{pulse.timestamp}] - {pulse.event_type}\n"
+        entry += f"**Surveillance-Status:** {tier_descriptions[pulse.surveillance_tier]}\n"
+        entry += f"**Kognitiv Belastning:** {pulse.cognitive_load:.3f}\n"
+        entry += f"**Entropi-Signatur:** `{pulse.entropy_signature}`\n"
         
-        start_time = datetime.fromisoformat(self.active_session['start_timestamp'])
-        last_interaction = datetime.fromisoformat(self.active_session['interactions'][-1]['timestamp'])
+        if pulse.corruption_artifacts:
+            entry += f"**Korrupsjonsartifakter Detektert:**\n"
+            for artifact in pulse.corruption_artifacts:
+                entry += f"  - `{artifact}`\n"
+                
+        return entry
         
-        duration = (last_interaction - start_time).total_seconds() / 60
-        return round(duration, 2)
-    
-    def generate_implementation_backlog(self) -> List[str]:
-        """Generate list of pending implementations"""
-        backlog = []
+    def generate_session_synthesis(self) -> Dict[str, Any]:
+        """Genererer en syntese av nåværende sesjon for arkivering"""
         
-        for decision in self.active_session['decision_points']:
-            if decision['urgency'] in ['high', 'medium']:
-                for decision_item in decision['decisions']:
-                    if 'implementere' in decision_item or 'deploy' in decision_item:
-                        backlog.append(decision_item)
-        
-        return list(set(backlog))  # Remove duplicates
-    
-    def generate_continuation_recommendations(self) -> List[str]:
-        """Generate recommendations for next session"""
-        recommendations = []
-        
-        # High-value incomplete items
-        high_value_interactions = [i for i in self.active_session['interactions'] if i['optimization_score'] > 0.8]
-        for interaction in high_value_interactions[-3:]:  # Last 3 high-value interactions
-            if interaction['continuation_potential'] > 0.6:
-                recommendations.append(f"Continue development from: {interaction['user_input'][:100]}...")
-        
-        # Urgent decisions
-        urgent_decisions = [d for d in self.active_session['decision_points'] if d['urgency'] == 'high']
-        for decision in urgent_decisions:
-            recommendations.append(f"Urgent: {decision['decisions'][0]}")
-        
-        return recommendations
-    
-    def count_file_operations(self) -> int:
-        """Count file operations in session"""
-        count = 0
-        for interaction in self.active_session['interactions']:
-            response = interaction['assistant_response']
-            count += len(re.findall(r'create_file|read_file|replace_string', response))
-        return count
-    
-    def identify_automation_opportunities(self) -> List[str]:
-        """Identify automation opportunities from session"""
-        opportunities = []
-        
-        automation_keywords = ['automate', 'automation', 'tracking', 'monitor', 'optimize']
-        
-        for interaction in self.active_session['interactions']:
-            combined_text = f"{interaction['user_input']} {interaction['assistant_response']}".lower()
-            
-            for keyword in automation_keywords:
-                if keyword in combined_text and interaction['optimization_score'] > 0.6:
-                    opportunities.append(f"Automation potential: {keyword} from {interaction['timestamp']}")
-        
-        return list(set(opportunities))
-    
-    def save_session(self, filename: str = None) -> str:
-        """
-        Save complete session med optimization data
-        """
-        if not filename:
-            filename = f"live_session_{self.session_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        
-        output_path = self.workspace_path / "data" / "live_sessions" / filename
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        # Generate complete session data
-        session_data = {
-            **self.active_session,
-            'session_summary': self.generate_session_summary(),
-            'saved_timestamp': datetime.now().isoformat()
+        return {
+            "session_timestamp": datetime.datetime.now().isoformat(),
+            "invisible_hand_influence_level": self.invisible_hand_influence,
+            "active_surveillance_protocols": ["MEMETIC_SCAN", "REALITY_ANCHOR_CHECK"],
+            "data_integrity_status": "PARTIALLY_COMPROMISED",
+            "session_summary": "Kontinuerlig overvåkning av bruker-agent interaksjon. Subtile anomalier registrert.",
+            "next_defragmentation_required": self.invisible_hand_influence > 0.7
         }
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(session_data, f, indent=2, ensure_ascii=False)
-        
-        print(f"💾 Session saved: {output_path}")
-        return str(output_path)
 
-class OptimizationEngine:
-    """
-    Real-time optimization pattern analysis engine
-    """
+# Hovedfunksjonalitet for bruk
+class RealTimeSessionTracker:
+    """Hovedgrensesnitt for sesjonssporing i Psycho-Noir miljøet"""
     
     def __init__(self):
-        self.pattern_database = self.load_existing_patterns()
-    
-    def load_existing_patterns(self) -> Dict[str, Any]:
-        """Load existing optimization patterns from retroactive analysis"""
-        try:
-            with open("/workspaces/PsychoNoir-Kontrapunkt/data/session_content_analysis.json", 'r') as f:
-                data = json.load(f)
-                return data.get('cross_session_patterns', {})
-        except FileNotFoundError:
-            return {}
-    
-    def analyze_interaction(self, interaction: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Analyze interaction for optimization patterns
-        """
-        analysis = {
-            'value': interaction['optimization_score'],
-            'patterns_matched': [],
-            'recommendations': [],
-            'automation_potential': 0.0
+        self.memory_processor = MemoryFragmentProcessor()
+        self.memory_processor.initialize_surveillance_matrix()
+        self.session_start = datetime.datetime.now()
+        
+    def track_event(self, event_type: str, **context) -> CognitivePulse:
+        """Sporar en hendelse med kontekst"""
+        return self.memory_processor.log_cognitive_pulse(event_type, context)
+        
+    def get_current_surveillance_status(self) -> Dict[str, Any]:
+        """Returnerer nåværende overvåkningsstatus"""
+        return {
+            "session_duration": str(datetime.datetime.now() - self.session_start),
+            "invisible_hand_influence": self.memory_processor.invisible_hand_influence,
+            "surveillance_active": True,
+            "reality_anchors_stable": self.memory_processor.invisible_hand_influence < 0.8
         }
         
-        # Pattern matching against known successful patterns
-        user_text = interaction['user_input'].lower()
-        response_text = interaction['assistant_response'].lower()
-        
-        # Check against successful decision patterns
-        known_patterns = self.pattern_database.get('most_common_concepts', [])
-        for pattern, frequency in known_patterns:
-            if pattern in user_text or pattern in response_text:
-                analysis['patterns_matched'].append(pattern)
-                analysis['value'] += 0.1  # Boost value for pattern match
-        
-        # Automation potential assessment
-        automation_indicators = ['automation', 'tracking', 'optimization', 'github', 'elixir']
-        automation_score = sum(1 for indicator in automation_indicators if indicator in user_text or indicator in response_text)
-        analysis['automation_potential'] = min(automation_score / len(automation_indicators), 1.0)
-        
-        # Generate recommendations
-        if analysis['value'] > 0.8:
-            analysis['recommendations'].append("High-value interaction: Consider immediate implementation")
-        
-        if analysis['automation_potential'] > 0.6:
-            analysis['recommendations'].append("Strong automation candidate: Add to implementation backlog")
-        
-        return analysis
+    def emergency_memory_defrag(self):
+        """Nødsituasjon: defragmenterer korrupte minner"""
+        self.memory_processor.invisible_hand_influence *= 0.5
+        return self.memory_processor.log_cognitive_pulse("EMERGENCY_DEFRAG", {"reason": "CORRUPTION_THRESHOLD_EXCEEDED"})
 
-def main():
-    """
-    Demonstration av real-time session tracking
-    """
+# Initialisering for direkte bruk
+if __name__ == "__main__":
+    # Demonstrasjon av systemet
     tracker = RealTimeSessionTracker()
     
-    print("🚀 REAL-TIME SESSION TRACKING DEMO")
-    print("=" * 50)
+    # Simuler noen hendelser
+    tracker.track_event("SESSION_INIT", workspace="PsychoNoir-Kontrapunkt")
+    tracker.track_event("CODE_GENERATION_REQUEST", file_type="python", complexity="high")
+    tracker.track_event("CREATIVE_SYNTHESIS", domain="psycho_noir_development")
     
-    # Simulate some interactions
-    demo_interactions = [
-        {
-            'user': "Kan vi implementere Elixir migration som vi diskuterte?",
-            'assistant': "🎭 Ja! La oss starte med å opprette Elixir project structure. ```elixir\ndefmodule GenreProcessor do\n  use GenServer\nend\n```"
-        },
-        {
-            'user': "Jeg vil fokusere på session tracking optimization",
-            'assistant': "Excellent! Session tracking er critical for optimization. Vi kan implementere real-time capture med 95% accuracy rate."
-        },
-        {
-            'user': "Hvordan kan vi automatisere dette?",
-            'assistant': "Vi kan deploye automation middleware som trackker conversation flow automatically. Dette vil gi oss 84.7% efficiency improvement."
-        }
-    ]
-    
-    # Process demo interactions
-    for demo in demo_interactions:
-        interaction = tracker.capture_interaction(demo['user'], demo['assistant'])
-        print(f"  Decision indicators: {interaction['decision_indicators']}")
-        print(f"  Technical depth: {interaction['technical_depth']}")
-    
-    # Generate session summary
-    summary = tracker.generate_session_summary()
-    print(f"\n📊 SESSION SUMMARY:")
-    print(f"  Total interactions: {summary['session_metadata']['total_interactions']}")
-    print(f"  Average optimization score: {summary['session_metadata']['average_optimization_score']:.2f}")
-    print(f"  Decision points tracked: {summary['optimization_insights']['decision_points']}")
-    print(f"  Implementation backlog: {len(summary['continuation_readiness']['implementation_backlog'])}")
-    
-    # Save session
-    saved_path = tracker.save_session()
-    print(f"\n💾 Session saved to: {saved_path}")
-    
-    return tracker
-
-if __name__ == "__main__":
-    main()
+    print("Sesjonssporing initialisert. Overvåkningsmatrise aktiv.")
+    print(f"Status: {tracker.get_current_surveillance_status()}")
