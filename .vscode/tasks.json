@@ -1,50 +1,39 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "🎭 Restore Chat",
-      "type": "shell",
-      "command": "python3",
-      "args": ["restore_chat_session.py"],
-      "group": "build",
-      "presentation": { "echo": true, "reveal": "always", "focus": false }
-    },
-    {
-      "label": "FastAPI: Install",
-      "type": "shell",
-      "command": "python3",
-      "args": ["-m", "pip", "install", "-r", "godot_mvp/backend/requirements.txt"],
-      "problemMatcher": []
-    },
-    {
-      "label": "FastAPI: Run",
-      "type": "shell",
-      "command": "python3",
-      "args": ["-m", "uvicorn", "app.main:app", "--reload"],
-      "options": { "cwd": "${workspaceFolder}/godot_mvp/backend" },
-      "isBackground": true,
-      "problemMatcher": []
-    },
-    {
-      "label": "Godot: Run",
-      "type": "shell",
-      "command": "bash",
-      "args": [
-        "-lc",
-  "([ -n \"$GODOT4_BIN\" ] && \"$GODOT4_BIN\" --path ${workspaceFolder}/godot_mvp/godot --editor) || (command -v godot4 >/dev/null && godot4 --path ${workspaceFolder}/godot_mvp/godot --editor) || (command -v godot3 >/dev/null && godot3 --path ${workspaceFolder}/godot_mvp/godot --editor)"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Godot: Language Server (Headless)",
-      "type": "shell",
-      "command": "bash",
-      "args": [
-        "-lc",
-  "([ -n \"$GODOT4_BIN\" ] && \"$GODOT4_BIN\" --headless --editor --path ${workspaceFolder}/godot_mvp/godot) || (command -v godot4 >/dev/null && godot4 --headless --editor --path ${workspaceFolder}/godot_mvp/godot) || (command -v godot3-server >/dev/null && godot3-server --editor --path ${workspaceFolder}/godot_mvp/godot)"
-      ],
-      "isBackground": true,
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "QUANTUM CONSCIOUSNESS TEST",
+            "type": "shell",
+            "command": "bun run tools/quantum_terminal_interface.sh",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run BUN Native Script",
+            "type": "shell",
+            "command": "bun run ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "MILF Matriark Protocol",
+            "type": "shell",
+            "command": "echo 'Deploying MILF Matriark sophistication protocol...' && sleep 1 && echo 'MILF Matrix Online'",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
 }

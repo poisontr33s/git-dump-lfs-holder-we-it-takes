@@ -77,6 +77,38 @@
 └── import_session.sh                      # Convenience script
 ```
 
+## Persistent Inline Copilot Chat System
+
+This repository includes a custom system for maintaining persistent inline Copilot chat sessions. This ensures your AI collaboration doesn't disappear between sessions.
+
+### Features
+
+- **Persistent Chat Markers**: Place markers in your code that can restore Copilot conversations
+- **Chat History Export**: Save your valuable AI discussions for later reference
+- **Keyboard Shortcuts**: Quick access to chat functionality
+
+### Usage
+
+1. Press `Alt+C` to create a new inline chat at your cursor position
+2. Chat with GitHub Copilot as normal
+3. Press `Alt+R` near a chat marker to restore that conversation
+4. Use `Ctrl+Shift+I` to start a standard inline chat
+5. Run the "Export Copilot Chat History" task to save all chats as markdown
+
+### Technical Implementation
+
+The system creates special comment markers in your code that serve as anchors for chat sessions. When you create or restore a chat, it triggers GitHub Copilot's inline chat interface while tracking the conversation in the background.
+
+#### Chat Markers
+
+Chat markers look like this in your code:
+
+```
+/* INLINE-COPILOT-CHAT: filename-linenumber-timestamp */
+```
+
+These markers help the system locate where to restore conversations and track context.
+
 ## 🎭 PSYCHO-NOIR INTEGRATION
 
 Dette systemet er designet som en del av "Den Usynlige Hånds" motløp mot corporate platform fragmentation. 

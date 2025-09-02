@@ -10,23 +10,23 @@ class PsychoNoirWorkflowEngine {
 
     async analyzeAndAdapt(ecosystemData) {
         console.log("🎭 Psycho-Noir Workflow Analysis Initiated");
-        
+
         // Astrid's strategic analysis
         const strategicAnalysis = await this.astridStrategicCore.analyzeControl(ecosystemData);
         console.log("📊 Strategic Analysis (Skyskraperen):", strategicAnalysis.controlRecommendations);
-        
+
         // Iron Maiden's survival-focused adaptation
         const survivalStrategy = await this.ironMaidenAdaptation.improviseOptimizations(ecosystemData);
         console.log("🔧 Survival Optimizations (Rustbeltet):", survivalStrategy.practicalActions);
-        
+
         // Den Usynlige Hånd's emergent opportunities
         const emergentPatterns = await this.invisibleHandEmergence.cultivateIntelligence(ecosystemData);
         console.log("👻 Emergent Patterns (Hidden):", emergentPatterns.subtleOptimizations);
-        
+
         // Synthesize all perspectives
         return this.synthesizePsychoNoirStrategy(strategicAnalysis, survivalStrategy, emergentPatterns);
     }
-    
+
     synthesizePsychoNoirStrategy(strategic, survival, emergent) {
         return {
             immediate_actions: [

@@ -1,0 +1,51 @@
+{
+  "name": "copilot-persistence-enhancer",
+  "displayName": "Copilot Persistence Enhancer",
+  "description": "Improves GitHub Copilot's inline mode persistence",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilot-persistence.saveCurrentSession",
+        "title": "Save Current Copilot Session"
+      },
+      {
+        "command": "copilot-persistence.reopenLastSession",
+        "title": "Reopen Last Copilot Session"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "copilot-persistence.saveCurrentSession",
+        "key": "ctrl+shift+s",
+        "mac": "cmd+shift+s",
+        "when": "github.copilot.conversationPanelVisible"
+      },
+      {
+        "command": "copilot-persistence.reopenLastSession",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "18.x"
+  }
+}

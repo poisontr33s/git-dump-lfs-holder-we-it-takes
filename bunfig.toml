@@ -1,0 +1,11 @@
+
+# QUANTUM-ENHANCED BUN CONFIGURATION (SEPTEMBER 2025)
+[install]
+registry = "https://registry.npmjs.org"
+production = false
+
+[test]
+coverage = true
+
+[debug]
+linkToCwd = true

@@ -172,11 +172,21 @@
     "headers": [
       {
         "level": 1,
-        "names": ["🎭 [PROSJEKT NAVN]"]
+        "names": [
+          "🎭 [PROSJEKT NAVN]"
+        ]
       },
       {
         "level": 2,
-        "names": ["[Kort beskrivelse av formål]", "📋 Oversikt", "🎯 Mål & Omfang", "🔧 Teknisk Arkitektur", "📊 Suksess Metrics", "🚀 Implementeringsplan", "👥 Team & Ansvar"]
+        "names": [
+          "[Kort beskrivelse av formål]",
+          "📋 Oversikt",
+          "🎯 Mål & Omfang",
+          "🔧 Teknisk Arkitektur",
+          "📊 Suksess Metrics",
+          "🚀 Implementeringsplan",
+          "👥 Team & Ansvar"
+        ]
       }
     ]
   },
