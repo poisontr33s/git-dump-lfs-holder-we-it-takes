@@ -187,19 +187,19 @@ jobs:
           echo "Browser: ${{ matrix.browser }}, Node: ${{ matrix.node-version }}"
           
           # Introduce controlled chaos before npm install
-          python3 -c "
-import sys
-sys.path.append('./.github/runner-logging/failure-orchestrator')
-from chaos_engineering import ChaosOrchestrator
-import json
-
-orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
-context = json.loads('$CHAOS_CONTEXT')
-scenario = orchestrator.assess_chaos_opportunity('npm_install', context)
-if scenario:
-    chaos_execution = orchestrator.introduce_chaos(scenario, context)
-    print(f'🔥 Chaos introduced: {scenario.name}')
-"
+          python3 - <<'CHAOS_PY'
+          import sys
+          sys.path.append('./.github/runner-logging/failure-orchestrator')
+          from chaos_engineering import ChaosOrchestrator
+          import json
+          
+          orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
+          context = json.loads('$CHAOS_CONTEXT')
+          scenario = orchestrator.assess_chaos_opportunity('npm_install', context)
+          if scenario:
+              chaos_execution = orchestrator.introduce_chaos(scenario, context)
+              print(f'🔥 Chaos introduced: {scenario.name}')
+          CHAOS_PY
           
           # Proceed with npm install (may fail due to chaos)
           npm ci 2>&1 || {
@@ -235,19 +235,19 @@ if scenario:
           echo "Building for ${{ matrix.browser }} on Node ${{ matrix.node-version }}"
           
           # Introduce build-time chaos
-          python3 -c "
-import sys
-sys.path.append('./.github/runner-logging/failure-orchestrator')
-from chaos_engineering import ChaosOrchestrator
-import json
-
-orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
-context = json.loads('$CHAOS_CONTEXT')
-scenario = orchestrator.assess_chaos_opportunity('build_process', context)
-if scenario:
-    chaos_execution = orchestrator.introduce_chaos(scenario, context)
-    print(f'🔥 Build chaos introduced: {scenario.name}')
-"
+          python3 - <<'BUILD_CHAOS_PY'
+          import sys
+          sys.path.append('./.github/runner-logging/failure-orchestrator')
+          from chaos_engineering import ChaosOrchestrator
+          import json
+          
+          orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
+          context = json.loads('$CHAOS_CONTEXT')
+          scenario = orchestrator.assess_chaos_opportunity('build_process', context)
+          if scenario:
+              chaos_execution = orchestrator.introduce_chaos(scenario, context)
+              print(f'🔥 Build chaos introduced: {scenario.name}')
+          BUILD_CHAOS_PY
           
           # Attempt the build process
           cp -r frontend/* dist/frontend/ 2>&1 || {
@@ -380,23 +380,23 @@ if scenario:
           echo "OS: ${{ matrix.os }}, Python: ${{ matrix.python-version }}"
           
           # Introduce multiple chaos scenarios for backend
-          python3 -c "
-import sys
-sys.path.append('./.github/runner-logging/failure-orchestrator')
-from chaos_engineering import ChaosOrchestrator
-import json
-
-orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
-context = json.loads('$CHAOS_CONTEXT')
-
-# Try multiple chaos scenarios for backend complexity
-for trigger in ['pip_install', 'environment_setup', 'any_operation']:
-    scenario = orchestrator.assess_chaos_opportunity(trigger, context)
-    if scenario:
-        chaos_execution = orchestrator.introduce_chaos(scenario, context)
-        print(f'🔥 Backend chaos: {scenario.name} ({scenario.category.value})')
-        break
-"
+          python3 - <<'BACKEND_CHAOS_PY'
+          import sys
+          sys.path.append('./.github/runner-logging/failure-orchestrator')
+          from chaos_engineering import ChaosOrchestrator
+          import json
+          
+          orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
+          context = json.loads('$CHAOS_CONTEXT')
+          
+          # Try multiple chaos scenarios for backend complexity
+          for trigger in ['pip_install', 'environment_setup', 'any_operation']:
+              scenario = orchestrator.assess_chaos_opportunity(trigger, context)
+              if scenario:
+                  chaos_execution = orchestrator.introduce_chaos(scenario, context)
+                  print(f'🔥 Backend chaos: {scenario.name} ({scenario.category.value})')
+                  break
+          BACKEND_CHAOS_PY
           
           # Attempt Python dependencies installation with chaos tolerance
           python -m pip install --upgrade pip
@@ -438,19 +438,19 @@ for trigger in ['pip_install', 'environment_setup', 'any_operation']:
           cd backend/python
           
           # Introduce ghost-in-machine chaos for testing
-          python3 -c "
-import sys
-sys.path.append('../../.github/runner-logging/failure-orchestrator')
-from chaos_engineering import ChaosOrchestrator
-import json
-
-orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
-context = json.loads('$CHAOS_CONTEXT')
-scenario = orchestrator.assess_chaos_opportunity('test_execution', context)
-if scenario:
-    chaos_execution = orchestrator.introduce_chaos(scenario, context)
-    print(f'🔥 Test chaos: {scenario.name} - {scenario.description}')
-"
+          python3 - <<'TEST_CHAOS_PY'
+          import sys
+          sys.path.append('../../.github/runner-logging/failure-orchestrator')
+          from chaos_engineering import ChaosOrchestrator
+          import json
+          
+          orchestrator = ChaosOrchestrator('$JOB_SESSION_ID', 'ci')
+          context = json.loads('$CHAOS_CONTEXT')
+          scenario = orchestrator.assess_chaos_opportunity('test_execution', context)
+          if scenario:
+              chaos_execution = orchestrator.introduce_chaos(scenario, context)
+              print(f'🔥 Test chaos: {scenario.name} - {scenario.description}')
+          TEST_CHAOS_PY
           
           # Create test results directory
           mkdir -p ../../test-results/python
@@ -471,22 +471,22 @@ if scenario:
             echo "🧠 Learning: Test suite needs chaos hardening"
             
             # Create chaos-aware test report
-            cat > ../../test-results/python/chaos-analysis.txt << EOF
-CHAOS ENGINEERING TEST ANALYSIS
-================================
-OS: ${{ matrix.os }}
-Python: ${{ matrix.python-version }}
-Chaos Impact: DETECTED
-Test Resilience: NEEDS_IMPROVEMENT
-Learning: Test infrastructure should be hardened against:
-- Environment variable corruption
-- Memory pressure situations  
-- Network connectivity issues
-- Temporal timing anomalies
-- Configuration mismatches
+            cat > ../../test-results/python/chaos-analysis.txt << 'EOF'
+            CHAOS ENGINEERING TEST ANALYSIS
+            ================================
+            OS: ${{ matrix.os }}
+            Python: ${{ matrix.python-version }}
+            Chaos Impact: DETECTED
+            Test Resilience: NEEDS_IMPROVEMENT
+            Learning: Test infrastructure should be hardened against:
+            - Environment variable corruption
+            - Memory pressure situations  
+            - Network connectivity issues
+            - Temporal timing anomalies
+            - Configuration mismatches
 
-Recommendation: Implement chaos-aware test patterns
-EOF
+            Recommendation: Implement chaos-aware test patterns
+            EOF
           }
           
           TEST_EXIT_CODE=$?
@@ -583,28 +583,28 @@ EOF
         echo "Ghost-in-Machine Manifestations: $GHOST_MANIFESTATIONS"
         
         # Generate chaos intelligence using the orchestrator
-        python3 -c "
-import sys
-sys.path.append('./.github/runner-logging/failure-orchestrator')
-from chaos_engineering import ChaosOrchestrator
-import json
-
-orchestrator = ChaosOrchestrator('$SESSION_ID', 'ci')
-
-# Generate comprehensive chaos report
-report = orchestrator.generate_chaos_report()
-print('🧠 CHAOS CONSCIOUSNESS ASSESSMENT:')
-print(f'   Consciousness Level: {report[\"psycho_noir_assessment\"][\"consciousness_level\"]}')
-print(f'   Glitch Assessment: {report[\"psycho_noir_assessment\"][\"glitch_assessment\"]}')
-print(f'   Den Usynlige Hånd Influence: {report[\"psycho_noir_assessment\"][\"invisible_hand_influence\"]}%')
-print(f'   Neural Pathway Strength: {report[\"psycho_noir_assessment\"][\"neural_pathway_strength\"]}')
-print(f'   Reality Integrity: {report[\"psycho_noir_assessment\"][\"reality_integrity\"]}%')
-print(f'   Adaptation Quotient: {report[\"psycho_noir_assessment\"][\"adaptation_quotient\"]}%')
-
-# Save detailed report
-with open('/tmp/chaos_evolution_report.json', 'w') as f:
-    json.dump(report, f, indent=2, default=str)
-"
+        python3 - <<'CHAOS_REPORT_PY'
+        import sys
+        sys.path.append('./.github/runner-logging/failure-orchestrator')
+        from chaos_engineering import ChaosOrchestrator
+        import json
+        
+        orchestrator = ChaosOrchestrator('$SESSION_ID', 'ci')
+        
+        # Generate comprehensive chaos report
+        report = orchestrator.generate_chaos_report()
+        print('🧠 CHAOS CONSCIOUSNESS ASSESSMENT:')
+        print(f'   Consciousness Level: {report["psycho_noir_assessment"]["consciousness_level"]}')
+        print(f'   Glitch Assessment: {report["psycho_noir_assessment"]["glitch_assessment"]}')
+        print(f'   Den Usynlige Hånd Influence: {report["psycho_noir_assessment"]["invisible_hand_influence"]}%')
+        print(f'   Neural Pathway Strength: {report["psycho_noir_assessment"]["neural_pathway_strength"]}')
+        print(f'   Reality Integrity: {report["psycho_noir_assessment"]["reality_integrity"]}%')
+        print(f'   Adaptation Quotient: {report["psycho_noir_assessment"]["adaptation_quotient"]}%')
+        
+        # Save detailed report
+        with open('/tmp/chaos_evolution_report.json', 'w') as f:
+            json.dump(report, f, indent=2, default=str)
+        CHAOS_REPORT_PY
         
         # Create global chaos context for intelligence processing
         GLOBAL_CHAOS_CONTEXT=$(cat << EOF

@@ -69,21 +69,21 @@ jobs:
         
         # Get failures from last 24 hours (use heredoc to avoid YAML quoting/indent issues)
         python - <<'PY'
-import json
-from datetime import datetime
-from failed_runs_harvester import FailedRunsHarvester
-
-harvester = FailedRunsHarvester()
-recent_failures = harvester.harvest_github_actions_failures()
-
-print(f"📊 Harvested {len(recent_failures)} recent failures")
-with open('../../harvest_summary.json', 'w') as f:
-    json.dump({
-        'failures_count': len(recent_failures),
-        'timestamp': datetime.now().isoformat(),
-        'mode': 'incremental'
-    }, f)
-PY
+        import json
+        from datetime import datetime
+        from failed_runs_harvester import FailedRunsHarvester
+        
+        harvester = FailedRunsHarvester()
+        recent_failures = harvester.harvest_github_actions_failures()
+        
+        print(f"📊 Harvested {len(recent_failures)} recent failures")
+        with open('../../harvest_summary.json', 'w') as f:
+            json.dump({
+                'failures_count': len(recent_failures),
+                'timestamp': datetime.now().isoformat(),
+                'mode': 'incremental'
+            }, f)
+        PY
 
         # Robust lesing av resultat med fallback
         if [ -f harvest_summary.json ]; then
@@ -163,33 +163,33 @@ PY
           
           const issueBody = `# 🧠 PSYCHO-NOIR KONTRAPUNKT: NEURAL ARCHAEOLOGY LEARNING PROGRESS
           
-**Last Updated:** ${new Date().toISOString()}
-**Milestone Reached:** \`${milestone}\`
+          Last Updated: ${new Date().toISOString()}
+          Milestone Reached: ${milestone}
 
-## 📊 Current Statistics:
-- **Total Failures Cataloged:** ${totalFailures}
-- **Resolution Rate:** ${resolvedPct}%
-- **Learning Engine Status:** 🟢 Active
-- **Database Location:** \`data/generert/failure_archaeology.db\`
+          ## 📊 Current Statistics:
+          - Total Failures Cataloged: ${totalFailures}
+          - Resolution Rate: ${resolvedPct}%
+          - Learning Engine Status: 🟢 Active
+          - Database Location: data/generert/failure_archaeology.db
 
-## 🎯 Recent Milestones:
-- ✅ **${milestone}** - ${new Date().toLocaleDateString()}
+          ## 🎯 Recent Milestones:
+          - ✅ ${milestone} - ${new Date().toLocaleDateString()}
 
-## 🔮 Predictive Intelligence Status:
-- **Pattern Recognition:** Continuous learning from failure patterns
-- **Bidirectional Learning:** Active transformation of failures to fixes
-- **Risk Assessment:** Pre-PR analysis operational
+          ## 🔮 Predictive Intelligence Status:
+          - Pattern Recognition: Continuous learning from failure patterns
+          - Bidirectional Learning: Active transformation of failures to fixes
+          - Risk Assessment: Pre-PR analysis operational
 
-## 🚀 Next Goals:
-- [ ] Achieve 75% resolution rate
-- [ ] Extract 10+ successful fix patterns
-- [ ] Implement automated fix recommendations
-- [ ] Deploy predictive failure prevention
+          ## 🚀 Next Goals:
+          - [ ] Achieve 75% resolution rate
+          - [ ] Extract 10+ successful fix patterns
+          - [ ] Implement automated fix recommendations
+          - [ ] Deploy predictive failure prevention
 
----
-*Auto-updated by Continuous Neural Archaeology Learning System*
-*Den Usynlige Hånd: Systematisk transformasjon av kaos til visdom*
-`;
+          ---
+          Auto-updated by Continuous Neural Archaeology Learning System
+          Den Usynlige Hånd: Systematisk transformasjon av kaos til visdom
+          `;
 
           // Check if issue already exists (labels må være streng, ikke array)
           const issues = await github.rest.issues.listForRepo({
