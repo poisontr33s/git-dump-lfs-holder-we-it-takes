@@ -1,0 +1,186 @@
+{
+  "summary": {
+    "valid": 18,
+    "warnings": 0,
+    "invalid": 0,
+    "total": 18
+  },
+  "workflows": [
+    {
+      "file": "aggressive_failure_harvesting.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "chaos-ci.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "ci.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "workflow_dispatch",
+        "schedule",
+        "release"
+      ],
+      "error": null
+    },
+    {
+      "file": "codeql.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "schedule"
+      ],
+      "error": null
+    },
+    {
+      "file": "deploy-pages.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "enhanced-ci.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request"
+      ],
+      "error": null
+    },
+    {
+      "file": "jules-enhanced-ci.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "schedule"
+      ],
+      "error": null
+    },
+    {
+      "file": "multi_vector_failure_generation.yml",
+      "status": "valid",
+      "triggers": [
+        "pull_request",
+        "push",
+        "workflow_dispatch",
+        "schedule"
+      ],
+      "error": null
+    },
+    {
+      "file": "necropolis.yml",
+      "status": "valid",
+      "triggers": [
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "neural-archaeology-activation.yml",
+      "status": "valid",
+      "triggers": [
+        "pull_request",
+        "push",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "neural_archaeology_continuous.yml",
+      "status": "valid",
+      "triggers": [
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "neural_archaeology_pipeline.yml",
+      "status": "valid",
+      "triggers": [
+        "pull_request",
+        "push",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "neural_archaeology_pre_pr.yml",
+      "status": "valid",
+      "triggers": [
+        "pull_request",
+        "push",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "psychonoir-ci-cd.yml",
+      "status": "valid",
+      "triggers": [
+        "push",
+        "pull_request",
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "resource_monitor.yml",
+      "status": "valid",
+      "triggers": [
+        "workflow_run",
+        "schedule"
+      ],
+      "error": null
+    },
+    {
+      "file": "triage-comment.yml",
+      "status": "valid",
+      "triggers": [
+        "workflow_run"
+      ],
+      "error": null
+    },
+    {
+      "file": "tsunami_failure_wave.yml",
+      "status": "valid",
+      "triggers": [
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "error": null
+    },
+    {
+      "file": "verify.yml",
+      "status": "valid",
+      "triggers": [
+        "pull_request",
+        "push"
+      ],
+      "error": null
+    }
+  ]
+}
