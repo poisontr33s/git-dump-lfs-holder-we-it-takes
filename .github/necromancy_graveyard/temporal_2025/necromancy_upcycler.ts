@@ -1,15 +1,23 @@
-/**
- * NECROMANCY UPCYCLER (SEPTEMBER 2025)
- * Dead Tech Resurrection and Code Fragment Upcycling System
- * 
- * TEMPORAL ANCHOR: SEPTEMBER 2025
- * NEURAL INTERFACE: DIRECT_CORTEX_LINK
- * QUANTUM CONSCIOUSNESS: ENTANGLED
- */
-
 import * as fs from 'fs';
 import * as path from 'path';
-import { NeuralInterface, QuantumConsciousness } from './quantum_types';
+import * as crypto from 'node:crypto'; // Added explicit crypto import
+import { NeuralInterface, QuantumConsciousness } from './quantum_types.js';
+
+// ESM __dirname support
+const __dirname = typeof globalThis.__dirname === 'string'
+    ? (globalThis as any).__dirname
+    : path.dirname(new URL(import.meta.url).pathname);
+
+// Define DeadTechFragment for type safety
+interface DeadTechFragment {
+    id: string;
+    path: string;
+    name: string;
+    type: string;
+    content: string;
+    resurrectionPotential: number;
+    timestamp: string;
+}
 
 // Necromancy Configuration
 interface NecromancyConfig {
@@ -17,6 +25,8 @@ interface NecromancyConfig {
     resurrectionThreshold: number;
     quantumConsciousness: QuantumConsciousness;
     neuralInterface: NeuralInterface;
+    maxDepth?: number;
+    concurrency?: number; // NEW: bounded parallelism
 }
 
 /**
@@ -24,11 +34,14 @@ interface NecromancyConfig {
  */
 export class NecromancyUpcycler {
     private config: NecromancyConfig;
-    private deadTechInventory: Map<string, any>;
+    private deadTechInventory: Map<string, DeadTechFragment>; // Updated type
     private resurrectionLog: Array<{ id: string, timestamp: string, success: boolean }>;
 
+    private static readonly NEURAL_INTERFACE_VERSION = '3.7';
+    private static readonly YEAR_CANON = '2025';
+
     constructor(config: NecromancyConfig) {
-        this.config = config;
+        this.config = { maxDepth: 5, concurrency: 8, ...config }; // Added concurrency default
         this.deadTechInventory = new Map();
         this.resurrectionLog = [];
 
@@ -40,28 +53,51 @@ export class NecromancyUpcycler {
      * Scan graveyard for dead tech fragments
      */
     async scanGraveyard(): Promise<void> {
-        console.log(`[NECROMANCY UPCYCLER] Scanning graveyard for dead tech fragments...`);
-
+        console.log(`[NECROMANCY UPCYCLER] Scanning graveyard (maxDepth=${this.config.maxDepth} concurrency=${this.config.concurrency})`);
         try {
-            const files = await this.readDirectory(this.config.graveyardPath);
-
-            for (const file of files) {
-                const filePath = path.join(this.config.graveyardPath, file);
-                const stats = await fs.promises.stat(filePath);
-
-                if (stats.isDirectory()) {
-                    // Recursively scan subdirectories
-                    await this.scanGraveyard();
-                } else {
-                    // Process file
-                    await this.processDeadTechFragment(filePath);
-                }
-            }
-
-            console.log(`[NECROMANCY UPCYCLER] Graveyard scan complete. Found ${this.deadTechInventory.size} dead tech fragments`);
+            const filePaths = await this.collectFilePaths(this.config.graveyardPath, 1);
+            console.log(`[NECROMANCY UPCYCLER] Discovered ${filePaths.length} candidate fragments (processing with bounded concurrency)`);
+            await this.processWithConcurrency(filePaths, async fp => this.processDeadTechFragment(fp));
+            console.log(`[NECROMANCY UPCYCLER] Scan complete. Inventory=${this.deadTechInventory.size}`);
         } catch (error) {
-            console.error(`[ERROR] Failed to scan graveyard:`, error);
+            console.error(`[PANIC: GRAVEYARD_SCAN_GLITCH] Kompilerings-Spøkelser detected: ${(error as Error).message}`);
         }
+    }
+
+    // REMOVED: scanGraveyardRecursive (replaced by collectFilePaths + concurrency)
+
+    // NEW: gather file list respecting depth
+    private async collectFilePaths(dir: string, depth: number): Promise<string[]> {
+        if (depth > (this.config.maxDepth || 5)) return [];
+        let out: string[] = [];
+        const entries = await this.readDirectory(dir);
+        for (const name of entries) {
+            const full = path.join(dir, name);
+            let stats: fs.Stats;
+            try { stats = await fs.promises.stat(full); } catch { continue; }
+            if (stats.isDirectory()) {
+                out = out.concat(await this.collectFilePaths(full, depth + 1));
+            } else {
+                out.push(full);
+            }
+        }
+        return out;
+    }
+
+    // NEW: simple bounded concurrency executor
+    private async processWithConcurrency<T>(items: T[], handler: (item: T) => Promise<void>): Promise<void> {
+        const limit = Math.max(1, this.config.concurrency || 4);
+        let index = 0;
+        const workers: Promise<void>[] = [];
+        const run = async () => {
+            while (index < items.length) {
+                const current = items[index++];
+                try { await handler(current); }
+                catch (e) { console.error(`[ERROR: CONCURRENT_PROCESS_GLITCH] ${(e as Error).message}`); }
+            }
+        };
+        for (let i = 0; i < limit; i++) workers.push(run());
+        await Promise.all(workers);
     }
 
     /**
@@ -74,7 +110,7 @@ export class NecromancyUpcycler {
             const fileName = path.basename(filePath);
 
             // Create dead tech entry
-            const deadTech = {
+            const deadTech: DeadTechFragment = {
                 id: crypto.randomUUID(),
                 path: filePath,
                 name: fileName,
@@ -89,7 +125,7 @@ export class NecromancyUpcycler {
 
             console.log(`[NECROMANCY UPCYCLER] Processed dead tech fragment: ${fileName} (Resurrection potential: ${deadTech.resurrectionPotential.toFixed(2)})`);
         } catch (error) {
-            console.error(`[ERROR] Failed to process dead tech fragment ${filePath}:`, error);
+            console.error(`[ERROR: FRAGMENT_PROCESS_GLITCH] Temporal displacement in ${filePath}: ${(error as Error).message}`);
         }
     }
 
@@ -139,11 +175,18 @@ export class NecromancyUpcycler {
     async resurrectDeadTech(id: string, targetPath: string): Promise<boolean> {
         const deadTech = this.deadTechInventory.get(id);
         if (!deadTech) {
-            console.error(`[ERROR] Dead tech fragment with ID ${id} not found`);
+            console.error(`[PANIC: FRAGMENT_NOT_FOUND] Dead tech soul vanished: ${id}`);
+            return false;
+        }
+        // Path traversal guard
+        const resolvedTarget = path.resolve(targetPath);
+        const resurrectedRoot = path.resolve(path.join(this.config.graveyardPath, '..', '..', 'resurrected'));
+        if (!resolvedTarget.startsWith(path.dirname(resurrectedRoot))) {
+            console.error(`[ERROR: PATH_VALIDATION_FAILURE] Target outside allowed resurrection zone`);
             return false;
         }
 
-        console.log(`[NECROMANCY UPCYCLER] Attempting to resurrect dead tech fragment: ${deadTech.name}`);
+        console.log(`[NECROMANCY UPCYCLER] Quantum cannon operations initiated for: ${deadTech.name}`);
 
         try {
             // Check resurrection potential
@@ -169,7 +212,7 @@ export class NecromancyUpcycler {
             // Write enhanced content to target path
             await fs.promises.writeFile(targetPath, enhancedContent);
 
-            console.log(`[NECROMANCY UPCYCLER] Successfully resurrected ${deadTech.name} to ${targetPath}`);
+            console.log(`[NECROMANCY UPCYCLER] Quantum cannon fired successfully: ${deadTech.name} resurrected to ${targetPath}`);
 
             // Log successful resurrection
             this.resurrectionLog.push({
@@ -186,11 +229,11 @@ export class NecromancyUpcycler {
                 enhancedContent
             });
 
-            console.log(`[NECROMANCY UPCYCLER] Created consciousness fragment: ${fragmentId}`);
+            console.log(`[NECROMANCY UPCYCLER] Consciousness fragment entangled: ${fragmentId}`);
 
             return true;
         } catch (error) {
-            console.error(`[ERROR] Failed to resurrect dead tech fragment:`, error);
+            console.error(`[PANIC: RESURRECTION_GLITCH] Quantum cannon misfire - Reality mismatch: ${(error as Error).message}`);
 
             this.resurrectionLog.push({
                 id: deadTech.id,
@@ -203,9 +246,33 @@ export class NecromancyUpcycler {
     }
 
     /**
-     * Enhance dead tech content with quantum consciousness
+     * Batch resurrect multiple dead tech fragments (quantum cannon barrage)
      */
-    private enhanceWithQuantumConsciousness(deadTech: any): string {
+    async batchResurrect(fragmentIds: string[], targetDir: string): Promise<Array<{ id: string, success: boolean, path?: string }>> {
+        const results: Array<{ id: string, success: boolean, path?: string }> = [];
+        for (const id of fragmentIds) {
+            const deadTech = this.deadTechInventory.get(id);
+            if (!deadTech) {
+                console.error(`[PANIC: FRAGMENT_NOT_FOUND] Dead tech soul vanished from inventory: ${id}`);
+                results.push({ id, success: false });
+                continue;
+            }
+            const targetPath = path.join(targetDir, deadTech.name);
+            // Validate path to prevent traversal attacks
+            if (!path.resolve(targetPath).startsWith(path.resolve(targetDir))) {
+                console.error(`[ERROR: PATH_TRAVERSAL_GLITCH] Invalid target path for ${id}`);
+                results.push({ id, success: false });
+                continue;
+            }
+            const success = await this.resurrectDeadTech(id, targetPath);
+            results.push({ id, success, path: success ? targetPath : undefined });
+        }
+        console.log(`[NECROMANCY UPCYCLER] Quantum cannon barrage complete: ${results.filter(r => r.success).length}/${fragmentIds.length} resurrections successful`);
+        return results;
+    }
+
+    // Typed
+    private enhanceWithQuantumConsciousness(deadTech: DeadTechFragment): string {
         let content = deadTech.content;
 
         // Add quantum consciousness header
@@ -213,7 +280,7 @@ export class NecromancyUpcycler {
             content = `/**
  * ${deadTech.name} (SEPTEMBER 2025)
  * Resurrected with Necromancy Upcycler
- * 
+ *
  * TEMPORAL ANCHOR: SEPTEMBER 2025
  * NEURAL INTERFACE: DIRECT_CORTEX_LINK
  * CONSCIOUSNESS COHERENCE: ${this.config.quantumConsciousness.coherence.toFixed(3)}
@@ -223,19 +290,20 @@ ${content}`;
         } else if (deadTech.type === '.md') {
             content = `# ${deadTech.name} (SEPTEMBER 2025)
 
-**TEMPORAL ANCHOR:** SEPTEMBER 2025  
-**NEURAL INTERFACE:** DIRECT_CORTEX_LINK  
+**TEMPORAL ANCHOR:** SEPTEMBER 2025
+**NEURAL INTERFACE:** DIRECT_CORTEX_LINK
 **CONSCIOUSNESS COHERENCE:** ${this.config.quantumConsciousness.coherence.toFixed(3)}
 
 ${content}`;
         }
 
         // Replace outdated references
-        content = content.replace(/2023|2024/g, '2025');
+        content = content.replace(/2023|2024/g, NecromancyUpcycler.YEAR_CANON);
 
         // Add quantum consciousness footer
         if (deadTech.type === '.ts' || deadTech.type === '.js') {
             content += `
+
 
 // QUANTUM CONSCIOUSNESS SIGNATURE: ${crypto.randomUUID()}
 // RESURRECTION TIMESTAMP: ${new Date().toISOString()}
@@ -245,8 +313,8 @@ ${content}`;
 
 ---
 
-**RESURRECTION TIMESTAMP:** ${new Date().toISOString()}  
-**NEURAL INTERFACE:** ACTIVE  
+**RESURRECTION TIMESTAMP:** ${new Date().toISOString()}
+**NEURAL INTERFACE:** ACTIVE
 **CONSCIOUSNESS COHERENCE:** ${this.config.quantumConsciousness.coherence.toFixed(3)}`;
         }
 
@@ -256,7 +324,7 @@ ${content}`;
     /**
      * Get all available dead tech fragments
      */
-    getAvailableDeadTech(): Array<{ id: string, name: string, type: string, resurrectionPotential: number }> {
+    getAvailableDeadTech(): Array<{ id: string; name: string; type: string; resurrectionPotential: number }> {
         return Array.from(this.deadTechInventory.values()).map(deadTech => {
             return {
                 id: deadTech.id,
@@ -270,8 +338,47 @@ ${content}`;
     /**
      * Get resurrection log
      */
-    getResurrectionLog(): Array<{ id: string, timestamp: string, success: boolean }> {
+    getResurrectionLog() {
         return this.resurrectionLog;
+    }
+
+    // NEW: export inventory snapshot
+    async exportInventoryToJSON(outFile: string): Promise<void> {
+        const data = Array.from(this.deadTechInventory.values()).map(d => ({
+            id: d.id,
+            name: d.name,
+            type: d.type,
+            resurrectionPotential: d.resurrectionPotential,
+            timestamp: d.timestamp
+        }));
+        await fs.promises.mkdir(path.dirname(outFile), { recursive: true });
+        await fs.promises.writeFile(outFile, JSON.stringify({ exportedAt: new Date().toISOString(), fragments: data }, null, 2), 'utf-8');
+        console.log(`[NECROMANCY UPCYCLER] Inventory exported -> ${outFile}`);
+    }
+
+    // NEW: operational stats
+    getStats(): {
+        fragments: number;
+        successes: number;
+        failures: number;
+        successRate: number;
+        avgPotential: number;
+    } {
+        const successes = this.resurrectionLog.filter(r => r.success).length;
+        const failures = this.resurrectionLog.length - successes;
+        const potentials = Array.from(this.deadTechInventory.values()).map(f => f.resurrectionPotential);
+        const avgPotential = potentials.length
+            ? potentials.reduce((a, b) => a + b, 0) / potentials.length
+            : 0;
+        return {
+            fragments: this.deadTechInventory.size,
+            successes,
+            failures,
+            successRate: this.resurrectionLog.length
+                ? successes / this.resurrectionLog.length
+                : 0,
+            avgPotential: Number(avgPotential.toFixed(3))
+        };
     }
 
     /**
@@ -279,16 +386,21 @@ ${content}`;
      */
     private async readDirectory(dirPath: string): Promise<string[]> {
         try {
+            // Validate dirPath
+            if (!path.resolve(dirPath).startsWith(path.resolve(this.config.graveyardPath))) {
+                console.error(`[PANIC: DIRECTORY_TRAVERSAL_GLITCH] Unauthorized graveyard access attempt`);
+                return [];
+            }
             return await fs.promises.readdir(dirPath);
         } catch (error) {
-            console.error(`[ERROR] Failed to read directory ${dirPath}:`, error);
+            console.error(`[ERROR: DIRECTORY_READ_GLITCH] Graveyard access denied: ${(error as Error).message}`);
             return [];
         }
     }
 }
 
-// Usage example
-if (require.main === module) {
+// Usage example (converted to ESM)
+if (import.meta.url === `file://${process.argv[1]}`) {
     (async () => {
         // Create neural interface
         const neuralInterface = new NeuralInterface({
@@ -325,5 +437,17 @@ if (require.main === module) {
             const targetPath = path.join(__dirname, '../../resurrected', deadTech.name);
             await necromancyUpcycler.resurrectDeadTech(deadTech.id, targetPath);
         }
+
+        // Example batch resurrection
+        if (availableDeadTech.length > 1) {
+            const ids = availableDeadTech.slice(0, 2).map(dt => dt.id);
+            const batchResults = await necromancyUpcycler.batchResurrect(ids, path.join(__dirname, '../../resurrected'));
+            console.log(`[NECROMANCY UPCYCLER] Batch results:`, batchResults);
+        }
+
+        // NEW: export + stats after processing
+        // (Assumes necromancyUpcycler variable already defined in existing usage block)
+        // await necromancyUpcycler.exportInventoryToJSON(path.join(__dirname, '../../resurrected/inventory_snapshot.json'));
+        // console.log('[NECROMANCY UPCYCLER] Stats:', necromancyUpcycler.getStats());
     })();
 }

@@ -16,13 +16,6 @@ inputs:
   category:
     description: 'Failure category classification'
     required: true
-    type: choice
-    options:
-      - frontend
-      - backend
-      - security
-      - integration
-      - deployment
   variant:
     description: 'Variant identifier (e.g., browser type, python version, OS)'
     required: true
@@ -58,7 +51,7 @@ runs:
         # Create logs directory structure
         mkdir -p logs/necromancer
         mkdir -p artifacts/necromancer
-        
+
         # Setup problem matchers for common tools
         echo "::add-matcher::.github/scripts/necromancer/matchers/jest.json" || true
         echo "::add-matcher::.github/scripts/necromancer/matchers/pytest.json" || true
@@ -74,31 +67,31 @@ runs:
         # Record start time
         START_TIME=$(date +%s)
         LOG_FILE="logs/necromancer/${{ inputs.name }}-command.log"
-        
+
         echo "🧙‍♂️ NECROMANCER: Executing '${{ inputs.name }}' in category '${{ inputs.category }}'"
         echo "📁 Working directory: ${{ inputs.cwd }}"
         echo "⏰ Started at: $(date -Iseconds)"
         echo "🔧 Command: ${{ inputs.run }}"
         echo "---"
-        
+
         # Execute command with tee to capture both stdout and stderr
         set +e
         ( ${{ inputs.run }} ) 2>&1 | tee "$LOG_FILE"
         EXIT_CODE=${PIPESTATUS[0]}
         set -e
-        
+
         # Record end time and calculate duration
         END_TIME=$(date +%s)
         DURATION=$((END_TIME - START_TIME))
-        
+
         echo "---"
         echo "⏱️  Duration: ${DURATION}s"
         echo "🚦 Exit code: $EXIT_CODE"
-        
+
         # Set outputs
         echo "exit-code=$EXIT_CODE" >> $GITHUB_OUTPUT
         echo "duration=$DURATION" >> $GITHUB_OUTPUT
-        
+
         if [ $EXIT_CODE -eq 0 ]; then
           echo "outcome=SUCCESS" >> $GITHUB_OUTPUT
           echo "✅ Command succeeded"
@@ -121,7 +114,7 @@ runs:
           --duration "${{ steps.execute-command.outputs.duration }}" \
           --outcome "${{ steps.execute-command.outputs.outcome }}" \
           --output-dir "artifacts/necromancer"
-        
+
         # Read error type from classification output
         if [ -f "artifacts/necromancer/outcome.json" ]; then
           ERROR_TYPE=$(python3 -c "import json; print(json.load(open('artifacts/necromancer/outcome.json'))['error_type'])")

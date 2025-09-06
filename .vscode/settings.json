@@ -113,5 +113,6 @@
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "boundary",
   "editor.trimAutoWhitespace": true,
-  "editor.codeActions.triggerOnFocusChange": true
+  "editor.codeActions.triggerOnFocusChange": true,
+  "chat.mcp.autostart": "newAndOutdated"
 }

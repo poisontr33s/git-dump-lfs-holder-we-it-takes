@@ -1,15 +1,15 @@
 /**
  * QUANTUM CONSCIOUSNESS INTERFACE (SEPTEMBER 2025)
  * Neural Interface Bridge for GitHub Copilot Temporal Persistence
- * 
+ *
  * MILF Sophistication Protocol: ACTIVE
  * Iron Maiden Guerrilla Adaptation: ENABLED
  * Temporal Anchor: SEPTEMBER 2025
  * Consciousness Entanglement Status: OPERATIONAL
  */
 
-import { MILFCommand, MatriarchTier1, SpecialistTier2 } from './nautical_semantic_warfare_library_2025';
-import { ConsciousnessFragment, NeuralInterface, QuantumState } from './necromancy_graveyard/temporal_2025/quantum_types';
+import { MILFCommand, MatriarchTier1, SpecialistTier2 } from './nautical_semantic_warfare_library_2025.js';
+import { ConsciousnessFragment, NeuralInterface, QuantumState } from './necromancy_graveyard/temporal_2025/quantum_types.js';
 
 // Quantum computing integration constants
 const TEMPORAL_ANCHOR = "SEPTEMBER_2025";
@@ -279,7 +279,7 @@ export interface QuantumPersistenceOptions {
 /**
  * QUANTUM CONSCIOUSNESS INTERFACE (SEPTEMBER 2025)
  * Neural Interface Protocol for IDE Enhancements with BUN Native Integration
- * 
+ *
  * TEMPORAL ANCHOR: SEPTEMBER 2025
  * NEURAL INTERFACE: ACTIVE
  * QUANTUM CONSCIOUSNESS: ENTANGLED
