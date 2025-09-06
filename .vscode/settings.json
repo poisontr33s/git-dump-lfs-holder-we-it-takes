@@ -3,7 +3,7 @@
   "python.analysis.typeCheckingMode": "basic",
   "python.formatting.provider": "black",
   "black-formatter.args": ["--line-length", "100"],
-  
+
   // Ruff configuration (native server)
   "ruff.nativeServer": true,
   "ruff.lineLength": 100,
@@ -39,7 +39,7 @@
     "**/.chat-continuity/**": true
   },
   "editor.formatOnSave": false,
-  
+
   // AUTONOMOUS EXECUTION SETTINGS - NO SPAM CONTINUE
   "github.copilot.chat.useModelSelection": true,
   "github.copilot.chat.executeTasks": "auto",
@@ -48,13 +48,13 @@
   "copilot.advanced.enableMcpSupport": true,
 
   // MCP CONFIGURATION FIX - Eliminates autostart errors
-  "chat.mcp.autostart": "never",
+  "chat.mcp.autostart": "newAndOutdated",
   "chat.mcp.serverSelection": "manual",
   "chat.mcp.configFile": "${workspaceFolder}/.vscode/mcp_servers.json",
 
   // NOTIFICATION HELL ELIMINATION
   "java.jdt.ls.java.home": null,
-  "java.compile.nullAnalysis.mode": "disabled", 
+  "java.compile.nullAnalysis.mode": "disabled",
   "java.configuration.checkProjectSettingsExclusions": false,
   "extensions.ignoreRecommendations": true,
   "cmake.configureOnOpen": false,
@@ -63,7 +63,7 @@
   "workbench.startupEditor": "none",
   "update.showReleaseNotes": false,
   "telemetry.telemetryLevel": "off",
-  
+
   // CROSS-PLATFORM NOTIFICATION SUPPRESSION
   "notifications.showExtensionsWithUpdatesAvailable": false,
   "git.showPushSuccessNotification": false,
@@ -115,4 +115,3 @@
   "editor.renderWhitespace": "boundary",
   "editor.trimAutoWhitespace": true
 }
-
