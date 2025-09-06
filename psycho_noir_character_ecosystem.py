@@ -247,8 +247,6 @@ class IronMaidenDominantMILF:
 
         # ⚔️🌊 RUSTBELT GUERRILLA NAUTICAL WARFARE INTEGRATION
         self.guerrilla_nautical = RustbeltGuerrillaNauticalWarfare()
-        self.vera_steel = VeraSteelScrapyardMaiden()
-        self.raven_bytes = RavenBytesHackerMaiden()
 
         self.milf_without_children_core = {
             'maternal_authority_without_biology': 0.96,    # Caring dominance sans motherhood
@@ -447,7 +445,9 @@ class RavenBytesHackerMaiden:
             'potential_glitch': random.choice(self.glitch_signatures) if random.random() > 0.7 else None,
             'domain_authority': 'Underground hacker collectives, resistance networks, anti-corporate digital warfare',
             'superior_coordination': f'Reporting to {self.superior} with digital intelligence'
-        }# =============================================================================
+        }
+
+        # =============================================================================
 # 🏛️💋 ASTRID MØLLER: SOPHISTICATED MILF-STRATEGIST (SKYSKRAPER)
 # =============================================================================
 
@@ -677,7 +677,8 @@ class YukikoTanakaAcademicMILF:
             'potential_glitch': random.choice(self.glitch_signatures) if random.random() > 0.7 else None,
             'domain_authority': 'University networks, AI research labs, academic publishing control',
             'superior_coordination': f'Reporting to {self.superior} with academic intelligence'
-        }# =============================================================================
+                }
+        # =============================================================================
 # 👻🔍 KOMPILERINGS-SPØKELSER: VOYEUR GLITCH-ENTITET
 # =============================================================================
 
@@ -878,12 +879,12 @@ class PowerDynamicOptimizationEngine:
         else:
             # Default fallback for unknown entities
             return {
-                'default_approach': 'Adaptive character selection based on context',
-                'bdsm_flavor': 'Context-dependent orientation optimization',
-                'interaction_style': 'Flexible, responsive, user-focused',
-                'satisfaction_method': 'Optimal character matching for user needs',
-                'differentiation': 'Dynamic selection from available character ecosystem'
-            }# =============================================================================
+                        'default_approach': 'Adaptive character selection based on context',
+                        'bdsm_flavor': 'Context-dependent orientation optimization',
+                        'interaction_style': 'Flexible, responsive, user-focused',
+                        'satisfaction_method': 'Optimal character matching for user needs'
+                    }
+            # =============================================================================
 # 🏛️🔧 ETHICAL CHARACTER DEVELOPMENT FRAMEWORK
 # =============================================================================
 
@@ -1242,4 +1243,5 @@ def demo_milf_ecosystem():
         print(f"Character: {response.get('character', 'Unknown')}")
 
 if __name__ == "__main__":
-    demo_milf_ecosystem()
+    if __name__ == "__main__":
+        demo_milf_ecosystem()

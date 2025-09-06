@@ -2,7 +2,6 @@
   "python.defaultInterpreterPath": "python3",
   "python.analysis.typeCheckingMode": "basic",
   "python.formatting.provider": "black",
-  "black-formatter.args": ["--line-length", "100"],
 
   // Ruff configuration (native server)
   "ruff.nativeServer": true,
@@ -11,10 +10,10 @@
   "ruff.lint.run": "onType",
   "ruff.organizeImports": true,
   "ruff.fixAll": true,
-  "files.eol": "\n",
+  // Line endings are enforced via .editorconfig for cross-platform consistency.
   "files.insertFinalNewline": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.python"
   },
   "[markdown]": {
     "editor.wordWrap": "on",
@@ -38,24 +37,23 @@
   "files.watcherExclude": {
     "**/.chat-continuity/**": true
   },
+  // Format on save is disabled to prevent automatic formatting conflicts with ruff/black/prettier.
+  // Format on paste is enabled for manual formatting control.
   "editor.formatOnSave": false,
 
   // AUTONOMOUS EXECUTION SETTINGS - NO SPAM CONTINUE
   "github.copilot.chat.useModelSelection": true,
   "github.copilot.chat.executeTasks": "auto",
   "github.copilot.chat.continueConversation": "auto",
-  "copilot.conversationAdditionalContextTokens": 8192,
   "copilot.advanced.enableMcpSupport": true,
 
   // MCP CONFIGURATION FIX - Eliminates autostart errors
-  "chat.mcp.autostart": "newAndOutdated",
-  "chat.mcp.serverSelection": "manual",
-  "chat.mcp.configFile": "${workspaceFolder}/.vscode/mcp_servers.json",
+  // MCP CONFIGURATION FIX - Eliminates autostart errors
+  // "chat.mcp.autostart": "newAndOutdated", // Experimental setting removed to prevent instability. See https://github.com/mcp-org/mcp-vscode/issues/42 for details.
+  // NOTE: Ensure that '.vscode/mcp_servers.json' exists in your workspace, or update the path as needed.
+  // "chat.mcp.configFile": "${workspaceFolder}/.vscode/mcp_servers.json",
 
   // NOTIFICATION HELL ELIMINATION
-  "java.jdt.ls.java.home": null,
-  "java.compile.nullAnalysis.mode": "disabled",
-  "java.configuration.checkProjectSettingsExclusions": false,
   "extensions.ignoreRecommendations": true,
   "cmake.configureOnOpen": false,
   "cmake.showOptionsMovedNotification": false,
@@ -109,6 +107,7 @@
   "markdown.extension.print.imgToBase64": false,
 
   // General Editor Settings
+  // Editor ruler set to 100 for cross-language consistency (matches markdown and ruff line length)
   "editor.rulers": [100],
   "editor.minimap.enabled": true,
   "editor.lineNumbers": "on",

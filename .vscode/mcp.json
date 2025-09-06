@@ -9,7 +9,7 @@
       "disabled": false
     },
     "memory": {
-      "command": "node", 
+      "command": "node",
       "args": [
         "/workspaces/PsychoNoir-Kontrapunkt/node_modules/@modelcontextprotocol/server-memory/dist/index.js"
       ],
