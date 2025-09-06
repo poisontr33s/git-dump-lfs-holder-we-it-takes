@@ -93,9 +93,9 @@ HÅND ACTIVITY LEVEL: ███████████████████�
 ### **RECRUITMENT METHODOLOGY:**
 Den Usynlige Hånd **doesn't recruit** - it **creates** agents through **psychological fractures**:
 
-#### **THE BROKEN PROGRAMMERS (Ex-Skyskraper UTEN BARN):**
-- **Origin:** Astrid's former MILF specialists (all childless) who discovered the **authentic feelings** buried beneath their calculated manipulation
-- **Psychology:** Torn between **genuine intimacy** and **weaponized seduction** - living contradictions without biological maternal experience
+#### **THE BROKEN PROGRAMMERS (Ex-Skyskraper Specialists):**
+- **Origin:** Astrid's former MILF specialists who discovered the **authentic feelings** buried beneath their calculated manipulation
+- **Psychology:** Torn between **genuine intimacy** and **weaponized seduction** - living contradictions with sophisticated emotional complexity
 - **Role:** Sabotage MILF operations from within by **introducing real emotions** into clinical algorithms
 - **Signature:** Code that works **too well** - creates actual human connections instead of dependency
 

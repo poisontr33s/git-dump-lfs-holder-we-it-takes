@@ -34,7 +34,7 @@ For each new district, we establish:
    - Signature aesthetic/atmosphere
 
 2. **TIER 1 MILF MATRIARCH**
-   - District Owner/Creator (UTEN BARN)
+   - District Owner/Creator
    - Specialized leadership style
    - Unique relationship to technology
    - Domain-specific authority

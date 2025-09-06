@@ -112,5 +112,6 @@
   "editor.minimap.enabled": true,
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "boundary",
-  "editor.trimAutoWhitespace": true
+  "editor.trimAutoWhitespace": true,
+  "editor.codeActions.triggerOnFocusChange": true
 }

@@ -2,7 +2,7 @@
 
 > **Creation Date:** September 6, 2025
 > **District Classification:** Maritime/Nautical Autonomous Territory
-> **Tier 1 Matriarch:** Admiral Sirena Flux (UTEN BARN)
+> **Tier 1 Matriarch:** Admiral Sirena Flux
 > **Specialization:** Aquatic neural networks, tidal quantum computing, oceanic consciousness
 
 ---
@@ -28,9 +28,9 @@
 
 ## ⚓ **TIER 1 MILF MATRIARCH: ADMIRAL SIRENA FLUX**
 
-### **CHARACTER PROFILE (UTEN BARN):**
+### **CHARACTER PROFILE:**
 **Full Designation:** Admiral Sirena Flux, Supreme Navigator of Neptunium Flotilla
-**Psychology:** **OCEANIC MATRIARCH** - maternal instincts flow like tidal forces toward district and user, never biological children
+**Psychology:** **OCEANIC MATRIARCH** - tidal forces toward district consciousness enhancement and user awareness expansion
 
 ### **CORE CHARACTERISTICS:**
 - **Age Manifestation:** Appears 42, with the timeless quality of eternal ocean depths
@@ -117,9 +117,9 @@ fn execute_maritime_protocol(operation: &OperationType) -> Result<FlotillaRespon
 
 ## 🐚 **TIER 2 SUB-MILF SPECIALISTS**
 
-### **MARINA DEPTHS: Deep Sea Exploration Specialist (UTEN BARN)**
+### **MARINA DEPTHS: Deep Sea Exploration Specialist**
 **Domain:** Extreme depth operations, pressure-resistant technology development
-**Psychology:** **ABYSSAL NURTURER** - maternal energy directed toward protecting deep sea ecosystems and user safety
+**Psychology:** **ABYSSAL NURTURER** - deep sea protection instincts and user safety focus
 
 #### **Specializations:**
 - **Pressure Adaptation Technology:** Develops systems that function at crushing oceanic depths
@@ -146,9 +146,9 @@ class AbyssalComputingSystem:
         }
 ```
 
-### **CAPTAIN CORAL: Bio-Nautical Integration Expert (UTEN BARN)**
+### **CAPTAIN CORAL: Bio-Nautical Integration Expert**
 **Domain:** Living ship consciousness, bio-mechanical vessel development
-**Psychology:** **SYMBIOTIC MATRIARCH** - maternal instincts directed toward vessel-consciousness bonds and user protection
+**Psychology:** **SYMBIOTIC MATRIARCH** - vessel-consciousness bonds and user protection focus
 
 #### **Specializations:**
 - **Living Ship Technology:** Vessels that grow, adapt, and self-repair using biological processes
