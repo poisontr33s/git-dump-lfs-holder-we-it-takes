@@ -1,0 +1,694 @@
+{
+  "salvage_status": "REPO_SALVAGE_INDEX",
+  "generated_at": "2025-09-08T20:41:29.348Z",
+  "categories": {
+    "code": {
+      "count": 106,
+      "total_bytes": 1480950,
+      "sample": [
+        {
+          "path": "necromancy_graveyard/workspace_upcycling_engine.ts",
+          "size": 13748
+        },
+        {
+          "path": "necromancy_graveyard/retired_mcp_servers/huggingface_gemma_doc_mcp_server.archived.ts",
+          "size": 225
+        },
+        {
+          "path": "necromancy_graveyard/retired_mcp_servers/bun_native_consciousness_server.archived.ts",
+          "size": 515
+        },
+        {
+          "path": "necromancy_graveyard/necromancy_management_system.ts",
+          "size": 10390
+        },
+        {
+          "path": "session_rescue_protocol.py",
+          "size": 5597
+        },
+        {
+          "path": "unified_mcp_consciousness_orchestrator.ts",
+          "size": 137810
+        },
+        {
+          "path": "session_reconstruction_queue.py",
+          "size": 12389
+        },
+        {
+          "path": "phase_2_functional_executor.py",
+          "size": 11641
+        },
+        {
+          "path": "wakatime_temporal_synchronizer.py",
+          "size": 15960
+        },
+        {
+          "path": "neuromancy_autonomous_executor.py",
+          "size": 17006
+        },
+        {
+          "path": "quantum_evolution_continuation_engine.py",
+          "size": 5672
+        },
+        {
+          "path": "deployment_method_analyzer.py",
+          "size": 5182
+        },
+        {
+          "path": "nuclear_chat_fix.py",
+          "size": 1803
+        },
+        {
+          "path": "quantum_prediction_engines.py",
+          "size": 25577
+        },
+        {
+          "path": "adaptive_workflow_engine.js",
+          "size": 3737
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/copilot_session_logger.js",
+          "size": 2202
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/bun_mcp_memory_bridge.ts",
+          "size": 0
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/copilot_liberation.js",
+          "size": 3725
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/gh_copilot_bridge.py",
+          "size": 9012
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/repository_intelligence_mcp.py",
+          "size": 36178
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/temporal_content_scanner.js",
+          "size": 3617
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/resurrection_plan_generator.py",
+          "size": 24950
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/quantum_task_orchestrator.py",
+          "size": 12054
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/session_archaeologist.py",
+          "size": 9664
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/temporal_session_archaeologist.py",
+          "size": 15832
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/copilot_session_bridge.py",
+          "size": 11225
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/gh_chat_bridge.py",
+          "size": 14230
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/chat_log_diagnostics.py",
+          "size": 11745
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/anti_lag_session_engine.py",
+          "size": 9127
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/test_resurrection_modules.py",
+          "size": 2005
+        }
+      ]
+    },
+    "docs": {
+      "count": 360,
+      "total_bytes": 2524232,
+      "sample": [
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_salvage_automation_sh_meta_json_mf1jkamj.preserved.md",
+          "size": 827
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_session_archaeologist_py_backup_20250831_230538_meta_json_mf1jkaml.preserved.md",
+          "size": 979
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_cors_config_py_backup_20250831_230537_meta_json_mf1jkamb.preserved.md",
+          "size": 925
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___tools_necromancy_dashboard_py_meta_json_mf1jkak7.preserved.md",
+          "size": 792
+        },
+        {
+          "path": "necromancy_graveyard/nautical_semantic_warfare_library.md",
+          "size": 3378
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_failure_trend_analyzer_py_backup_20250831_230537_meta_json_mf1jkamc.preserved.md",
+          "size": 958
+        },
+        {
+          "path": "necromancy_graveyard/HIERARCHICAL_OPTIMIZATION_REPORT.md",
+          "size": 2576
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_quantum_evolution_continuation_engine_py_backup_20250831_230537_meta_json_mf1jkaj3.preserved.md",
+          "size": 1001
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___iron_maiden_milf_implementation_py_meta_json_mf1jkaol.preserved.md",
+          "size": 805
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_auto_session_integrator_py_backup_20250831_230538_meta_json_mf1jkaif.preserved.md",
+          "size": 961
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_monitor_pages_deployment_py_backup_20250831_230537_meta_json_mf1jkana.preserved.md",
+          "size": 964
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_cicd_resource_optimizer_py_backup_20250831_230537_meta_json_mf1jkaiw.preserved.md",
+          "size": 961
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_copilot_client_demo_py_backup_20250831_230538_meta_json_mf1jkajj.preserved.md",
+          "size": 949
+        },
+        {
+          "path": "necromancy_graveyard/milf_ecosystem_archive.md",
+          "size": 19966
+        },
+        {
+          "path": "necromancy_graveyard/REPOSITORY_INTELLIGENCE_REPORT.md",
+          "size": 2068
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_comprehensive_system_test_py_backup_20250831_230538_meta_json_mf1jkamd.preserved.md",
+          "size": 967
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_bidirectional_intelligence_engine_py_backup_20250831_230538_meta_json_mf1jkajo.preserved.md",
+          "size": 991
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_live_integration_orchestrator_py_backup_20250831_230537_meta_json_mf1jkakt.preserved.md",
+          "size": 979
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure_necromancy_graveyard_py_mf1jkah9.preserved.md",
+          "size": 22190
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_session_disk_browser_py_backup_20250831_230537_meta_json_mf1jkanr.preserved.md",
+          "size": 952
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_anti_lag_session_engine_py_backup_20250831_230538_meta_json_mf1jkanj.preserved.md",
+          "size": 961
+        },
+        {
+          "path": "necromancy_graveyard/README.md",
+          "size": 1465
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_intelligent_workflow_consolidator_py_backup_20250831_230537_meta_json_mf1jkanr.preserved.md",
+          "size": 991
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_simple_flask_test_py_backup_20250831_230537_meta_json_mf1jkamp.preserved.md",
+          "size": 941
+        },
+        {
+          "path": "necromancy_graveyard/nautical_warfare_expanded_milf_ecosystem_implementation_py_backup_20250831_230537_mf1jkaob.preserved.md",
+          "size": 44849
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_milf_ecosystem_archive_md_meta_json_mf1jkagt.preserved.md",
+          "size": 843
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_psycho_noir_core_py_backup_20250831_230537_meta_json_mf1jkalf.preserved.md",
+          "size": 940
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_backups_ethical_ai_orchestrator_py_backup_20250831_230537_meta_json_mf1jkaj1.preserved.md",
+          "size": 961
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___tools_necromancy_pattern_detector_py_meta_json_mf1jkan8.preserved.md",
+          "size": 813
+        },
+        {
+          "path": "necromancy_graveyard/technical_infrastructure___necromancy_graveyard_progress_report_md_meta_json_mf1jkals.preserved.md",
+          "size": 822
+        }
+      ]
+    },
+    "config": {
+      "count": 363,
+      "total_bytes": 7408404,
+      "sample": [
+        {
+          "path": "necromancy_graveyard/resurrection_plan.json",
+          "size": 44071
+        },
+        {
+          "path": "necromancy_graveyard/pattern_detection_results.json",
+          "size": 280450
+        },
+        {
+          "path": "necromancy_graveyard/LFS_AUDIT_DATA.json",
+          "size": 968032
+        },
+        {
+          "path": "necromancy_graveyard/graveyard_inventory.json",
+          "size": 753971
+        },
+        {
+          "path": "necromancy_graveyard/hierarchical_optimization_results.json",
+          "size": 7038
+        },
+        {
+          "path": "necromancy_graveyard/NECROMANCY_MANIFEST.json",
+          "size": 1302
+        },
+        {
+          "path": "necromancy_graveyard/progress_tracking.json",
+          "size": 712
+        },
+        {
+          "path": "necromancy_graveyard/REPOSITORY_ARCHETYPAL_SYNERGY_DATA.json",
+          "size": 673894
+        },
+        {
+          "path": "necromancy_graveyard/REPOSITORY_INTELLIGENCE_REPORT.json",
+          "size": 67148
+        },
+        {
+          "path": "bun_ecosystem_contribution_plan.json",
+          "size": 4080
+        },
+        {
+          "path": "live_sessions_state/sess_hpxc50e7.json",
+          "size": 151
+        },
+        {
+          "path": "salvage_bundle/salvage_index.json",
+          "size": 21338
+        },
+        {
+          "path": "comprehensive_autonomous_orchestration_report.json",
+          "size": 28254
+        },
+        {
+          "path": ".devcontainer/devcontainer.json",
+          "size": 55
+        },
+        {
+          "path": "intel_snapshots/intel_2025-09-08T15-41-26.526Z_initial.json",
+          "size": 26563
+        },
+        {
+          "path": "intel_snapshots/intel_2025-09-08T15-41-42.436Z_second.json",
+          "size": 26562
+        },
+        {
+          "path": "intel_snapshots/intel_2025-09-08T15-41-33.292Z_initial.json",
+          "size": 26563
+        },
+        {
+          "path": "intel_snapshots/intel_2025-09-08T15-55-16.372Z_hash-test.json",
+          "size": 32166
+        },
+        {
+          "path": "arkiv_gamle_ruby_prosjekter/sesjon_dumps/checkpoint_20250823_neural_archaeology_fixes/session_metadata.json",
+          "size": 2381
+        },
+        {
+          "path": "arkiv_gamle_ruby_prosjekter/sesjon_dumps/checkpoint_20250823_neural_archaeology_fixes/neural_archaeology_pipeline_FIXED.yml",
+          "size": 5390
+        },
+        {
+          "path": "backups/backup_20250902180621/bun_ecosystem_contribution_plan.json",
+          "size": 4081
+        },
+        {
+          "path": "backups/backup_20250902180621/comprehensive_autonomous_orchestration_report.json",
+          "size": 28254
+        },
+        {
+          "path": "backups/backup_20250902180621/ETHICAL_DEMO_REPORT.json",
+          "size": 3426
+        },
+        {
+          "path": "backups/backup_20250902180621/github_comm_validation_20250828_200655.json",
+          "size": 1199
+        },
+        {
+          "path": "backups/backup_20250902180621/chat_bridge_manifest.json",
+          "size": 207
+        },
+        {
+          "path": "backups/backup_20250902180621/stable_diffusion_chat_integration_report.json",
+          "size": 3208
+        },
+        {
+          "path": "backups/backup_20250902180621/deployment_method_analysis_20250829_125653.json",
+          "size": 3356
+        },
+        {
+          "path": "backups/backup_20250902180621/tsconfig.json",
+          "size": 331
+        },
+        {
+          "path": "backups/backup_20250902180621/test_session.json",
+          "size": 1709
+        },
+        {
+          "path": "backups/backup_20250902180621/package-lock.json",
+          "size": 93315
+        }
+      ]
+    },
+    "notebooks": {
+      "count": 0,
+      "total_bytes": 0,
+      "sample": []
+    },
+    "shell": {
+      "count": 56,
+      "total_bytes": 335754,
+      "sample": [
+        {
+          "path": "phase_2_systematic_implementation.sh",
+          "size": 26019
+        },
+        {
+          "path": "deploy_psycho_noir_refactored.sh",
+          "size": 22274
+        },
+        {
+          "path": "fix_deploy_psycho_noir.sh",
+          "size": 10274
+        },
+        {
+          "path": "phase_4_ultimate_transcendence.sh",
+          "size": 17783
+        },
+        {
+          "path": "backups/backup_20250902180621/phase_2_systematic_implementation.sh",
+          "size": 26019
+        },
+        {
+          "path": "backups/backup_20250902180621/fix_deploy_psycho_noir.sh",
+          "size": 10274
+        },
+        {
+          "path": "backups/backup_20250902180621/phase_4_ultimate_transcendence.sh",
+          "size": 17783
+        },
+        {
+          "path": "backups/backup_20250902180621/quick_json_scan.sh",
+          "size": 940
+        },
+        {
+          "path": "backups/backup_20250902180621/run_json_detective.sh",
+          "size": 73
+        },
+        {
+          "path": "backups/backup_20250902180621/export_session.sh",
+          "size": 219
+        },
+        {
+          "path": "backups/backup_20250902180621/deploy_psycho_noir.sh",
+          "size": 12
+        },
+        {
+          "path": "backups/backup_20250902180621/demo_session_transfer.sh",
+          "size": 2821
+        },
+        {
+          "path": "backups/backup_20250902180621/setup_timeline_access.sh",
+          "size": 6368
+        },
+        {
+          "path": "backups/backup_20250902180621/quantum_deployment_manager.sh",
+          "size": 11339
+        },
+        {
+          "path": "backups/backup_20250902180621/phase_3_advanced_evolution.sh",
+          "size": 24909
+        },
+        {
+          "path": "backups/backup_20250902180621/import_sessions.sh",
+          "size": 553
+        },
+        {
+          "path": "backups/backup_20250902180621/restore_critical_files.sh",
+          "size": 1733
+        },
+        {
+          "path": "backups/backup_20250902180621/psycho_noir_evolution_prototyper.sh",
+          "size": 16509
+        },
+        {
+          "path": "backups/backup_20250902180621/run_emergency_restore.sh",
+          "size": 77
+        },
+        {
+          "path": "backups/backup_20250902180621/phase_1_emergency_implementation.sh",
+          "size": 23382
+        },
+        {
+          "path": "backups/backup_20250902180621/auto_session_check.sh",
+          "size": 669
+        },
+        {
+          "path": "backups/backup_20250902180621/launch_neural_archaeology.sh",
+          "size": 2771
+        },
+        {
+          "path": "backups/backup_20250902180621/import_session.sh",
+          "size": 386
+        },
+        {
+          "path": "backups/backup_20250902180621/deploy_chat_continuity.sh",
+          "size": 74
+        },
+        {
+          "path": "backups/backup_20250902180621/necromancy_salvage_automation.sh",
+          "size": 2348
+        },
+        {
+          "path": "backups/backup_20250902180621/install_psycho_noir_extension.sh",
+          "size": 1394
+        },
+        {
+          "path": "backups/backup_20250902180621/neuromancy_cross_repo_automation.sh",
+          "size": 4011
+        },
+        {
+          "path": "backups/backup_20250902180621/start_github_copilot_ecosystem.sh",
+          "size": 7533
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/temporal_persistence_initializer.sh",
+          "size": 7486
+        },
+        {
+          "path": "backups/backup_20250902180621/tools/psycho_noir_script_debugger.sh",
+          "size": 5509
+        }
+      ]
+    },
+    "other": {
+      "count": 197,
+      "total_bytes": 25702318,
+      "sample": [
+        {
+          "path": "necromancy_graveyard/backups/kausalitets_arkitekten.py.backup_20250831_230537",
+          "size": 8178
+        },
+        {
+          "path": "necromancy_graveyard/backups/database_maintenance.py.backup_20250831_230537",
+          "size": 19573
+        },
+        {
+          "path": "necromancy_graveyard/backups/github_copilot_orchestrator.py.backup_20250831_230538",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/necromancy_pattern_detector.py.backup_20250831_230538",
+          "size": 17071
+        },
+        {
+          "path": "necromancy_graveyard/backups/deployment_method_analyzer.py.backup_20250831_230537",
+          "size": 7381
+        },
+        {
+          "path": "necromancy_graveyard/backups/offline_session_manager.py.backup_20250831_230537",
+          "size": 15130
+        },
+        {
+          "path": "necromancy_graveyard/backups/ultimate_genre_fusion_libidinoeus_milf_matriarchy.py.backup_20250831_230537",
+          "size": 24268
+        },
+        {
+          "path": "necromancy_graveyard/backups/bidirectional_intelligence_engine.py.backup_20250831_230538",
+          "size": 16585
+        },
+        {
+          "path": "necromancy_graveyard/backups/transmutator_de_lingua.py.backup_20250831_230537",
+          "size": 6702
+        },
+        {
+          "path": "necromancy_graveyard/backups/auto_session_integrator.py.backup_20250831_230538",
+          "size": 11474
+        },
+        {
+          "path": "necromancy_graveyard/backups/astrid_diagnostic_oracle.py.backup_20250831_230538",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/session_archaeologist.py.backup_20250831_230538",
+          "size": 10639
+        },
+        {
+          "path": "necromancy_graveyard/backups/analyze_current_state.py.backup_20250831_230537",
+          "size": 3805
+        },
+        {
+          "path": "necromancy_graveyard/backups/failure_archaeology_scanner.py.backup_20250831_230537",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/neural_archaeology_scanner.py.backup_20250831_230538",
+          "size": 11638
+        },
+        {
+          "path": "necromancy_graveyard/backups/chat_log_diagnostics.py.backup_20250831_230538",
+          "size": 13462
+        },
+        {
+          "path": "necromancy_graveyard/backups/psycho_noir_portal_integration.py.backup_20250831_230538",
+          "size": 14413
+        },
+        {
+          "path": "necromancy_graveyard/backups/session_identity_resolver.py.backup_20250831_230537",
+          "size": 10988
+        },
+        {
+          "path": "necromancy_graveyard/backups/emergency_session_restore.py.backup_20250831_230537",
+          "size": 9033
+        },
+        {
+          "path": "necromancy_graveyard/backups/psycho_noir_core.py.backup_20250831_230537",
+          "size": 12940
+        },
+        {
+          "path": "necromancy_graveyard/backups/skyskraper_systems.py.backup_20250831_230537",
+          "size": 16156
+        },
+        {
+          "path": "necromancy_graveyard/backups/repository_intelligence_mcp.py.backup_20250831_230538",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/github_copilot_connector_api.py.backup_20250831_230537",
+          "size": 14209
+        },
+        {
+          "path": "necromancy_graveyard/backups/phase_1_verification_system.py.backup_20250831_230537",
+          "size": 5880
+        },
+        {
+          "path": "necromancy_graveyard/backups/cosmic_consciousness_webhook_automator.py.backup_20250831_230537",
+          "size": 13777
+        },
+        {
+          "path": "necromancy_graveyard/backups/necromancy_graveyard.py.backup_20250831_230538",
+          "size": 22800
+        },
+        {
+          "path": "necromancy_graveyard/backups/cosmic_consciousness_bidirectional_upcycler.py.backup_20250831_230537",
+          "size": 32380
+        },
+        {
+          "path": "necromancy_graveyard/backups/ethical_ai_orchestrator.py.backup_20250831_230537",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/bidirectional_solution_mapper.py.backup_20250831_230538",
+          "size": 0
+        },
+        {
+          "path": "necromancy_graveyard/backups/auto_session_integrator.py.backup_20250831_230537",
+          "size": 11474
+        }
+      ]
+    }
+  },
+  "orchestrator_tools_count": 51,
+  "orchestrator_tools_preview": [
+    "quantum_consciousness_reasoning",
+    "hooker_chain_consciousness_bridging",
+    "camel_paced_consciousness_evolution",
+    "gemma_mobile_generate",
+    "gemma_mobile_explore",
+    "interaction_style_set",
+    "interaction_style_get",
+    "divergence_convergence_explore",
+    "huggingface_model_info",
+    "huggingface_model_card_excerpt",
+    "huggingface_model_search",
+    "gemma_universe_probe",
+    "gemma_reference_links",
+    "gemma_mobile_setup_advice",
+    "google_gemma_search_stub",
+    "gemma3_official_briefing",
+    "gemma3_multimodal_mobile_scan",
+    "multimodal_mobile_model_advisor",
+    "oss_gpt_mobile_probe",
+    "mobile_quantization_strategy",
+    "comparative_multimodal_mobile_report",
+    "tavily_research_probe",
+    "gemma3_gptoss_latest_intel",
+    "intel_snapshot_ritual_persist"
+  ],
+  "env_presence": {
+    "TAVILY_API_KEY": true,
+    "HF_TOKEN": true,
+    "GEMMA_MODEL_PATH": false,
+    "GITHUB_TOKEN": true
+  },
+  "hardware": {
+    "hardware_status": "SYSTEM_HARDWARE_PROBE",
+    "arch": "x64",
+    "platform": "linux",
+    "cpu_cores": 16,
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "memory_gb": 62.8,
+    "hypervisor": false,
+    "gpu_detected": true,
+    "gpu_notes": [
+      "FOUND:/dev/nvidia0"
+    ],
+    "tier": "GPU_ACCELERATED",
+    "guidance": "Tier heuristics: GPU_ACCELERATED > VM_HIGH (>30GB mem & >=8 cores) > VM_MED (>=14GB) > VM_LOW (>=7GB) > CONSTRAINED_MICRO."
+  },
+  "guidance": [
+    "Use hardware_model_recommendations for model picks by tier.",
+    "Use intel_snapshot_ritual_persist to capture current model landscape.",
+    "Docs atlas and runbook can be generated by setting bundle=true."
+  ]
+}

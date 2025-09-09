@@ -1,0 +1,85 @@
+[
+  {
+    "id": "Qwen/Qwen2-VL-2B-Instruct",
+    "run_id": "auto-1757348036162-Qwen/Qwen2-VL-2B-Instruct",
+    "metrics": {
+      "first_token_ms": 289,
+      "decode_tok_s": 5.91,
+      "memory_peak_mb": 961
+    },
+    "ts": "2025-09-08T16:13:56.162Z"
+  },
+  {
+    "id": "microsoft/phi-3.5-vision-instruct",
+    "run_id": "auto-1757348036162-microsoft/phi-3.5-vision-instruct",
+    "metrics": {
+      "first_token_ms": 300,
+      "decode_tok_s": 5.98,
+      "memory_peak_mb": 1935
+    },
+    "ts": "2025-09-08T16:13:56.162Z"
+  },
+  {
+    "id": "google/gemma-3-2b-vision",
+    "run_id": "auto-1757348040575-google/gemma-3-2b-vision",
+    "metrics": {
+      "first_token_ms": 300,
+      "decode_tok_s": 6.14,
+      "memory_peak_mb": 983
+    },
+    "ts": "2025-09-08T16:14:00.575Z"
+  },
+  {
+    "id": "Qwen/Qwen2-VL-2B-Instruct",
+    "run_id": "auto-1757348040575-Qwen/Qwen2-VL-2B-Instruct",
+    "metrics": {
+      "first_token_ms": 281,
+      "decode_tok_s": 4.69,
+      "memory_peak_mb": 1096
+    },
+    "ts": "2025-09-08T16:14:00.575Z"
+  },
+  {
+    "id": "microsoft/phi-3.5-vision-instruct",
+    "run_id": "auto-1757348040575-microsoft/phi-3.5-vision-instruct",
+    "metrics": {
+      "first_token_ms": 222,
+      "decode_tok_s": 6.22,
+      "memory_peak_mb": 2060
+    },
+    "ts": "2025-09-08T16:14:00.575Z"
+  },
+  {
+    "id": "google/gemma-3-2b-vision",
+    "run_id": "auto-1757348660466-google/gemma-3-2b-vision",
+    "source": "SYNTHETIC",
+    "metrics": {
+      "first_token_ms": 205,
+      "decode_tok_s": 4.55,
+      "memory_peak_mb": 982
+    },
+    "ts": "2025-09-08T16:24:20.466Z"
+  },
+  {
+    "id": "Qwen/Qwen2-VL-2B-Instruct",
+    "run_id": "auto-1757348660466-Qwen/Qwen2-VL-2B-Instruct",
+    "source": "SYNTHETIC",
+    "metrics": {
+      "first_token_ms": 201,
+      "decode_tok_s": 6.56,
+      "memory_peak_mb": 1039
+    },
+    "ts": "2025-09-08T16:24:20.466Z"
+  },
+  {
+    "id": "microsoft/phi-3.5-vision-instruct",
+    "run_id": "auto-1757348660466-microsoft/phi-3.5-vision-instruct",
+    "source": "SYNTHETIC",
+    "metrics": {
+      "first_token_ms": 275,
+      "decode_tok_s": 5.9,
+      "memory_peak_mb": 2174
+    },
+    "ts": "2025-09-08T16:24:20.466Z"
+  }
+]

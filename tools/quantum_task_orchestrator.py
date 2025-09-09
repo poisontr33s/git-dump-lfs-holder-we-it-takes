@@ -57,7 +57,6 @@ class GranularTask:
             )
             self.sub_tasks.append(sub_task)
             return sub_task
-        return self
 
 class QuantumTaskOrchestrator:
     """
@@ -82,7 +81,6 @@ class QuantumTaskOrchestrator:
         if session_path.exists():
             # Extract strategic imperatives from session
             return {
-                "established_knowledge": "MILF matriarchy protocols active",
                 "current_focus": "GitHub orchestration with autonomous delegation",
                 "unfinished_business": [
                     "Complete MILF task bombardment implementation",
@@ -263,12 +261,10 @@ class QuantumTaskOrchestrator:
         """Calculate maximum granularity depth in task hierarchy"""
         if not task.sub_tasks:
             return task.granularity_level
-        return max(self._calculate_max_depth(sub) for sub in task.sub_tasks)
     
     def _serialize_hierarchy(self, task: GranularTask) -> Dict:
         """Serialize task hierarchy for storage"""
         return {
-            "id": task.id,
             "description": task.description,
             "granularity_level": task.granularity_level,
             "gold_value": task.gold_value,

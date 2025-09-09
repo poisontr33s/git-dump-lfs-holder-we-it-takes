@@ -55,7 +55,6 @@ class ChatLogDiagnostics:
             primary_env = 'Local VS Code'
 
         return {
-            'primary_environment': primary_env,
             'indicators': env_indicators,
             'workspace_path': str(self.workspace_root)
         }
@@ -68,7 +67,6 @@ class ChatLogDiagnostics:
         # Standard VS Code locations
         for vscode_dir in self.vscode_dirs:
             if vscode_dir.exists():
-                # Look for Copilot extensions and data
                 potential_locations.extend([
                     vscode_dir / "extensions",
                     vscode_dir / "User" / "globalStorage",
@@ -91,7 +89,6 @@ class ChatLogDiagnostics:
 
         for location in potential_locations:
             if location.exists():
-                # Look for Copilot-related files
                 copilot_files = []
                 try:
                     for pattern in ["*copilot*", "*chat*", "*.json", "*.log"]:
@@ -122,7 +119,6 @@ class ChatLogDiagnostics:
             copilot_extensions = [ext for ext in extensions if 'copilot' in ext.lower()]
 
             return {
-                'copilot_extensions_found': copilot_extensions,
                 'total_extensions': len(extensions),
                 'copilot_chat_installed': any('chat' in ext.lower() for ext in copilot_extensions),
                 'command_available': result.returncode == 0
@@ -130,7 +126,6 @@ class ChatLogDiagnostics:
 
         except FileNotFoundError:
             return {
-                'copilot_extensions_found': [],
                 'total_extensions': 0,
                 'copilot_chat_installed': False,
                 'command_available': False,
@@ -165,7 +160,6 @@ class ChatLogDiagnostics:
                 'separate_extension_storage': True
             })
 
-        # Check for shared storage indicators
         shared_indicators = []
         if (self.workspace_root / ".vscode" / "settings.json").exists():
             shared_indicators.append("Workspace settings shared")
@@ -174,7 +168,6 @@ class ChatLogDiagnostics:
             shared_indicators.append("Dev container config shared")
 
         return {
-            'isolation_factors': isolation_factors,
             'shared_indicators': shared_indicators,
             'isolation_level': sum(isolation_factors.values()) / len(isolation_factors)
         }
@@ -201,7 +194,6 @@ class ChatLogDiagnostics:
         # Create session export script
         export_script = """#!/bin/bash
 # GitHub Copilot Chat Log Export Script
-# Exports current session to workspace for sharing
 
 echo "🎭 COPILOT CHAT BRIDGE - Export Session"
 echo "Environment: $(date)"
@@ -231,7 +223,6 @@ echo "🔄 Use import script in other environment to restore"
             f.write(export_script)
         os.chmod(export_script_path, 0o755)
 
-        # Create import script
         import_script = """#!/bin/bash
 # GitHub Copilot Chat Log Import Script
 
@@ -260,7 +251,6 @@ echo "3. Use workspace files for context continuity"
         os.chmod(import_script_path, 0o755)
 
         return {
-            'bridge_created': True,
             'bridge_directory': str(bridge_dir),
             'manifest_file': str(manifest_path),
             'export_script': str(export_script_path),

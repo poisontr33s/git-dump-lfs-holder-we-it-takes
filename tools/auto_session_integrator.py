@@ -56,7 +56,6 @@ class AutoSessionIntegrator:
         """Detect new or modified content that should be tracked"""
         new_content = []
 
-        # Scan for markdown files with session-relevant content
         for root, dirs, files in os.walk('.'):
             # Skip hidden and system directories
             dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ['node_modules', '__pycache__']]
@@ -65,7 +64,6 @@ class AutoSessionIntegrator:
                 if file.endswith('.md'):
                     filepath = os.path.join(root, file)
 
-                    # Check if this is a new file or content has changed
                     current_signature = self.get_content_signature(filepath)
                     if not current_signature:
                         continue
@@ -78,7 +76,6 @@ class AutoSessionIntegrator:
                             with open(filepath, 'r', encoding='utf-8') as f:
                                 content = f.read()
 
-                            # Check if it contains technical/session content
                             if self.is_session_relevant(content):
                                 new_content.append({
                                     'filepath': filepath,
@@ -108,7 +105,6 @@ class AutoSessionIntegrator:
         content_lower = content.lower()
         keyword_count = sum(1 for keyword in session_keywords if keyword in content_lower)
 
-        # Content is relevant if it has multiple technical keywords
         return keyword_count >= 3
 
     def create_session_summary(self, content_list):
@@ -253,7 +249,6 @@ class AutoSessionIntegrator:
         # Display summary
 
         return {
-            'summary': summary,
             'prompt': prompt,
             'integration_id': integration_id,
             'prompt_file': prompt_file

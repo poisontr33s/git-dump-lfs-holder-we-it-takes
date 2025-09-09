@@ -1,0 +1,38 @@
+{
+  "explore_status": "PROMPT_CONTEXT_EXPLORE",
+  "path": "salvage_bundle/PROMPT_CONTEXT_RAW.txt",
+  "variants": 3,
+  "max_tokens": 180,
+  "diversity_floor": 0.35,
+  "repetition_guard": 4,
+  "outputs": [
+    {
+      "file": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/pass_2/variant_1.md"
+    },
+    {
+      "file": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/pass_2/variant_2.md",
+      "diversity_vs_prev": 0.707
+    },
+    {
+      "file": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/pass_2/variant_3.md",
+      "diversity_vs_prev": 0.713
+    }
+  ],
+  "pairwise_diversity": [
+    [
+      1,
+      0.707,
+      0.045
+    ],
+    [
+      0.707,
+      1,
+      0.713
+    ],
+    [
+      0.045,
+      0.713,
+      1
+    ]
+  ]
+}

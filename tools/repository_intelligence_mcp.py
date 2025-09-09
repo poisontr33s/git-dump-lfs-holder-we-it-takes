@@ -126,7 +126,6 @@ class RepositoryIntelligenceMCP:
     def _initialize_character_oracles(self) -> Dict[str, Any]:
         """Initialize character oracle system"""
         return {
-            "astrid": {
                 "domain": PsychoNoirDomain.SKYSKRAPEREN,
                 "specializations": ["strategic_analysis", "information_warfare", "systematic_control"],
                 "ai_models": ["claude-4-sonnet", "openai-o3", "gemini-2.5-pro"]
@@ -257,7 +256,6 @@ class RepositoryIntelligenceMCP:
         # Get character-specific analysis
         character_analysis = await self._get_character_analysis(character_perspective, focus_area, repo_metrics)
         
-        # Generate context hash for caching
         context_data = {
             "metrics": repo_metrics,
             "character_analysis": character_analysis,
@@ -271,7 +269,6 @@ class RepositoryIntelligenceMCP:
         self._cache_repository_context(context_hash, context_data)
         
         return {
-            "repository_metrics": repo_metrics,
             "character_perspective": character_perspective,
             "character_analysis": character_analysis,
             "focus_area": focus_area,
@@ -307,7 +304,6 @@ class RepositoryIntelligenceMCP:
             "import_complexity": await self._analyze_import_complexity(python_files)
         }
         
-        # Check for documentation
         doc_files = list(self.workspace_root.rglob("*.md")) + list(self.workspace_root.rglob("*.rst"))
         metrics["documentation_coverage"] = {
             "total_docs": len(doc_files),
@@ -343,7 +339,6 @@ class RepositoryIntelligenceMCP:
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    # Simple regex-based import detection
                     import_lines = [line.strip() for line in content.split('\n') 
                                   if line.strip().startswith(('import ', 'from '))]
                     imports.extend(import_lines)
@@ -351,7 +346,6 @@ class RepositoryIntelligenceMCP:
                 continue
         
         return {
-            "total_imports": len(imports),
             "unique_modules": len(set(imports)),
             "complexity_score": len(imports) / max(len(python_files), 1)
         }
@@ -446,7 +440,6 @@ class RepositoryIntelligenceMCP:
     def _assess_resource_efficiency(self, metrics: Dict[str, Any]) -> Dict[str, Any]:
         """Iron Maiden's resource efficiency assessment"""
         return {
-            "code_efficiency": "moderate" if metrics["python_analysis"]["lines_of_code"] < 10000 else "low",
             "file_organization": "scattered" if len(metrics["file_counts"]) > 20 else "focused",
             "resource_waste": ["Unused imports", "Redundant files", "Inefficient patterns"]
         }
@@ -481,7 +474,6 @@ class RepositoryIntelligenceMCP:
         """Calculate system haunting level (0.0 - 1.0)"""
         haunting_factors = []
         
-        # More files = more potential for digital spirits
         file_factor = min(metrics["python_analysis"]["total_files"] / 100, 1.0)
         haunting_factors.append(file_factor)
         
@@ -498,7 +490,6 @@ class RepositoryIntelligenceMCP:
     def _get_available_copilot_models(self) -> List[str]:
         """Get list of available Copilot Pro+ models"""
         return [
-            "claude-3.5-sonnet", "claude-3.7-sonnet", "claude-4-sonnet",
             "claude-4-opus", "claude-4.1-opus",
             "gemini-2.0-flash", "gemini-2.5-pro",
             "openai-o3", "openai-o4-mini", "openai-gpt-5", "openai-gpt-5-mini",
@@ -715,7 +706,6 @@ channeling beneficial compilation spirits for enhanced system performance.
         📋 Get comprehensive repository context for Copilot consumption
         """
         
-        # Get cached analysis if available
         repo_analysis = await self.analyze_repository()
         
         context = {

@@ -6,7 +6,6 @@ import re
 from datetime import datetime
 from collections import defaultdict
 
-# Auto-generated constants for magic numbers
 const_magic_90 = 90
 const_magic_60 = 60
 const_magic_50 = 50
@@ -393,7 +392,6 @@ class ResurrectionPlanGenerator:
             timeline = f"{weeks:.1f} weeks"
 
         return {
-            'total_estimated_time': timeline,
             'total_files_to_optimize': len(file_plans),
             'average_time_per_file': f"{total_time_minutes / max(len(file_plans), 1):.0f} minutes",
             'recommended_schedule': '2-3 hours per day to maintain code quality'
@@ -402,7 +400,6 @@ class ResurrectionPlanGenerator:
     def define_success_metrics(self, resurrection_plan):
         """Define success metrics for the resurrection plan"""
         return [
-            {
                 'metric': 'Code Quality Improvement',
                 'target': f"Reduce total patterns by {resurrection_plan['repository_overview']['total_patterns'] * 0.7:.0f} ({resurrection_plan['repository_overview']['total_patterns']})",
                 'measurement': 'Pattern count reduction'

@@ -45,14 +45,12 @@ class GitHubProBridge:
             
             if process.returncode == 0:
                 return {
-                    "success": True,
                     "data": json.loads(stdout.decode()),
                     "endpoint": endpoint,
                     "timestamp": datetime.now().isoformat()
                 }
             else:
                 return {
-                    "success": False,
                     "error": stderr.decode(),
                     "endpoint": endpoint,
                     "timestamp": datetime.now().isoformat()
@@ -60,7 +58,6 @@ class GitHubProBridge:
                 
         except Exception as e:
             return {
-                "success": False,
                 "error": str(e),
                 "endpoint": endpoint,
                 "timestamp": datetime.now().isoformat()
@@ -89,7 +86,6 @@ class GitHubProBridge:
         # Get repository topics
         topics = await self.gh_api_call(f"repos/{repo}/topics")
         
-        # Get workflows (if any)
         workflows = await self.gh_api_call(f"repos/{repo}/actions/workflows")
         
         analysis = {
@@ -160,7 +156,6 @@ class GitHubProBridge:
         print(f"🐍 Primary language: {insights['primary_language']}")
         print(f"📝 Recent commits: {insights['recent_commits_count']}")
         
-        # Create autonomous management issue if needed
         if insights['open_issues'] > 5:
             await self.create_intelligent_issue(
                 "🤖 Autonomous Repository Management Alert",
@@ -193,7 +188,6 @@ Repository has {insights['open_issues']} open issues requiring attention.
         })
         
         return {
-            "session_id": self.session_id,
             "insights": insights,
             "analysis": analysis,
             "log_path": str(log_path)

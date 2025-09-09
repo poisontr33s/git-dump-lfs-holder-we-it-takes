@@ -2,9 +2,9 @@
 
 ![Profile Banner](https://img.shields.io/badge/Norway-AI%20Collaboration%20Expert-blue?style=for-the-badge&logo=github)
 
-> **Location:** Norway 🇳🇴  
-> **Focus:** Autonomous AI Systems & Cross-Platform Orchestration  
-> **Status:** Available for innovative AI collaboration projects
+> **Location:** Norway 🇳🇴
+> **Focus:** Autonomous AI Systems & Cross-Platform Orchestration
+> **Status:** Available for innovative AI collabo...3ration projects
 
 ## 🤖 Autonomous AI Orchestration Projects
 

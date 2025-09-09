@@ -1,0 +1,55 @@
+# Tools Catalog (Unified Orchestrator)
+
+Total: 51
+
+- quantum_consciousness_reasoning — Entangled quantum reasoning amplification
+- hooker_chain_consciousness_bridging — Nautical semantic abyssal bridging
+- camel_paced_consciousness_evolution — Camel-paced amplification modulation
+- gemma_mobile_generate — Gemma 300M mock mobile synthesis (unified surface)
+- gemma_mobile_explore — Exploratory generation: multiple variants + synthesis (degeneracy-aware)
+- interaction_style_set — Set orchestrator interaction style (affects prompts/gating elsewhere)
+- interaction_style_get — Get current interaction style + quick rules
+- divergence_convergence_explore — Non-deterministic idea expansion with a convergence synthesis (no external calls)
+- huggingface_model_info — HF model metadata (sanitized, cached)
+- huggingface_model_card_excerpt — Truncated model card excerpt (license safe)
+- huggingface_model_search — Search Hugging Face models (filtered, lightweight)
+- gemma_universe_probe — Aggregate multi-query scan for Gemma / Gemmaverse variants (experimental)
+- gemma_reference_links — Curated official Gemma reference constellation
+- gemma_mobile_setup_advice — On-device deployment guidance (adaptive)
+- google_gemma_search_stub — Stub for future programmable search integration
+- gemma3_official_briefing — Fetch & parse official Gemma 3 blog for model IDs (truncated, metadata only)
+- gemma3_multimodal_mobile_scan — Probe Gemma 3 multimodal candidates + mobile suitability scoring
+- multimodal_mobile_model_advisor — Recommend Gemma 3 vs OSS multimodal/mobile candidates with memory + transformer snippets
+- oss_gpt_mobile_probe — Aggregate open GPT-like OSS families (phi, qwen, llama, mistral, deepseek, yi) for mobile suitability
+- mobile_quantization_strategy — Quantization + acceleration strategy for param bucket on Galaxy S25 class device
+- comparative_multimodal_mobile_report — Generate Gemma3 vs OSS GPT-OSS (Got-OSS) comparative mobile suitability study
+- tavily_research_probe — Multi-query Tavily web intel sweep (gpt-oss / gemma3 / custom)
+- gemma3_gptoss_latest_intel — Unified sweep: Gemma3 variants, OSS (GPT-OSS) families, Tavily web intel (single call)
+- intel_snapshot_ritual_persist — Persist full Gemma3 + GPT-OSS intel snapshot (psycho-noir archivist ritual)
+- intel_snapshot_ritual_diff — Diff latest (or specified) two intel snapshots: model births, deaths, rank drift, score flux
+- authenticity_sentinel_probe — Heuristic authenticity scoring for model repos (org lineage, license, anomaly heuristics)
+- model_registry_inspect — Inspect local model registry + benchmark readiness
+- model_benchmark_stub — Synthetic benchmark pass updating registry last_benchmark (Tier1 skeleton)
+- artifact_integrity_scan — Scan registry artifacts for existence + sha256 (Tier2 skeleton)
+- model_anomaly_scan — Heuristic anomaly detection over benchmark histories (Tier5 skeleton)
+- live_generation_session_open — Open streaming generation session placeholder (Tier4 skeleton)
+- live_generation_session_poll — Poll streaming session placeholder (Tier4 skeleton)
+- model_benchmark_auto — Benchmark all registry models lacking benchmarks (synthetic Tier1)
+- model_runtime_generate — Generate text via runtime backend for registry model id (real inference if available)
+- env_secret_presence_probe — Report presence (not values) of critical env keys (TAVILY_API_KEY, HF_TOKEN)
+- env_secret_set — Persist allowed secret (TAVILY_API_KEY, HF_TOKEN, GEMMA_MODEL_PATH) into .env (overwrites existing)
+- env_secrets_bootstrap — Batch set multiple allowed secrets in one ritual (keys optional)
+- env_secret_reload — Reload .env into process (optionally force override existing)
+- gguf_header_probe — Parse minimal GGUF header (magic, version, tensor_count, kv_count) for artifact introspection
+- perplexity_evaluate_stub — Stub perplexity evaluation over a corpus file (synthetic unless real runtime supports logits)
+- system_hardware_probe — Inspect VM/container hardware (cpu cores, mem, arch, gpu presence heuristic)
+- hardware_model_recommendations — Recommend Gemma3 + GPT-OSS variants & quantizations for detected hardware tier
+- official_foundation_repos_probe — Fetch GitHub meta for official foundation model repos (gpt-oss, gemma, optional extended set)
+- repo_salvage_index — Inventory repo: code/docs/configs, orchestrator tools, env/hardware; optionally write a bundle (atlas + runbook)
+- github_repo_meta — Fetch GitHub repository metadata (stars, forks, issues, watchers)
+- github_repo_issues — List recent issues (state filter) from a repo
+- github_repo_search — Search public repositories (requires or benefits from GITHUB_TOKEN)
+- github_device_code_initiate — Initiate GitHub device code OAuth flow (no external browser automation)
+- github_device_code_poll — Poll GitHub device code endpoint & persist token if granted
+- vscode_log_snapshot — Aggregate current VS Code logs (extension host / shared / renderer) into mcp_diagnostics/
+- orchestrator_integrity_ping — Return orchestrator state + loaded capabilities

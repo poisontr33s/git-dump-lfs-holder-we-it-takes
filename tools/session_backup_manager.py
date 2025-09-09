@@ -5,7 +5,6 @@ import json
 import shutil
 from datetime import datetime
 
-# Auto-generated constants for magic numbers
 const_magic_585 = 585
 const_magic_183 = 183
 const_magic_68 = 68
@@ -138,7 +137,6 @@ echo "📋 CONVERSATION CONTEXT:"
 echo "Topic: {conversation_state['conversation_summary']['topic']}"
 echo "Status: {conversation_state['conversation_summary']['current_status']}"
 
-# Key files available for reference
 echo ""
 echo "🔧 KEY SESSION FILES:"
 """
@@ -254,7 +252,6 @@ echo "🎭 SESSION RESTORATION COMPLETE!"
         print(f"📄 Files backed up: {len(backed_up_files)}")
 
         return {
-            'backup_dir': self.backup_dir,
             'backed_up_files': backed_up_files,
             'restore_script': restore_script,
             'copilot_prompt': copilot_prompt,

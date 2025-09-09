@@ -1,0 +1,17 @@
+{
+  "name": "psycho-noir-salvage-bundle",
+  "generated_at": "2025-09-08T20:41:29.349Z",
+  "files": [
+    "salvage_index.json",
+    "DOCS_ATLAS.md",
+    "RUNBOOK_MINIMAL.md",
+    "TOOLS_CATALOG.md"
+  ],
+  "env_presence": {
+    "TAVILY_API_KEY": true,
+    "HF_TOKEN": true,
+    "GEMMA_MODEL_PATH": false,
+    "GITHUB_TOKEN": true
+  },
+  "hardware_tier": "GPU_ACCELERATED"
+}

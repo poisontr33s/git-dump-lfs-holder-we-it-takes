@@ -38,7 +38,6 @@ class SessionContinuityBridge:
                 return json.load(f)
         else:
             return {
-                'sessions': {},
                 'optimization_chains': {},
                 'cross_platform_links': {},
                 'implementation_tracking': {},
@@ -141,7 +140,6 @@ class SessionContinuityBridge:
             'optimization_trajectory': []
         }
         
-        # Search through all sessions for concept mentions
         for session_id, session_data in self.session_database['sessions'].items():
             session_content = json.dumps(session_data).lower()
             
@@ -153,7 +151,6 @@ class SessionContinuityBridge:
                     'optimization_score': session_data.get('optimization_score', 0)
                 })
         
-        # Sort by timestamp for evolution chain
         genealogy['origin_sessions'].sort(key=lambda x: x['timestamp'])
         genealogy['evolution_chain'] = [s['session_id'] for s in genealogy['origin_sessions']]
         
@@ -165,7 +162,6 @@ class SessionContinuityBridge:
         """
         recommendations = []
         
-        # Analyze high-value sessions for patterns
         high_value_sessions = [
             (sid, sdata) for sid, sdata in self.session_database['sessions'].items()
             if sdata.get('optimization_score', 0) > 0.7
@@ -376,7 +372,6 @@ class SessionContinuityBridge:
                     f"- **Implementation Status:** {session.get('implementation_status', 'unknown')}"
                 ])
                 
-                # Add key content if available
                 metadata = session.get('session_metadata', {})
                 if 'key_concepts' in metadata:
                     prompt_sections.append(f"- **Key Concepts:** {', '.join(metadata['key_concepts'][:5])}")
@@ -439,7 +434,6 @@ def main():
     if live_sessions_dir.exists():
         for session_file in live_sessions_dir.glob("*.json"):
             print(f"📱 Importing live session: {session_file.name}")
-            # Would import each live session
     
     # Generate continuity report
     report = bridge.generate_session_continuity_report()
@@ -450,10 +444,8 @@ def main():
     print(f"  Implementation completion: {report['implementation_tracking']['completion_rate']:.2%}")
     print(f"  Continuity ratio: {report['continuity_health']['continuity_ratio']:.2%}")
     
-    # Generate import prompt
     import_prompt = bridge.create_copilot_chat_import_prompt()
     
-    # Save import prompt
     prompt_path = Path("/workspaces/PsychoNoir-Kontrapunkt/COPILOT_CHAT_IMPORT_PROMPT.md")
     with open(prompt_path, 'w', encoding='utf-8') as f:
         f.write(import_prompt)

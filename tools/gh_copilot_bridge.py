@@ -28,7 +28,6 @@ class GitHubCopilotBridge:
         Use GitHub Copilot CLI to suggest commands based on natural language
         """
         try:
-            # Create temporary file for shell output
             with tempfile.NamedTemporaryFile(mode='w+', suffix='.sh', delete=False) as tmp_file:
                 cmd = [
                     'gh', 'copilot', 'suggest', 
@@ -68,7 +67,6 @@ class GitHubCopilotBridge:
                 
         except Exception as e:
             return {
-                "query": natural_language_query,
                 "error": str(e),
                 "success": False,
                 "timestamp": datetime.now().isoformat()
@@ -100,7 +98,6 @@ class GitHubCopilotBridge:
             
         except Exception as e:
             return {
-                "command": command,
                 "error": str(e),
                 "success": False,
                 "timestamp": datetime.now().isoformat()
@@ -117,7 +114,6 @@ class GitHubCopilotBridge:
         
         if not suggestion['success'] or not suggestion['suggested_command']:
             return {
-                "task": task_description,
                 "error": "Failed to get command suggestion from Copilot",
                 "suggestion": suggestion
             }
@@ -158,7 +154,6 @@ class GitHubCopilotBridge:
             
         except Exception as e:
             return {
-                "task": task_description,
                 "suggested_command": command,
                 "explanation": explanation,
                 "execution_error": str(e),
@@ -188,7 +183,6 @@ class GitHubCopilotBridge:
             await asyncio.sleep(1)
         
         return {
-            "session_id": self.session_id,
             "analysis_timestamp": datetime.now().isoformat(),
             "tasks_completed": len(results),
             "results": results

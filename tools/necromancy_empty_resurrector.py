@@ -38,7 +38,6 @@ EXCLUDES = {
 
 
 KEYWORD_TO_DOMAIN = {
-    # Psycho-Noir dialekt for mapping forslag
     "skyskraper": "Skyskraperen",
     "rustbelt": "Rustbeltet",
     "usynlige": "Den Usynlige Hånd",
@@ -80,7 +79,6 @@ def should_exclude(p: Path) -> bool:
     for ex in EXCLUDES:
         if rp.startswith(ex) or f"/{ex}/" in rp:
             return True
-    return False
 
 
 def infer_domain(path: Path) -> str | None:
@@ -91,9 +89,7 @@ def infer_domain(path: Path) -> str | None:
     # heuristic by folder
     if "backend/python" in lower:
         return "Skyskraperen"
-    if "tools" in lower:
         return "Verktøy / Meta"
-    return None
 
 
 def analyze_python(path: Path) -> FileAssessment | None:
@@ -110,11 +106,9 @@ def analyze_python(path: Path) -> FileAssessment | None:
         indicators.append(EmptyIndicator("blank_file", "only whitespace"))
         empty_score += 3
 
-    # Drop leading module docstring for structural analysis
     try:
         tree = ast.parse(text)
     except Exception as e:
-        # Syntax issues – still scan for placeholder signals
         indicators.append(EmptyIndicator("syntax_error", str(e)))
         empty_score += 1
         tree = None
@@ -133,7 +127,6 @@ def analyze_python(path: Path) -> FileAssessment | None:
             # pass or raise NotImplementedError
             if isinstance(n, ast.Pass):
                 return True
-            if isinstance(n, ast.Raise):
                 # raise NotImplementedError
                 try:
                     t = n.exc
@@ -141,16 +134,13 @@ def analyze_python(path: Path) -> FileAssessment | None:
                         return True
                 except Exception:
                     return False
-            if isinstance(n, ast.Expr) and isinstance(getattr(n, "value", None), ast.Constant) and isinstance(n.value.value, str):
                 # bare string (docstring-like) inside functions/classes
                 return True
-            return False
 
         def block_empty_like(stmts: List[ast.stmt]) -> bool:
             filtered = [s for s in stmts if not (isinstance(s, ast.Expr) and isinstance(getattr(s, "value", None), ast.Constant) and isinstance(s.value.value, str))]
             if not filtered:
                 return True
-            return all(node_is_placeholder(s) for s in filtered)
 
         func_placeholders = 0
         class_placeholders = 0
@@ -190,7 +180,6 @@ def analyze_python(path: Path) -> FileAssessment | None:
 
     rel = path.relative_to(ROOT)
     return FileAssessment(
-        path=rel.as_posix(),
         size=len(text.encode("utf-8")),
         line_count=len(text.splitlines()),
         empty_score=empty_score,
@@ -220,7 +209,6 @@ def to_jsonable(items: List[FileAssessment]) -> List[Dict[str, Any]]:
         d = asdict(it)
         d["indicators"] = [asdict(i) for i in it.indicators]
         return_domain = it.inferred_domain or "Ukategorisert"
-        d["inferred_domain"] = return_domain
         out.append(d)
     return out
 

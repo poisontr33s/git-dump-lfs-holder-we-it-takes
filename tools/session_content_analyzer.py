@@ -24,7 +24,6 @@ class SessionContentAnalyzer:
         self.optimization_patterns = {}
         self.decision_points = {}
         
-        # Key indicators for decision points
         self.decision_indicators = [
             'implementere', 'bytte til', 'migrere', 'optimalisere',
             'fokusere på', 'prioritere', 'velge', 'bestemme',
@@ -127,7 +126,6 @@ class SessionContentAnalyzer:
         """
         patterns = []
         
-        # Look for percentage values (success metrics)
         percentage_matches = re.findall(r'(\d+\.?\d*)\s*%', content)
         for match in percentage_matches:
             if float(match) > 50:  # Only high-value metrics
@@ -137,7 +135,6 @@ class SessionContentAnalyzer:
                     'context': 'percentage_success'
                 })
         
-        # Look for before/after comparisons
         comparison_patterns = re.findall(r'(\d+)\s*→\s*(\d+)', content)
         for before, after in comparison_patterns:
             improvement = ((int(before) - int(after)) / int(before)) * 100 if int(before) > 0 else 0
@@ -171,13 +168,10 @@ class SessionContentAnalyzer:
         """
         Analyze conversation flow og continuity points
         """
-        # Count questions (for interaction analysis)
         questions = len(re.findall(r'\?', content))
         
-        # Count code blocks (for technical depth)
         code_blocks = len(re.findall(r'```', content)) // 2
         
-        # Count emoji usage (for engagement level)
         emojis = len(re.findall(r'[🎭🚀🔥💡🎯📊🧠⚡🌊]', content))
         
         flow_analysis = {
@@ -260,7 +254,6 @@ class SessionContentAnalyzer:
         
         if any(word in context_lower for word in high_impact_words):
             return 'high'
-        elif any(word in context_lower for word in medium_impact_words):
             return 'medium'
         else:
             return 'low'
@@ -276,7 +269,6 @@ class SessionContentAnalyzer:
         
         if any(word in context_lower for word in implemented_indicators):
             return 'implemented'
-        elif any(word in context_lower for word in planned_indicators):
             return 'planned'
         else:
             return 'discussed'
@@ -346,7 +338,6 @@ class SessionContentAnalyzer:
             decision_patterns[indicator] = decision_patterns.get(indicator, 0) + 1
         
         return {
-            'most_common_concepts': sorted(concept_frequency.items(), key=lambda x: x[1], reverse=True)[:10],
             'decision_patterns': sorted(decision_patterns.items(), key=lambda x: x[1], reverse=True),
             'total_optimization_patterns': len(all_optimizations),
             'average_optimization_value': sum(opt.get('value', 0) for opt in all_optimizations) / len(all_optimizations) if all_optimizations else 0
@@ -367,7 +358,6 @@ class SessionContentAnalyzer:
                     high_value_chunks.append(chunk)
         
         return {
-            'total_decisions_tracked': total_decisions,
             'total_implementations_found': total_implementations,
             'total_content_chunks': total_chunks,
             'high_value_chunks': len(high_value_chunks),

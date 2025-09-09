@@ -3,11 +3,24 @@
 # Status: TRANSCENDENT DEPLOYMENT READY
 
 ## TAVILY WEB INTELLIGENCE API
-# Used for evolutionary web intelligence with 100% success rate
-# Status: TRANSCENDENT_INTELLIGENCE_OPERATIONAL
+# Centralized psycho-noir env handling upgrade:
+# 1. Copy .env.example -> .env
+# 2. Place your Tavily key: TAVILY_API_KEY=sk_live_...
+# 3. Export into shell for current session:
+#      export $(grep -v '^#' .env | xargs)
+# 4. Bun / Python access: process.env.TAVILY_API_KEY / os.getenv("TAVILY_API_KEY")
+# 5. DO NOT paste keys in scripts or commits.
+#
+# If using VS Code secret storage already, you can optionally sync by writing the
+# value once into .env and letting tasks load it.
+#
+# To integrate automatic injection for MCP servers, we can enhance the startup
+# script to load the .env if detected (future step).
+#
+# The existing placeholder remains below for reference.
 # TAVILY_API_KEY=[CONFIGURED_IN_ENVIRONMENT]
 
-## WAKATIME PRODUCTIVITY TRACKING API  
+## WAKATIME PRODUCTIVITY TRACKING API
 # Used for development time tracking and productivity analytics
 # Status: CONFIGURED_AND_READY
 # WAKATIME_API_KEY=[CONFIGURED_IN_ENVIRONMENT]

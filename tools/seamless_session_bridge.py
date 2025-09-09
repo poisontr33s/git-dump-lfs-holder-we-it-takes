@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Auto-generated constants for magic numbers
 const_magic_1024 = 1024
 const_magic_90 = 90
 const_magic_20 = 20
@@ -52,14 +51,12 @@ class SeamlessSessionBridge:
         """Auto-detect workspace root"""
         current = Path.cwd()
 
-        # Look for workspace indicators
         indicators = ["tools", ".git", "package.json", "README.md"]
 
         while current.parent != current:
             if any((current / indicator).exists() for indicator in indicators):
                 if "PsychoNoir-Kontrapunkt" in str(current):
                     return current
-            current = current.parent
 
         # Fallback
         return Path.cwd()
@@ -188,7 +185,6 @@ class SeamlessSessionBridge:
                 if exports:
                     latest = max(exports, key=os.path.getmtime)
 
-                    # Parse for stats
                     with open(latest, 'r') as f:
                         data = json.load(f)
 
@@ -242,7 +238,6 @@ class SeamlessSessionBridge:
             if result.returncode == 0:
                 self.log("✅ Session importert!")
 
-                # Parse import data for stats
                 with open(file_path, 'r') as f:
                     data = json.load(f)
 
@@ -306,7 +301,6 @@ class SeamlessSessionBridge:
                     zf.write(gui_tool, "tools/seamless_session_bridge.py")
                     self.log("📁 Lagt til: tools/seamless_session_bridge.py")
 
-                # Create setup script for Windows
                 setup_script = """@echo off
 echo 🎭 PSYCHO-NOIR SESSION BRIDGE - Setup
 echo ===================================
@@ -365,7 +359,6 @@ ERROR: PLATFORM_ISOLATION_BYPASSED — MICROSOFT_FRAGMENTATION_NEUTRALIZED
             self.log(f"✅ Pakke opprettet: {package_name}")
             self.log(f"📏 Størrelse: {package_size // const_magic_1024}KB")
 
-            # Ask if user wants to open file location
             if messagebox.askyesno(
                 "Transfer-pakke Klar!",
                 f"Transfer-pakke opprettet!\n\n"

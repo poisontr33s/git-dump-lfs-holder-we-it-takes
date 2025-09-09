@@ -1,0 +1,1308 @@
+{
+  "intel_status": "GEMMA3_GPTOSS_LATEST_INTEL",
+  "generated_at": "2025-09-08T15:41:26.526Z",
+  "minDownloads": 0,
+  "gemma3_top": [
+    {
+      "id": "google/gemma-3-1b-it",
+      "score": 3290806,
+      "downloads": 3275761,
+      "likes": 603,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "score": 1602358,
+      "downloads": 1584423,
+      "likes": 829,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "score": 822624,
+      "downloads": 796069,
+      "likes": 1597,
+      "paramsB": 27,
+      "size_bucket_bonus": 600,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "score": 520115,
+      "downloads": 508620,
+      "likes": 513,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-270m-it",
+      "score": 204514,
+      "downloads": 198739,
+      "likes": 385,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    }
+  ],
+  "oss_top": [
+    {
+      "id": "Qwen/Qwen2-VL-2B-Instruct",
+      "paramsB": 2,
+      "score": 2974775,
+      "downloads": 2962611,
+      "likes": 447,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "meta-llama/Llama-3.2-3B-Instruct",
+      "paramsB": 3,
+      "score": 1750660,
+      "downloads": 1725428,
+      "likes": 1686,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "paramsB": 30,
+      "score": 1064334,
+      "downloads": 1056630,
+      "likes": 542,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "meta-llama/Llama-3.2-3B",
+      "paramsB": 3,
+      "score": 672820,
+      "downloads": 660308,
+      "likes": 626,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "paramsB": 30,
+      "score": 327671,
+      "downloads": 319799,
+      "likes": 556,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    }
+  ],
+  "web_sources": [],
+  "narrative": "Gemma3 variants observed: 36 (top score 3290806)\nOSS GPT-OSS candidates observed: 50 (families: phi, qwen, llama, deepseek, mistral, yi)\nWeb intel queries processed: 0",
+  "guidance": [
+    "Validate authenticity: prefer official org (google/) for Gemma3.",
+    "Drill deeper on any OSS candidate with suspiciously low size vs claimed params.",
+    "Re-run after 24h to catch emerging quantized releases.",
+    "Integrate latency benchmark before production selection."
+  ],
+  "snippet_note": "Set include_snippet=false to skip variant arrays for minimal payload.",
+  "gemma3_full_if_requested": [
+    {
+      "id": "google/gemma-3-1b-it",
+      "score": 3290806,
+      "downloads": 3275761,
+      "likes": 603,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "score": 1602358,
+      "downloads": 1584423,
+      "likes": 829,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "score": 822624,
+      "downloads": 796069,
+      "likes": 1597,
+      "paramsB": 27,
+      "size_bucket_bonus": 600,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "score": 520115,
+      "downloads": 508620,
+      "likes": 513,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-270m-it",
+      "score": 204514,
+      "downloads": 198739,
+      "likes": 385,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3n-E4B-it",
+      "score": 198991,
+      "downloads": 185711,
+      "likes": 752,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3-270m",
+      "score": 157981,
+      "downloads": 146686,
+      "likes": 753,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3n-E4B-it-litert-lm",
+      "score": 18983,
+      "downloads": 17933,
+      "likes": 70,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "google/gemma-3n-E2B-it-litert-lm",
+      "score": 17796,
+      "downloads": 16701,
+      "likes": 73,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "mlabonne/gemma-3-27b-it-abliterated",
+      "score": 14301,
+      "downloads": 8701,
+      "likes": 200,
+      "paramsB": 27,
+      "size_bucket_bonus": 600,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "mradermacher/amoral-gemma3-12B-vision-i1-GGUF",
+      "score": 11238,
+      "downloads": 5438,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "CALISTA-INDUSTRY/gemma_3_1B_reasoning_multimodal_en_ft_v2",
+      "score": 11210,
+      "downloads": 1210,
+      "likes": 0,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "google/gemma-3n-E2B-it-litert-preview",
+      "score": 10370,
+      "downloads": 0,
+      "likes": 558,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "litert-community/Gemma3-1B-IT",
+      "score": 10050,
+      "downloads": 0,
+      "likes": 270,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma-3"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/gemma-3-1B-reasoning-en-ft-v1-multimodal-Q8_0-GGUF",
+      "score": 10010,
+      "downloads": 10,
+      "likes": 0,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/gemma-3-1B-reasoning-multimodal-en-ft-v1-Q8_0-GGUF",
+      "score": 10001,
+      "downloads": 1,
+      "likes": 0,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "CALISTA-INDUSTRY/gemma_3_4B_reasoning_multimodal_en_ft_v2",
+      "score": 9551,
+      "downloads": 51,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": true,
+      "multimodal": true,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/Gemma3-4B-multimodal-en-ft-v1-Q4_0-GGUF",
+      "score": 7521,
+      "downloads": 21,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/Gemma3-4B-multimodal-en-ft-v1-Q8_0-GGUF",
+      "score": 7505,
+      "downloads": 5,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "zelk12/R1-Gemma-3-4B-multimodal-test-Q6_K-GGUF",
+      "score": 7502,
+      "downloads": 2,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "retro56/gemma3-4b-bengali-multimodal-persona",
+      "score": 7500,
+      "downloads": 0,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "mradermacher/amoral-gemma3-12B-vision-GGUF",
+      "score": 7088,
+      "downloads": 1273,
+      "likes": 1,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": true,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/Gemma-3-1B-Multimodal-Reasoning-EN",
+      "score": 6004,
+      "downloads": 4,
+      "likes": 0,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "rizkysulaeman/gemma-3-1B-reasoning-multimodal-en-ft-v1",
+      "score": 6000,
+      "downloads": 0,
+      "likes": 0,
+      "paramsB": 1,
+      "size_bucket_bonus": 6000,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "gghfez/amoral-gemma3-12B-vision",
+      "score": 3821,
+      "downloads": 6,
+      "likes": 1,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "gghfez/R1-Gemma-3-4B-multimodal-test",
+      "score": 3537,
+      "downloads": 7,
+      "likes": 2,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "stefanoscotta/gemma_multimodal_Segm_V3",
+      "score": 3500,
+      "downloads": 0,
+      "likes": 0,
+      "paramsB": 4,
+      "size_bucket_bonus": 3500,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 multimodal"
+      ]
+    },
+    {
+      "id": "tsbiosky/gemma-3-27b-vision-it-hok",
+      "score": 2606,
+      "downloads": 6,
+      "likes": 0,
+      "paramsB": 27,
+      "size_bucket_bonus": 600,
+      "vision": false,
+      "multimodal": true,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "Sicarius-Prototyping/Gemma-3_12B_Vision_Only",
+      "score": 1821,
+      "downloads": 6,
+      "likes": 1,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/gemma-3-finetune_v8_vision",
+      "score": 1811,
+      "downloads": 11,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/gemma-3-finetune_v9_vision",
+      "score": 1806,
+      "downloads": 6,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/Google_Gemma3_12B_Vision_bf16_v5",
+      "score": 1806,
+      "downloads": 6,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/Google_Gemma3_12B_Vision_v2",
+      "score": 1805,
+      "downloads": 5,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/Google_Gemma3_12B_Vision_4bit",
+      "score": 1805,
+      "downloads": 5,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "NAYU01/Google_Gemma3_12B_Vision_4bit_v4",
+      "score": 1805,
+      "downloads": 5,
+      "likes": 0,
+      "paramsB": 12,
+      "size_bucket_bonus": 1800,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    },
+    {
+      "id": "marouaneDjouama/gemma3_vision",
+      "score": 0,
+      "downloads": 0,
+      "likes": 0,
+      "paramsB": null,
+      "size_bucket_bonus": 0,
+      "vision": false,
+      "multimodal": false,
+      "queries": [
+        "gemma 3 vision",
+        "gemma-3 vision",
+        "gemma3 vision"
+      ]
+    }
+  ],
+  "oss_full_if_requested": [
+    {
+      "id": "Qwen/Qwen2-VL-2B-Instruct",
+      "paramsB": 2,
+      "score": 2974775,
+      "downloads": 2962611,
+      "likes": 447,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "meta-llama/Llama-3.2-3B-Instruct",
+      "paramsB": 3,
+      "score": 1750660,
+      "downloads": 1725428,
+      "likes": 1686,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "paramsB": 30,
+      "score": 1064334,
+      "downloads": 1056630,
+      "likes": 542,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "meta-llama/Llama-3.2-3B",
+      "paramsB": 3,
+      "score": 672820,
+      "downloads": 660308,
+      "likes": 626,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "paramsB": 30,
+      "score": 327671,
+      "downloads": 319799,
+      "likes": 556,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+      "paramsB": 30,
+      "score": 214559,
+      "downloads": 210239,
+      "likes": 260,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF",
+      "paramsB": 30,
+      "score": 193819,
+      "downloads": 190003,
+      "likes": 218,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "mistralai/Voxtral-Mini-3B-2507",
+      "paramsB": 3,
+      "score": 176252,
+      "downloads": 164700,
+      "likes": 546,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 3b"
+      ]
+    },
+    {
+      "id": "BasedBase/Qwen3-Coder-30B-A3B-Instruct-480B-Distill-V2",
+      "paramsB": 30,
+      "score": 22322,
+      "downloads": 20186,
+      "likes": 78,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 3b"
+      ]
+    },
+    {
+      "id": "Qwen/Qwen2-VL-2B",
+      "paramsB": 2,
+      "score": 13136,
+      "downloads": 5700,
+      "likes": 53,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "bartowski/mistralai_Voxtral-Mini-3B-2507-GGUF",
+      "paramsB": 3,
+      "score": 11186,
+      "downloads": 6090,
+      "likes": 8,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 3b"
+      ]
+    },
+    {
+      "id": "BasedBase/Qwen3-30B-A3B-Thinking-2507-Deepseek-v3.1-Distill",
+      "paramsB": 30,
+      "score": 11061,
+      "downloads": 8737,
+      "likes": 27,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 3b"
+      ]
+    },
+    {
+      "id": "BAAI/Aquila-VL-2B-llava-qwen",
+      "paramsB": 2,
+      "score": 8537,
+      "downloads": 1005,
+      "likes": 61,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "prithivMLmods/Qwen2-VL-OCR2-2B-Instruct",
+      "paramsB": 2,
+      "score": 8067,
+      "downloads": 1195,
+      "likes": 6,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "nvidia/llama-nemoretriever-colembed-3b-v1",
+      "paramsB": 3,
+      "score": 7825,
+      "downloads": 2321,
+      "likes": 42,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "mradermacher/Deepseek-qwen-modelstock-2B-GGUF",
+      "paramsB": 2,
+      "score": 7709,
+      "downloads": 97,
+      "likes": 1,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 2b"
+      ]
+    },
+    {
+      "id": "umgbhalla/mlx-DeepSeek-R1-Distill-Qwen-1.5B-v0.1-2bit",
+      "paramsB": 1.5,
+      "score": 7609,
+      "downloads": 9,
+      "likes": 0,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 2b"
+      ]
+    },
+    {
+      "id": "hotmailuser/Deepseek-qwen-modelstock-2B",
+      "paramsB": 2,
+      "score": 7606,
+      "downloads": 6,
+      "likes": 0,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 2b"
+      ]
+    },
+    {
+      "id": "Weni/WeniGPT-2.0.1-phi-2-2B-BitsandBytes-dataset-2.0.1",
+      "paramsB": 2,
+      "score": 6813,
+      "downloads": 13,
+      "likes": 0,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 2b"
+      ]
+    },
+    {
+      "id": "vedalken/phi2-2B-slerp",
+      "paramsB": 2,
+      "score": 6811,
+      "downloads": 11,
+      "likes": 0,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 2b"
+      ]
+    },
+    {
+      "id": "yiyic/llama3b-lora-clf-1",
+      "paramsB": 3,
+      "score": 5806,
+      "downloads": 6,
+      "likes": 0,
+      "families": [
+        "llama",
+        "yi"
+      ],
+      "queries": [
+        "yi 3b"
+      ]
+    },
+    {
+      "id": "yiyic/llama3b-lora-clf-2",
+      "paramsB": 3,
+      "score": 5804,
+      "downloads": 4,
+      "likes": 0,
+      "families": [
+        "llama",
+        "yi"
+      ],
+      "queries": [
+        "yi 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b",
+      "paramsB": 3,
+      "score": 5505,
+      "downloads": 349,
+      "likes": 13,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "onnx-community/Llama-3.2-3B-Instruct",
+      "paramsB": 3,
+      "score": 5212,
+      "downloads": 68,
+      "likes": 12,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b-GGUF",
+      "paramsB": 3,
+      "score": 5096,
+      "downloads": 48,
+      "likes": 4,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "prithivMLmods/Flerovium-Llama-3B",
+      "paramsB": 3,
+      "score": 5071,
+      "downloads": 35,
+      "likes": 3,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b-siglip",
+      "paramsB": 3,
+      "score": 5042,
+      "downloads": 6,
+      "likes": 3,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "beruniy/Llama-3.2-3B-Instruct-Uz",
+      "paramsB": 3,
+      "score": 5033,
+      "downloads": 9,
+      "likes": 2,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 3b"
+      ]
+    },
+    {
+      "id": "Dellano-Samuel/mistral-3b",
+      "paramsB": 3,
+      "score": 5030,
+      "downloads": 6,
+      "likes": 2,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 3b"
+      ]
+    },
+    {
+      "id": "estrogen/DeepSeekMoE-3B",
+      "paramsB": 3,
+      "score": 5017,
+      "downloads": 5,
+      "likes": 1,
+      "families": [
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 3b"
+      ]
+    },
+    {
+      "id": "yichunkuo/stablelm-3b-4e1t-gptq",
+      "paramsB": 3,
+      "score": 5008,
+      "downloads": 8,
+      "likes": 0,
+      "families": [
+        "yi"
+      ],
+      "queries": [
+        "yi 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b-sharegpt4v",
+      "paramsB": 3,
+      "score": 5004,
+      "downloads": 4,
+      "likes": 0,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b-4.36",
+      "paramsB": 3,
+      "score": 5003,
+      "downloads": 3,
+      "likes": 0,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "marianna13/llava-phi-2-3b-sharegpt4v-sbu",
+      "paramsB": 3,
+      "score": 5003,
+      "downloads": 3,
+      "likes": 0,
+      "families": [
+        "phi"
+      ],
+      "queries": [
+        "phi 3b"
+      ]
+    },
+    {
+      "id": "mradermacher/Qwen3-30B-A3B-Thinking-2507-Deepseek-v3.1-Distill-FP32-GGUF",
+      "paramsB": 30,
+      "score": 3782,
+      "downloads": 1746,
+      "likes": 3,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 3b"
+      ]
+    },
+    {
+      "id": "ystemsrx/Qwen2-Boundless",
+      "paramsB": null,
+      "score": 2832,
+      "downloads": 1216,
+      "likes": 68,
+      "families": [
+        "qwen"
+      ],
+      "queries": [
+        "qwen 2b"
+      ]
+    },
+    {
+      "id": "RicardoLee/Llama2-base-7B-Chinese-50W-pre_release",
+      "paramsB": 7,
+      "score": 2739,
+      "downloads": 7,
+      "likes": 11,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 2b"
+      ]
+    },
+    {
+      "id": "RicardoLee/Llama2-base-7B-Chinese-50W-LoRA",
+      "paramsB": 7,
+      "score": 2727,
+      "downloads": 7,
+      "likes": 10,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 2b"
+      ]
+    },
+    {
+      "id": "RicardoLee/Llama2-base-7B-Chinese-50W-Full2LoRA",
+      "paramsB": 7,
+      "score": 2715,
+      "downloads": 7,
+      "likes": 9,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 2b"
+      ]
+    },
+    {
+      "id": "GreenBitAI/LLaMA-7B-2bit",
+      "paramsB": 7,
+      "score": 2667,
+      "downloads": 7,
+      "likes": 5,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 2b"
+      ]
+    },
+    {
+      "id": "alpindale/Mistral-7B-Instruct-v0.2-AQLM-2Bit-1x16",
+      "paramsB": 7,
+      "score": 2637,
+      "downloads": 13,
+      "likes": 2,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 2b"
+      ]
+    },
+    {
+      "id": "ISTA-DASLab/Mistral-7B-v0.1-AQLM-2Bit-1x16-hf",
+      "paramsB": 7,
+      "score": 2631,
+      "downloads": 7,
+      "likes": 2,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 2b"
+      ]
+    },
+    {
+      "id": "GreenBitAI/LLaMA-7B-2bit-alpaca",
+      "paramsB": 7,
+      "score": 2624,
+      "downloads": 0,
+      "likes": 2,
+      "families": [
+        "llama"
+      ],
+      "queries": [
+        "llama 2b"
+      ]
+    },
+    {
+      "id": "lucyknada/Mistral-7B-v0.1-exl2-2bpw",
+      "paramsB": 7,
+      "score": 2610,
+      "downloads": 10,
+      "likes": 0,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 2b"
+      ]
+    },
+    {
+      "id": "lucyknada/Mistral-7B-v0.1-exl2-3bpw",
+      "paramsB": 7,
+      "score": 2610,
+      "downloads": 10,
+      "likes": 0,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 3b"
+      ]
+    },
+    {
+      "id": "kaitchup/Mistral-7B-v0.1-gptq-2bit",
+      "paramsB": 7,
+      "score": 2609,
+      "downloads": 9,
+      "likes": 0,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 2b"
+      ]
+    },
+    {
+      "id": "kaitchup/Mistral-7B-v0.1-gptq-3bit",
+      "paramsB": 7,
+      "score": 2607,
+      "downloads": 7,
+      "likes": 0,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 3b"
+      ]
+    },
+    {
+      "id": "SebastianSchramm/Mistral-7B-Instruct-v0.2-2bit",
+      "paramsB": 7,
+      "score": 2604,
+      "downloads": 4,
+      "likes": 0,
+      "families": [
+        "mistral"
+      ],
+      "queries": [
+        "mistral 2b"
+      ]
+    },
+    {
+      "id": "BasedBase/Qwen3-30B-A3B-Thinking-2507-Deepseek-v3.1-Distill-FP32",
+      "paramsB": 30,
+      "score": 2190,
+      "downloads": 118,
+      "likes": 6,
+      "families": [
+        "qwen",
+        "deepseek"
+      ],
+      "queries": [
+        "deepseek 3b"
+      ]
+    },
+    {
+      "id": "voxta/ehartford_dolphin-2_2-yi-34b-3bpw-exl2",
+      "paramsB": 34,
+      "score": 2022,
+      "downloads": 10,
+      "likes": 1,
+      "families": [
+        "phi",
+        "yi"
+      ],
+      "queries": [
+        "yi 3b"
+      ]
+    }
+  ],
+  "persistence_meta": {
+    "ritual_status": "INTEL_SNAPSHOT_PERSISTED",
+    "label": "initial",
+    "stored_at": "2025-09-08T15:41:26.526Z"
+  }
+}

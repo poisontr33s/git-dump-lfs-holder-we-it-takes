@@ -90,9 +90,7 @@ class MemoryFragmentProcessor:
         
         if adjusted_risk > 0.8:
             return SurveillanceTier.CORRUPTED
-        elif adjusted_risk > 0.6:
             return SurveillanceTier.CRITICAL
-        elif adjusted_risk > 0.3:
             return SurveillanceTier.ELEVATED
         else:
             return SurveillanceTier.BASELINE
@@ -192,7 +190,6 @@ class MemoryFragmentProcessor:
         """Genererer en syntese av nåværende sesjon for arkivering"""
         
         return {
-            "session_timestamp": datetime.datetime.now().isoformat(),
             "invisible_hand_influence_level": self.invisible_hand_influence,
             "active_surveillance_protocols": ["MEMETIC_SCAN", "REALITY_ANCHOR_CHECK"],
             "data_integrity_status": "PARTIALLY_COMPROMISED",
@@ -200,7 +197,6 @@ class MemoryFragmentProcessor:
             "next_defragmentation_required": self.invisible_hand_influence > 0.7
         }
 
-# Hovedfunksjonalitet for bruk
 class RealTimeSessionTracker:
     """Hovedgrensesnitt for sesjonssporing i Psycho-Noir miljøet"""
     
@@ -216,7 +212,6 @@ class RealTimeSessionTracker:
     def get_current_surveillance_status(self) -> Dict[str, Any]:
         """Returnerer nåværende overvåkningsstatus"""
         return {
-            "session_duration": str(datetime.datetime.now() - self.session_start),
             "invisible_hand_influence": self.memory_processor.invisible_hand_influence,
             "surveillance_active": True,
             "reality_anchors_stable": self.memory_processor.invisible_hand_influence < 0.8
@@ -227,7 +222,6 @@ class RealTimeSessionTracker:
         self.memory_processor.invisible_hand_influence *= 0.5
         return self.memory_processor.log_cognitive_pulse("EMERGENCY_DEFRAG", {"reason": "CORRUPTION_THRESHOLD_EXCEEDED"})
 
-# Initialisering for direkte bruk
 if __name__ == "__main__":
     # Demonstrasjon av systemet
     tracker = RealTimeSessionTracker()

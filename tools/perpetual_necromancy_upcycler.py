@@ -85,21 +85,18 @@ class PerpetualNecromancyUpcycler:
             full_path.write_text(content, encoding='utf-8')
             
             return {
-                "success": True,
                 "file": file_path,
                 "domain": domain,
                 "lines_added": len(content.splitlines())
             }
         except Exception as e:
             return {
-                "success": False,
                 "file": file_path,
                 "error": str(e)
             }
     
     def _dialogue_template(self, module_name: str, file_path: str) -> str:
         return f'''#!/usr/bin/env python3
-"""
 {module_name}.py
 
 Dialogsystem modul for Psycho-Noir Kontrapunkt
@@ -109,7 +106,6 @@ Status: GJENOPPRETTET fra necromancy pipeline
 """
 
 from typing import Dict, List, Any, Optional
-from datetime import datetime
 
 class DialogueEngine:
     """Core dialogue processing for Psycho-Noir RPG mechanics"""
@@ -141,7 +137,6 @@ class DialogueEngine:
     def _generate_skill_checks(self, text: str) -> List[Dict[str, Any]]:
         """Generate skill checks based on dialogue content"""
         return [
-            {{"skill": "Empathy", "difficulty": 12, "context": "emotional_resonance"}},
             {{"skill": "Logic", "difficulty": 10, "context": "analytical_reasoning"}}
         ]
     
@@ -163,7 +158,6 @@ if __name__ == "__main__":
 
     def _integration_template(self, module_name: str, file_path: str) -> str:
         return f'''#!/usr/bin/env python3
-"""
 {module_name}.py
 
 Integrasjonsmodul for GitHub Copilot og eksterne systemer
@@ -173,9 +167,6 @@ Status: GJENOPPRETTET fra necromancy pipeline
 """
 
 import asyncio
-import json
-from typing import Dict, List, Any, Optional
-from datetime import datetime
 
 class IntegrationEngine:
     """Core integration handling for external systems"""
@@ -193,7 +184,6 @@ class IntegrationEngine:
             self.connection_status = "connected"
             
             return {{
-                "status": "connected",
                 "endpoint": config.get("endpoint", "api.github.com"),
                 "timestamp": datetime.now().isoformat(),
                 "capabilities": ["code_completion", "chat", "suggestions"]
@@ -227,7 +217,6 @@ if __name__ == "__main__":
 
     def _orchestration_template(self, module_name: str, file_path: str) -> str:
         return f'''#!/usr/bin/env python3
-"""
 {module_name}.py
 
 Orkestreringsmodul for koordinering av AI-systemer og workflows
@@ -236,8 +225,6 @@ Håndterer bidirectional learning og ethical constraints.
 Status: GJENOPPRETTET fra necromancy pipeline
 """
 
-from typing import Dict, List, Any, Optional
-from datetime import datetime
 import threading
 
 class OrchestrationEngine:
@@ -288,7 +275,6 @@ class OrchestrationEngine:
                 constraints_applied.append(constraint)
         
         return {{
-            "original_data": process_data,
             "constraints_applied": constraints_applied,
             "ethical_score": 0.95,
             "approved": True
@@ -306,7 +292,6 @@ if __name__ == "__main__":
 
     def _generic_template(self, module_name: str, file_path: str) -> str:
         return f'''#!/usr/bin/env python3
-"""
 {module_name}.py
 
 Psycho-Noir Kontrapunkt modul
@@ -315,8 +300,6 @@ Gjenopprettet fra necromancy pipeline med minimal implementasjon.
 Status: RESURRECTED
 """
 
-from typing import Dict, List, Any, Optional
-from datetime import datetime
 
 class {module_name.title().replace('_', '')}:
     """Generic Psycho-Noir system component"""
@@ -332,7 +315,6 @@ class {module_name.title().replace('_', '')}:
     def process(self, input_data: Any) -> Dict[str, Any]:
         """Generic processing method"""
         return {{
-            "status": "processed",
             "input_type": type(input_data).__name__,
             "timestamp": datetime.now().isoformat(),
             "psycho_noir_enhanced": True
@@ -349,25 +331,21 @@ if __name__ == "__main__":
 
     def _skyskraper_template(self, module_name: str, file_path: str) -> str:
         return self._generic_template(module_name, file_path).replace(
-            "Generic Psycho-Noir system component",
             "Skyskraperen surveillance and monitoring component"
         )
     
     def _rustbelt_template(self, module_name: str, file_path: str) -> str:
         return self._generic_template(module_name, file_path).replace(
-            "Generic Psycho-Noir system component", 
             "Rustbeltet resilience and adaptation component"
         )
     
     def _usynlige_hand_template(self, module_name: str, file_path: str) -> str:
         return self._generic_template(module_name, file_path).replace(
-            "Generic Psycho-Noir system component",
             "Den Usynlige Hånd glitch injection and chaos component"
         )
     
     def _meta_tools_template(self, module_name: str, file_path: str) -> str:
         return self._generic_template(module_name, file_path).replace(
-            "Generic Psycho-Noir system component",
             "Meta-tool for development and analysis workflows"
         )
 

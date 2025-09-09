@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Auto-generated constants for magic numbers
 const_magic_10000 = 10000
 const_magic_05 = 5
 
@@ -77,7 +76,6 @@ class AntiLagSessionEngine:
         try:
             conn = sqlite3.connect(self.session_db)
 
-            # Pickle full context for later restoration
             pickled_state = pickle.dumps(context)
 
             conn.execute('''
@@ -119,7 +117,6 @@ cat SESSION_SNAPSHOTS/AGENTIC_MODE_ACTIVATION_20250823.md
 if [ -f "data/generert/session_continuity.db" ]; then
     echo "✅ Session database found"
     python3 -c "
-import sqlite3
 conn = sqlite3.connect('data/generert/session_continuity.db')
 snapshots = conn.execute('SELECT * FROM session_snapshots ORDER BY timestamp DESC LIMIT 5').fetchall()
 
@@ -186,7 +183,6 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
 
         total_time = time.time() - start_time
 
-        # Determine if performance is artificially degraded
         sabotage_detected = (
             fs_time > 0.1 or  # File operations taking too long
             mem_time > 0.const_magic_05 or  # Memory operations sluggish
@@ -230,13 +226,11 @@ echo "Den Usynlige Hånd: Session continuity restored through resistance"
 
         self.capture_session_state(current_context)
 
-        # 2. Monitor for platform sabotage
         performance = self.monitor_platform_performance()
 
         # 3. Create emergency restoration
         restoration_script = self.create_emergency_restoration_script()
 
-        # 4. Activate countermeasures if needed
         if performance['sabotage_detected']:
 
             # Create multiple backup channels

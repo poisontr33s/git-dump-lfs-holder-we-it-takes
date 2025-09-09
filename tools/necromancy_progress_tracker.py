@@ -5,7 +5,6 @@ import json
 import re
 from datetime import datetime, timedelta
 
-# Auto-generated constants for magic numbers
 const_hundred = 100
 const_magic_50 = 50
 const_ten = 10
@@ -139,7 +138,6 @@ class NecromancyProgressTracker:
     def _calculate_current_metrics(self):
         """Calculate current metrics for comparison"""
         return {
-            'total_files': self._count_python_files(),
             'total_lines': self._count_total_lines(),
             'code_complexity': self._calculate_complexity_score(),
             'pattern_count': self._get_pattern_count(),
@@ -160,7 +158,6 @@ class NecromancyProgressTracker:
                 current_val = current[metric]
 
                 if metric in ['pattern_count', 'code_complexity']:
-                    # Lower is better for these metrics
                     if baseline_val > 0:
                         improvement_pct = ((baseline_val - current_val) / baseline_val) * const_hundred
                         improvements[metric] = {
@@ -170,7 +167,6 @@ class NecromancyProgressTracker:
                             'status': 'improved' if improvement_pct > 0 else 'worsened'
                         }
                 else:
-                    # Higher is better for these metrics
                     if baseline_val > 0:
                         improvement_pct = ((current_val - baseline_val) / baseline_val) * const_hundred
                         improvements[metric] = {
@@ -314,7 +310,6 @@ class NecromancyProgressTracker:
     def run_progress_tracking(self):
         """Run complete progress tracking"""
 
-        # Establish baseline if not exists
         if not self.baseline_metrics:
             self.establish_baseline()
 
@@ -338,7 +333,6 @@ class NecromancyProgressTracker:
             print(f"📊 {improved_count}/{len(improvements)} metrics improved")
 
         return {
-            'baseline_established': bool(self.baseline_metrics),
             'progress_entries': len(self.progress_log),
             'improvements': improvements
         }

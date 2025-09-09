@@ -277,7 +277,6 @@ _"Advanced smelting pot of disparate systems" - Specializing in unified autonomo
         with open(session_file, 'w') as f:
             json.dump(results, f, indent=2)
         
-        # Save README if generated
         if readme_content:
             readme_file = self.workspace_root / "AUTONOMOUS_PROFILE_README.md"
             with open(readme_file, 'w') as f:

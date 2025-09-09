@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Auto-generated constants for magic numbers
 const_magic_14900 = 14900
 const_magic_4090 = 4090
 const_magic_18 = 18
@@ -76,7 +75,6 @@ class SmartSessionInstaller:
             caps["gui"] = True
             caps["file_dialogs"] = True
 
-            # Test if we can actually create windows
             try:
                 root = tkinter.Tk()
                 root.withdraw()  # Hide window
@@ -130,10 +128,7 @@ class SmartSessionInstaller:
     def create_gui_launcher(self):
         """Create optimized GUI launcher"""
         launcher_content = f"""#!/usr/bin/env python3
-# Auto-generated optimal launcher for {self.system_info['platform']}
 
-import sys
-import os
 
 # Add current directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

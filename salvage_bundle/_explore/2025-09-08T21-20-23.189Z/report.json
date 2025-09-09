@@ -1,0 +1,51 @@
+{
+  "explore_status": "PROMPT_CONTEXT_EXPLORE",
+  "path": "salvage_bundle/PROMPT_CONTEXT_RAW.txt",
+  "variants": 4,
+  "max_tokens": 120,
+  "diversity_floor": 0.35,
+  "repetition_guard": 4,
+  "outputs": [
+    {
+      "file": "salvage_bundle/_explore/2025-09-08T21-20-23.189Z/variant_1.md"
+    },
+    {
+      "file": "salvage_bundle/_explore/2025-09-08T21-20-23.189Z/variant_2.md",
+      "diversity_vs_prev": 0.681
+    },
+    {
+      "file": "salvage_bundle/_explore/2025-09-08T21-20-23.189Z/variant_3.md",
+      "diversity_vs_prev": 0.687
+    },
+    {
+      "file": "salvage_bundle/_explore/2025-09-08T21-20-23.189Z/variant_4.md",
+      "diversity_vs_prev": 0.689
+    }
+  ],
+  "pairwise_diversity": [
+    [
+      1,
+      0.681,
+      0.05,
+      0.683
+    ],
+    [
+      0.681,
+      1,
+      0.687,
+      0.088
+    ],
+    [
+      0.05,
+      0.687,
+      1,
+      0.689
+    ],
+    [
+      0.683,
+      0.088,
+      0.689,
+      1
+    ]
+  ]
+}

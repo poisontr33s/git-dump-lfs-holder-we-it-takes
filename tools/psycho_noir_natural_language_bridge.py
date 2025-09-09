@@ -122,7 +122,6 @@ class PsychoNoirNaturalLanguageBridge:
         print(f"🎯 Strategic sequence planned: {len(strategic_sequence)} phases")
         
         return {
-            "unfollowed_threads": unfollowed_threads,
             "strategic_sequence": strategic_sequence,
             "session_context": self.session_context
         }

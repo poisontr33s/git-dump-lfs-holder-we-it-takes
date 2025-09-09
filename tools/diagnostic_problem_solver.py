@@ -88,7 +88,6 @@ class CopilotProIntegrator:
     def _initialize_model_specializations(self) -> Dict[AIModel, List[str]]:
         """Define each AI model's specialization areas"""
         return {
-            AIModel.CLAUDE_35_SONNET: ["code_analysis", "architectural_design", "documentation"],
             AIModel.CLAUDE_37_SONNET: ["complex_reasoning", "system_integration", "optimization"],
             AIModel.CLAUDE_4_SONNET: ["advanced_debugging", "performance_analysis", "security"],
             AIModel.CLAUDE_4_OPUS: ["creative_solutions", "novel_approaches", "innovation"],
@@ -110,19 +109,15 @@ class CopilotProIntegrator:
         
         problems = []
         
-        # Scan for Python issues
         python_problems = await self._scan_python_issues()
         problems.extend(python_problems)
         
-        # Scan for VS Code configuration issues
         vscode_problems = await self._scan_vscode_issues()
         problems.extend(vscode_problems)
         
-        # Scan for documentation issues
         doc_problems = await self._scan_documentation_issues()
         problems.extend(doc_problems)
         
-        # Scan for integration issues
         integration_problems = await self._scan_integration_issues()
         problems.extend(integration_problems)
         
@@ -132,7 +127,6 @@ class CopilotProIntegrator:
         """Scan for Python-specific issues"""
         problems = []
         
-        # Use ruff for linting
         try:
             result = subprocess.run(
                 ["ruff", "check", "--output-format=json", self.workspace_root],
@@ -188,7 +182,6 @@ class CopilotProIntegrator:
         """Scan for documentation and markdown issues"""
         problems = []
         
-        # Use markdownlint for documentation
         try:
             result = subprocess.run(
                 ["markdownlint", ".", "--json"],
@@ -220,14 +213,12 @@ class CopilotProIntegrator:
         """Scan for integration and system issues"""
         problems = []
         
-        # Check for missing dependencies
         package_json = os.path.join(self.workspace_root, "package.json")
         if os.path.exists(package_json):
             try:
                 with open(package_json, 'r') as f:
                     package_data = json.load(f)
                 
-                # Check if node_modules exists
                 if not os.path.exists(os.path.join(self.workspace_root, "node_modules")):
                     problem = DiagnosticProblem(
                         id="integration_001",
@@ -262,7 +253,6 @@ class CopilotProIntegrator:
         """
         consultations = []
         
-        # Select best models for this problem type
         selected_models = self._select_models_for_problem(problem)
         
         for model in selected_models:
@@ -328,7 +318,6 @@ class CopilotProIntegrator:
             reasoning = "Model specialization applied to problem domain"
         
         return ModelConsultation(
-            model=model,
             solution=solution,
             confidence=confidence,
             reasoning=reasoning,
@@ -399,7 +388,6 @@ class CopilotProIntegrator:
         # Generate synthesis based on Psycho-Noir methodology
         if len(consultations) >= 3:
             return f"""
-PSYCHO-NOIR MULTI-MODEL SYNTHESIS:
 
 🎯 SKYSKRAPEREN (Strategic): {consultations[0].reasoning}
 🔧 RUSTBELTET (Practical): {consultations[1].reasoning if len(consultations) > 1 else 'Pending'}
@@ -421,7 +409,6 @@ allowing emergent patterns to guide optimization.
         problems = await self.diagnose_workspace_problems()
         print(f"📊 Identified {len(problems)} problems across workspace")
         
-        # Phase 2: Consult AI models for solutions
         solutions = {}
         for problem in problems[:5]:  # Limit for demonstration
             print(f"🧠 Consulting AI models for: {problem.description}")
@@ -437,7 +424,6 @@ allowing emergent patterns to guide optimization.
         implementation_plan = self._generate_implementation_plan(solutions)
         
         return {
-            "diagnostic_summary": {
                 "total_problems": len(problems),
                 "critical_issues": len([p for p in problems if p.severity == DiagnosticSeverity.CRITICAL]),
                 "high_priority": len([p for p in problems if p.severity == DiagnosticSeverity.HIGH]),

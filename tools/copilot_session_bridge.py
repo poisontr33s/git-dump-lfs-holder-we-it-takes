@@ -97,7 +97,6 @@ class CopilotSessionBridge:
         """Parse chat log content for conversation data"""
         conversations = []
 
-        # Regex patterns for extracting conversation data
         request_pattern = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}) \[info\] ccreq:([a-f0-9]+)\.copilotmd \| success \| ([^|]+) \| (\d+)ms \| \[([^\]]+)\]'
 
         for match in re.finditer(request_pattern, log_content):
@@ -133,7 +132,6 @@ class CopilotSessionBridge:
 
         print(f"   📊 Found {len(chat_data['conversations'])} conversation entries")
 
-        # Create summary for manual transfer
         self._create_session_summary(chat_data, export_file)
 
         return export_file
@@ -189,7 +187,6 @@ class CopilotSessionBridge:
         with open(import_file, 'r', encoding='utf-8') as f:
             chat_data = json.load(f)
 
-        # Create import record
         import_record = {
             "import_time": datetime.now().isoformat(),
             "source_file": str(import_file),
@@ -198,7 +195,6 @@ class CopilotSessionBridge:
             "logs": len(chat_data.get('logs', []))
         }
 
-        # Save import record
         imports_file = self.bridge_dir / "imported_sessions.json"
         imports = []
 
@@ -211,7 +207,6 @@ class CopilotSessionBridge:
         with open(imports_file, 'w', encoding='utf-8') as f:
             json.dump(imports, f, indent=2, ensure_ascii=False)
 
-        # Create local copy for reference
         local_copy = self.bridge_dir / f"imported_{os.path.basename(import_file)}"
         shutil.copy2(import_file, local_copy)
 

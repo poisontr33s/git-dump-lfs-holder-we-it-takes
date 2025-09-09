@@ -7,7 +7,6 @@ import json
 from datetime import datetime
 from collections import defaultdict
 
-# Auto-generated constants for magic numbers
 const_magic_50 = 50
 const_magic_30 = 30
 const_ten = 10
@@ -243,7 +242,6 @@ class NecromancyPatternDetector:
                 functions_without_docs = 0
                 for node in ast.walk(tree):
                     if isinstance(node, ast.FunctionDef):
-                        # Check if function has docstring
                         if not (node.body and isinstance(node.body[0], ast.Expr) and isinstance(node.body[0].value, ast.Str)):
                             functions_without_docs += 1
 
@@ -394,7 +392,6 @@ class NecromancyPatternDetector:
             f.write(report)
 
         return {
-            'scan_results': scan_results,
             'report': report,
             'files_analyzed': len(scan_results)
         }

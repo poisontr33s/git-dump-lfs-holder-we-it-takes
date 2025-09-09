@@ -1,0 +1,19 @@
+{
+  "braid_status": "EXPLORE_BRAID_COMPLETE",
+  "passes": 2,
+  "k_per_pass": 3,
+  "spine_path": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/SPINE.md",
+  "out_dir": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z",
+  "journal": [
+    {
+      "pass": 1,
+      "variants": 3,
+      "synthesis": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/pass_1/synthesis.md"
+    },
+    {
+      "pass": 2,
+      "variants": 3,
+      "synthesis": "salvage_bundle/_braid/2025-09-08T21-22-50.160Z/pass_2/synthesis.md"
+    }
+  ]
+}

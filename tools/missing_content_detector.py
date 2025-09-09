@@ -4,7 +4,6 @@ import os
 import json
 import time
 
-# Auto-generated constants for magic numbers
 const_magic_3600 = 3600
 const_magic_300 = 300
 const_magic_48 = 48
@@ -69,7 +68,6 @@ class MissingContentDetector:
                 with open(filepath, 'r', encoding='utf-8') as f:
                     content = f.read()
 
-                # Check for technical keywords
                 found_keywords = [kw for kw in self.technical_keywords if kw in content]
                 session_indicators = [si for si in self.session_indicators if si in content]
 
@@ -112,7 +110,6 @@ class MissingContentDetector:
         recent_files = self.scan_recent_modifications(const_magic_48)  # Last const_magic_48 hours
         print(f"📁 Found {len(recent_files)} recently modified files")
 
-        # Analyze for technical discussions
         technical_discussions = self.analyze_technical_discussions(recent_files)
         print(f"🎯 Found {len(technical_discussions)} files with technical content")
 
@@ -125,7 +122,6 @@ class MissingContentDetector:
         print(f"🚨 Found {len(high_priority)} high-priority missing discussions")
 
         return {
-            'scan_time': datetime.now(),
             'recent_files': recent_files,
             'technical_discussions': technical_discussions,
             'high_priority_missing': high_priority,
@@ -145,7 +141,6 @@ class MissingContentDetector:
         # Ensure data directory exists
         os.makedirs('data', exist_ok=True)
 
-        # Convert datetime objects to strings for JSON
         json_results = self._prepare_for_json(results)
 
         with open(report_file, 'w', encoding='utf-8') as f:
@@ -157,9 +152,7 @@ class MissingContentDetector:
         """Convert datetime objects to strings for JSON serialization"""
         if isinstance(obj, dict):
             return {k: self._prepare_for_json(v) for k, v in obj.items()}
-        elif isinstance(obj, list):
             return [self._prepare_for_json(item) for item in obj]
-        elif isinstance(obj, datetime):
             return obj.isoformat()
         else:
             return obj
@@ -194,7 +187,6 @@ def main():
     # Save report
     report_file = detector.save_detection_report(results)
 
-    # Generate recovery prompt for high-priority items
     if results['high_priority_missing']:
         recovery_prompt = detector.generate_recovery_prompt(results)
 

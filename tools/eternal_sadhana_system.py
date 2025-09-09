@@ -115,7 +115,6 @@ class EternalSadhanaOrchestrator:
             domain = "rustbeltet"
         
         return ProblemVertex(
-            id=f"problem_{index:03d}",
             description=description,
             severity=problem.get('severity', 50),
             category=problem.get('category', 'unknown'),
@@ -163,13 +162,9 @@ class EternalSadhanaOrchestrator:
         
         if phase == SadhanaPhase.CHAOS_ASSESSMENT:
             return self._assess_chaos()
-        elif phase == SadhanaPhase.UPSTREAM_SWIMMING:
             return self._swim_upstream()
-        elif phase == SadhanaPhase.DISCIPLINED_ACTION:
             return self._take_disciplined_action()
-        elif phase == SadhanaPhase.POCKET_RESTING:
             return self._rest_in_pocket()
-        elif phase == SadhanaPhase.INTEGRATION:
             return self._integrate_solutions()
         
         return {"error": f"Unknown phase: {phase}"}
@@ -178,7 +173,6 @@ class EternalSadhanaOrchestrator:
         """Assess current chaos and determine intervention strategy"""
         self.chaos_level = self._calculate_chaos_level()
         
-        # Select problems for this cycle based on domain and priority
         priority_problems = self._select_priority_problems()
         
         assessment = {
@@ -212,7 +206,6 @@ class EternalSadhanaOrchestrator:
             reverse=True
         )
         
-        # Select top problems for this cycle (limit to manageable amount)
         return sorted_problems[:const_upstream_resistance]
     
     def _get_domain_distribution(self) -> Dict[str, int]:
@@ -229,7 +222,6 @@ class EternalSadhanaOrchestrator:
         """Recommend approach based on chaos level and domain distribution"""
         if self.chaos_level > const_chaos_threshold:
             return "AGGRESSIVE_SYSTEMATIC_RESOLUTION - Chaos level critical"
-        elif self.chaos_level > 50:
             return "METHODICAL_SWIMMING_UPSTREAM - Steady disciplined progress"
         else:
             return "EMERGENT_PATTERN_CULTIVATION - Allow natural resolution"
@@ -258,7 +250,6 @@ class EternalSadhanaOrchestrator:
         self.current_cycle.phase = SadhanaPhase.DISCIPLINED_ACTION
         
         return {
-            "cycle_id": self.current_cycle.cycle_id,
             "phase": "UPSTREAM_SWIMMING",
             "problems_addressed": len(problems_to_address),
             "upstream_effort": self.current_cycle.upstream_effort,
@@ -273,7 +264,6 @@ class EternalSadhanaOrchestrator:
         if domain == "skyskraperen":
             # Astrid Møller approach: Strategic, systematic, information-focused
             return {
-                "approach": "Strategic systematic analysis and controlled resolution",
                 "specialist": self.domain_specialists[domain],
                 "method": "Information warfare tactics - identify root cause, map dependencies, implement controlled fix",
                 "effort_required": 30,
@@ -282,7 +272,6 @@ class EternalSadhanaOrchestrator:
         elif domain == "rustbeltet":
             # Iron Maiden approach: Brutal, practical, survival-focused
             return {
-                "approach": "Brutal efficiency and practical improvisation",
                 "specialist": self.domain_specialists[domain],
                 "method": "Scrap-symphony optimization - patch immediately, optimize later, ensure survival",
                 "effort_required": 20,
@@ -291,7 +280,6 @@ class EternalSadhanaOrchestrator:
         else:  # invisible_hand
             # Den Usynlige Hånd approach: Emergent, subtle, pattern-based
             return {
-                "approach": "Emergent pattern cultivation and subtle manipulation",
                 "specialist": self.domain_specialists[domain],
                 "method": "Allow natural resolution patterns to emerge while providing gentle guidance",
                 "effort_required": 15,
@@ -325,7 +313,6 @@ class EternalSadhanaOrchestrator:
         self.current_cycle.phase = SadhanaPhase.POCKET_RESTING
         
         return {
-            "cycle_id": self.current_cycle.cycle_id,
             "phase": "DISCIPLINED_ACTION",
             "actions_taken": len(actions_taken),
             "problems_resolved": problems_resolved,
@@ -350,7 +337,6 @@ class EternalSadhanaOrchestrator:
         success = random.random() < success_rate[domain]
         
         return {
-            "problem_id": problem.id,
             "domain": domain,
             "success": success,
             "method_used": self.domain_specialists[domain],
@@ -373,7 +359,6 @@ class EternalSadhanaOrchestrator:
         self.current_cycle.phase = SadhanaPhase.INTEGRATION
         
         return {
-            "cycle_id": self.current_cycle.cycle_id,
             "phase": "POCKET_RESTING",
             "rest_quality": self.current_cycle.rest_quality,
             "rest_duration": const_rest_pocket_duration,
@@ -407,7 +392,6 @@ class EternalSadhanaOrchestrator:
         # Save state
         self._save_state()
         
-        # Check if more cycles needed
         remaining_chaos = self._calculate_chaos_level()
         
         integration_report = {
@@ -421,7 +405,6 @@ class EternalSadhanaOrchestrator:
             "eternal_sadhana_status": "ACTIVE" if remaining_chaos > 5 else "ACHIEVED_EQUILIBRIUM"
         }
         
-        # Reset for next cycle if needed
         if remaining_chaos > 5:
             self.current_cycle = None
             integration_report["next_cycle_ready"] = True
@@ -452,7 +435,6 @@ class EternalSadhanaOrchestrator:
     def get_sadhana_status(self) -> Dict[str, Any]:
         """Get current status of the eternal sadhana practice"""
         return {
-            "eternal_sadhana_active": self.current_cycle is not None,
             "current_cycle": self.current_cycle.cycle_id if self.current_cycle else None,
             "current_phase": self.current_cycle.phase.value if self.current_cycle else None,
             "chaos_level": self.chaos_level,
@@ -497,7 +479,6 @@ def main():
     
     orchestrator = EternalSadhanaOrchestrator()
     
-    # Example problem set for demonstration
     example_problems = [
         {"description": "VS Code settings.json syntax errors", "severity": 90, "category": "configuration"},
         {"description": "Python const artifact self-references", "severity": 75, "category": "syntax"},

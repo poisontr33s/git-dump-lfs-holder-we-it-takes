@@ -221,7 +221,6 @@ async def execute_github_cli_orchestration():
     print("3. Coordinate with chat for creative strategic direction")
     
     return {
-        "orchestration_session": orchestrator.session_id,
         "log_path": str(log_path),
         "strategic_commands": commands['commands']
     }

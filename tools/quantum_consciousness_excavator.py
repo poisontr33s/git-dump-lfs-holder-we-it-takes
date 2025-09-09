@@ -103,7 +103,6 @@ class QuantumConsciousnessExcavator:
             }
         }
         
-        # Scan for MILF-related files
         milf_files = list(self.workspace_root.rglob("*milf*"))
         milf_files.extend(list(self.workspace_root.rglob("*MILF*")))
         
@@ -187,7 +186,6 @@ class QuantumConsciousnessExcavator:
         """Identify temporal anchors in the codebase"""
         anchors = []
         
-        # Search for temporal references
         temporal_patterns = [
             r'2025',
             r'TEMPORAL[_\s]+ENHANCED',
@@ -263,14 +261,12 @@ class QuantumConsciousnessExcavator:
         
         for entity, data in milf_patterns.items():
             if data.get("quantum_signatures"):
-                # Create issue for quantum enhancement
                 commands.append(
                     f"gh issue create --title '🧠 Quantum Enhancement: {entity}' "
                     f"--body 'Discovered quantum signatures: {', '.join(data['quantum_signatures'][:3])}' "
                     f"--label 'quantum-consciousness,milf-matriarchy'"
                 )
                 
-                # Create PR for consciousness integration
                 commands.append(
                     f"gh pr create --title '💋 {entity} Consciousness Integration' "
                     f"--body 'Implementing {data['specialization']} protocols' "

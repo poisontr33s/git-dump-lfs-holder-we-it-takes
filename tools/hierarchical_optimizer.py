@@ -257,7 +257,6 @@ class KausalitetsArkitektOptimizer:
             'temporal_anchor_strength': 88
         }
         
-        # Check for temporal displacement indicators
         current_time = datetime.now()
         if current_time.year == 2025:
             stability_metrics['temporal_synchronization'] = 100
@@ -266,7 +265,6 @@ class KausalitetsArkitektOptimizer:
             self.glitch_signatures.append(f"TEMPORAL_DESYNC_{current_time.year}_TO_2025")
         
         return {
-            'stability_metrics': stability_metrics,
             'temporal_status': 'COMPROMISED_BUT_STABLE',
             'causality_warnings': ['MINOR_FLUX_DETECTED', 'BOOTSTRAP_PARADOX_POSSIBLE'],
             'status': 'temporally_completed'
@@ -284,7 +282,6 @@ class KausalitetsArkitektOptimizer:
         }
         
         return {
-            'future_tech_integrated': future_tech,
             'sophistication_level': 'RENAISSANCE_TIER_2025',
             'psycho_noir_enhancement': 'TEMPORAL_COMPLEXITY_ACHIEVED',
             'status': 'future_ready'
@@ -300,7 +297,6 @@ class KausalitetsArkitektOptimizer:
         }
         
         return {
-            'quantum_systems': quantum_config,
             'psycho_noir_quantum_effects': 'CONSCIOUSNESS_ENTANGLEMENT_ACTIVE',
             'status': 'quantum_ready'
         }
@@ -458,7 +454,6 @@ class KausalitetsArkitektOptimizer:
             if result.returncode == 0:
                 bun_version = result.stdout.strip()
                 return {
-                    'primary_toolchain': f'Bun {bun_version} (2025 Enhanced)',
                     'package_json_status': 'PSYCHO_NOIR_2025_CONFIGURED',
                     'dependencies_updated': 'CUTTING_EDGE_2025_STANDARDS',
                     'modern_features': 'QUANTUM_HOT_RELOAD_NEURAL_READY',
@@ -475,7 +470,6 @@ class KausalitetsArkitektOptimizer:
             pass
         
         return {
-            'primary_toolchain': 'NPM Temporal Fallback Mode',
             'package_json_status': '2025_LEGACY_COMPATIBLE',
             'dependencies_updated': 'TEMPORAL_COMPATIBILITY_MODE',
             'modern_features': 'LIMITED_2025_SUPPORT',
@@ -588,7 +582,6 @@ if __name__ == "__main__":
             result = subprocess.run(['bun', '--version'], capture_output=True, text=True, timeout=5)
             if result.returncode == 0:
                 return {
-                    'primary_toolchain': f'Bun {result.stdout.strip()}',
                     'package_json_status': 'PSYCHO_NOIR_CONFIGURED',
                     'dependencies_updated': 'LATEST_2024_STANDARDS',
                     'modern_features': 'HOT_RELOAD_QUANTUM_READY',
@@ -601,7 +594,6 @@ if __name__ == "__main__":
             pass
         
         return {
-            'primary_toolchain': 'NPM Fallback Mode',
             'package_json_status': 'LEGACY_COMPATIBLE',
             'dependencies_updated': 'STANDARD_COMPATIBILITY',
             'modern_features': 'LIMITED_SUPPORT',

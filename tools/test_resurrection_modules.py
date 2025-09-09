@@ -18,7 +18,6 @@ def test_module(module_path: str, expected_output: str = None):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         
-        # Run main function if exists
         if hasattr(module, 'main'):
             print(f"✅ {module_path}: Import OK, main() exists")
             return True

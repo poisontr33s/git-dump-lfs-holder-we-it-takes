@@ -9,7 +9,6 @@ from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
 
-# Auto-generated constants for magic numbers (fixed values)
 const_magic_50 = 50
 const_magic_30 = 30
 const_ten = 10
@@ -79,7 +78,6 @@ class NecromancyGraveyard:
         # Scan Markdown files
         md_files = self.scan_markdown_files()
 
-        # Scan for dead/unused files
         dead_files = self.scan_for_dead_files()
 
         # Analyze dependencies
@@ -124,7 +122,6 @@ class NecromancyGraveyard:
         issues = []
         resurrection_potential = 'low'
 
-        # Check for sub-optimal patterns
         for pattern_name, pattern in self.suboptimal_patterns['python'].items():
             matches = re.findall(pattern, content, re.MULTILINE)
             if matches:
@@ -141,7 +138,6 @@ class NecromancyGraveyard:
                 resurrection_potential = potential
                 break
 
-        # Check for complexity
         try:
             tree = ast.parse(content)
             functions = [node for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)]
@@ -152,7 +148,6 @@ class NecromancyGraveyard:
             complexity_score = 0
 
         return {
-            'filepath': filepath,
             'issues_found': len(issues),
             'issues': issues,
             'resurrection_potential': resurrection_potential,
@@ -188,7 +183,6 @@ class NecromancyGraveyard:
         issues = []
         resurrection_potential = 'low'
 
-        # Check for sub-optimal patterns
         for pattern_name, pattern in self.suboptimal_patterns['javascript'].items():
             matches = re.findall(pattern, content, re.MULTILINE)
             if matches:
@@ -206,7 +200,6 @@ class NecromancyGraveyard:
                 break
 
         return {
-            'filepath': filepath,
             'issues_found': len(issues),
             'issues': issues,
             'resurrection_potential': resurrection_potential,
@@ -240,7 +233,6 @@ class NecromancyGraveyard:
         """Analyze individual Markdown file"""
         issues = []
 
-        # Check for sub-optimal patterns
         for pattern_name, pattern in self.suboptimal_patterns['markdown'].items():
             matches = re.findall(pattern, content, re.MULTILINE | re.DOTALL)
             if matches:
@@ -251,7 +243,6 @@ class NecromancyGraveyard:
                 })
 
         return {
-            'filepath': filepath,
             'issues_found': len(issues),
             'issues': issues,
             'line_count': len(content.split('\n')),
@@ -262,7 +253,6 @@ class NecromancyGraveyard:
         """Scan for potentially dead/unused files"""
         dead_candidates = []
 
-        # Check for files not referenced anywhere
         all_files = []
         for root, dirs, files in os.walk('.'):
             dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ['__pycache__', 'node_modules']]
@@ -270,12 +260,10 @@ class NecromancyGraveyard:
                 if file.endswith(('.py', '.js', '.ts', '.md', '.json')):
                     all_files.append(os.path.join(root, file))
 
-        # Check each file for references
         for filepath in all_files:
             filename = os.path.basename(filepath)
             references_found = 0
 
-            # Search for references to this file in other files
             for other_file in all_files:
                 if other_file != filepath:
                     try:
@@ -428,11 +416,9 @@ class NecromancyGraveyard:
         """Estimate effort required for resurrection"""
         base_effort = file_analysis['issues_found'] * const_ten  # const_ten minutes per issue
 
-        # Adjust for complexity
         if 'complexity_score' in file_analysis:
             base_effort += file_analysis['complexity_score'] * 5
 
-        # Adjust for resurrection potential
         if file_analysis.get('resurrection_potential') == 'high':
             base_effort *= 1.5
         elif file_analysis.get('resurrection_potential') == 'medium':
@@ -528,7 +514,6 @@ class NecromancyGraveyard:
         report_path = self.create_graveyard_report()
 
         return {
-            'scan_results': scan_results,
             'inventory': inventory,
             'resurrection_plan': resurrection_plan,
             'report_path': report_path

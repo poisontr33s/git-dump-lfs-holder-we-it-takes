@@ -73,3 +73,6 @@ current_context.json
 *.log
 vscode-extension/psycho-noir-session-resolver-1.0.0.vsix
 vscode-extension/psycho-noir-session-resolver-1.0.0.vsix
+
+# Environment secrets (never commit real keys)
+.env

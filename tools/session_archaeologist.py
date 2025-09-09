@@ -157,7 +157,6 @@ class SessionArchaeologist:
 
         files_with_patterns = []
 
-        # Scan markdown files for conversation patterns
         for root, dirs, files in os.walk('.'):
             dirs[:] = [d for d in dirs if not d.startswith('.')]
 
@@ -201,7 +200,6 @@ class SessionArchaeologist:
         timeline_file = f'data/session_timeline_{timestamp}.json'
         os.makedirs('data', exist_ok=True)
         with open(timeline_file, 'w', encoding='utf-8') as f:
-            # Convert timestamps to strings for JSON
             timeline_json = []
             for item in timeline:
                 item_copy = item.copy()
@@ -215,7 +213,6 @@ class SessionArchaeologist:
             f.write(reconstruction)
 
         return {
-            'timeline': timeline,
             'elixir_conversation': elixir_conversation,
             'reconstruction': reconstruction,
             'timeline_file': timeline_file,

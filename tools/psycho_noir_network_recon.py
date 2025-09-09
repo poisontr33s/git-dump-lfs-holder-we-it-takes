@@ -69,7 +69,6 @@ class PsychoNoirNetworkRecon:
         detected = [indicator for indicator in mcp_indicators if indicator in content]
 
         return {
-            'score': len(detected) * 10,
             'indicators': detected,
             'potential': 'HIGH' if len(detected) > 2 else 'MEDIUM' if len(detected) > 0 else 'LOW'
         }
@@ -196,7 +195,6 @@ class PsychoNoirNetworkRecon:
             recommendations.append("Port 5500 active - Potential MCP endpoint detected")
 
         return {
-            'overall_score': mcp_score,
             'potential_level': self.score_to_level(mcp_score),
             'recommendations': recommendations
         }
@@ -205,7 +203,6 @@ class PsychoNoirNetworkRecon:
         """Konverterer score til nivå"""
         if score >= 80:
             return "HØYT - MCP integration ready"
-        elif score >= 40:
             return "MEDIUM - MCP integration possible"
         else:
             return "LAVT - MCP integration requires setup"
@@ -219,7 +216,6 @@ class PsychoNoirNetworkRecon:
             'glitch_probability': 0.0
         }
 
-        # Sjekk for skjulte noder (uvanlige port-kombinasjoner)
         unusual_combinations = [
             (5500, 3000),  # Live Server + Node.js
             (8080, 5173),  # Development servers

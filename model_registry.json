@@ -1,0 +1,156 @@
+[
+  {
+    "id": "google/gemma-3-2b-vision",
+    "backend": "llama.cpp-http",
+    "serving": { "endpoint": "http://127.0.0.1:8080" },
+    "family": "gemma",
+    "params_b": 2,
+    "modalities": {
+      "text": true,
+      "vision": true
+    },
+    "quantizations": [
+      "q4_k_m",
+      "q6_k"
+    ],
+    "artifacts": {
+      "primary": "artifacts/gemma-3-2b-vision/q4_k_m/model.gguf"
+    },
+    "license": "apache-2.0",
+    "authenticity_ref": null,
+    "tokenizer_ref": null,
+    "last_benchmark": {
+      "benchmarked_at": "2025-09-08T16:24:20.466Z",
+      "first_token_ms": 205,
+      "decode_tok_s": 4.55,
+      "memory_peak_mb": 982,
+      "energy_hint_mj": 0.497,
+      "synthetic": true,
+      "source": "SYNTHETIC",
+      "run_id": "auto-1757348660466-google/gemma-3-2b-vision"
+    },
+    "benchmark_history": [
+      {
+        "benchmarked_at": "2025-09-08T16:08:35.044Z",
+        "first_token_ms": 195,
+        "decode_tok_s": 6.04,
+        "memory_peak_mb": 1040,
+        "energy_hint_mj": 0.404,
+        "temperature": 0.7,
+        "synthetic": true,
+        "run_id": "stub-1757347715044"
+      },
+      {
+        "benchmarked_at": "2025-09-08T16:14:00.575Z",
+        "first_token_ms": 300,
+        "decode_tok_s": 6.14,
+        "memory_peak_mb": 983,
+        "energy_hint_mj": 0.623,
+        "synthetic": true,
+        "run_id": "auto-1757348040575-google/gemma-3-2b-vision"
+      }
+    ]
+  },
+  {
+    "id": "Qwen/Qwen2-VL-2B-Instruct",
+    "backend": "llama.cpp-http",
+    "serving": { "endpoint": "http://127.0.0.1:8080" },
+    "family": "qwen",
+    "params_b": 2,
+    "modalities": {
+      "text": true,
+      "vision": true
+    },
+    "quantizations": [
+      "q4_k_m",
+      "q6_k"
+    ],
+    "artifacts": {
+      "primary": "artifacts/qwen2-vl-2b/q4_k_m/model.gguf"
+    },
+    "license": "apache-2.0",
+    "authenticity_ref": null,
+    "tokenizer_ref": null,
+    "last_benchmark": {
+      "benchmarked_at": "2025-09-08T16:24:20.466Z",
+      "first_token_ms": 201,
+      "decode_tok_s": 6.56,
+      "memory_peak_mb": 1039,
+      "energy_hint_mj": 0.53,
+      "synthetic": true,
+      "source": "SYNTHETIC",
+      "run_id": "auto-1757348660466-Qwen/Qwen2-VL-2B-Instruct"
+    },
+    "benchmark_history": [
+      {
+        "benchmarked_at": "2025-09-08T16:13:56.162Z",
+        "first_token_ms": 289,
+        "decode_tok_s": 5.91,
+        "memory_peak_mb": 961,
+        "energy_hint_mj": 0.495,
+        "synthetic": true,
+        "run_id": "auto-1757348036162-Qwen/Qwen2-VL-2B-Instruct"
+      },
+      {
+        "benchmarked_at": "2025-09-08T16:14:00.575Z",
+        "first_token_ms": 281,
+        "decode_tok_s": 4.69,
+        "memory_peak_mb": 1096,
+        "energy_hint_mj": 0.578,
+        "synthetic": true,
+        "run_id": "auto-1757348040575-Qwen/Qwen2-VL-2B-Instruct"
+      }
+    ]
+  },
+  {
+    "id": "microsoft/phi-3.5-vision-instruct",
+    "backend": "llama.cpp-http",
+    "serving": { "endpoint": "http://127.0.0.1:8080" },
+    "family": "phi",
+    "params_b": 4,
+    "modalities": {
+      "text": true,
+      "vision": true
+    },
+    "quantizations": [
+      "q4_k_m",
+      "q6_k"
+    ],
+    "artifacts": {
+      "primary": "artifacts/phi-3.5-vision/q4_k_m/model.gguf"
+    },
+    "license": "mit",
+    "authenticity_ref": null,
+    "tokenizer_ref": null,
+    "last_benchmark": {
+      "benchmarked_at": "2025-09-08T16:24:20.466Z",
+      "first_token_ms": 275,
+      "decode_tok_s": 5.9,
+      "memory_peak_mb": 2174,
+      "energy_hint_mj": 0.607,
+      "synthetic": true,
+      "source": "SYNTHETIC",
+      "run_id": "auto-1757348660466-microsoft/phi-3.5-vision-instruct"
+    },
+    "benchmark_history": [
+      {
+        "benchmarked_at": "2025-09-08T16:13:56.162Z",
+        "first_token_ms": 300,
+        "decode_tok_s": 5.98,
+        "memory_peak_mb": 1935,
+        "energy_hint_mj": 0.474,
+        "synthetic": true,
+        "run_id": "auto-1757348036162-microsoft/phi-3.5-vision-instruct"
+      },
+      {
+        "benchmarked_at": "2025-09-08T16:14:00.575Z",
+        "first_token_ms": 222,
+        "decode_tok_s": 6.22,
+        "memory_peak_mb": 2060,
+        "energy_hint_mj": 0.497,
+        "synthetic": true,
+        "run_id": "auto-1757348040575-microsoft/phi-3.5-vision-instruct"
+      }
+    ]
+  }
+]

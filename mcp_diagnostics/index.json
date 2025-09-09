@@ -1,0 +1,8 @@
+{
+  "snapshot_status": "VSCODE_LOG_SNAPSHOT",
+  "minutes": 15,
+  "collected": 0,
+  "files": [],
+  "directory": "mcp_diagnostics",
+  "guidance": "Tail segments saved (last 8K each). Provide these when reporting redirect failures."
+}
