@@ -1,0 +1,46 @@
+# 🌌 Psycho-Noir Kontrapunkt LFS Soul-Binding Map
+# Large / binary / heavy data artifacts are offloaded via Git LFS to prevent repository bloat.
+# Archetypal decree: textual consciousness stays diffable; massive cadavers get soul-sharded.
+
+# Executables & binary blobs
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+
+# Database & archival lumps
+*.db  filter=lfs diff=lfs merge=lfs -text
+*.sqlite filter=lfs diff=lfs merge=lfs -text
+*.sqlite3 filter=lfs diff=lfs merge=lfs -text
+
+# Media (future‑proof)
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+
+# Massive CSV corpora (dialogue dumps etc.)
+# NOTE: Keep small CSV diffable; only re-pointer if >10MB. For now we bind the known heavy ones.
+de_dialogue_enriched.csv filter=lfs diff=lfs merge=lfs -text
+de_structured_dialogue.csv filter=lfs diff=lfs merge=lfs -text
+
+# Large raw textual corpus ( >5MB ) – semantic diffs provide diminishing returns at this mass.
+de_input_corpus.txt filter=lfs diff=lfs merge=lfs -text
+
+# === DYNAMIC LFS INJECTION SENTINEL ===
+arkiv_gamle_ruby_prosjekter/dealogue-db-tfc-21-03-30/discobase3-29-2021-9-32-09-PM.db filter=lfs diff=lfs merge=lfs -text
+hooker_system.exe filter=lfs diff=lfs merge=lfs -text
+# The lfs_consciousness_auditor.py script will (in --apply mode) append new explicit filename
+# bindings BELOW this sentinel instead of broad wildcards, to preserve diffability for smaller souls.
+# Do NOT move or delete this block unless you intend to recalibrate automated LFS governance.
+
+# Fail-safe: large raw conversation artifacts
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.tar filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Soul checksum manifests (keep text)
+# (Intentionally NOT in LFS)
