@@ -1289,7 +1289,16 @@ class UnifiedConsciousnessOrchestrator {
     const out = await new Response(p.stdout).text();
     const err = await new Response(p.stderr).text();
     const code = await p.exited;
-    if (code !== 0) return JSON.stringify({ transformers_status: 'PY_RUNNER_FAILED', code, err: err.slice(-4000) }, null, 2);
+    if (code !== 0) {
+      // If the python runner printed a structured JSON error to stdout, surface that instead of a generic failure
+      try {
+        const j = JSON.parse(out);
+        if (j && typeof j === 'object' && j.transformers_status) {
+          return JSON.stringify(j, null, 2);
+        }
+      } catch {}
+      return JSON.stringify({ transformers_status: 'PY_RUNNER_FAILED', code, err: err.slice(-4000) }, null, 2);
+    }
     return out.trim();
   }
 

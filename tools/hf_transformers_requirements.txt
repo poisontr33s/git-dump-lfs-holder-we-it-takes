@@ -1,0 +1,6 @@
+# Minimal deps for local text generation via hf_transformers_generate.py
+transformers>=4.44.0
+safetensors>=0.4.4
+torch>=2.3.0
+# Optional for GPU 4/8-bit quantization; skipped if unavailable
+bitsandbytes>=0.43.0
