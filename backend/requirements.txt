@@ -3,7 +3,7 @@
 
 # Core web framework - battle-tested, robust
 flask==2.3.3
-flask-cors==4.0.0
+flask-cors==6.0.0
 
 # Database - SQLite included in Python, no external dependencies
 # (using sqlite3 from standard library)
@@ -24,7 +24,7 @@ pydantic==2.4.2
 pytest==7.4.2
 
 # Optional: Development server (only for development)
-gunicorn==21.2.0
+gunicorn==22.0.0
 
 # NO experimental or bleeding-edge dependencies
 # NO dependencies that require external services
