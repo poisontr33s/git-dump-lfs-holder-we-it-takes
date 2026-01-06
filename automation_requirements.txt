@@ -3,7 +3,7 @@
 
 # Core web framework for webhook server
 flask==2.3.3
-aiohttp==3.12.14
+aiohttp==3.13.3
 asyncio-throttle==1.0.2
 
 # GitHub API integration
