@@ -2,8 +2,8 @@
 # For faktisk GitHub API-drevet implementering
 
 # Core web framework for webhook server
-flask==2.3.3
-aiohttp==3.12.14
+flask==3.1.3
+aiohttp==3.13.3
 asyncio-throttle==1.0.2
 
 # GitHub API integration
@@ -11,7 +11,7 @@ PyGithub==1.59.1
 requests==2.32.4
 
 # Webhook security and crypto
-cryptography==44.0.1
+cryptography==46.0.5
 pyjwt==2.8.0
 
 # Data processing and analysis
