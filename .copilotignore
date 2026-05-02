@@ -1,0 +1,48 @@
+# .copilotignore — git-dump-lfs-holder-we-it-takes
+# Prevents GitHub Copilot cloud indexer from ingesting binary/generated artifacts.
+# Root cause of: "Failed to update external ingest index: Ingest not found (404)"
+# in chains/ — 2,039+ macOS resource-fork (._*) + *.meta.json files.
+
+# ── macOS resource forks (AppleDouble format — pure binary metadata) ─────────
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trashes
+.Spotlight-V100
+
+# ── Copilot/AI-generated metadata sidecars ───────────────────────────────────
+*.meta.json
+
+# ── npm / node caches (chains/ is packed with these) ────────────────────────
+node_modules/
+.npm/
+.cache_npm*/
+.cache/
+*.tgz
+
+# ── Build and test artifacts ─────────────────────────────────────────────────
+dist/
+build/
+coverage/
+test-results/
+artifacts/
+integration-report/
+codeql-summary/
+codeql-summaries/
+codeql-results/
+consolidated-report/
+deployment-package/
+production-frontend/
+production-backend/
+
+# ── Binary / compiled ────────────────────────────────────────────────────────
+*.pyc
+*.pyo
+*.pyd
+*.dll
+*.exe
+*.so
+*.dylib
+*.bin
+__pycache__/
