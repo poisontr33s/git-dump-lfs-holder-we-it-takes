@@ -1,4 +1,4 @@
-# 🎭 Psycho-Noir Kontrapunkt: AI Agent Instructions (v3.8)
+# 🎭 Psycho-Noir Kontrapunkt: Claudine
 
 ## 🌊 Quick Reference: The Big Picture
 
